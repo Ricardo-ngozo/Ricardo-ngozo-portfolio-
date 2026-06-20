@@ -1,8 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+  
+  /* =========================================
+     1. GLOBAL: Morphing Navbar & Scroll Spying
+     ========================================= */
   const header = document.querySelector('[data-header]');
   const navLinks = document.querySelectorAll('.nav-link');
   
-  // 1. Morphing Navbar on Scroll
+  // Morphing Navbar on Scroll
   window.addEventListener('scroll', () => {
     if (window.scrollY > 60) {
       header.classList.add('scrolled');
@@ -11,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 2. Intersection Observer for Active Link Highlighting
-  const observerOptions = {
+  // Intersection Observer for Active Link Highlighting
+  const sectionObserverOptions = {
     root: null,
     rootMargin: '0px',
     threshold: 0.4 // Triggers when 40% of the section is visible
@@ -31,13 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     });
-  }, observerOptions);
+  }, sectionObserverOptions);
 
-  // Grab all sections that have an ID and observe them
+  // Observe all major sections
   document.querySelectorAll('section[id]').forEach(section => {
     sectionObserver.observe(section);
   });
-  // 3. Ambient Canvas Particles (Ethereal Dust)
+
+  /* =========================================
+     2. HERO SECTION: Ambient Canvas Particles
+     ========================================= */
   const canvas = document.querySelector('.ambient-canvas');
   if (canvas) {
     const ctx = canvas.getContext('2d');
@@ -52,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
       canvas.height = height;
     }
     window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+    resizeCanvas(); // Initial sizing
 
     // Particle Class
     class Particle {
@@ -60,15 +67,15 @@ document.addEventListener("DOMContentLoaded", () => {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
         this.size = Math.random() * 2 + 0.5; // Tiny dust particles
-        this.speedX = Math.random() * 0.3 - 0.15; // Very slow horizontal drift
-        this.speedY = Math.random() * 0.3 - 0.15; // Very slow vertical drift
+        this.speedX = Math.random() * 0.3 - 0.15; // Very slow drift
+        this.speedY = Math.random() * 0.3 - 0.15; // Very slow drift
         this.opacity = Math.random() * 0.4 + 0.1;
       }
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
 
-        // Wrap around screen edges
+        // Wrap around screen edges seamlessly
         if (this.x < 0) this.x = width;
         if (this.x > width) this.x = 0;
         if (this.y < 0) this.y = height;
@@ -85,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize and Animate
     function initParticles() {
       particles = [];
-      // Calculate amount based on screen size so it isn't crowded on mobile
       const density = (width * height) / 12000; 
       for (let i = 0; i < density; i++) {
         particles.push(new Particle());
@@ -104,4 +110,61 @@ document.addEventListener("DOMContentLoaded", () => {
     initParticles();
     animateParticles();
   }
+
+  /* =========================================
+     3. ABOUT SECTION: Glass Terminal Logic
+     ========================================= */
+  const terminal = document.querySelector('[data-terminal]');
+  const terminalContent = document.getElementById('terminal-content');
+  const terminalCursor = document.getElementById('terminal-cursor');
+  let hasTyped = false;
+
+  // The story sequence (adjust text here if you want to change the bio)
+  const storyLines = [
+    { text: "ricardo@portfolio:~$ ./load-story.sh", class: "term-cmd", speed: 40, delayAfter: 600 },
+    { text: "[WARNING: EXCESSIVE CAFFEINE DETECTED]", class: "term-warning", speed: 20, delayAfter: 400 },
+    { text: "> Loading sense of humor... 100%", class: "term-success", speed: 20, delayAfter: 300 },
+    { text: "> Compiling CSS... Failed. Just kidding.", class: "term-log", speed: 20, delayAfter: 800 },
+    { text: "Hello. I'm Samukelo Ricardo Ngozo.", class: "term-p", speed: 50, delayAfter: 400 },
+    { text: "I am a full-stack web developer who builds responsive interfaces and practical web systems.", class: "term-p", speed: 30, delayAfter: 400 },
+    { text: "I believe the web should be bold, highly interactive, and occasionally funny.", class: "term-p", speed: 30, delayAfter: 0 }
+  ];
+
+  async function typeLine(lineObj) {
+    const p = document.createElement('div');
+    p.className = lineObj.class;
+    terminalContent.appendChild(p);
+
+    for (let i = 0; i < lineObj.text.length; i++) {
+      p.textContent += lineObj.text.charAt(i);
+      await new Promise(resolve => setTimeout(resolve, lineObj.speed));
+    }
+    await new Promise(resolve => setTimeout(resolve, lineObj.delayAfter));
+  }
+
+  async function startTerminalTyping() {
+    terminalCursor.classList.add('active');
+    for (const line of storyLines) {
+      await typeLine(line);
+    }
+  }
+
+  // Trigger terminal typing only when user scrolls to it
+  const terminalObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible'); // Fade in window
+        
+        if (!hasTyped) {
+          hasTyped = true;
+          setTimeout(startTerminalTyping, 600); // Start typing slightly after fade in
+        }
+      }
+    });
+  }, { threshold: 0.5 }); // Triggers when 50% of the terminal is visible
+
+  if (terminal) {
+    terminalObserver.observe(terminal);
+  }
+
 });
