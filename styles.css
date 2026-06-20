@@ -663,18 +663,24 @@ body::after {
 
 .contribution-graph {
   display: grid;
-  grid-template-rows: repeat(7, 12px);
-  grid-auto-flow: column;
+  /* 53 weeks (columns) x 7 days (rows) */
+  grid-template-rows: repeat(7, 12px); 
+  grid-template-columns: repeat(53, 12px); 
   gap: 3px;
+  /* Force direction so it fills columns first, then rows */
+  grid-auto-flow: column;
+  margin-bottom: 20px;
 }
 
-.day { width: 12px; height: 12px; border-radius: 2px; background: #161b22; }
-/* GitHub color palette */
+.day { 
+  width: 12px; 
+  height: 12px; 
+  border-radius: 2px; 
+  background: #161b22; /* Default 'empty' color */
+}
+
+/* GitHub Contribution Colors */
 .day[data-level="1"] { background: #0e4429; }
 .day[data-level="2"] { background: #006d32; }
 .day[data-level="3"] { background: #26a641; }
 .day[data-level="4"] { background: #39d353; }
-
-.graph-legend { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #8b949e; margin-top: 15px; }
-.legend-scale { display: flex; gap: 3px; }
-.legend-scale div { width: 12px; height: 12px; border-radius: 2px; }
