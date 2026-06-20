@@ -38,9 +38,9 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 15% 12%, rgba(100, 239, 255, 0.15), transparent 26rem),
-    radial-gradient(circle at 86% 14%, rgba(255, 79, 200, 0.08), transparent 22rem),
-    linear-gradient(140deg, var(--bg), var(--bg-2) 48%, #04070d);
+    radial-gradient(circle at 12% 14%, rgba(255,244,228,0.06), transparent 28rem),
+    radial-gradient(circle at 88% 18%, rgba(210,154,82,0.04), transparent 20rem),
+    linear-gradient(145deg, #120906 0%, #2b1a10 48%, #0f0703 100%);
   color: var(--text);
   font-family: Optima, "Segoe UI", Candara, system-ui, sans-serif;
   letter-spacing: 0;
@@ -84,44 +84,25 @@ textarea {
 }
 
 .site-header {
+  /* keep header area but remove glass background — only resume pill will be visible */
   position: fixed;
-  top: 18px;
-  left: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 18px;
-  width: min(var(--max), calc(100% - 32px));
-  transform: translateX(-50%);
   pointer-events: none;
-  background: rgba(247, 236, 220, 0.12);
-  border: 1px solid rgba(255, 244, 228, 0.22);
-  box-shadow: 0 18px 60px rgba(20, 12, 7, 0.18);
-  backdrop-filter: blur(24px);
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .brand-mark,
 .glass-nav,
 .menu-toggle {
-  pointer-events: auto;
+  display: none !important;
 }
 
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 56px;
-  aspect-ratio: 1;
-  border: 1px solid var(--glass-border);
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(255, 250, 240, 0.38), rgba(222, 190, 148, 0.12));
-  box-shadow: 0 20px 60px rgba(31, 18, 10, 0.18);
-  backdrop-filter: blur(18px);
-  color: var(--wood-base);
-  font-family: Georgia, serif;
-  font-weight: 700;
-  font-size: 0.92rem;
-}
+.brand-mark { display: none !important; }
 
 .glass-nav {
   justify-self: center;
@@ -193,29 +174,32 @@ textarea {
   transform: translateY(-3.5px) rotate(-45deg);
 }
 
-.resume-pill {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  z-index: 45;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 48px;
-  padding: 0 18px;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: rgba(6, 12, 22, 0.76);
-  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45), 0 0 28px rgba(100, 239, 255, 0.14);
-  backdrop-filter: blur(22px);
-  color: var(--text);
-  font-weight: 700;
-  transition: transform 180ms ease, border-color 180ms ease;
+resume-pill {
+  /* kept for fallback */
 }
 
 .resume-pill:hover {
   transform: translateY(-3px);
   border-color: var(--cyan);
+}
+
+/* Make the resume pill the visible top-right control */
+.resume-pill {
+  position: fixed;
+  top: 16px;
+  right: 18px;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255,244,228,0.06), rgba(210,154,82,0.04));
+  border: 1px solid rgba(255,244,228,0.16);
+  color: var(--wood-base);
+  box-shadow: 0 18px 54px rgba(22,12,6,0.18);
+  pointer-events: auto;
 }
 
 main,
