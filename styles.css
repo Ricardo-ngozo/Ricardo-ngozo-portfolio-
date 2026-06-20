@@ -84,66 +84,94 @@ textarea {
 }
 
 .site-header {
-  /* keep header area but remove glass background — only resume pill will be visible */
+  /* header positioned centrally with small controls visible */
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  pointer-events: none;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  width: min(var(--max), calc(100% - 32px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  pointer-events: auto;
   background: transparent;
   border: none;
-  box-shadow: none;
 }
 
 .brand-mark,
 .glass-nav,
 .menu-toggle {
-  display: none !important;
+  pointer-events: auto;
 }
 
-.brand-mark { display: none !important; }
+.brand-mark {
+  display: block;
+}
 
 .glass-nav {
-  justify-self: center;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
-  border: 1px solid var(--glass-border);
-  border-radius: 28px;
-  background: var(--glass-bg);
-  box-shadow: var(--glass-shadow);
-  backdrop-filter: blur(24px);
+  gap: 12px;
+  padding: 8px 6px;
+  background: transparent;
 }
 
 .glass-nav a {
   position: relative;
-  padding: 10px 16px;
+  padding: 8px 12px;
   border-radius: 999px;
-  color: var(--muted-wood);
-  font-size: 0.92rem;
-  font-weight: 600;
-  transition: color 220ms ease, background 220ms ease, transform 220ms ease;
+  color: var(--warm-cream);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 180ms ease, transform 180ms ease;
 }
 
 .glass-nav a:hover,
 .glass-nav a.active {
-  color: var(--wood-base);
-  background: rgba(255, 255, 255, 0.16);
-  transform: translateY(-1px);
+  color: var(--warm-cream);
+  transform: translateY(-2px);
 }
 
 .glass-nav a.active::after {
   content: "";
   position: absolute;
-  left: 18px;
-  right: 18px;
-  bottom: 5px;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
   height: 2px;
   border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 0 18px rgba(210, 154, 82, 0.32);
+  background: rgba(255,244,228,0.28);
+}
+
+/* Brand title styling to match the reference look */
+.brand-mark .site-title {
+  font-family: Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  color: var(--warm-cream);
+  letter-spacing: -0.02em;
+}
+
+/* Ensure the menu toggle is visible for compact nav */
+.menu-toggle {
+  display: inline-grid;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  align-items: center;
+  justify-items: center;
+}
+
+/* Warm image tints for project visuals */
+.project-card-visual img,
+.poster-card img {
+  filter: sepia(0.12) saturate(0.95) contrast(0.98) brightness(0.98);
 }
 
 .menu-toggle {
@@ -212,25 +240,47 @@ main,
   position: relative;
   min-height: 100vh;
   display: grid;
-  align-content: center;
-  padding: 150px 0 86px;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 42px;
+  grid-template-columns: 48% 52%;
+  gap: 0;
 }
 
 .section-panel {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.hero-copy-block,
+/* Left panel: pale cream card that fills the left column */
+.hero-copy-block {
+  padding: 64px 72px;
+  min-height: 100vh;
+  background: var(--warm-cream);
+  color: var(--wood-base);
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+/* Right panel: image / visual area with warm gradient */
 .hero-visual {
-  position: relative;
-  padding: 32px;
-  border-radius: 32px;
-  background: rgba(247, 236, 220, 0.14);
-  border: 1px solid rgba(255, 244, 228, 0.28);
-  box-shadow: 0 28px 90px rgba(31, 18, 10, 0.12);
-  backdrop-filter: blur(24px);
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(200,150,110,0.08), rgba(18,9,6,0.6));
+  border-radius: 0;
+}
+
+.hero-visual .hero-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--warm-cream);
+}
+
+.cinematic-title {
+  color: var(--wood-base);
 }
 
 .hero-kicker,
