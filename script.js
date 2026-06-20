@@ -167,4 +167,49 @@ document.addEventListener("DOMContentLoaded", () => {
     terminalObserver.observe(terminal);
   }
 
+  /* =========================================
+     4. GLOBAL: Scroll Reveal Animation
+     ========================================= */
+  const revealElements = document.querySelectorAll('[data-reveal]');
+  
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target); // Only animate once
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  /* =========================================
+     5. TECH STACK: Magnetic Hover Effect
+     ========================================= */
+  const magnets = document.querySelectorAll('[data-magnet]');
+  
+  magnets.forEach(magnet => {
+    magnet.addEventListener('mousemove', (e) => {
+      // Remove the spring transition while moving so it tracks instantly
+      magnet.classList.remove('release');
+      
+      const rect = magnet.getBoundingClientRect();
+      
+      // Calculate distance from center of the pill to the mouse pointer
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      // The strength of the pull. 0.3 means it moves 30% of the distance to the mouse
+      const pullStrength = 0.3; 
+      
+      magnet.style.transform = `translate(${x * pullStrength}px, ${y * pullStrength}px)`;
+    });
+
+    magnet.addEventListener('mouseleave', () => {
+      // Add the spring class back and reset the transform
+      magnet.classList.add('release');
+      magnet.style.transform = 'translate(0px, 0px)';
+    });
+  });
+
 });
