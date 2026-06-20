@@ -8,337 +8,59 @@
       content="Tech portfolio for Samukelo Ricardo Ngozo, a full-stack web developer building responsive interfaces and practical web systems."
     />
     <title>Samukelo Ricardo Ngozo | Full-Stack Web Developer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body data-page="tech">
     <canvas class="ambient-canvas" aria-hidden="true"></canvas>
-    <div class="site-noise" aria-hidden="true"></div>
 
-    <header class="site-header" data-header>
-      <a class="brand-mark" href="./index.html" aria-label="Samukelo Ricardo Ngozo home">
-        <span class="site-title">Samukelo Ricardo Ngozo</span>
-      </a>
+    <header class="morph-header" data-header>
+      <div class="nav-container">
+        <a class="brand-mark" href="#home" aria-label="Samukelo Home">
+          <span class="site-title">Ricardo.</span>
+        </a>
 
-      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
-        <span></span>
-        <span></span>
-      </button>
+        <nav class="pill-nav" aria-label="Primary navigation" data-nav>
+          <a href="#home" class="nav-link active" data-section="home">Home</a>
+          <a href="#about" class="nav-link" data-section="about">About</a>
+          <a href="#stack" class="nav-link" data-section="stack">Stack</a>
+          <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+          <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+        </nav>
 
-      <nav class="glass-nav" aria-label="Primary navigation" data-nav>
-        <a href="./index.html#home" data-section-link>Home</a>
-        <a href="./index.html#about" data-section-link>Story</a>
-        <a href="./index.html#stack" data-section-link>Tools</a>
-        <a href="./index.html#projects" data-section-link>Work</a>
-        <a href="./index.html#contact" data-section-link>Connect</a>
-        <a href="./personal.html">Archive</a>
-      </nav>
+        <button class="mobile-toggle" type="button" aria-label="Open menu" data-menu-toggle>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </header>
 
-    <a class="resume-pill" href="./assets/docs/blueprint-placeholder.pdf" download>
-      <span>Resume</span>
-      <span aria-hidden="true">↓</span>
-    </a>
-
     <main>
-      <section class="hero tech-hero section-panel" id="home">
-        <div class="hero-copy-block reveal">
-          <div class="hero-kicker">Warm glass design for real stories.</div>
-          <h1 class="cinematic-title">
-            <span>Samukelo</span>
-            <span>Ricardo</span>
-            <span>Ngozo</span>
-          </h1>
-          <p class="hero-quote">
-            A grounded storyteller building digital systems that feel human,
-            premium, and quietly confident.
-          </p>
-          <p class="hero-copy">
-            I create web experiences shaped by curiosity, cultural rhythm, and the craft of turning ideas into calm, useful interfaces.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#about">See Story</a>
-            <a class="button button-secondary" href="#projects">View Work</a>
-            <a class="button button-ghost" href="./assets/docs/blueprint-placeholder.pdf" target="_blank" rel="noreferrer">Resume</a>
-          </div>
-        </div>
-
-        <aside class="hero-visual reveal" aria-hidden="true">
-          <div class="hero-card">
-            <span>Origin</span>
-            <strong>Built from curiosity, guided by people, and shaped into systems that feel warm and intentional.</strong>
-          </div>
-          <div class="hero-chip">
-            <p>Grounded, crafted, memorable.</p>
-          </div>
-          <div class="hero-panel-dot"></div>
-        </aside>
+      <section id="home" class="section-placeholder">
+        <h1>Hero Section Coming Next...</h1>
+        <p>Scroll down to test the morphing navigation.</p>
+      </section>
+      
+      <section id="about" class="section-placeholder">
+        <h2>About Me</h2>
       </section>
 
-      <section class="content-section about-section" id="about">
-        <div class="section-intro reveal">
-          <p class="eyebrow">Story</p>
-          <h2>How my curiosity grew into craft.</h2>
-          <p>
-            I build products that feel calm, thoughtful, and grounded. This page is
-            where I share the path that led me to design systems with warmth,
-            care, and a clear sense of purpose.
-          </p>
-        </div>
-
-        <div class="about-grid reveal">
-          <div class="about-cards">
-            <article class="about-card">
-              <span>Origin</span>
-              <h3>The first spark</h3>
-              <p>
-                I was drawn to technology the first time I noticed the invisible
-                systems behind a screen. That curiosity started as a question and
-                became a practice of building things that feel lived-in.
-              </p>
-            </article>
-
-            <article class="about-card">
-              <span>Approach</span>
-              <h3>Warm, useful, intentional</h3>
-              <p>
-                My work blends craftsmanship with clarity: clean interactions,
-                thoughtful structure, and a premium tone that still feels human.
-              </p>
-            </article>
-          </div>
-
-          <aside class="story-panel">
-            <div class="story-panel-head">
-              <span>Journey notes</span>
-              <h3>A slow-build story of growth</h3>
-            </div>
-            <p>
-              Each project is a chapter: from early interface practice to projects
-              that reflect both skill and meaning. The goal is to make every page
-              feel like part of a bigger story.
-            </p>
-
-            <div class="story-points">
-              <div class="story-step">
-                <strong>01</strong>
-                <div>
-                  <h4>Curiosity</h4>
-                  <p>Found myself asking how digital experiences are shaped.</p>
-                </div>
-              </div>
-              <div class="story-step">
-                <strong>02</strong>
-                <div>
-                  <h4>Practice</h4>
-                  <p>Built interfaces, learned rhythm, and refined the details.</p>
-                </div>
-              </div>
-              <div class="story-step">
-                <strong>03</strong>
-                <div>
-                  <h4>Ambition</h4>
-                  <p>Now I’m making work that feels premium, personal, and memorable.</p>
-                </div>
-              </div>
-            </div>
-          </aside>
-        </div>
+      <section id="stack" class="section-placeholder">
+        <h2>Tech Stack</h2>
       </section>
 
-      <section class="content-section" id="stack">
-        <div class="section-intro narrow reveal">
-          <p class="eyebrow">Tech Stack</p>
-          <h2>The tools I choose to shape calm, useful systems.</h2>
-          <p>Beyond names, this is my toolkit for creating polished interfaces, dependable logic, and thoughtful digital moments.</p>
-        </div>
-        <div class="stack-grid reveal">
-          <article class="stack-card">
-            <span>Interface craft</span>
-            <h3>HTML · CSS · JavaScript</h3>
-            <p>These are the materials I use to build warm, intentional experiences that feel easy to navigate and clear to use.</p>
-          </article>
-
-          <article class="stack-card">
-            <span>System logic</span>
-            <h3>Node.js · Express · APIs</h3>
-            <p>I design backend flows that support user needs and keep interactions stable without overwhelming the experience.</p>
-          </article>
-
-          <article class="stack-card">
-            <span>Delivery rhythm</span>
-            <h3>Git · GitHub · Netlify</h3>
-            <p>These tools help me ship work confidently, stay organized, and move from concept to polished product smoothly.</p>
-          </article>
-
-          <article class="stack-panel">
-            <span>Why it matters</span>
-            <h3>Tools are choices, not badges.</h3>
-            <p>Every technology here is chosen for how it helps me turn ideas into grounded, premium work rather than just to sound impressive.</p>
-          </article>
-        </div>
+      <section id="projects" class="section-placeholder">
+        <h2>Projects</h2>
       </section>
 
-      <section class="content-section projects-section" id="projects">
-        <div class="section-intro reveal">
-          <p class="eyebrow">Work</p>
-          <h2>Projects that balance craft and clarity.</h2>
-          <p>This selection reflects my interest in polished interfaces, thoughtful systems, and stories that feel personal.</p>
-        </div>
-
-        <div class="projects-grid reveal">
-          <article class="project-card">
-            <div class="project-card-visual">
-              <img src="./assets/images/ihub-clone.png" alt="Ihub clone project preview" />
-              <span>Interface study</span>
-            </div>
-            <div class="project-card-body">
-              <h3>Ihub Clone</h3>
-              <p>Rebuilt a brand-driven platform with a focus on spacing, hierarchy, and feeling right at every break point.</p>
-              <ul>
-                <li><strong>Focus:</strong> UI fidelity and calm layout.</li>
-                <li><strong>Result:</strong> tighter sections and clearer content flow.</li>
-              </ul>
-              <div class="project-links">
-                <a href="https://github.com/Ricardo-ngozo/Ihub-clone.git" target="_blank" rel="noreferrer">View Code</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-card-visual">
-              <img src="./assets/images/netflix-clone.png" alt="Netflix clone project preview" />
-              <span>Visual system</span>
-            </div>
-            <div class="project-card-body">
-              <h3>Netflix Clone</h3>
-              <p>Translated cinematic entertainment patterns into a dark, polished interface that values space, contrast, and discovery.</p>
-              <ul>
-                <li><strong>Focus:</strong> strong visual structure.</li>
-                <li><strong>Result:</strong> a premium, immersive browsing flow.</li>
-              </ul>
-              <div class="project-links">
-                <a href="https://ricardo-ngozo-netblip.netlify.app/" target="_blank" rel="noreferrer">Live Demo</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-card-visual glass-visual">
-              <div class="glass-chip">Signal</div>
-            </div>
-            <div class="project-card-body">
-              <h3>Project Solaris</h3>
-              <p>A concept for a social impact platform rooted in accessibility, community, and a voice for change.</p>
-              <ul>
-                <li><strong>Focus:</strong> purpose-driven digital spaces.</li>
-                <li><strong>Result:</strong> an idea for impact, learning, and next-stage growth.</li>
-              </ul>
-              <div class="project-links">
-                <a href="#case-studies">Read the Story</a>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="archive-panel reveal">
-          <div>
-            <p class="eyebrow">Archive</p>
-            <h3>Other notable work</h3>
-          </div>
-          <div class="archive-list">
-            <a href="https://ricardoteslalanding.netlify.app/" target="_blank" rel="noreferrer"><span>Tesla Landing Page</span><small>HTML / CSS / Responsive UI</small></a>
-            <a href="https://uiscreenshot.netlify.app/" target="_blank" rel="noreferrer"><span>FSWD UI Screenshot</span><small>UI accuracy / Layout practice</small></a>
-            <a href="https://merry-buttercream-5fe896.netlify.app/" target="_blank" rel="noreferrer"><span>To Do List</span><small>JavaScript / Local storage</small></a>
-            <a href="./assets/docs/blueprint-placeholder.pdf" target="_blank" rel="noreferrer"><span>Personal Development Blueprint</span><small>Growth strategy / Goals</small></a>
-            <a href="#case-studies"><span>Project Solaris</span><small>In progress / Social impact concept</small></a>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section" id="case-studies">
-        <div class="section-intro reveal">
-          <p class="eyebrow">Case Studies</p>
-          <h2>Stories of how I shaped meaning through code.</h2>
-        </div>
-        <div class="case-grid">
-          <article class="case-card reveal">
-            <span>Project Solaris</span>
-            <h3>Building digital space for impact</h3>
-            <p>Project Solaris began as a question: how can online systems feel more welcoming for people who want to make change? I focused on clarity, accessibility, and a calm structure that encourages participation.</p>
-            <ul>
-              <li><strong>Focus:</strong> inclusive navigation and approachable content.</li>
-              <li><strong>Result:</strong> a concept that feels grounded and community-first.</li>
-            </ul>
-            <a class="case-link" href="#contact">Discuss this project</a>
-          </article>
-
-          <article class="case-card reveal">
-            <span>Design Study</span>
-            <h3>Crafting a premium streaming interface</h3>
-            <p>The Netflix clone was a study in visual depth and rhythm. My goal was to keep the interface lush without overwhelming the user, balancing atmosphere with usability.</p>
-            <ul>
-              <li><strong>Focus:</strong> hierarchy, contrast, and visual storytelling.</li>
-              <li><strong>Result:</strong> a refined dark interface with better scanability.</li>
-            </ul>
-            <a class="case-link" href="https://ricardo-ngozo-netblip.netlify.app/" target="_blank" rel="noreferrer">View demo</a>
-          </article>
-
-          <article class="case-card reveal">
-            <span>Interface Study</span>
-            <h3>Turning precision into comfort</h3>
-            <p>The Ihub clone work taught me how to translate brand detail into a user-friendly layout. I leaned into strong spacing, calm sections, and a premium feel that still reads as approachable.</p>
-            <ul>
-              <li><strong>Focus:</strong> spacing, content flow, and emotional tone.</li>
-              <li><strong>Result:</strong> an interface that feels intentional and easy to explore.</li>
-            </ul>
-            <a class="case-link" href="https://github.com/Ricardo-ngozo/Ihub-clone.git" target="_blank" rel="noreferrer">View code</a>
-          </article>
-        </div>
-      </section>
-
-      <section class="content-section" id="experience">
-        <div class="section-intro reveal">
-          <p class="eyebrow">Experience Timeline</p>
-          <h2>A focused growth path.</h2>
-        </div>
-        <div class="progress-timeline" data-progress-line>
-          <article class="timeline-card reveal"><span>Start</span><h3>Foundations</h3><p>Built HTML/CSS confidence and learned how responsive layouts behave across devices.</p></article>
-          <article class="timeline-card reveal"><span>Builds</span><h3>Interface Practice</h3><p>Recreated real product interfaces to sharpen spacing, composition, and UI decision-making.</p></article>
-          <article class="timeline-card reveal"><span>Logic</span><h3>JavaScript Thinking</h3><p>Used JavaScript for interaction and started thinking beyond static pages.</p></article>
-          <article class="timeline-card reveal"><span>Next</span><h3>Full-Stack Systems</h3><p>Growing into APIs, backend integration, databases, React concepts, and complete product builds.</p></article>
-        </div>
-      </section>
-
-      <section class="content-section contact-command" id="contact">
-        <div class="section-intro reveal">
-          <p class="eyebrow">Contact</p>
-          <h2>Let’s connect.</h2>
-          <p>I am open to opportunities, collaboration, and feedback.</p>
-        </div>
-        <div class="contact-grid reveal">
-          <div class="signal-panel">
-            <span class="status-dot"></span>
-            <h3>Open to opportunities</h3>
-            <p>Recruiter-first contact: email, LinkedIn, and GitHub are ready.</p>
-            <div class="contact-links">
-              <a href="mailto:Ultrazen75@gmail.com">Email</a>
-              <a href="https://www.linkedin.com/in/ricardongozo75/" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="https://github.com/Ricardo-ngozo" target="_blank" rel="noreferrer">GitHub</a>
-            </div>
-          </div>
-          <form class="contact-form" action="mailto:Ultrazen75@gmail.com" method="post" enctype="text/plain">
-            <label>Name <input type="text" name="name" autocomplete="name" /></label>
-            <label>Email <input type="email" name="email" autocomplete="email" /></label>
-            <label>Message <textarea name="message" rows="5"></textarea></label>
-            <button class="button button-primary" type="submit">Prepare Email</button>
-          </form>
-        </div>
+      <section id="contact" class="section-placeholder">
+        <h2>Contact</h2>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <p>© 2026 Samukelo Ricardo Ngozo — crafted with warmth and clarity.</p>
-    </footer>
 
     <script src="./script.js"></script>
   </body>
