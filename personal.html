@@ -8,192 +8,49 @@
       content="Personal portfolio page for Samukelo Ricardo Ngozo, sharing inspirations, books, movies, and life beyond coding."
     />
     <title>Personal Archive | Samukelo Ricardo Ngozo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body data-page="personal">
     <canvas class="ambient-canvas" aria-hidden="true"></canvas>
-    <div class="site-noise" aria-hidden="true"></div>
 
-    <header class="site-header" data-header>
-      <a class="brand-mark" href="./index.html" aria-label="Samukelo Ricardo Ngozo home">
-        <span class="site-title">Samukelo Ricardo Ngozo</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
-        <span></span>
-        <span></span>
-      </button>
-      <nav class="glass-nav" aria-label="Primary navigation" data-nav>
-        <a href="./index.html">Tech</a>
-        <a href="#personal-home" data-section-link>Archive</a>
-        <a href="#inspirations" data-section-link>Why</a>
-        <a href="#books" data-section-link>Books</a>
-        <a href="#movies" data-section-link>Cinema</a>
-        <a href="#beyond" data-section-link>Beyond</a>
-      </nav>
+    <header class="morph-header" data-header>
+      <div class="nav-container">
+        <a class="brand-mark" href="./index.html" aria-label="Return to Tech">
+          <span class="site-title">Ricardo.</span> 
+        </a>
+
+        <nav class="pill-nav" aria-label="Primary navigation" data-nav>
+          <a href="./index.html" class="nav-link">← Tech</a>
+          
+          <a href="#personal-home" class="nav-link active" data-section="personal-home">Archive</a>
+          <a href="#inspirations" class="nav-link" data-section="inspirations">Why</a>
+          <a href="#books" class="nav-link" data-section="books">Books</a>
+          <a href="#movies" class="nav-link" data-section="movies">Cinema</a>
+          <a href="#beyond" class="nav-link" data-section="beyond">Beyond</a>
+        </nav>
+
+        <button class="mobile-toggle" type="button" aria-label="Open menu" data-menu-toggle>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </header>
 
-    <a class="resume-pill" href="./assets/docs/blueprint-placeholder.pdf" download>
-      <span>Resume</span>
-      <span aria-hidden="true">↓</span>
-    </a>
-
     <main>
-      <section class="hero personal-hero section-panel" id="personal-home">
-        <div>
-          <div class="hero-kicker reveal">Personal archive</div>
-          <h1 class="cinematic-title reveal">
-            <span>How craft, curiosity,</span>
-            <span>and care</span>
-            <span>shape my story.</span>
-          </h1>
-          <p class="hero-copy reveal">
-            A warm, thoughtful view of the rituals, books, films, and people that
-            shape how I build, learn, and move forward.
-          </p>
-          <div class="hero-actions reveal">
-            <a class="button button-primary" href="#inspirations">Explore archive</a>
-            <a class="button button-secondary" href="#beyond">See beyond code</a>
-          </div>
-        </div>
-        <aside class="hero-visual">
-          <div class="portal-card reveal" aria-hidden="true">
-            <span>Archive signal active</span>
-            <strong>Curiosity / Discipline / Future</strong>
-          </div>
-          <article class="hero-card reveal">
-            <span>Pulse</span>
-            <h3>Rhythm of my process</h3>
-            <p>How reading, reflection, and thoughtful play combine into a steady, expressive practice.</p>
-          </article>
-        </aside>
+      <section id="personal-home" class="section-placeholder">
+        <h1>Archive Dashboard Coming Soon...</h1>
+        <p>Scroll down to test the morphing navigation.</p>
       </section>
-
-      <section class="content-section" id="inspirations">
-        <div class="section-intro reveal">
-          <p class="eyebrow">Inspiration Journey</p>
-          <h2>Signals that shaped my curiosity.</h2>
-          <p class="section-copy">These films, stories, and people shaped my sense of craft, systems, and why I build with intention.</p>
-        </div>
-        <div class="archive-card-grid">
-          <article class="archive-card reveal">
-            <span>Show</span>
-            <h3>Devs</h3>
-            <p>It opened the door to systems thinking and the hidden architecture behind technology.</p>
-          </article>
-          <article class="archive-card reveal">
-            <span>Movie</span>
-            <h3>The Matrix</h3>
-            <p>Reality, control, and the idea that code can feel like a philosophical mirror.</p>
-          </article>
-          <article class="archive-card reveal">
-            <span>Movie</span>
-            <h3>The Social Network</h3>
-            <p>How ambition and product shape culture, and the pace of building something meaningful.</p>
-          </article>
-          <article class="archive-card reveal">
-            <span>Person</span>
-            <h3>Nelson Mandela</h3>
-            <p>Quiet resilience, discipline, and service to a vision bigger than the self.</p>
-          </article>
-          <article class="archive-card reveal">
-            <span>Person</span>
-            <h3>Steve Jobs</h3>
-            <p>Product taste, detail, and the belief that technology should feel human.</p>
-          </article>
-          <article class="archive-card reveal">
-            <span>Person</span>
-            <h3>Elon Musk</h3>
-            <p>Ambition to build hard things and imagine a future that moves fast.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="content-section" id="books">
-        <div class="section-intro reveal">
-          <p class="eyebrow">Books</p>
-          <h2>Books that shaped me.</h2>
-          <p class="section-copy">Stories and systems that changed how I think, work, and level up over time.</p>
-        </div>
-        <div class="book-layout">
-          <article class="featured-book reveal">
-            <span>Featured Read</span>
-            <h3>Atomic Habits</h3>
-            <p>Small habits build bigger identity. This book guides how I structure learning, discipline, and momentum.</p>
-          </article>
-          <div class="book-grid">
-            <article class="book-card reveal">
-              <span>Principle</span>
-              <h3>Clean Code</h3>
-              <p>Readable, maintainable code is the strongest gift you can give to your future self and your team.</p>
-            </article>
-            <article class="book-card reveal">
-              <span>Practice</span>
-              <h3>Deep Work</h3>
-              <p>Protecting focused time is how complex problems become manageable and meaningful work gets done.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section" id="movies">
-        <div class="section-intro reveal">
-          <p class="eyebrow">Cinema</p>
-          <h2>Movies that inspired my tech journey.</h2>
-          <p class="section-copy">A few films that changed how I see systems, ambition, and the stories we build around technology.</p>
-        </div>
-        <div class="poster-grid">
-          <article class="poster-card reveal">
-            <span>01</span>
-            <h3>The Matrix</h3>
-            <p>Systems, reality, freedom, and the power of waking up to how things work.</p>
-          </article>
-          <article class="poster-card reveal">
-            <span>02</span>
-            <h3>The Social Network</h3>
-            <p>Startup energy, product momentum, and how software can reshape connection.</p>
-          </article>
-          <article class="poster-card reveal">
-            <span>03</span>
-            <h3>Devs</h3>
-            <p>Advanced systems, mystery, and the deeper questions behind technical power.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="content-section" id="beyond">
-        <div class="section-intro reveal">
-          <p class="eyebrow">Beyond Coding</p>
-          <h2>Personal dashboard.</h2>
-          <p class="section-copy">How I recharge, stay curious, and keep my thinking fresh outside of work.</p>
-        </div>
-        <div class="dashboard-grid">
-          <article class="dashboard-card reveal">
-            <span>Focus</span>
-            <h3>Reading</h3>
-            <p>Books help me refine discipline, thinking, and long-term direction.</p>
-          </article>
-          <article class="dashboard-card reveal">
-            <span>Energy</span>
-            <h3>Football</h3>
-            <p>Teamwork, movement, and pressure help me stay sharp outside the screen.</p>
-          </article>
-          <article class="dashboard-card reveal">
-            <span>Imagination</span>
-            <h3>Sci-Fi & Technology</h3>
-            <p>Future stories keep my curiosity alive and inspire the next project.</p>
-          </article>
-          <article class="dashboard-card reveal">
-            <span>Play</span>
-            <h3>Gaming</h3>
-            <p>Interactive systems and strategy sharpen my sense for design, flow, and rules.</p>
-          </article>
-        </div>
-      </section>
+      <section id="inspirations" class="section-placeholder"><h2>Inspirations</h2></section>
+      <section id="books" class="section-placeholder"><h2>Books</h2></section>
+      <section id="movies" class="section-placeholder"><h2>Cinema</h2></section>
+      <section id="beyond" class="section-placeholder"><h2>Beyond Coding</h2></section>
     </main>
-
-    <footer class="site-footer">
-      <p>© 2026 Samukelo Ricardo Ngozo — a personal archive of craft and curiosity.</p>
-    </footer>
 
     <script src="./script.js"></script>
   </body>
