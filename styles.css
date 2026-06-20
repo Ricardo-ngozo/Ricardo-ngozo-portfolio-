@@ -684,3 +684,23 @@ body::after {
 .day[data-level="2"] { background: #006d32; }
 .day[data-level="3"] { background: #26a641; }
 .day[data-level="4"] { background: #39d353; }
+
+.contact-section { padding: 120px 20px; max-width: 900px; margin: 0 auto; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; margin-top: 40px; }
+
+.contact-form { 
+  display: flex; flex-direction: column; gap: 16px; 
+  background: var(--nav-glass); padding: 30px; 
+  border-radius: 16px; border: 1px solid var(--border-glass); 
+}
+
+.contact-form input, .contact-form textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  padding: 12px; border-radius: 8px; color: white;
+}
+
+.social-links { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.link-item { color: var(--accent-cyan); text-decoration: none; font-weight: 600; }
+
+@media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
