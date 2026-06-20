@@ -15,6 +15,15 @@
   --shadow: 0 28px 90px rgba(0, 0, 0, 0.5);
   --radius: 18px;
   --max: 1180px;
+  --wood-base: #5a3d24;
+  --wood-soft: #8f6b47;
+  --warm-cream: #f4e7d0;
+  --glass-bg: rgba(247, 236, 220, 0.16);
+  --glass-border: rgba(255, 244, 228, 0.32);
+  --glass-shadow: 0 32px 90px rgba(34, 22, 12, 0.18);
+  --accent: #d29a52;
+  --muted-wood: #c5a88b;
+  --glass-inset: rgba(255, 255, 255, 0.12);
 }
 
 * {
@@ -86,6 +95,10 @@ textarea {
   width: min(var(--max), calc(100% - 32px));
   transform: translateX(-50%);
   pointer-events: none;
+  background: rgba(247, 236, 220, 0.12);
+  border: 1px solid rgba(255, 244, 228, 0.22);
+  box-shadow: 0 18px 60px rgba(20, 12, 7, 0.18);
+  backdrop-filter: blur(24px);
 }
 
 .brand-mark,
@@ -97,44 +110,46 @@ textarea {
 .brand-mark {
   display: grid;
   place-items: center;
-  width: 52px;
+  width: 56px;
   aspect-ratio: 1;
-  border: 1px solid var(--line);
+  border: 1px solid var(--glass-border);
   border-radius: 999px;
-  background: rgba(6, 12, 22, 0.62);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(20px);
-  color: var(--cyan);
-  font-weight: 800;
-  font-size: 0.86rem;
+  background: linear-gradient(180deg, rgba(255, 250, 240, 0.38), rgba(222, 190, 148, 0.12));
+  box-shadow: 0 20px 60px rgba(31, 18, 10, 0.18);
+  backdrop-filter: blur(18px);
+  color: var(--wood-base);
+  font-family: Georgia, serif;
+  font-weight: 700;
+  font-size: 0.92rem;
 }
 
 .glass-nav {
   justify-self: center;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px;
-  border: 1px solid rgba(124, 243, 255, 0.18);
-  border-radius: 999px;
-  background: rgba(6, 12, 22, 0.62);
-  box-shadow: var(--shadow);
+  gap: 10px;
+  padding: 12px 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
   backdrop-filter: blur(24px);
 }
 
 .glass-nav a {
   position: relative;
-  padding: 10px 14px;
+  padding: 10px 16px;
   border-radius: 999px;
-  color: var(--muted);
-  font-size: 0.9rem;
-  transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+  color: var(--muted-wood);
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: color 220ms ease, background 220ms ease, transform 220ms ease;
 }
 
 .glass-nav a:hover,
 .glass-nav a.active {
-  color: var(--text);
-  background: rgba(100, 239, 255, 0.1);
+  color: var(--wood-base);
+  background: rgba(255, 255, 255, 0.16);
   transform: translateY(-1px);
 }
 
@@ -146,8 +161,8 @@ textarea {
   bottom: 5px;
   height: 2px;
   border-radius: 999px;
-  background: var(--cyan);
-  box-shadow: 0 0 16px rgba(100, 239, 255, 0.8);
+  background: var(--accent);
+  box-shadow: 0 0 18px rgba(210, 154, 82, 0.32);
 }
 
 .menu-toggle {
