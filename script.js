@@ -246,4 +246,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  /* =========================================
+     7. CONTRIBUTIONS: Dynamic Grid Generation
+     ========================================= */
+  const graph = document.getElementById('contribution-graph');
+  
+  if (graph) {
+    // Generate 52 weeks * 7 days
+    for (let i = 0; i < 364; i++) {
+      const day = document.createElement('div');
+      day.className = 'day';
+      
+      // Randomly assign activity level for the aesthetic
+      const level = Math.floor(Math.random() * 4); 
+      if (level > 0) day.setAttribute('data-level', level);
+      
+      graph.appendChild(day);
+    }
+  }
+
 });
