@@ -655,3 +655,60 @@ body::after {
   }
   .project-visual { width: 100%; }
 }
+
+/* =========================================
+   CONTRIBUTION GRAPH: Ethereal Glass
+   ========================================= */
+.contribution-section {
+  padding: 120px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contribution-wrapper {
+  background: var(--nav-glass);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.contribution-graph {
+  display: grid;
+  grid-template-rows: repeat(7, 12px);
+  grid-auto-flow: column;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.day {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s;
+}
+
+.day:hover {
+  transform: scale(1.3);
+  outline: 1px solid var(--accent-cyan);
+}
+
+/* Intensity Levels */
+.day[data-level="1"] { background: rgba(56, 189, 248, 0.3); }
+.day[data-level="2"] { background: rgba(56, 189, 248, 0.6); }
+.day[data-level="3"] { background: rgba(56, 189, 248, 0.9); }
+
+.graph-legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+.legend-scale { display: flex; gap: 4px; }
+.legend-scale div { width: 12px; height: 12px; border-radius: 2px; }
+.lvl-0 { background: rgba(255, 255, 255, 0.05); }
+.lvl-1 { background: rgba(56, 189, 248, 0.3); }
+.lvl-2 { background: rgba(56, 189, 248, 0.6); }
+.lvl-3 { background: rgba(56, 189, 248, 0.9); }
