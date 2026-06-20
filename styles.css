@@ -604,6 +604,62 @@ p {
   backdrop-filter: blur(24px);
 }
 
+.case-card {
+  padding: 28px;
+  display: grid;
+  gap: 18px;
+}
+
+.case-card span {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--accent);
+  font-family: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.case-card h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: var(--wood-base);
+}
+
+.case-card p,
+.case-card li {
+  color: var(--muted-wood);
+  line-height: 1.8;
+}
+
+.case-card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.case-card ul li {
+  margin-bottom: 10px;
+}
+
+.case-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 244, 228, 0.3);
+  color: var(--wood-base);
+  text-decoration: none;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.case-link:hover {
+  background: rgba(255, 255, 255, 0.34);
+  transform: translateY(-1px);
+}
+
 .project-card {
   overflow: hidden;
   display: grid;
