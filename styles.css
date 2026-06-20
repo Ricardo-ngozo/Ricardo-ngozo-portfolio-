@@ -156,3 +156,139 @@ body::after {
   justify-content: center;
   border-bottom: 1px solid var(--border-glass);
 }
+
+/* =========================================
+   HERO SECTION & TYPOGRAPHY
+   ========================================= */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  /* Removes the placeholder border */
+  border-bottom: none; 
+}
+
+.hero-content {
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Smooth fade up on load */
+  animation: fadeUp 1.2s var(--transition-slow) forwards;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* The Pixel Avatar */
+.pixel-avatar-container {
+  margin-bottom: 1.5rem;
+}
+
+.pixel-avatar {
+  width: 90px; /* Adjust this size if needed */
+  height: auto;
+  image-rendering: pixelated; /* Forces sharp edges on pixel art */
+  animation: float 4s ease-in-out infinite;
+  /* Subtle glowing drop-shadow behind the pixel art */
+  filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.5));
+}
+
+/* Typography */
+.hero-title {
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin: 0;
+  /* Metallic/Glass Text Effect */
+  background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 500;
+  color: var(--accent-cyan);
+  margin: 8px 0 24px 0;
+  letter-spacing: -0.02em;
+}
+
+.hero-tagline {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--text-secondary);
+  max-width: 500px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 1.5s forwards;
+  transition: transform var(--transition-fast);
+}
+
+.scroll-indicator:hover {
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.mouse {
+  width: 26px;
+  height: 42px;
+  border: 2px solid var(--text-secondary);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  background: rgba(15, 20, 35, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.wheel {
+  width: 4px;
+  height: 8px;
+  background-color: var(--accent-cyan);
+  border-radius: 4px;
+  margin-top: 6px;
+  animation: scrollWheel 2s infinite;
+}
+
+/* Canvas Positioning */
+.ambient-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 0.6; }
+}
+
+@keyframes scrollWheel {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(12px); opacity: 0; }
+}
