@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Personal portfolio page for Samukelo Ricardo Ngozo, sharing inspirations, books, movies, and life beyond coding."
+    />
+    <title>Personal Archive | Samukelo Ricardo Ngozo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="personal">
+    <canvas class="ambient-canvas" aria-hidden="true"></canvas>
+    <div class="site-noise" aria-hidden="true"></div>
+
+    <header class="site-header" data-header>
+      <a class="brand-mark" href="./index.html" aria-label="Samukelo Ricardo Ngozo home">
+        <span>SRN</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="glass-nav" aria-label="Primary navigation" data-nav>
+        <a href="./index.html">Tech</a>
+        <a href="#personal-home" data-section-link>Archive</a>
+        <a href="#inspirations" data-section-link>Inspirations</a>
+        <a href="#books" data-section-link>Books</a>
+        <a href="#movies" data-section-link>Movies</a>
+        <a href="#beyond" data-section-link>Beyond</a>
+      </nav>
+    </header>
+
+    <a class="resume-pill" href="./assets/docs/blueprint-placeholder.pdf" download>
+      <span>Resume</span>
+      <span aria-hidden="true">↓</span>
+    </a>
+
+    <main>
+      <section class="hero personal-hero section-panel" id="personal-home">
+        <div class="hero-kicker reveal">Personal archive</div>
+        <h1 class="cinematic-title reveal">
+          <span>The person</span>
+          <span>behind the</span>
+          <span>engineer.</span>
+        </h1>
+        <p class="hero-copy reveal">
+          A collection of the stories, systems, books, films, people, and interests
+          that shape how I think about technology and growth.
+        </p>
+        <div class="portal-card reveal" aria-hidden="true">
+          <span>Archive signal active</span>
+          <strong>Curiosity / Discipline / Future</strong>
+        </div>
+      </section>
+
+      <section class="content-section" id="inspirations">
+        <div class="section-intro reveal">
+          <p class="eyebrow">Inspiration Journey</p>
+          <h2>Signals that shaped my curiosity.</h2>
+        </div>
+        <div class="archive-card-grid">
+          <article class="archive-card reveal"><span>Show</span><h3>Devs</h3><p>A story about systems, prediction, and the hidden architecture behind technology.</p></article>
+          <article class="archive-card reveal"><span>Movie</span><h3>The Matrix</h3><p>It made technology feel philosophical: reality, control, choice, and awakening.</p></article>
+          <article class="archive-card reveal"><span>Movie</span><h3>The Social Network</h3><p>A reminder that software can grow from an idea into a platform that changes culture.</p></article>
+          <article class="archive-card reveal"><span>Person</span><h3>Nelson Mandela</h3><p>Discipline, resilience, and the courage to serve something bigger than yourself.</p></article>
+          <article class="archive-card reveal"><span>Person</span><h3>Steve Jobs</h3><p>Design, product taste, and the belief that technology should feel human.</p></article>
+          <article class="archive-card reveal"><span>Person</span><h3>Elon Musk</h3><p>Ambition, engineering intensity, and building toward difficult futures.</p></article>
+        </div>
+      </section>
+
+      <section class="content-section" id="books">
+        <div class="section-intro reveal">
+          <p class="eyebrow">Books</p>
+          <h2>Books that shaped me.</h2>
+        </div>
+        <div class="book-layout">
+          <article class="featured-book reveal">
+            <span>Featured Book</span>
+            <h3>Atomic Habits</h3>
+            <p>Small consistent improvements compound into identity. This matches my belief that changing the world starts with changing yourself.</p>
+          </article>
+          <div class="book-grid">
+            <article class="book-card reveal"><h3>Clean Code</h3><p>A reminder that readable code is a professional responsibility.</p></article>
+            <article class="book-card reveal"><h3>Deep Work</h3><p>Focus is a serious advantage when learning difficult skills and building real systems.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="movies">
+        <div class="section-intro reveal">
+          <p class="eyebrow">Cinema</p>
+          <h2>Movies that inspired my tech journey.</h2>
+        </div>
+        <div class="poster-grid">
+          <article class="poster-card reveal"><span>01</span><h3>The Matrix</h3><p>Systems, reality, freedom, and the power of waking up to how things work.</p></article>
+          <article class="poster-card reveal"><span>02</span><h3>The Social Network</h3><p>Startup energy, product momentum, and how software can reshape connection.</p></article>
+          <article class="poster-card reveal"><span>03</span><h3>Devs</h3><p>Advanced systems, mystery, and the deeper questions behind technical power.</p></article>
+        </div>
+      </section>
+
+      <section class="content-section" id="beyond">
+        <div class="section-intro reveal">
+          <p class="eyebrow">Beyond Coding</p>
+          <h2>Personal dashboard.</h2>
+        </div>
+        <div class="dashboard-grid">
+          <article class="dashboard-card reveal"><span>Focus</span><h3>Reading</h3><p>Books help me refine discipline, thinking, and long-term direction.</p></article>
+          <article class="dashboard-card reveal"><span>Energy</span><h3>Football</h3><p>Teamwork, movement, pressure, and staying sharp outside the screen.</p></article>
+          <article class="dashboard-card reveal"><span>Imagination</span><h3>Sci-Fi & Technology</h3><p>Stories about the future keep my curiosity alive.</p></article>
+          <article class="dashboard-card reveal"><span>Play</span><h3>Gaming</h3><p>Interactive systems, strategy, and digital worlds from a player’s perspective.</p></article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Samukelo Ricardo Ngozo. Personal archive built with HTML, CSS, and vanilla JavaScript.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

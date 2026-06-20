@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tech portfolio for Samukelo Ricardo Ngozo, a full-stack web developer building responsive interfaces and practical web systems."
+    />
+    <title>Samukelo Ricardo Ngozo | Full-Stack Web Developer</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="tech">
+    <canvas class="ambient-canvas" aria-hidden="true"></canvas>
+    <div class="site-noise" aria-hidden="true"></div>
+
+    <header class="site-header" data-header>
+      <a class="brand-mark" href="./index.html" aria-label="Samukelo Ricardo Ngozo home">
+        <span>SRN</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="glass-nav" aria-label="Primary navigation" data-nav>
+        <a href="./index.html#home" data-section-link>Home</a>
+        <a href="./index.html#about" data-section-link>About</a>
+        <a href="./index.html#stack" data-section-link>Stack</a>
+        <a href="./index.html#projects" data-section-link>Projects</a>
+        <a href="./index.html#contact" data-section-link>Contact</a>
+        <a href="./personal.html">Personal</a>
+      </nav>
+    </header>
+
+    <a class="resume-pill" href="./assets/docs/blueprint-placeholder.pdf" download>
+      <span>Resume</span>
+      <span aria-hidden="true">↓</span>
+    </a>
+
+    <main>
+      <section class="hero tech-hero section-panel" id="home">
+        <div class="hero-kicker reveal">Full-stack web developer</div>
+        <h1 class="cinematic-title reveal">
+          <span>Samukelo</span>
+          <span>Ricardo</span>
+          <span>Ngozo</span>
+        </h1>
+        <p class="hero-quote reveal">
+          “To change the world, one must first change thyself.”
+          <strong>— SRT</strong>
+        </p>
+        <p class="hero-copy reveal">
+          I build responsive web experiences with clean interfaces, practical logic,
+          and a growing full-stack mindset.
+        </p>
+        <div class="hero-actions reveal">
+          <a class="button button-primary" href="#projects">View Projects</a>
+          <a class="button button-secondary" href="#contact">Contact Me</a>
+          <a class="button button-ghost" href="./assets/docs/blueprint-placeholder.pdf" target="_blank" rel="noreferrer">Resume</a>
+        </div>
+
+        <div class="hero-orbit" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+          <div class="hero-core">SRT</div>
+        </div>
+      </section>
+
+      <section class="content-section split-section" id="about">
+        <div class="section-intro reveal">
+          <p class="eyebrow">About Me</p>
+          <h2>Curiosity became the path.</h2>
+          <p>
+            I am a full-stack web development student focused on building real,
+            functional web apps. I care about clean code, problem solving, and
+            understanding how systems connect, not just how they look.
+          </p>
+        </div>
+        <div class="journey-line" data-progress-line>
+          <article class="timeline-card reveal">
+            <span>01</span>
+            <h3>Curiosity</h3>
+            <p>Technology first caught my attention through digital systems, media, and the question of how ideas become tools.</p>
+          </article>
+          <article class="timeline-card reveal">
+            <span>02</span>
+            <h3>Foundations</h3>
+            <p>I started with HTML, CSS, JavaScript, responsive layouts, and the discipline of making interfaces feel intentional.</p>
+          </article>
+          <article class="timeline-card reveal">
+            <span>03</span>
+            <h3>Real Interfaces</h3>
+            <p>Clones and UI builds helped me study structure, spacing, platform patterns, and user flow.</p>
+          </article>
+          <article class="timeline-card reveal">
+            <span>04</span>
+            <h3>Next Systems</h3>
+            <p>I am moving deeper into backend integration, APIs, React concepts, and full-stack product thinking.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section" id="stack">
+        <div class="section-intro narrow reveal">
+          <p class="eyebrow">Tech Stack</p>
+          <h2>Orbiting the full-stack core.</h2>
+          <p>Current and developing tools arranged around the kind of web systems I am learning to build.</p>
+        </div>
+        <div class="stack-orbit reveal" aria-label="Technology stack orbit">
+          <div class="stack-core">
+            <strong>Full Stack</strong>
+            <span>Junior Developer</span>
+          </div>
+          <ul class="orbit-ring ring-one">
+            <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Responsive UI</li>
+          </ul>
+          <ul class="orbit-ring ring-two">
+            <li>Node.js</li><li>Express</li><li>REST APIs</li><li>React Concepts</li>
+          </ul>
+          <ul class="orbit-ring ring-three">
+            <li>MongoDB</li><li>MySQL</li><li>Git</li><li>GitHub</li><li>Netlify</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="content-section" id="projects">
+        <div class="section-intro reveal">
+          <p class="eyebrow">Featured Projects</p>
+          <h2>Product-inspired case previews.</h2>
+          <p>Three focused builds presented through problem, approach, learning, and next improvement.</p>
+        </div>
+
+        <div class="featured-grid">
+          <article class="project-feature reveal">
+            <div class="project-visual youtube-visual" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="project-body">
+              <p class="project-type">Featured / UI Platform</p>
+              <h3>YouTube Clone</h3>
+              <p>A responsive YouTube-inspired interface focused on video layout, navigation, content cards, and familiar media platform flow.</p>
+              <dl>
+                <div><dt>Problem</dt><dd>Recreate a dense media interface without losing structure or scanability.</dd></div>
+                <div><dt>Learning</dt><dd>Video grid patterns, navigation hierarchy, and responsive content layout.</dd></div>
+              </dl>
+              <div class="project-links">
+                <a href="https://younoclue.netlify.app/" target="_blank" rel="noreferrer">Live Demo</a>
+                <a href="https://github.com/Ricardo-ngozo/Youtube-clone.git" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-feature reveal">
+            <img src="./assets/images/ihub-clone.png" alt="Ihub clone project preview" />
+            <div class="project-body">
+              <p class="project-type">Featured / Interface Study</p>
+              <h3>Ihub Clone</h3>
+              <p>A platform recreation focused on layout accuracy, content sections, and translating an existing brand interface into code.</p>
+              <dl>
+                <div><dt>Problem</dt><dd>Study an existing platform and rebuild its UI with clean structure.</dd></div>
+                <div><dt>Learning</dt><dd>Section composition, visual hierarchy, and larger page structure.</dd></div>
+              </dl>
+              <div class="project-links">
+                <a href="https://github.com/Ricardo-ngozo/Ihub-clone.git" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-feature reveal">
+            <img src="./assets/images/netflix-clone.png" alt="Netflix clone project preview" />
+            <div class="project-body">
+              <p class="project-type">Featured / Streaming UI</p>
+              <h3>Netflix Clone</h3>
+              <p>A streaming-platform interface recreation focused on strong visuals, content browsing, and familiar entertainment patterns.</p>
+              <dl>
+                <div><dt>Problem</dt><dd>Recreate a cinematic browsing experience with clear sections and polish.</dd></div>
+                <div><dt>Learning</dt><dd>Dark UI composition, media cards, and platform-style content organization.</dd></div>
+              </dl>
+              <div class="project-links">
+                <a href="https://ricardo-ngozo-netblip.netlify.app/" target="_blank" rel="noreferrer">Live Demo</a>
+                <a href="https://github.com/Ricardo-ngozo/Netblip_ricardo-ngozo.git" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="archive-panel reveal">
+          <div>
+            <p class="eyebrow">Archive</p>
+            <h3>More builds and documents</h3>
+          </div>
+          <div class="archive-list">
+            <a href="https://ricardoteslalanding.netlify.app/" target="_blank" rel="noreferrer"><span>Tesla Landing Page</span><small>HTML / CSS / Responsive UI</small></a>
+            <a href="https://uiscreenshot.netlify.app/" target="_blank" rel="noreferrer"><span>FSWD UI Screenshot</span><small>UI accuracy / Layout practice</small></a>
+            <a href="https://merry-buttercream-5fe896.netlify.app/" target="_blank" rel="noreferrer"><span>To Do List</span><small>JavaScript / Local storage</small></a>
+            <a href="./assets/docs/blueprint-placeholder.pdf" target="_blank" rel="noreferrer"><span>Personal Development Blueprint</span><small>Growth strategy / Goals</small></a>
+            <a href="#case-studies"><span>Project Solaris</span><small>In progress / Social impact concept</small></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="case-studies">
+        <div class="section-intro reveal">
+          <p class="eyebrow">Case Studies</p>
+          <h2>Product stories behind the builds.</h2>
+        </div>
+        <div class="case-grid">
+          <article class="case-card reveal">
+            <h3>YouTube Clone</h3>
+            <p><strong>User need:</strong> A familiar video browsing layout that feels organized and easy to scan.</p>
+            <p><strong>Design goal:</strong> Recreate the platform rhythm: navigation, content cards, spacing, and responsive behavior.</p>
+            <p><strong>Next:</strong> Add richer interactivity, search behavior, and dynamic video data.</p>
+          </article>
+          <article class="case-card reveal">
+            <h3>Netflix Clone</h3>
+            <p><strong>User need:</strong> A cinematic browsing page where content feels visual and accessible.</p>
+            <p><strong>Design goal:</strong> Practice dark UI hierarchy, media sections, and entertainment-platform structure.</p>
+            <p><strong>Next:</strong> Improve carousel interactions and connect content to a data source.</p>
+          </article>
+          <article class="case-card reveal">
+            <h3>Project Solaris</h3>
+            <p><strong>User need:</strong> More accessible digital spaces for socio-economic awareness and engagement in South Africa.</p>
+            <p><strong>Design goal:</strong> Build a social activism platform concept around content structure, discussion, and real-world impact.</p>
+            <p><strong>Next:</strong> Add user accounts, dynamic posts, and backend integration.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section" id="experience">
+        <div class="section-intro reveal">
+          <p class="eyebrow">Experience Timeline</p>
+          <h2>A focused growth path.</h2>
+        </div>
+        <div class="progress-timeline" data-progress-line>
+          <article class="timeline-card reveal"><span>Start</span><h3>Foundations</h3><p>Built HTML/CSS confidence and learned how responsive layouts behave across devices.</p></article>
+          <article class="timeline-card reveal"><span>Builds</span><h3>Interface Practice</h3><p>Recreated real product interfaces to sharpen spacing, composition, and UI decision-making.</p></article>
+          <article class="timeline-card reveal"><span>Logic</span><h3>JavaScript Thinking</h3><p>Used JavaScript for interaction and started thinking beyond static pages.</p></article>
+          <article class="timeline-card reveal"><span>Next</span><h3>Full-Stack Systems</h3><p>Growing into APIs, backend integration, databases, React concepts, and complete product builds.</p></article>
+        </div>
+      </section>
+
+      <section class="content-section contact-command" id="contact">
+        <div class="section-intro reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Let’s connect.</h2>
+          <p>I am open to opportunities, collaboration, and feedback.</p>
+        </div>
+        <div class="contact-grid reveal">
+          <div class="signal-panel">
+            <span class="status-dot"></span>
+            <h3>Open to opportunities</h3>
+            <p>Recruiter-first contact: email, LinkedIn, and GitHub are ready.</p>
+            <div class="contact-links">
+              <a href="mailto:Ultrazen75@gmail.com">Email</a>
+              <a href="https://www.linkedin.com/in/ricardongozo75/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="https://github.com/Ricardo-ngozo" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
+          <form class="contact-form" action="mailto:Ultrazen75@gmail.com" method="post" enctype="text/plain">
+            <label>Name <input type="text" name="name" autocomplete="name" /></label>
+            <label>Email <input type="email" name="email" autocomplete="email" /></label>
+            <label>Message <textarea name="message" rows="5"></textarea></label>
+            <button class="button button-primary" type="submit">Prepare Email</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Samukelo Ricardo Ngozo. Built with HTML, CSS, and vanilla JavaScript.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
