@@ -292,3 +292,101 @@ body::after {
   0% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(12px); opacity: 0; }
 }
+
+/* =========================================
+   ABOUT SECTION: The Glass Terminal
+   ========================================= */
+.about-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px;
+  border-bottom: none;
+}
+
+/* The Glass Terminal Window */
+.terminal-container {
+  width: 100%;
+  max-width: 800px;
+  background: var(--nav-glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all var(--transition-slow);
+}
+
+/* Initial scroll-reveal state */
+.terminal-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.terminal-header {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-glass);
+  position: relative;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-buttons .btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.btn.close { background: #ff5f56; }
+.btn.minimize { background: #ffbd2e; }
+.btn.maximize { background: #27c93f; }
+
+.terminal-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.terminal-body {
+  padding: 32px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 1rem;
+  line-height: 1.6;
+  min-height: 300px;
+}
+
+/* Terminal Text Colors */
+.term-cmd { color: var(--text-primary); margin-bottom: 16px; }
+.term-warning { color: #fbbf24; margin-bottom: 4px; }
+.term-success { color: #34d399; margin-bottom: 4px; }
+.term-log { color: var(--text-secondary); margin-bottom: 24px; }
+.term-p { color: var(--text-primary); margin-bottom: 16px; }
+
+.terminal-cursor {
+  display: inline-block;
+  color: var(--accent-cyan);
+  animation: blink 1s step-end infinite;
+  opacity: 0; /* Hidden until triggered */
+}
+.terminal-cursor.active { opacity: 1; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .terminal-body { font-size: 0.85rem; padding: 20px; }
+}
