@@ -494,3 +494,164 @@ body::after {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* =========================================
+   PROJECTS SECTION: Parallax Glass Showcase
+   ========================================= */
+.projects-section {
+  padding: 120px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.projects-section .section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.projects-section h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #ffffff 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.projects-section .section-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Row Layout */
+.project-row {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: 120px;
+}
+
+/* Magic line: Reverses the layout for every 2nd project */
+.project-row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* The 3D Visual Container */
+.project-visual {
+  flex: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  /* Required for 3D depth */
+  transform-style: preserve-3d;
+  will-change: transform;
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  cursor: crosshair;
+}
+
+.project-img {
+  width: 100%;
+  display: block;
+  /* Cinematic desaturation until hovered */
+  filter: grayscale(80%) brightness(0.7) contrast(1.2);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(20px) scale(1.05); /* Pushes image forward in 3D space */
+}
+
+.project-visual:hover .project-img {
+  filter: grayscale(0%) brightness(1) contrast(1);
+  transform: translateZ(40px) scale(1.05); /* Pushes even further on hover */
+}
+
+/* Project Info Text */
+.project-info {
+  flex: 1;
+}
+
+.project-eyebrow {
+  color: var(--accent-purple);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.project-info h3 {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.project-info p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin-bottom: 24px;
+}
+
+/* Project Tech Pills */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.project-tech span {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+/* Glass Buttons */
+.project-links {
+  display: flex;
+  gap: 16px;
+}
+
+.glass-btn {
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.glass-btn.primary {
+  background: var(--text-primary);
+  color: var(--bg-base);
+}
+
+.glass-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+}
+
+.glass-btn.secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-glass);
+}
+
+.glass-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 968px) {
+  .project-row, .project-row:nth-child(even) {
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+  .project-visual { width: 100%; }
+}
