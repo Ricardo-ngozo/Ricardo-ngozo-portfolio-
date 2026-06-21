@@ -82,7 +82,20 @@ body::after {
 .brand-mark {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 16px;
+  transition: opacity var(--transition-fast);
+}
+
+.site-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   transition: opacity var(--transition-fast);
 }
 
@@ -146,6 +159,10 @@ body::after {
   opacity: 0;
   pointer-events: none;
   position: absolute;
+}
+
+.morph-header.scrolled .site-title {
+  opacity: 0;
 }
 
 /* Mobile Toggle (Hidden on desktop) */
