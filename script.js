@@ -170,4 +170,43 @@ document.addEventListener("DOMContentLoaded", () => {
       graph.appendChild(day);
     }
   }
+
+  /* =========================================
+   PERSONAL: Dynamic Case Study Injection
+   ========================================= */
+const caseStudies = [
+  {
+    title: "Netflix Clone",
+    meta: "React & API Integration",
+    desc: "Solving the state management challenge for infinite scrolling media carousels.",
+    code: "const fetchMedia = async () => { ... }"
+  },
+  {
+    title: "Tesla Landing",
+    meta: "Performance & CSS Snap",
+    desc: "Optimizing DOM interactions for a fluid, automotive-grade scroll experience.",
+    code: "scroll-snap-type: y mandatory;"
+  }
+];
+
+const grid = document.getElementById('case-study-grid');
+if (grid) {
+  caseStudies.forEach(study => {
+    const card = document.createElement('article');
+    card.className = 'case-study-card reveal-element';
+    card.setAttribute('data-reveal', '');
+    card.innerHTML = `
+      <div class="case-content">
+        <span class="case-meta">${study.meta}</span>
+        <h3>${study.title}</h3>
+        <p>${study.desc}</p>
+        <a href="#" class="glass-link">Read Deep-Dive →</a>
+      </div>
+      <div class="case-visual">
+        <div class="code-snippet"><code>${study.code}</code></div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
 });
