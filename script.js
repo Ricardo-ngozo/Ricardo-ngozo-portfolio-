@@ -209,4 +209,46 @@ if (grid) {
     grid.appendChild(card);
   });
 }
+
+const archiveCards = document.querySelectorAll('.archive-card');
+const archiveTitle = document.querySelector('.archive-title');
+const archiveDescription = document.querySelector('.archive-description');
+const archiveLive = document.querySelector('.archive-live');
+const archiveCode = document.querySelector('.archive-code');
+const prevButton = document.querySelector('.control-btn.prev');
+const nextButton = document.querySelector('.control-btn.next');
+let selectedArchiveIndex = 0;
+
+const getCardData = (card) => ({
+  title: card.dataset.title || 'Unnamed Project',
+  description: card.dataset.description || 'No project description available yet.',
+  live: card.dataset.live || '#',
+  code: card.dataset.code || '#',
+});
+
+const selectArchiveCard = (index) => {
+  if (!archiveCards.length) return;
+  selectedArchiveIndex = (index + archiveCards.length) % archiveCards.length;
+  archiveCards.forEach((card, idx) => {
+    card.classList.toggle('selected', idx === selectedArchiveIndex);
+  });
+  const activeCard = archiveCards[selectedArchiveIndex];
+  const data = getCardData(activeCard);
+  if (archiveTitle) archiveTitle.textContent = data.title;
+  if (archiveDescription) archiveDescription.textContent = data.description;
+  if (archiveLive) archiveLive.href = data.live;
+  if (archiveCode) archiveCode.href = data.code;
+  archiveLive?.setAttribute('aria-label', `Open ${data.title} live demo`);
+  archiveCode?.setAttribute('aria-label', `Open ${data.title} source code`);
+};
+
+archiveCards.forEach((card, index) => {
+  card.addEventListener('click', () => selectArchiveCard(index));
+  card.style.cursor = 'pointer';
+});
+
+prevButton?.addEventListener('click', () => selectArchiveCard(selectedArchiveIndex - 1));
+nextButton?.addEventListener('click', () => selectArchiveCard(selectedArchiveIndex + 1));
+
+if (archiveCards.length) selectArchiveCard(0);
 });
