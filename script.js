@@ -128,7 +128,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.15 });
-  document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+
+  const observeRevealElements = (root = document) => {
+    root.querySelectorAll('[data-reveal]').forEach((el) => {
+      if (!el.dataset.revealObserved) {
+        revealObserver.observe(el);
+        el.dataset.revealObserved = 'true';
+      }
+    });
+  };
+
+  observeRevealElements();
 
   /* =========================================
      5. PROJECTS: 3D Tilt
@@ -217,6 +227,7 @@ if (grid) {
     `;
     grid.appendChild(card);
   });
+  observeRevealElements(grid);
 }
 
 const archiveCards = document.querySelectorAll('.archive-card');
