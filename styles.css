@@ -1189,3 +1189,222 @@ body::after {
   .case-study-actions { flex-direction: column; }
   .case-study-hero-visual span { font-size: 0.9rem; }
 }
+
+/* =========================================
+   PERSONAL PAGE
+   ========================================= */
+.personal-hero {
+  border-bottom: none;
+}
+
+.personal-section {
+  padding: 120px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.personal-section-last {
+  border-bottom: none;
+  padding-bottom: 160px;
+}
+
+.personal-section .section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.personal-section .section-header h2 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #ffffff 0%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.personal-section .section-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.inspiration-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.inspiration-card {
+  background: var(--nav-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  padding: 32px;
+  transition: border-color var(--transition-fast);
+}
+
+.inspiration-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.inspiration-index {
+  display: inline-block;
+  color: var(--accent-cyan);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin-bottom: 18px;
+}
+
+.inspiration-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+}
+
+.inspiration-card p {
+  color: var(--text-secondary);
+  line-height: 1.75;
+  font-size: 0.98rem;
+}
+
+.personal-section .build-stories-section.case-study-section {
+  padding: 80px 0 0;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.personal-section .build-stories-section .section-header {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.personal-section .build-stories-section .section-header h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  background: none;
+  -webkit-text-fill-color: var(--text-primary);
+}
+
+.personal-section .build-stories-section .section-header p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.personal-section .build-stories-section .case-study-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.media-card {
+  background: var(--nav-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  padding: 32px;
+  transition: transform var(--transition-slow), border-color var(--transition-fast);
+}
+
+.media-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.media-tag {
+  display: inline-block;
+  color: var(--accent-purple);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.media-card h3 {
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.media-author {
+  color: var(--accent-cyan);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.media-note {
+  color: var(--text-secondary);
+  line-height: 1.75;
+  font-size: 0.95rem;
+}
+
+.bento-copy {
+  color: var(--text-secondary);
+  line-height: 1.75;
+  font-size: 0.98rem;
+}
+
+.personal-links {
+  margin-top: 16px;
+}
+
+.glass-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 16px;
+  transition: color var(--transition-fast);
+}
+
+.glass-link:hover {
+  color: var(--text-primary);
+}
+
+.case-meta {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.case-content h3 {
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+}
+
+.case-content p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 900px) {
+  .inspiration-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-study-card {
+    grid-template-columns: 1fr;
+  }
+}
