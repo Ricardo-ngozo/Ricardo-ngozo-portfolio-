@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tesla Showcase case study by Ricardo Ngozo, detailing design decisions, technologies, and reflections."
+    />
+    <title>Tesla Showcase Case Study | Ricardo Ngozo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="case-study">
+    <canvas class="ambient-canvas" aria-hidden="true"></canvas>
+    <header class="morph-header" data-header>
+      <div class="nav-container">
+        <a class="brand-mark" href="./index.html" aria-label="Back to Portfolio">
+          <span class="site-title">Ricardo.</span>
+        </a>
+        <nav class="pill-nav" aria-label="Primary navigation" data-nav>
+          <a href="./index.html" class="nav-link">← Portfolio</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="case-study-hero">
+        <div class="case-study-hero-copy">
+          <span class="case-meta">Case Study</span>
+          <h1>Tesla Showcase</h1>
+          <p>Building a premium landing page meant solving fluid scroll behavior while preserving crisp animation and a high-end brand presence.</p>
+          <div class="case-study-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Vanilla JS</span>
+          </div>
+          <div class="case-study-actions">
+            <a href="./index.html#projects" class="glass-btn secondary">Back to Projects</a>
+            <a href="#decisions" class="glass-btn primary">Discover why</a>
+          </div>
+        </div>
+        <div class="case-study-hero-visual">
+          <img src="./assets/images/tesla-landing.png" alt="Tesla landing page screenshot" />
+          <span>Full-screen hero and scroll-driven content sections with layered motion.</span>
+        </div>
+      </section>
+
+      <section class="case-study-details">
+        <article class="case-block">
+          <h2>What was the brief?</h2>
+          <p>The assignment was to recreate a high-performance product landing page with strong visual hierarchy, scroll-based navigation, and an immersive hero experience.</p>
+          <p>The main challenge was keeping motion smooth on entry while maintaining a crisp, brand-driven layout on mobile and desktop.</p>
+        </article>
+
+        <article class="case-block" id="decisions">
+          <h2>What decisions did I make and why?</h2>
+          <ul>
+            <li><strong>Vanilla JavaScript:</strong> I chose plain JS for the interaction layer to keep bundle size minimal and keep every scroll transition predictable.</li>
+            <li><strong>Scroll snap:</strong> using CSS <code>scroll-snap-type</code> for hero-to-section movement improved the feel and reduced custom scripting complexity.</li>
+            <li><strong>Minimal animation:</strong> kept reveals subtle and deferred non-essential motion on smaller screens to preserve performance.</li>
+            <li><strong>Accessible contrast:</strong> I prioritized text legibility over decorative effects so the page stayed functional across devices.</li>
+          </ul>
+        </article>
+
+        <article class="case-block">
+          <h2>Tools, technologies, and what I learned</h2>
+          <div class="case-study-grid">
+            <div>
+              <h3>Tools and tech</h3>
+              <ul>
+                <li>HTML5</li>
+                <li>CSS animations</li>
+                <li>JavaScript event handling</li>
+                <li>Figma prototypes</li>
+                <li>Chrome Lighthouse</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Lessons learned</h3>
+              <ul>
+                <li>How to build elegant scroll experiences without overloading the DOM.</li>
+                <li>Why fallback styles matter when animations are reduced or disabled.</li>
+                <li>How to layer gradients and imagery for a modern product presentation.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-block">
+          <h2>What would I do differently? What am I proud of?</h2>
+          <p>I would add richer section-based animations triggered by IntersectionObserver and more robust keyboard navigation for anchor sections.</p>
+          <p>I'm proud of the polished hero composition and the responsive layout that keeps the design premium even on smaller screens. The site feels deliberate and uses motion only where it supports content.</p>
+        </article>
+      </section>
+
+      <section class="case-study-visuals">
+        <div class="visual-card">
+          <h3>Design direction</h3>
+          <p>The page uses a restrained palette, spacious typography, and clean section cards so the product feel remains modern and luxurious.</p>
+        </div>
+        <div class="visual-card image-card">
+          <img src="./assets/images/tesla-landing.png" alt="Tesla landing visuals" />
+        </div>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

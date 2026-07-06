@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="iHub Platform case study by Ricardo Ngozo, documenting the goals, decisions, tech stack, and learnings."
+    />
+    <title>iHub Platform Case Study | Ricardo Ngozo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="case-study">
+    <canvas class="ambient-canvas" aria-hidden="true"></canvas>
+    <header class="morph-header" data-header>
+      <div class="nav-container">
+        <a class="brand-mark" href="./index.html" aria-label="Back to Portfolio">
+          <span class="site-title">Ricardo.</span>
+        </a>
+        <nav class="pill-nav" aria-label="Primary navigation" data-nav>
+          <a href="./index.html" class="nav-link">← Portfolio</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="case-study-hero">
+        <div class="case-study-hero-copy">
+          <span class="case-meta">Case Study</span>
+          <h1>iHub Platform</h1>
+          <p>Rebuilding the iHub interface focused on modular layout, responsive grid structure, and stronger information hierarchy for enterprise-style presentation.</p>
+          <div class="case-study-tags">
+            <span>HTML</span>
+            <span>CSS Grid</span>
+            <span>UI Design</span>
+          </div>
+          <div class="case-study-actions">
+            <a href="./index.html#projects" class="glass-btn secondary">Back to Projects</a>
+            <a href="#tools" class="glass-btn primary">See the build</a>
+          </div>
+        </div>
+        <div class="case-study-hero-visual">
+          <img src="./assets/images/ihub-clone.png" alt="iHub Platform screenshot" />
+          <span>Corporate platform layout with structured cards, navigation, and responsive spacing.</span>
+        </div>
+      </section>
+
+      <section class="case-study-details">
+        <article class="case-block">
+          <h2>What was the brief?</h2>
+          <p>The requirement was to rebuild a corporate platform landing page that communicated credibility, strong organization, and modern digital product structure.</p>
+          <p>The challenge was balancing detailed content with a clean layout while keeping mobile and desktop readability high.</p>
+        </article>
+
+        <article class="case-block">
+          <h2>What decisions did I make and why?</h2>
+          <ul>
+            <li><strong>Semantic HTML:</strong> I used clear sectioning, headings, and cards to improve structure and future accessibility.</li>
+            <li><strong>CSS Grid layout:</strong> the page uses a grid-first design that adapts gracefully from large feature panels to a stacked mobile view.</li>
+            <li><strong>Whitespace and typography:</strong> strong spacing and contrast were chosen so each component reads independently and clearly.</li>
+            <li><strong>Responsive-first mindset:</strong> I built from the smaller screen up to ensure the grid remained stable across breakpoints.</li>
+          </ul>
+        </article>
+
+        <article class="case-block" id="tools">
+          <h2>Tools, technologies, and what I learned</h2>
+          <div class="case-study-grid">
+            <div>
+              <h3>Tools and tech</h3>
+              <ul>
+                <li>HTML5</li>
+                <li>CSS Grid & custom properties</li>
+                <li>Responsive layout design</li>
+                <li>Figma layout planning</li>
+                <li>Browser compatibility testing</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Lessons learned</h3>
+              <ul>
+                <li>How to make a complex page feel calm with consistent spacing.</li>
+                <li>Why component-first layout supports future scaling.</li>
+                <li>How to keep business pages readable on narrow screens.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-block">
+          <h2>What would I do differently? What am I proud of?</h2>
+          <p>I would expand this into a component library so the same card and feature patterns could be reused consistently across a larger platform.</p>
+          <p>I'm proud of the clean hierarchy and how the layout supports both visual storytelling and clear functional sections. This project shows strong polish on a high-information page.</p>
+        </article>
+      </section>
+
+      <section class="case-study-visuals">
+        <div class="visual-card">
+          <h3>Layout insights</h3>
+          <p>Choosing grid-based blocks allowed the interface to scale without losing structure. This approach makes it easier to layer content, metrics, and imagery logically.</p>
+        </div>
+        <div class="visual-card image-card">
+          <img src="./assets/images/ihub-clone.png" alt="iHub Platform layout details" />
+        </div>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

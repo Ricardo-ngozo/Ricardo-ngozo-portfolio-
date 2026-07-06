@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Netflix Clone case study by Ricardo Ngozo, explaining briefing, decisions, tools, and lessons learned."
+    />
+    <title>Netflix Clone Case Study | Ricardo Ngozo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="case-study">
+    <canvas class="ambient-canvas" aria-hidden="true"></canvas>
+    <header class="morph-header" data-header>
+      <div class="nav-container">
+        <a class="brand-mark" href="./index.html" aria-label="Back to Portfolio">
+          <span class="site-title">Ricardo.</span>
+        </a>
+        <nav class="pill-nav" aria-label="Primary navigation" data-nav>
+          <a href="./index.html" class="nav-link">← Portfolio</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="case-study-hero">
+        <div class="case-study-hero-copy">
+          <span class="case-meta">Case Study</span>
+          <h1>Netflix Experience</h1>
+          <p>Rebuilding the Netflix homepage meant solving media discovery with a rich, scrollable visual grid while keeping animation performance smooth on all screens.</p>
+          <div class="case-study-tags">
+            <span>React</span>
+            <span>UI Architecture</span>
+            <span>API Integration</span>
+          </div>
+          <div class="case-study-actions">
+            <a href="./index.html#projects" class="glass-btn secondary">Back to Projects</a>
+            <a href="#learnings" class="glass-btn primary">Read the Story</a>
+          </div>
+        </div>
+        <div class="case-study-hero-visual">
+          <img src="./assets/images/netflix-clone.png" alt="Netflix Clone UI screenshot" />
+          <span>Hero layout demonstrating the dark streaming interface and media carousel.</span>
+        </div>
+      </section>
+
+      <section class="case-study-details">
+        <article class="case-block">
+          <h2>What was the brief?</h2>
+          <p>The goal was to recreate a polished streaming landing experience that felt familiar to Netflix users while focusing on horizontal carousel navigation, large media cards, and an accessible dark theme.</p>
+          <p>Key problems included keeping the interface responsive, preserving performance during card transitions, and making a dense catalog feel easy to scan.</p>
+        </article>
+
+        <article class="case-block">
+          <h2>What decisions did I make and why?</h2>
+          <ul>
+            <li><strong>React component structure:</strong> I split the UI into reusable carousel, banner, and card components so the layout could scale cleanly and state could stay localized.</li>
+            <li><strong>CSS grid + flex:</strong> used CSS Grid for the overall responsive page and flex layouts for carousel rows to ensure consistent spacing across breakpoints.</li>
+            <li><strong>Static data layer:</strong> I began with seeded JSON instead of a full API, allowing the focus to remain on interaction design and layout polishing.</li>
+            <li><strong>Motion economy:</strong> I kept subtle hover and transition effects, avoiding heavy animations on smaller screens to maintain smooth scrolling.</li>
+          </ul>
+        </article>
+
+        <article class="case-block">
+          <h2>Tools, technologies, and what I learned</h2>
+          <div class="case-study-grid">
+            <div>
+              <h3>Tools and tech</h3>
+              <ul>
+                <li>React</li>
+                <li>CSS Grid / Flexbox</li>
+                <li>Responsive design</li>
+                <li>Figma for wireframing</li>
+                <li>Chrome DevTools performance audit</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Lessons learned</h3>
+              <ul>
+                <li>How to organize component state for nested carousel data.</li>
+                <li>Why dark UI contrast and focus styles matter for accessibility.</li>
+                <li>How to balance visual richness with page speed.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-block" id="learnings">
+          <h2>What would I do differently? What am I proud of?</h2>
+          <p>Next time, I would add a true search filter and use virtualization for long media lists so load time stays low even with hundreds of cards.</p>
+          <p>I'm proud of the final polished theme, the clean hero hierarchy, and the way the carousel feels cohesive across desktop and mobile. The layout retains the Netflix style without feeling like a shallow copy.</p>
+        </article>
+      </section>
+
+      <section class="case-study-visuals">
+        <div class="visual-card">
+          <h3>Visual problem solving</h3>
+          <p>To reduce visual clutter, I focused on three layers: hero banner, row-based media stripes, and a soft backdrop. This allowed important content to stand out while preserving the cinematic brand feel.</p>
+        </div>
+        <div class="visual-card image-card">
+          <img src="./assets/images/netflix-clone.png" alt="Netflix Clone interface details" />
+        </div>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
