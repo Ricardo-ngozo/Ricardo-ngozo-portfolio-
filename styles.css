@@ -554,18 +554,12 @@ body::after {
   font-size: 1.1rem;
 }
 
-.projects-container {
-  display: grid;
-  gap: 80px;
-}
-
 /* Row Layout */
 .project-row {
   display: flex;
   align-items: center;
   gap: 80px;
   margin-bottom: 120px;
-  flex-wrap: wrap;
 }
 
 /* Magic line: Reverses the layout for every 2nd project */
@@ -576,8 +570,6 @@ body::after {
 /* The 3D Visual Container */
 .project-visual {
   flex: 1;
-  min-width: 0;
-  max-width: 640px;
   border-radius: 16px;
   overflow: hidden;
   position: relative;
@@ -606,7 +598,6 @@ body::after {
 /* Project Info Text */
 .project-info {
   flex: 1;
-  min-width: 0;
 }
 
 .project-eyebrow {
