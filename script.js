@@ -189,21 +189,24 @@ const caseStudies = [
     title: "iHub Prototype",
     meta: "Group Prototype",
     desc: "Built a collaborative education hub prototype with modular dashboards, onboarding flows, and responsive content cards.",
-    code: "const deck = createModule('cards', { responsive: true });",
+    image: "./assets/images/iHub Prototype.png",
+    imageAlt: "iHub Prototype homepage screenshot",
     link: "./ihub-case-study.html"
   },
   {
     title: "Interactive Quiz Widget",
     meta: "Gamified Group Build",
     desc: "Developed an interactive quiz widget with instant feedback, adaptive scoring, and mobile-first form interactions.",
-    code: "const results = questions.map(answer => evaluate(answer));",
+    image: "./assets/images/Quiz widget.png",
+    imageAlt: "Interactive Quiz Widget screenshot",
     link: "./tesla-case-study.html"
   },
   {
     title: "X (Twitter) Clone",
     meta: "Social Feed Replica",
     desc: "Replicated the X timeline experience with responsive feed cards, post states, and polished social interactions.",
-    code: "const timeline = feed.sort((a, b) => b.timestamp - a.timestamp);",
+    image: "./assets/images/x clone.png",
+    imageAlt: "X (Twitter) Clone screenshot",
     link: "./netflix-case-study.html"
   }
 ];
@@ -222,7 +225,7 @@ if (grid) {
         <a href="${study.link}" class="glass-link">Read Deep-Dive →</a>
       </div>
       <div class="case-visual">
-        <div class="code-snippet"><code>${study.code}</code></div>
+        <img src="${study.image}" alt="${study.imageAlt}" class="case-study-thumb" loading="lazy" />
       </div>
     `;
     grid.appendChild(card);

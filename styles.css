@@ -998,9 +998,26 @@ body::after {
 .case-study-grid { display: grid; gap: 30px; margin-top: 40px; }
 
 .case-study-card { 
-  display: grid; grid-template-columns: 1fr 200px; gap: 30px;
+  display: grid; grid-template-columns: 1fr minmax(200px, 280px); gap: 30px;
   background: var(--nav-glass); padding: 40px;
   border: 1px solid var(--border-glass); border-radius: 20px;
+}
+
+.case-visual {
+  display: flex;
+  align-items: stretch;
+  min-height: 160px;
+}
+
+.case-study-thumb {
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 12px;
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
 }
 
 .code-snippet { 
