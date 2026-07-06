@@ -1,4 +1,4 @@
-<!doctype html>
+rew<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -61,5 +61,68 @@
     </main>
 
     <script src="./script.js"></script>
-  </body>
-</html>
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta
+        name="description"
+        content="Personal portfolio page for Samukelo Ricardo Ngozo, sharing inspirations, books, movies, and life beyond coding."
+      />
+      <title>Personal Archive | Samukelo Ricardo Ngozo</title>
+    
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+      <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body data-page="personal">
+      <canvas class="ambient-canvas" aria-hidden="true"></canvas>
+
+      <header class="morph-header" data-header>
+        <div class="nav-container">
+          <a class="brand-mark" href="./index.html" aria-label="Return to Tech">
+            <span class="site-title">Ricardo.</span> 
+          </a>
+
+          <nav class="pill-nav" aria-label="Primary navigation" data-nav>
+            <a href="./index.html" class="nav-link">← Tech</a>
+          
+            <a href="#personal-home" class="nav-link active" data-section="personal-home">Archive</a>
+            <a href="#inspirations" class="nav-link" data-section="inspirations">Why</a>
+            <a href="#books" class="nav-link" data-section="books">Books</a>
+            <a href="#movies" class="nav-link" data-section="movies">Cinema</a>
+            <a href="#beyond" class="nav-link" data-section="beyond">Beyond</a>
+          </nav>
+
+          <button class="mobile-toggle" type="button" aria-label="Open menu" data-menu-toggle>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section id="personal-home" class="section-placeholder">
+          <h1>Archive Dashboard Coming Soon...</h1>
+          <p>Scroll down to test the morphing navigation.</p>
+        </section>
+      
+       <section id="inspirations" class="case-study-section">
+    <div class="section-header reveal-element" data-reveal>
+      <h2>Case Studies</h2>
+      <p>A technical breakdown of my architectural decisions.</p>
+    </div>
+    <div id="case-study-grid" class="case-study-grid"></div>
+  </section>
+
+        <section id="books" class="section-placeholder"><h2>Books</h2></section>
+        <section id="movies" class="section-placeholder"><h2>Cinema</h2></section>
+        <section id="beyond" class="section-placeholder"><h2>Beyond Coding</h2></section>
+      </main>
+
+      <script src="./script.js"></script>
+    </body>
+  </html>
