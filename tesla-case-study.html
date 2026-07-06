@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Tesla Showcase case study by Ricardo Ngozo, detailing design decisions, technologies, and reflections."
+      content="Interactive Quiz Widget case study by Ricardo Ngozo, detailing group collaboration, UX decisions, and technical learnings."
     />
-    <title>Tesla Showcase Case Study | Ricardo Ngozo</title>
+    <title>Interactive Quiz Widget Case Study | Ricardo Ngozo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -29,38 +29,38 @@
       <section class="case-study-hero">
         <div class="case-study-hero-copy">
           <span class="case-meta">Case Study</span>
-          <h1>Tesla Showcase</h1>
-          <p>Building a premium landing page meant solving fluid scroll behavior while preserving crisp animation and a high-end brand presence.</p>
+          <h1>Interactive Quiz Widget</h1>
+          <p>A group-built quiz project designed to deliver instant scoring, interactive feedback, and a mobile-friendly study experience.</p>
           <div class="case-study-tags">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>Vanilla JS</span>
+            <span>JavaScript</span>
+            <span>UX Design</span>
+            <span>Form Interactions</span>
           </div>
           <div class="case-study-actions">
             <a href="./index.html#projects" class="glass-btn secondary">Back to Projects</a>
-            <a href="#decisions" class="glass-btn primary">Discover why</a>
+            <a href="https://kmukendi10.github.io/quiz-widget-project/" class="glass-btn primary" target="_blank" rel="noreferrer">View Live</a>
           </div>
         </div>
         <div class="case-study-hero-visual">
-          <img src="./assets/images/tesla-landing.png" alt="Tesla landing page screenshot" />
-          <span>Full-screen hero and scroll-driven content sections with layered motion.</span>
+          <img src="./assets/images/quiz-widget.svg" alt="Quiz Widget screenshot" />
+          <span>Quiz interactions designed for fast feedback and clear progress tracking.</span>
         </div>
       </section>
 
       <section class="case-study-details">
         <article class="case-block">
           <h2>What was the brief?</h2>
-          <p>The assignment was to recreate a high-performance product landing page with strong visual hierarchy, scroll-based navigation, and an immersive hero experience.</p>
-          <p>The main challenge was keeping motion smooth on entry while maintaining a crisp, brand-driven layout on mobile and desktop.</p>
+          <p>The goal was to build a quiz widget that could support varied question types, provide immediate correct/incorrect feedback, and remain easy to use on mobile.</p>
+          <p>Key challenges included keeping the interactions snappy, styling active states clearly, and preserving usability for learners under time pressure.</p>
         </article>
 
-        <article class="case-block" id="decisions">
+        <article class="case-block">
           <h2>What decisions did I make and why?</h2>
           <ul>
-            <li><strong>Vanilla JavaScript:</strong> I chose plain JS for the interaction layer to keep bundle size minimal and keep every scroll transition predictable.</li>
-            <li><strong>Scroll snap:</strong> using CSS <code>scroll-snap-type</code> for hero-to-section movement improved the feel and reduced custom scripting complexity.</li>
-            <li><strong>Minimal animation:</strong> kept reveals subtle and deferred non-essential motion on smaller screens to preserve performance.</li>
-            <li><strong>Accessible contrast:</strong> I prioritized text legibility over decorative effects so the page stayed functional across devices.</li>
+            <li><strong>Instant feedback:</strong> I added answer validation and state updates immediately after selection to keep the experience engaging.</li>
+            <li><strong>Progress tracking:</strong> users can see their score updates in real time, which encourages completion and reinforces learning.</li>
+            <li><strong>Mobile-first UI:</strong> buttons and cards were sized for touch, with clear spacing and accessible contrast.</li>
+            <li><strong>Group collaboration:</strong> interaction patterns were aligned across team members to deliver a consistent experience.</li>
           </ul>
         </article>
 
@@ -71,37 +71,37 @@
               <h3>Tools and tech</h3>
               <ul>
                 <li>HTML5</li>
-                <li>CSS animations</li>
-                <li>JavaScript event handling</li>
-                <li>Figma prototypes</li>
-                <li>Chrome Lighthouse</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Responsive design</li>
+                <li>Team collaboration</li>
               </ul>
             </div>
             <div>
               <h3>Lessons learned</h3>
               <ul>
-                <li>How to build elegant scroll experiences without overloading the DOM.</li>
-                <li>Why fallback styles matter when animations are reduced or disabled.</li>
-                <li>How to layer gradients and imagery for a modern product presentation.</li>
+                <li>How to make quiz feedback immediate without confusing the user.</li>
+                <li>Why clear visual states matter in a game-like learning interface.</li>
+                <li>How to structure JavaScript for form-based interactions.</li>
               </ul>
             </div>
           </div>
         </article>
 
-        <article class="case-block">
+        <article class="case-block" id="tools">
           <h2>What would I do differently? What am I proud of?</h2>
-          <p>I would add richer section-based animations triggered by IntersectionObserver and more robust keyboard navigation for anchor sections.</p>
-          <p>I'm proud of the polished hero composition and the responsive layout that keeps the design premium even on smaller screens. The site feels deliberate and uses motion only where it supports content.</p>
+          <p>I would add question categories and save progress locally so users can return to the quiz later with their score preserved.</p>
+          <p>I'm proud of the crisp interaction design and clear mobile layout. The widget feels responsive and reliable while supporting a fast review workflow.</p>
         </article>
       </section>
 
       <section class="case-study-visuals">
         <div class="visual-card">
-          <h3>Design direction</h3>
-          <p>The page uses a restrained palette, spacious typography, and clean section cards so the product feel remains modern and luxurious.</p>
+          <h3>Interaction focus</h3>
+          <p>The visual system was built around immediate action feedback, with strong button states and easy-to-scan question cards.</p>
         </div>
         <div class="visual-card image-card">
-          <img src="./assets/images/tesla-landing.png" alt="Tesla landing visuals" />
+          <img src="./assets/images/quiz-widget.svg" alt="Quiz Widget interface details" />
         </div>
       </section>
     </main>

@@ -176,16 +176,25 @@ document.addEventListener("DOMContentLoaded", () => {
    ========================================= */
 const caseStudies = [
   {
-    title: "Netflix Clone",
-    meta: "React & API Integration",
-    desc: "Solving the state management challenge for infinite scrolling media carousels.",
-    code: "const fetchMedia = async () => { ... }"
+    title: "iHub Prototype",
+    meta: "Group Prototype",
+    desc: "Built a collaborative education hub prototype with modular dashboards, onboarding flows, and responsive content cards.",
+    code: "const deck = createModule('cards', { responsive: true });",
+    link: "./ihub-case-study.html"
   },
   {
-    title: "Tesla Landing",
-    meta: "Performance & CSS Snap",
-    desc: "Optimizing DOM interactions for a fluid, automotive-grade scroll experience.",
-    code: "scroll-snap-type: y mandatory;"
+    title: "Interactive Quiz Widget",
+    meta: "Gamified Group Build",
+    desc: "Developed an interactive quiz widget with instant feedback, adaptive scoring, and mobile-first form interactions.",
+    code: "const results = questions.map(answer => evaluate(answer));",
+    link: "./tesla-case-study.html"
+  },
+  {
+    title: "X (Twitter) Clone",
+    meta: "Social Feed Replica",
+    desc: "Replicated the X timeline experience with responsive feed cards, post states, and polished social interactions.",
+    code: "const timeline = feed.sort((a, b) => b.timestamp - a.timestamp);",
+    link: "./netflix-case-study.html"
   }
 ];
 
@@ -200,7 +209,7 @@ if (grid) {
         <span class="case-meta">${study.meta}</span>
         <h3>${study.title}</h3>
         <p>${study.desc}</p>
-        <a href="#" class="glass-link">Read Deep-Dive →</a>
+        <a href="${study.link}" class="glass-link">Read Deep-Dive →</a>
       </div>
       <div class="case-visual">
         <div class="code-snippet"><code>${study.code}</code></div>
