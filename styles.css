@@ -759,12 +759,6 @@ body::after {
 .archive-card:nth-child(2) { transform: translateY(36px) scale(0.88) rotateX(10deg); }
 .archive-card:nth-child(3) { transform: translateY(54px) scale(0.84) rotateX(10deg); }
 .archive-card:nth-child(4) { transform: translateY(72px) scale(0.80) rotateX(10deg); }
-.archive-card:nth-child(5) { transform: translateY(90px) scale(0.76) rotateX(10deg); }
-.archive-card:nth-child(6) { transform: translateY(108px) scale(0.72) rotateX(10deg); }
-.archive-card:nth-child(7) { transform: translateY(126px) scale(0.68) rotateX(10deg); }
-.archive-card:nth-child(8) { transform: translateY(144px) scale(0.64) rotateX(10deg); }
-.archive-card:nth-child(9) { transform: translateY(162px) scale(0.60) rotateX(10deg); }
-.archive-card:nth-child(10) { transform: translateY(180px) scale(0.56) rotateX(10deg); }
 
 .archive-card img {
   width: 100%;
