@@ -595,6 +595,19 @@ body::after {
   transform: translateZ(40px) scale(1.05); /* Pushes even further on hover */
 }
 
+.project-caption,
+.case-study-hero-visual figcaption,
+.image-card figcaption {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-top: 16px;
+}
+
+.project-caption {
+  padding: 0 20px 20px;
+}
+
 /* Project Info Text */
 .project-info {
   flex: 1;
