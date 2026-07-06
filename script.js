@@ -221,6 +221,7 @@ if (grid) {
 
 const archiveCards = document.querySelectorAll('.archive-card');
 const archiveTitle = document.querySelector('.archive-title');
+const archiveCategory = document.querySelector('.archive-category');
 const archiveDescription = document.querySelector('.archive-description');
 const archiveLive = document.querySelector('.archive-live');
 const archiveCode = document.querySelector('.archive-code');
@@ -230,6 +231,7 @@ let selectedArchiveIndex = 0;
 
 const getCardData = (card) => ({
   title: card.dataset.title || 'Unnamed Project',
+  category: card.dataset.category || 'Archived Build',
   description: card.dataset.description || 'No project description available yet.',
   live: card.dataset.live || '#',
   code: card.dataset.code || '#',
@@ -244,6 +246,7 @@ const selectArchiveCard = (index) => {
   const activeCard = archiveCards[selectedArchiveIndex];
   const data = getCardData(activeCard);
   if (archiveTitle) archiveTitle.textContent = data.title;
+  if (archiveCategory) archiveCategory.textContent = data.category;
   if (archiveDescription) archiveDescription.textContent = data.description;
   if (archiveLive) archiveLive.href = data.live;
   if (archiveCode) archiveCode.href = data.code;
