@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Interactive Quiz Widget case study by Ricardo Ngozo, detailing group collaboration, UX decisions, and technical learnings."
+    />
+    <title>Interactive Quiz Widget Case Study | Ricardo Ngozo</title>
+    <link rel="icon" type="image/png" href="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="case-study">
+    <canvas class="ambient-canvas" aria-hidden="true"></canvas>
+    <header class="morph-header" data-header>
+      <div class="nav-container">
+        <a class="brand-mark" href="./index.html" aria-label="Back to Portfolio">
+          <span class="site-title">Ricardo.</span>
+        </a>
+        <nav class="pill-nav" aria-label="Primary navigation" data-nav>
+          <a href="./index.html" class="nav-link">← Portfolio</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="case-study-hero">
+        <div class="case-study-hero-copy">
+          <span class="case-meta">Case Study</span>
+          <h1>Interactive Quiz Widget</h1>
+          <p>A group-built quiz project designed to deliver instant scoring, interactive feedback, and a mobile-friendly study experience.</p>
+          <div class="case-study-tags">
+            <span>JavaScript</span>
+            <span>UX Design</span>
+            <span>Form Interactions</span>
+          </div>
+          <div class="case-study-actions">
+            <a href="./index.html#projects" class="glass-btn secondary">Back to Projects</a>
+            <a href="https://kmukendi10.github.io/quiz-widget-project/" class="glass-btn primary" target="_blank" rel="noreferrer">View Live</a>
+          </div>
+        </div>
+        <figure class="case-study-hero-visual">
+          <img src="./assets/images/Quiz widget.png" alt="Interactive Quiz Widget screenshot" />
+          <figcaption>Quiz interactions designed for fast feedback and clear progress tracking.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-study-details">
+        <article class="case-block">
+          <h2>What was the brief?</h2>
+          <p>The goal was to build a quiz widget that could support varied question types, provide immediate correct/incorrect feedback, and remain easy to use on mobile.</p>
+          <p>Key challenges included keeping the interactions snappy, styling active states clearly, and preserving usability for learners under time pressure.</p>
+        </article>
+
+        <article class="case-block">
+          <h2>What decisions did I make and why?</h2>
+          <ul>
+            <li><strong>Instant feedback:</strong> I added answer validation and state updates immediately after selection to keep the experience engaging.</li>
+            <li><strong>Progress tracking:</strong> users can see their score updates in real time, which encourages completion and reinforces learning.</li>
+            <li><strong>Mobile-first UI:</strong> buttons and cards were sized for touch, with clear spacing and accessible contrast.</li>
+            <li><strong>Group collaboration:</strong> interaction patterns were aligned across team members to deliver a consistent experience.</li>
+          </ul>
+        </article>
+
+        <article class="case-block">
+          <h2>Tools, technologies, and what I learned</h2>
+          <div class="case-study-grid">
+            <div>
+              <h3>Tools and tech</h3>
+              <ul>
+                <li>HTML5</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Responsive design</li>
+                <li>Team collaboration</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Lessons learned</h3>
+              <ul>
+                <li>How to make quiz feedback immediate without confusing the user.</li>
+                <li>Why clear visual states matter in a game-like learning interface.</li>
+                <li>How to structure JavaScript for form-based interactions.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-block" id="tools">
+          <h2>What would I do differently? What am I proud of?</h2>
+          <p>I would add question categories and save progress locally so users can return to the quiz later with their score preserved.</p>
+          <p>I'm proud of the crisp interaction design and clear mobile layout. The widget feels responsive and reliable while supporting a fast review workflow.</p>
+        </article>
+      </section>
+
+      <section class="case-study-visuals">
+        <div class="visual-card">
+          <h3>Interaction focus</h3>
+          <p>The visual system was built around immediate action feedback, with strong button states and easy-to-scan question cards.</p>
+        </div>
+        <figure class="visual-card image-card">
+          <img src="./assets/images/Quiz widget.png" alt="Quiz Widget interface details" loading="lazy" />
+          <figcaption>Question card layout showing feedback states and progress controls.</figcaption>
+        </figure>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
