@@ -17,7 +17,22 @@
     <link rel="stylesheet" href="./styles.css" />
 
   </head>
-  <body data-page="tech">
+  <body data-page="tech" class="is-loading">
+    <div class="site-loader" data-site-loader aria-live="polite" aria-label="Portfolio loading">
+      <div class="score" aria-hidden="true">
+        <div>P1 <span data-loader-score-left>0</span></div>
+        <div>P2 <span data-loader-score-right>0</span></div>
+      </div>
+      <canvas class="loader-pong" data-loader-pong aria-hidden="true"></canvas>
+      <div class="loader-overlay">
+        <p class="brand">Ricardo.</p>
+        <h1>Loading the portfolio...</h1>
+        <p>Enjoy a quick rally while things warm up.</p>
+        <div class="prompt" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+      </div>
+    </div>
     <canvas class="ambient-canvas" aria-hidden="true"></canvas>
 
     <header class="morph-header" data-header>
@@ -330,6 +345,137 @@
   </div>
 </section>
 
+<section id="journey" class="journey-section">
+  <div class="section-header reveal-element" data-reveal>
+    <h2>My Journey</h2>
+    <p>A living graph of where I started, who I am becoming, and the future I am building toward.</p>
+  </div>
+
+  <div class="journey-path reveal-element" data-reveal>
+    <div class="journey-line" aria-hidden="true"><span></span></div>
+    <article class="journey-node">
+      <span class="journey-icon" data-icon="spark"></span>
+      <p class="journey-label">Who I Was</p>
+      <h3>Beginner with a big curiosity</h3>
+      <div class="journey-tags"><span>Curious</span><span>Learning fundamentals</span><span>First projects</span></div>
+    </article>
+    <article class="journey-node">
+      <span class="journey-icon" data-icon="code"></span>
+      <p class="journey-label">Who I Am</p>
+      <h3>Full Stack Developer</h3>
+      <div class="journey-tags"><span>Problem Solver</span><span>Project Builder</span><span>Responsive UI</span></div>
+    </article>
+    <article class="journey-node">
+      <span class="journey-icon" data-icon="rocket"></span>
+      <p class="journey-label">Who I Want To Become</p>
+      <h3>Engineer, AI builder, founder</h3>
+      <div class="journey-tags"><span>Software Engineer</span><span>AI Engineer</span><span>Tech Entrepreneur</span></div>
+    </article>
+  </div>
+</section>
+
+<section id="certifications" class="certifications-section">
+  <div class="section-header reveal-element" data-reveal>
+    <h2>Certifications</h2>
+    <p>Compact proof of the skills I am building and sharpening.</p>
+  </div>
+  <div class="cert-grid">
+    <article class="cert-card reveal-element" data-reveal>
+      <div class="cert-image">PNG Certificate Placeholder</div>
+      <h3>Frontend Development</h3>
+      <p>Issuing Organisation</p>
+      <span>Completion Date</span>
+    </article>
+    <article class="cert-card reveal-element" data-reveal>
+      <div class="cert-image">PNG Certificate Placeholder</div>
+      <h3>JavaScript Essentials</h3>
+      <p>Issuing Organisation</p>
+      <span>Completion Date</span>
+    </article>
+    <article class="cert-card reveal-element" data-reveal>
+      <div class="cert-image">PNG Certificate Placeholder</div>
+      <h3>Responsive Web Design</h3>
+      <p>Issuing Organisation</p>
+      <span>Completion Date</span>
+    </article>
+    <article class="cert-card reveal-element" data-reveal>
+      <div class="cert-image">PNG Certificate Placeholder</div>
+      <h3>Full Stack Foundations</h3>
+      <p>Issuing Organisation</p>
+      <span>Completion Date</span>
+    </article>
+  </div>
+</section>
+
+<section id="why-me" class="why-me-section">
+  <div class="section-header reveal-element" data-reveal>
+    <h2>Why Choose Me</h2>
+    <p>Focused, remote-ready, and always improving through real builds.</p>
+  </div>
+  <div class="why-grid">
+    <article class="featured-project-card reveal-element" data-reveal>
+      <img src="./assets/images/iHub Prototype.png" alt="Featured iHub Prototype project preview" loading="lazy" />
+      <div>
+        <span class="project-eyebrow">Featured Project</span>
+        <h3>iHub Prototype</h3>
+        <p>A collaborative responsive education hub prototype with polished onboarding and dashboard content.</p>
+        <div class="project-tech"><span>HTML5</span><span>CSS Grid</span><span>Responsive UI</span></div>
+        <a href="./ihub-case-study.html" class="glass-btn primary" data-icon-link="case">View Project</a>
+      </div>
+    </article>
+    <article class="why-card reveal-element" data-reveal>
+      <span class="why-icon" data-icon="remote"></span>
+      <h3>Remote Ready</h3>
+      <p>Remote available, comfortable with async workflows, and focused on strong communication.</p>
+    </article>
+    <article class="why-card reveal-element" data-reveal>
+      <span class="why-icon" data-icon="hire"></span>
+      <h3>Available to Hire</h3>
+      <p>Open to junior developer opportunities with immediate availability.</p>
+    </article>
+    <article class="why-card reveal-element" data-reveal>
+      <span class="why-icon" data-icon="learn"></span>
+      <h3>Always Learning</h3>
+      <p>Improving every week, solving problems, and adapting quickly to new technologies.</p>
+    </article>
+  </div>
+</section>
+
+<section id="tic-tac-toe" class="tic-section">
+  <div class="section-header reveal-element" data-reveal>
+    <h2>Tic Tac Toe</h2>
+    <p>A playable mini project embedded directly into the portfolio.</p>
+  </div>
+  <div class="tic-shell reveal-element" data-reveal>
+    <div class="tic-copy">
+      <span class="project-eyebrow">Embedded Project</span>
+      <h3>Play a quick round</h3>
+      <p>Responsive, isolated, and styled to feel native to the portfolio without interfering with the rest of the site.</p>
+      <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+      <div class="project-links">
+        <a href="#" class="glass-btn secondary" data-icon-link="github">GitHub</a>
+        <a href="#tic-tac-toe" class="glass-btn primary" data-icon-link="live">Live Demo</a>
+      </div>
+    </div>
+    <div class="tic-game" data-tic-game>
+      <div class="tic-status" data-tic-status>X starts</div>
+      <div class="tic-board" role="grid" aria-label="Playable Tic Tac Toe board">
+        <button type="button" aria-label="Cell 1"></button>
+        <button type="button" aria-label="Cell 2"></button>
+        <button type="button" aria-label="Cell 3"></button>
+        <button type="button" aria-label="Cell 4"></button>
+        <button type="button" aria-label="Cell 5"></button>
+        <button type="button" aria-label="Cell 6"></button>
+        <button type="button" aria-label="Cell 7"></button>
+        <button type="button" aria-label="Cell 8"></button>
+        <button type="button" aria-label="Cell 9"></button>
+      </div>
+      <button type="button" class="glass-btn secondary tic-reset" data-tic-reset>Reset Game</button>
+    </div>
+  </div>
+</section>
+
     <script src="./script.js"></script>
+    <script src="./cursor.js"></script>
   </body>
 </html>

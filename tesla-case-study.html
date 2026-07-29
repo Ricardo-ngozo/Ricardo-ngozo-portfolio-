@@ -14,7 +14,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body data-page="case-study">
+  <body data-page="case-study" class="is-loading">
+    <div class="site-loader" data-site-loader aria-live="polite" aria-label="Portfolio loading">
+      <div class="score" aria-hidden="true">
+        <div>P1 <span data-loader-score-left>0</span></div>
+        <div>P2 <span data-loader-score-right>0</span></div>
+      </div>
+      <canvas class="loader-pong" data-loader-pong aria-hidden="true"></canvas>
+      <div class="loader-overlay">
+        <p class="brand">Ricardo.</p>
+        <h1>Loading the portfolio...</h1>
+        <p>Enjoy a quick rally while things warm up.</p>
+        <div class="prompt" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+      </div>
+    </div>
     <canvas class="ambient-canvas" aria-hidden="true"></canvas>
     <header class="morph-header" data-header>
       <div class="nav-container">
@@ -38,8 +53,8 @@
             <span>Form Interactions</span>
           </div>
           <div class="case-study-actions">
-            <a href="./index.html#projects" class="glass-btn secondary">Back to Projects</a>
-            <a href="https://kmukendi10.github.io/quiz-widget-project/" class="glass-btn primary" target="_blank" rel="noreferrer">View Live</a>
+            <a href="./index.html#projects" class="glass-btn secondary" data-icon-link="portfolio">Back to Projects</a>
+            <a href="https://kmukendi10.github.io/quiz-widget-project/" class="glass-btn primary" target="_blank" rel="noreferrer" data-icon-link="live">View Live</a>
           </div>
         </div>
         <figure class="case-study-hero-visual">
@@ -108,5 +123,6 @@
       </section>
     </main>
     <script src="./script.js"></script>
+    <script src="./cursor.js"></script>
   </body>
 </html>

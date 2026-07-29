@@ -5,37 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Personal portfolio page for Samukelo Ricardo Ngozo, sharing inspirations, books, movies, and life beyond coding."
+      content="Personal portfolio page for Samukelo Ricardo Ngozo, sharing the experiences, people, media, and moments that inspired a love for technology."
     />
-    <title>Personal Archive | Samukelo Ricardo Ngozo</title>
+    <title>What Made Me Fall in Love with Tech | Samukelo Ricardo Ngozo</title>
     <link rel="icon" type="image/png" href="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" />
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body data-page="personal">
+  <body data-page="personal" class="is-loading">
+    <div class="site-loader" data-site-loader aria-live="polite" aria-label="Portfolio loading">
+      <div class="score" aria-hidden="true">
+        <div>P1 <span data-loader-score-left>0</span></div>
+        <div>P2 <span data-loader-score-right>0</span></div>
+      </div>
+      <canvas class="loader-pong" data-loader-pong aria-hidden="true"></canvas>
+      <div class="loader-overlay">
+        <p class="brand">Ricardo.</p>
+        <h1>Loading the portfolio...</h1>
+        <p>Enjoy a quick rally while things warm up.</p>
+        <div class="prompt" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+      </div>
+    </div>
+
     <canvas class="ambient-canvas" aria-hidden="true"></canvas>
 
     <header class="morph-header" data-header>
       <div class="nav-container">
         <a class="brand-mark" href="./index.html" aria-label="Return to Tech">
           <span class="site-title">Ricardo.</span>
-          <img
-            src="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png"
-            alt="Ricardo Avatar"
-            class="brand-avatar"
-          />
+          <img src="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" alt="Ricardo Avatar" class="brand-avatar" />
         </a>
 
         <nav class="pill-nav" aria-label="Primary navigation" data-nav>
-          <a href="./index.html" class="nav-link">← Tech</a>
+          <a href="./index.html" class="nav-link">Back</a>
           <a href="#personal-home" class="nav-link active" data-section="personal-home">Archive</a>
-          <a href="#inspirations" class="nav-link" data-section="inspirations">Why</a>
-          <a href="#books" class="nav-link" data-section="books">Books</a>
-          <a href="#movies" class="nav-link" data-section="movies">Cinema</a>
+          <a href="#started" class="nav-link" data-section="started">Origin</a>
+          <a href="#inspirations" class="nav-link" data-section="inspirations">Inspiration</a>
+          <a href="#building" class="nav-link" data-section="building">Building</a>
           <a href="#beyond" class="nav-link" data-section="beyond">Beyond</a>
         </nav>
 
@@ -47,64 +57,88 @@
     </header>
 
     <main>
-      <section id="personal-home" class="hero-section personal-hero">
-        <div class="hero-content">
-          <div class="pixel-avatar-container">
-            <img
-              src="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png"
-              alt="Ricardo 8-bit Avatar"
-              class="pixel-avatar"
-            />
-          </div>
-          <h1 class="hero-title">Off the clock.</h1>
-          <h2 class="hero-subtitle">The human behind the commits.</h2>
-          <p class="hero-tagline">
-            Coffee-fueled curiosity, cinema nights, and the quiet habits that keep me building.
+      <section id="personal-home" class="personal-museum-hero">
+        <div class="museum-hero-copy reveal-element" data-reveal>
+          <span class="project-eyebrow">Personal Archive</span>
+          <h1>What Made Me Fall in Love with Tech</h1>
+          <p>
+            A walk through the sparks, screens, stories, games, books, communities, and quiet moments
+            that shaped how I think, create, and build.
           </p>
         </div>
 
-        <a href="#inspirations" class="scroll-indicator" aria-label="Scroll down to Why section">
-          <div class="mouse">
-            <div class="wheel"></div>
-          </div>
+        <div class="museum-collage" aria-label="Visual scrapbook placeholders">
+          <article class="memory-card memory-card-large reveal-element" data-reveal>
+            <div class="memory-image">Hero Image Placeholder</div>
+            <h3>First big spark</h3>
+            <p>A moment, person, or device that made technology feel magical.</p>
+          </article>
+          <article class="memory-card memory-polaroid reveal-element" data-reveal>
+            <div class="memory-image">Game Placeholder</div>
+            <h3>First game</h3>
+            <p>The interactive world that made me curious.</p>
+          </article>
+          <article class="memory-card memory-float reveal-element" data-reveal>
+            <div class="memory-image">Setup Placeholder</div>
+            <h3>Coding corner</h3>
+            <p>The place where ideas become working screens.</p>
+          </article>
+        </div>
+
+        <a href="#started" class="scroll-indicator" aria-label="Scroll down to Where It Started section">
+          <div class="mouse"><div class="wheel"></div></div>
         </a>
+      </section>
+
+      <section id="started" class="personal-section story-split">
+        <div class="section-header reveal-element" data-reveal>
+          <h2>Where It Started</h2>
+          <p>Before the portfolio, there was curiosity: pressing buttons, asking why, and wanting to understand the systems behind the screen.</p>
+        </div>
+        <div class="origin-grid">
+          <article class="origin-copy reveal-element" data-reveal>
+            <span class="inspiration-index">01</span>
+            <h3>Discovery felt like opening a hidden door.</h3>
+            <p>I started seeing technology as more than devices. It became a way to solve problems, express ideas, and build useful things from almost nothing.</p>
+          </article>
+          <div class="origin-photos">
+            <article class="memory-card reveal-element" data-reveal><div class="memory-image">Childhood Inspiration</div><h3>Childhood inspiration</h3><p>Placeholder for the earliest spark.</p></article>
+            <article class="memory-card reveal-element" data-reveal><div class="memory-image">First Computer</div><h3>First computer</h3><p>Placeholder for the machine that started it.</p></article>
+            <article class="memory-card reveal-element" data-reveal><div class="memory-image">First Tech Moment</div><h3>First tech moment</h3><p>Placeholder for the experience that stayed with me.</p></article>
+          </div>
+        </div>
       </section>
 
       <section id="inspirations" class="personal-section">
         <div class="section-header reveal-element" data-reveal>
-          <h2>Why I build.</h2>
-          <p>The ideas, people, and moments that push me past the tutorial.</p>
+          <h2>Things That Inspired Me</h2>
+          <p>A collage of placeholders for the references that made building feel possible, exciting, and worth chasing.</p>
         </div>
-
-        <div class="inspiration-grid">
-          <article class="inspiration-card reveal-element" data-reveal>
-            <span class="inspiration-index">01</span>
-            <h3>Impact over applause</h3>
-            <p>
-              I care about shipping things people actually use — interfaces that feel obvious,
-              flows that respect your time, and products that solve a real problem.
-            </p>
-          </article>
-
-          <article class="inspiration-card reveal-element" data-reveal style="transition-delay: 100ms;">
-            <span class="inspiration-index">02</span>
-            <h3>Build with people</h3>
-            <p>
-              Group projects taught me more than any solo sprint. Collaboration, honest feedback,
-              and shared ownership are where my best work happens.
-            </p>
-          </article>
-
-          <article class="inspiration-card reveal-element" data-reveal style="transition-delay: 200ms;">
-            <span class="inspiration-index">03</span>
-            <h3>Design that breathes</h3>
-            <p>
-              Motion, glass, and bold typography aren't decoration — they're how an experience
-              communicates personality before you read a single line of copy.
-            </p>
-          </article>
+        <div class="inspiration-collage">
+          <article class="memory-card tall reveal-element" data-reveal><div class="memory-image">Book PNG</div><span class="media-tag">Books</span><h3>Book title placeholder</h3><p>A book that changed how I think about craft or growth.</p></article>
+          <article class="memory-card reveal-element" data-reveal><div class="memory-image">Movie PNG</div><span class="media-tag">Movies</span><h3>Movie title placeholder</h3><p>A story that made ambition feel cinematic.</p></article>
+          <article class="memory-card wide reveal-element" data-reveal><div class="memory-image">TV Show PNG</div><span class="media-tag">TV Shows</span><h3>Show title placeholder</h3><p>A series that made systems, strategy, or creativity click.</p></article>
+          <article class="memory-card reveal-element" data-reveal><div class="memory-image">Game PNG</div><span class="media-tag">Video Games</span><h3>Game title placeholder</h3><p>An interactive world that taught me how design creates emotion.</p></article>
+          <article class="memory-card tall reveal-element" data-reveal><div class="memory-image">Creator PNG</div><span class="media-tag">YouTube Creators</span><h3>Creator placeholder</h3><p>Someone who made learning feel accessible.</p></article>
+          <article class="memory-card reveal-element" data-reveal><div class="memory-image">Developer PNG</div><span class="media-tag">Developers I Admire</span><h3>Developer placeholder</h3><p>A builder whose work raised my standard.</p></article>
+          <article class="memory-card reveal-element" data-reveal><div class="memory-image">Technology PNG</div><span class="media-tag">Technology</span><h3>Tech product placeholder</h3><p>A product that made me want to understand what was underneath.</p></article>
+          <article class="memory-card wide reveal-element" data-reveal><div class="memory-image">Community PNG</div><span class="media-tag">Communities</span><h3>Community placeholder</h3><p>People and spaces that made progress feel shared.</p></article>
         </div>
+      </section>
 
+      <section id="building" class="personal-section why-building">
+        <div class="build-copy reveal-element" data-reveal>
+          <span class="project-eyebrow">Why I Love Building</span>
+          <h2>Coding became more than learning.</h2>
+          <p>
+            I love the moment when an idea stops being abstract and starts responding to clicks, inputs, and real people.
+            Building lets me combine logic, design, patience, and personality into something someone can actually use.
+          </p>
+          <p>
+            Every bug teaches discipline. Every finished screen builds confidence. Every project reminds me that technology is not just about code;
+            it is about turning curiosity into momentum.
+          </p>
+        </div>
         <div class="build-stories-section case-study-section">
           <div class="section-header reveal-element" data-reveal>
             <h2>Build stories</h2>
@@ -114,159 +148,23 @@
         </div>
       </section>
 
-      <section id="books" class="personal-section">
-        <div class="section-header reveal-element" data-reveal>
-          <h2>On the shelf.</h2>
-          <p>Books I return to when I need clarity, craft, or a fresh perspective.</p>
-        </div>
-
-        <div class="media-grid">
-          <article class="media-card reveal-element" data-reveal>
-            <span class="media-tag">Habits</span>
-            <h3>Atomic Habits</h3>
-            <p class="media-author">James Clear</p>
-            <p class="media-note">
-              Small changes, scalable systems — the same logic I apply to refactoring messy codebases.
-            </p>
-          </article>
-
-          <article class="media-card reveal-element" data-reveal style="transition-delay: 100ms;">
-            <span class="media-tag">Craft</span>
-            <h3>The Pragmatic Programmer</h3>
-            <p class="media-author">Andy Hunt &amp; Dave Thomas</p>
-            <p class="media-note">
-              The dev bible I keep revisiting. DRY, tracer bullets, and thinking like a craftsman.
-            </p>
-          </article>
-
-          <article class="media-card reveal-element" data-reveal style="transition-delay: 200ms;">
-            <span class="media-tag">Creativity</span>
-            <h3>Steal Like an Artist</h3>
-            <p class="media-author">Austin Kleon</p>
-            <p class="media-note">
-              Creativity isn't about being original — it's about remixing what inspires you into something new.
-            </p>
-          </article>
-
-          <article class="media-card reveal-element" data-reveal style="transition-delay: 300ms;">
-            <span class="media-tag">Mindset</span>
-            <h3>Mindset</h3>
-            <p class="media-author">Carol S. Dweck</p>
-            <p class="media-note">
-              Growth mindset is why I treat every bug as a lesson, not a verdict on my ability.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section id="movies" class="personal-section">
-        <div class="section-header reveal-element" data-reveal>
-          <h2>Cinema picks.</h2>
-          <p>Films that stuck with me — for the visuals, the story, or the vibe.</p>
-        </div>
-
-        <div class="media-grid cinema-grid">
-          <article class="media-card reveal-element" data-reveal>
-            <span class="media-tag">Animation</span>
-            <h3>Spider-Man: Across the Spider-Verse</h3>
-            <p class="media-author">2023</p>
-            <p class="media-note">
-              A masterclass in visual storytelling. Every frame feels like a design system pushed to its limits.
-            </p>
-          </article>
-
-          <article class="media-card reveal-element" data-reveal style="transition-delay: 100ms;">
-            <span class="media-tag">Tech Drama</span>
-            <h3>The Social Network</h3>
-            <p class="media-author">2010</p>
-            <p class="media-note">
-              Startup culture, obsession, and the cost of building something world-changing from a dorm room.
-            </p>
-          </article>
-
-          <article class="media-card reveal-element" data-reveal style="transition-delay: 200ms;">
-            <span class="media-tag">Sci-Fi</span>
-            <h3>Interstellar</h3>
-            <p class="media-author">2014</p>
-            <p class="media-note">
-              Ambition at cosmic scale. Precision, sacrifice, and the belief that impossible problems have answers.
-            </p>
-          </article>
-
-          <article class="media-card reveal-element" data-reveal style="transition-delay: 300ms;">
-            <span class="media-tag">Representation</span>
-            <h3>Black Panther</h3>
-            <p class="media-author">2018</p>
-            <p class="media-note">
-              Proof that blockbuster cinema can celebrate culture, technology, and identity on a global stage.
-            </p>
-          </article>
-        </div>
-      </section>
-
       <section id="beyond" class="personal-section personal-section-last">
         <div class="section-header reveal-element" data-reveal>
-          <h2>Beyond the keyboard.</h2>
-          <p>What keeps me curious when I'm not pushing to main.</p>
+          <h2>Beyond Coding</h2>
+          <p>The parts of my life that keep me grounded, creative, and human.</p>
         </div>
-
-        <div class="bento-grid">
-          <div class="bento-card reveal-element" data-reveal>
-            <h3>Coffee rituals</h3>
-            <p class="bento-copy">
-              Warning: excessive caffeine detected. Espresso before standup, cold brew during deep work.
-              It's less a habit and more a deployment pipeline for my brain.
-            </p>
-          </div>
-
-          <div class="bento-card reveal-element" data-reveal style="transition-delay: 100ms;">
-            <h3>Music &amp; focus</h3>
-            <div class="pill-group">
-              <div class="tech-pill" data-magnet>Lo-fi beats</div>
-              <div class="tech-pill" data-magnet>Amapiano</div>
-              <div class="tech-pill" data-magnet>Synthwave</div>
-              <div class="tech-pill" data-magnet>Film scores</div>
-            </div>
-          </div>
-
-          <div class="bento-card reveal-element" data-reveal style="transition-delay: 200ms;">
-            <h3>Football</h3>
-            <p class="bento-copy">
-              Match days are sacred. Strategy on the pitch, passion in the stands — same energy I bring to sprint planning.
-            </p>
-          </div>
-
-          <div class="bento-card reveal-element" data-reveal style="transition-delay: 300ms;">
-            <h3>Pixel art &amp; UI</h3>
-            <p class="bento-copy">
-              My 8-bit avatar isn't just aesthetic — it's a reminder that playful design and serious engineering can coexist.
-            </p>
-          </div>
-
-          <div class="bento-card reveal-element" data-reveal style="transition-delay: 400ms;">
-            <h3>Always learning</h3>
-            <p class="bento-copy">
-              New frameworks, side experiments, random tutorials at 11pm. If it compiles (or even if it doesn't), I'm intrigued.
-            </p>
-          </div>
-
-          <div class="bento-card reveal-element" data-reveal style="transition-delay: 500ms;">
-            <h3>Connect</h3>
-            <p class="bento-copy">Open to chat about code, cinema, or collaboration.</p>
-            <div class="social-links personal-links">
-              <a href="mailto:Ultrazen75@gmail.com" class="link-item">Email Me</a>
-              <a href="https://www.linkedin.com/in/ricardongozo75/" class="link-item" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="https://github.com/Ricardo-ngozo" class="link-item" target="_blank" rel="noreferrer">GitHub</a>
-            </div>
-          </div>
+        <div class="beyond-grid">
+          <article class="memory-card reveal-element" data-reveal><div class="memory-image">Music PNG</div><h3>Music</h3><p>Placeholder for sounds that help me focus.</p></article>
+          <article class="memory-card reveal-element" data-reveal><div class="memory-image">Gaming PNG</div><h3>Gaming</h3><p>Placeholder for games I enjoy outside work.</p></article>
+          <article class="memory-card reveal-element" data-reveal><div class="memory-image">Fitness PNG</div><h3>Fitness</h3><p>Placeholder for staying sharp and consistent.</p></article>
+          <article class="memory-card reveal-element" data-reveal><div class="memory-image">Creativity PNG</div><h3>Creativity</h3><p>Placeholder for experiments, design, and ideas.</p></article>
+          <article class="memory-card reveal-element" data-reveal><div class="memory-image">Photography PNG</div><h3>Photography</h3><p>Placeholder for moments worth noticing.</p></article>
+          <article class="memory-card reveal-element" data-reveal><div class="memory-image">Travel PNG</div><h3>Travel</h3><p>Placeholder for places and perspectives.</p></article>
         </div>
       </section>
     </main>
 
     <script src="./script.js"></script>
+    <script src="./cursor.js"></script>
   </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> aa79ff01ea4805bf986ca8dcb299ca7a1918ad52
