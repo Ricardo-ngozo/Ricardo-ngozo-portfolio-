@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="iHub Prototype case study by Ricardo Ngozo, documenting a group project with responsive prototype strategy, collaboration, and lessons learned."
+    />
+    <title>iHub Prototype Case Study | Ricardo Ngozo</title>
+    <link rel="icon" type="image/png" href="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="case-study" class="is-loading">
+    <div class="site-loader" data-site-loader aria-live="polite" aria-label="Portfolio loading">
+      <div class="score" aria-hidden="true">
+        <div>P1 <span data-loader-score-left>0</span></div>
+        <div>P2 <span data-loader-score-right>0</span></div>
+      </div>
+      <canvas class="loader-pong" data-loader-pong aria-hidden="true"></canvas>
+      <div class="loader-overlay">
+        <p class="brand">Ricardo.</p>
+        <h1>Loading the portfolio...</h1>
+        <p>Enjoy a quick rally while things warm up.</p>
+        <div class="prompt" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+      </div>
+    </div>
+    <canvas class="ambient-canvas" aria-hidden="true"></canvas>
+    <header class="morph-header" data-header>
+      <div class="nav-container">
+        <a class="brand-mark" href="./index.html" aria-label="Back to Portfolio">
+          <span class="site-title">Ricardo.</span>
+        </a>
+        <nav class="pill-nav" aria-label="Primary navigation" data-nav>
+          <a href="./index.html" class="nav-link">← Portfolio</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="case-study-hero">
+        <div class="case-study-hero-copy">
+          <span class="case-meta">Case Study</span>
+          <h1>iHub Prototype</h1>
+          <p>A group project prototype for iHub that emphasizes responsive learning paths, content cards, and onboarding clarity.</p>
+          <div class="case-study-tags">
+            <span>HTML</span>
+            <span>CSS Grid</span>
+            <span>Responsive Design</span>
+          </div>
+          <div class="case-study-actions">
+            <a href="./index.html#projects" class="glass-btn secondary" data-icon-link="portfolio">Back to Projects</a>
+            <a href="https://giftmshengu250-pixel.github.io/Ihub-Prototype75/" class="glass-btn primary" target="_blank" rel="noreferrer" data-icon-link="live">View Live</a>
+          </div>
+        </div>
+        <figure class="case-study-hero-visual">
+          <img src="./assets/images/iHub Prototype.png" alt="iHub Prototype homepage screenshot" />
+          <figcaption>Prototype visuals for onboarding, dashboard cards, and responsive education flows.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-study-details">
+        <article class="case-block">
+          <h2>What was the brief?</h2>
+          <p>The scope was a group prototype for iHub, aiming to communicate course discovery, mentorship connections, and community features in a polished interface.</p>
+          <p>The challenge was aligning multiple content modules into a clean, responsive layout that felt cohesive across desktop and mobile.</p>
+        </article>
+
+        <article class="case-block">
+          <h2>What decisions did I make and why?</h2>
+          <ul>
+            <li><strong>Modular cards:</strong> I broke the prototype into reusable card components to make the layout easier to organize and scale.</li>
+            <li><strong>Responsive grid:</strong> using CSS Grid allowed the page to reflow gracefully without losing content hierarchy.</li>
+            <li><strong>Clear onboarding:</strong> I prioritized clear step flows so the user journey felt intuitive and approachable.</li>
+            <li><strong>Group alignment:</strong> shared design tokens and spacing systems ensured consistency across team members.</li>
+          </ul>
+        </article>
+
+        <article class="case-block">
+          <h2>Tools, technologies, and what I learned</h2>
+          <div class="case-study-grid">
+            <div>
+              <h3>Tools and tech</h3>
+              <ul>
+                <li>HTML5</li>
+                <li>CSS Grid</li>
+                <li>Responsive design</li>
+                <li>Figma collaboration</li>
+                <li>Design system thinking</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Lessons learned</h3>
+              <ul>
+                <li>How to structure a group prototype with reusable interface patterns.</li>
+                <li>Why responsive content scaling matters for dashboard-heavy prototypes.</li>
+                <li>How to make onboarding feel approachable through visual hierarchy.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-block" id="tools">
+          <h2>What would I do differently? What am I proud of?</h2>
+          <p>I would expand the prototype into a small design system so each content module could be reused across more screens while staying visually consistent.</p>
+          <p>I'm proud of the layout clarity and how the prototype balances information density with whitespace. The result is a strong foundation for future iHub product pages.</p>
+        </article>
+      </section>
+
+      <section class="case-study-visuals">
+        <div class="visual-card">
+          <h3>Prototype strategy</h3>
+          <p>The prototype aimed to reduce cognitive load by grouping related items, using section headers, and limiting color accents to key actions.</p>
+        </div>
+        <figure class="visual-card image-card">
+          <img src="./assets/images/ihub-clone.png" alt="iHub Prototype interface details" loading="lazy" />
+          <figcaption>Detailed layout showing dashboard content groups and onboarding cards.</figcaption>
+        </figure>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+    <script src="./cursor.js"></script>
+  </body>
+</html>

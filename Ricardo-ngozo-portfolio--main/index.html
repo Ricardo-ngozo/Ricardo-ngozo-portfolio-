@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tech portfolio for Samukelo Ricardo Ngozo, a full-stack web developer building responsive interfaces and practical web systems."
+    />
+    <title>Samukelo Ricardo Ngozo | Full-Stack Web Developer</title>
+    <link rel="icon" type="image/png" href="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./styles.css" />
+
+  </head>
+  <body data-page="tech" class="is-loading">
+    <div class="site-loader" data-site-loader aria-live="polite" aria-label="Portfolio loading">
+      <div class="score" aria-hidden="true">
+        <div>P1 <span data-loader-score-left>0</span></div>
+        <div>P2 <span data-loader-score-right>0</span></div>
+      </div>
+      <canvas class="loader-pong" data-loader-pong aria-hidden="true"></canvas>
+      <div class="loader-overlay">
+        <p class="brand">Ricardo.</p>
+        <h1>Loading the portfolio...</h1>
+        <p>Enjoy a quick rally while things warm up.</p>
+        <div class="prompt" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+      </div>
+    </div>
+    <canvas class="ambient-canvas" aria-hidden="true"></canvas>
+
+    <header class="morph-header" data-header>
+      <div class="nav-container">
+        <a class="brand-mark" href="#home" aria-label="Samukelo Home">
+          <span class="site-title">Samukelo Ricardo Ngozo</span>
+          <img src="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" alt="Ricardo Avatar" class="brand-avatar" />
+        </a>
+
+        <nav class="pill-nav" aria-label="Primary navigation" data-nav>
+          <a href="#home" class="nav-link active" data-section="home">Home</a>
+          <a href="#about" class="nav-link" data-section="about">About</a>
+          <a href="#stack" class="nav-link" data-section="stack">Stack</a>
+          <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+          <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+          <a href="./personal.html" class="nav-link">Personal</a>
+        </nav>
+
+        <button class="mobile-toggle" type="button" aria-label="Open menu" data-menu-toggle>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+<section id="home" class="hero-section">
+  <div class="hero-content">
+    <div class="pixel-avatar-container">
+      <img src="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" alt="Ricardo 8-bit Avatar" class="pixel-avatar" />
+    </div>
+    <h1 class="hero-title">Ricardo.</h1>
+    <h2 class="hero-subtitle">Fullstack Developer.</h2>
+    <p class="hero-tagline">Welcome to bold, funny , immersive experience...</p>
+  </div>
+  
+  <!-- Glowing Scroll Indicator -->
+  <a href="#about" class="scroll-indicator" aria-label="Scroll down to About section">
+    <div class="mouse">
+      <div class="wheel"></div>
+    </div>
+  </a>
+</section>
+      
+      <section id="about" class="about-section">
+  <div class="terminal-container reveal-element" data-terminal>
+    <div class="terminal-header">
+      <div class="terminal-buttons">
+        <span class="btn close"></span>
+        <span class="btn minimize"></span>
+        <span class="btn maximize"></span>
+      </div>
+      <div class="terminal-title">ricardo@portfolio: ~/about</div>
+    </div>
+    <div class="terminal-body">
+      <div id="terminal-content"></div>
+      <span class="terminal-cursor" id="terminal-cursor">_</span>
+    </div>
+  </div>
+</section>
+
+      <section id="stack" class="stack-section">
+  <div class="stack-header reveal-element" data-reveal>
+    <h2>The Arsenal.</h2>
+    <p>Modern technologies to build robust, scalable web systems.</p>
+  </div>
+
+  <div class="bento-grid">
+    <div class="bento-card reveal-element" data-reveal>
+      <h3>Frontend</h3>
+      <div class="pill-group">
+        <div class="tech-pill" data-magnet>HTML5</div>
+        <div class="tech-pill" data-magnet>CSS3</div>
+        <div class="tech-pill" data-magnet>JavaScript (ES6+)</div>
+        <div class="tech-pill" data-magnet>React</div>
+        <div class="tech-pill" data-magnet>Tailwind CSS</div>
+      </div>
+    </div>
+
+    <div class="bento-card reveal-element" data-reveal style="transition-delay: 100ms;">
+      <h3>Backend</h3>
+      <div class="pill-group">
+        <div class="tech-pill" data-magnet>Node.js</div>
+        <div class="tech-pill" data-magnet>Python</div>
+        
+        
+      </div>
+    </div>
+
+    <div class="bento-card reveal-element" data-reveal style="transition-delay: 200ms;">
+      <h3>Tools & Architecture</h3>
+      <div class="pill-group">
+        <div class="tech-pill" data-magnet>Git & GitHub</div>
+        <div class="tech-pill" data-magnet>RESTful APIs</div>
+        <div class="tech-pill" data-magnet>Vite</div>
+        <div class="tech-pill" data-magnet>Figma</div>
+        <div class="tech-pill" data-magnet>Responsive Design</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+      <section id="projects" class="projects-section">
+  <div class="section-header reveal-element" data-reveal>
+    <h2>Featured Work.</h2>
+    <p>Selected clones and applications demonstrating my attention to UI details and architecture.</p>
+  </div>
+
+  <div class="projects-container">
+    
+    <div class="project-row reveal-element" data-reveal>
+      <figure class="project-visual" data-tilt>
+        <div class="glass-overlay"></div>
+        <img src="./assets/images/iHub Prototype.png" alt="iHub Prototype homepage screenshot" class="project-img" loading="lazy" />
+        <figcaption class="project-caption">Responsive education hub dashboard and onboarding flow.</figcaption>
+      </figure>
+      <div class="project-info">
+        <span class="project-eyebrow">Group Prototype</span>
+        <h3>iHub Prototype</h3>
+        <p>A collaborative group prototype for the iHub platform, focused on responsive learning tools, onboarding flows, and modular content cards.</p>
+        <div class="project-tech">
+          <span>HTML5</span><span>CSS</span><span>Responsive UI</span>
+        </div>
+        <div class="project-links">
+          <a href="https://giftmshengu250-pixel.github.io/Ihub-Prototype75/" class="glass-btn primary" target="_blank" rel="noreferrer">Live Demo</a>
+          <a href="#" class="glass-btn secondary">Source Code</a>
+          <a href="./ihub-case-study.html" class="glass-btn tertiary" aria-label="Read iHub case study">Case Study</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-row reveal-element" data-reveal>
+      <figure class="project-visual" data-tilt>
+        <div class="glass-overlay"></div>
+        <img src="./assets/images/Quiz widget.png" alt="Interactive Quiz Widget screenshot" class="project-img" loading="lazy" />
+        <figcaption class="project-caption">Mobile-friendly quiz interface with instant feedback.</figcaption>
+      </figure>
+      <div class="project-info">
+        <span class="project-eyebrow">Group Project</span>
+        <h3>Interactive Quiz Widget</h3>
+        <p>A collaborative quiz application built with instant feedback, adaptive scoring, and mobile-first interaction design.</p>
+        <div class="project-tech">
+          <span>JavaScript</span><span>UX Design</span><span>Form Interactions</span>
+        </div>
+        <div class="project-links">
+          <a href="https://kmukendi10.github.io/quiz-widget-project/" class="glass-btn primary" target="_blank" rel="noreferrer">Live Demo</a>
+          <a href="#" class="glass-btn secondary">Source Code</a>
+          <a href="./tesla-case-study.html" class="glass-btn tertiary" aria-label="Read Quiz Widget case study">Case Study</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-row reveal-element" data-reveal>
+      <figure class="project-visual" data-tilt>
+        <div class="glass-overlay"></div>
+        <img src="./assets/images/x clone.png" alt="X (Twitter) Clone screenshot" class="project-img" loading="lazy" />
+        <figcaption class="project-caption">Social feed replica with responsive timeline cards.</figcaption>
+      </figure>
+      <div class="project-info">
+        <span class="project-eyebrow">Social Feed Clone</span>
+        <h3>X (Twitter) Clone</h3>
+        <p>A responsive X clone featuring timeline cards, interactive post states, and a polished social feed display.</p>
+        <div class="project-tech">
+          <span>React</span><span>Responsive Feed</span><span>UI Replication</span>
+        </div>
+        <div class="project-links">
+          <a href="https://x-frpgiqze3-the-hub75.vercel.app/" class="glass-btn primary" target="_blank" rel="noreferrer">Live Demo</a>
+          <a href="#" class="glass-btn secondary">Source Code</a>
+          <a href="./netflix-case-study.html" class="glass-btn tertiary" aria-label="Read X Clone case study">Case Study</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-row reveal-element" data-reveal>
+      <figure class="project-visual" data-tilt>
+        <div class="glass-overlay"></div>
+        <img src="./assets/images/todo-list.png" alt="Task Manager application screenshot" class="project-img" loading="lazy" />
+        <figcaption class="project-caption">Task manager interface showcasing list actions and completion states.</figcaption>
+      </figure>
+      <div class="project-info">
+        <span class="project-eyebrow">Interactive Application</span>
+        <h3>Task Manager</h3>
+        <p>A robust state-driven application allowing users to manage daily tasks. Features persistent local storage, dynamic DOM updates, and smooth state transitions.</p>
+        <div class="project-tech">
+          <span>JavaScript</span><span>DOM Manipulation</span><span>LocalStorage</span>
+        </div>
+        <div class="project-links">
+          <a href="#" class="glass-btn primary">Live Demo</a>
+          <a href="#" class="glass-btn secondary">Source Code</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="archive" class="project-archive-section">
+  <div class="section-header reveal-element" data-reveal>
+    <h2>Archive Vault.</h2>
+    <p>Secondary builds and older interfaces kept in a stacked gallery, flipping automatically to stay dynamic without cluttering the main showcase.</p>
+  </div>
+
+  <div class="archive-grid">
+    <div class="archive-stack reveal-element" data-reveal>
+      <div class="archive-card" data-id="fm-react" data-title="FM React" data-category="React Application" data-description="A React web application built for modern state-driven UI and performance." data-live="https://fm-react-6avq6tn4u-the-hub75.vercel.app/" data-code="https://github.com/Ricardo-ngozo/react.git" style="--i:0;">
+        <img src="./assets/images/Fm react.png" alt="FM React application screenshot" loading="lazy" />
+        <span class="archive-label">FM React</span>
+      </div>
+      <div class="archive-card" data-id="netblip" data-title="Netblip (Netflix Clone)" data-category="Frontend Clone" data-description="A Netflix-inspired frontend clone featuring immersive hero and browse states." data-live="https://ricardo-ngozo-netblip.netlify.app/" data-code="https://github.com/Ricardo-ngozo/Netblip_ricardo-ngozo.git" style="--i:1;">
+        <img src="./assets/images/netflix-clone.png" alt="Netblip Netflix clone screenshot" loading="lazy" />
+        <span class="archive-label">Netblip</span>
+      </div>
+      <div class="archive-card" data-id="tesla-landing" data-title="Tesla Landing" data-category="Product Landing" data-description="A product landing page clone emphasizing bold hero visuals and a clear call to action." data-live="#" data-code="#" style="--i:2;">
+        <img src="./assets/images/tesla-landing.png" alt="Tesla Landing page screenshot" loading="lazy" />
+        <span class="archive-label">Tesla Landing</span>
+      </div>
+      <div class="archive-card" data-id="ui-screenshot" data-title="UI Screenshot" data-category="Web Utility" data-description="A utility app for capturing and exporting polished interface screenshots." data-live="https://uiscreenshot.netlify.app/" data-code="https://github.com/Ricardo-ngozo/UI-Screenshot.git" style="--i:3;">
+        <img src="./assets/images/ui-screenshot.png" alt="UI Screenshot utility screenshot" loading="lazy" />
+        <span class="archive-label">UI Screenshot</span>
+      </div>
+    </div>
+
+    <div class="archive-copy reveal-element" data-reveal>
+      <h3>Four archived builds in one stack</h3>
+      <p>This section is purposefully lower priority — it keeps the main case studies sleek while still letting visitors glimpse a deeper archive of work that rotates automatically.</p>
+      <ul>
+        <li>Silent project vault</li>
+        <li>Stacked image motion</li>
+        <li>Automatic flip animation</li>
+      </ul>
+      <div class="archive-panel">
+        <div class="archive-details">
+          <span class="archive-selected-label">Selected Project</span>
+          <span class="archive-category">Archived Build</span>
+          <h4 class="archive-title">Design Concept</h4>
+          <p class="archive-description">A mood-driven UI study built to explore layered glass textures and bold typography.</p>
+        </div>
+        <div class="archive-actions">
+          <a href="#" class="glass-btn primary archive-live" target="_blank" rel="noreferrer">View Live</a>
+          <a href="#" class="glass-btn secondary archive-code" target="_blank" rel="noreferrer">View Code</a>
+        </div>
+        <div class="archive-controls">
+          <button type="button" class="control-btn prev">Previous</button>
+          <button type="button" class="control-btn next">Next</button>
+        </div>
+      </div>
+      <p class="archive-note">Tap a card to lock its details, then use the links to open the live preview or source code.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contributions" class="contribution-section">
+  <div class="section-header reveal-element" data-reveal>
+    <h2>154 contributions in the last year</h2>
+  </div>
+  
+  <div class="contribution-wrapper reveal-element" data-reveal>
+    <div class="graph-months">
+      <span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span>
+      <span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+    </div>
+    
+    <div class="graph-body">
+      <div class="graph-days">
+        <span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span>
+      </div>
+      <div class="contribution-graph" id="contribution-graph"></div>
+    </div>
+
+    <div class="graph-legend">
+      <span>Less</span>
+      <div class="legend-scale">
+        <div class="lvl-0"></div><div class="lvl-1"></div>
+        <div class="lvl-2"></div><div class="lvl-3"></div><div class="lvl-4"></div>
+      </div>
+      <span>More</span>
+    </div>
+  </div>
+</section>
+
+
+
+      <section id="contact" class="contact-section">
+  <div class="section-header reveal-element" data-reveal>
+    <h2>Let’s connect.</h2>
+    <p>Open for opportunities, collaboration, or just a technical chat.</p>
+  </div>
+
+  <div class="contact-container reveal-element" data-reveal>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Reach out directly</h3>
+        <p>I typically respond within 24 hours.</p>
+        <div class="social-links">
+          <a href="mailto:Ultrazen75@gmail.com" class="link-item">Email Me</a>
+          <a href="https://www.linkedin.com/in/ricardongozo75/" target="_blank">LinkedIn</a>
+          <a href="https://github.com/Ricardo-ngozo" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <textarea name="message" rows="4" placeholder="Your message..." required></textarea>
+        <button type="submit" class="glass-btn primary">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="journey" class="journey-section">
+  <div class="section-header reveal-element" data-reveal>
+    <h2>My Journey</h2>
+    <p>A living graph of where I started, who I am becoming, and the future I am building toward.</p>
+  </div>
+
+  <div class="journey-path reveal-element" data-reveal>
+    <div class="journey-line" aria-hidden="true"><span></span></div>
+    <article class="journey-node">
+      <span class="journey-icon" data-icon="spark"></span>
+      <p class="journey-label">Who I Was</p>
+      <h3>Beginner with a big curiosity</h3>
+      <div class="journey-tags"><span>Curious</span><span>Learning fundamentals</span><span>First projects</span></div>
+    </article>
+    <article class="journey-node">
+      <span class="journey-icon" data-icon="code"></span>
+      <p class="journey-label">Who I Am</p>
+      <h3>Full Stack Developer</h3>
+      <div class="journey-tags"><span>Problem Solver</span><span>Project Builder</span><span>Responsive UI</span></div>
+    </article>
+    <article class="journey-node">
+      <span class="journey-icon" data-icon="rocket"></span>
+      <p class="journey-label">Who I Want To Become</p>
+      <h3>Engineer, AI builder, founder</h3>
+      <div class="journey-tags"><span>Software Engineer</span><span>AI Engineer</span><span>Tech Entrepreneur</span></div>
+    </article>
+  </div>
+</section>
+
+<section id="certifications" class="certifications-section">
+  <div class="section-header reveal-element" data-reveal>
+    <h2>Certifications</h2>
+    <p>Compact proof of the skills I am building and sharpening.</p>
+  </div>
+  <div class="cert-grid">
+    <article class="cert-card reveal-element" data-reveal>
+      <div class="cert-image">PNG Certificate Placeholder</div>
+      <h3>Frontend Development</h3>
+      <p>Issuing Organisation</p>
+      <span>Completion Date</span>
+    </article>
+    <article class="cert-card reveal-element" data-reveal>
+      <div class="cert-image">PNG Certificate Placeholder</div>
+      <h3>JavaScript Essentials</h3>
+      <p>Issuing Organisation</p>
+      <span>Completion Date</span>
+    </article>
+    <article class="cert-card reveal-element" data-reveal>
+      <div class="cert-image">PNG Certificate Placeholder</div>
+      <h3>Responsive Web Design</h3>
+      <p>Issuing Organisation</p>
+      <span>Completion Date</span>
+    </article>
+    <article class="cert-card reveal-element" data-reveal>
+      <div class="cert-image">PNG Certificate Placeholder</div>
+      <h3>Full Stack Foundations</h3>
+      <p>Issuing Organisation</p>
+      <span>Completion Date</span>
+    </article>
+  </div>
+</section>
+
+<section id="why-me" class="why-me-section">
+  <div class="section-header reveal-element" data-reveal>
+    <h2>Why Choose Me</h2>
+    <p>Focused, remote-ready, and always improving through real builds.</p>
+  </div>
+  <div class="why-grid">
+    <article class="featured-project-card reveal-element" data-reveal>
+      <img src="./assets/images/iHub Prototype.png" alt="Featured iHub Prototype project preview" loading="lazy" />
+      <div>
+        <span class="project-eyebrow">Featured Project</span>
+        <h3>iHub Prototype</h3>
+        <p>A collaborative responsive education hub prototype with polished onboarding and dashboard content.</p>
+        <div class="project-tech"><span>HTML5</span><span>CSS Grid</span><span>Responsive UI</span></div>
+        <a href="./ihub-case-study.html" class="glass-btn primary" data-icon-link="case">View Project</a>
+      </div>
+    </article>
+    <article class="why-card reveal-element" data-reveal>
+      <span class="why-icon" data-icon="remote"></span>
+      <h3>Remote Ready</h3>
+      <p>Remote available, comfortable with async workflows, and focused on strong communication.</p>
+    </article>
+    <article class="why-card reveal-element" data-reveal>
+      <span class="why-icon" data-icon="hire"></span>
+      <h3>Available to Hire</h3>
+      <p>Open to junior developer opportunities with immediate availability.</p>
+    </article>
+    <article class="why-card reveal-element" data-reveal>
+      <span class="why-icon" data-icon="learn"></span>
+      <h3>Always Learning</h3>
+      <p>Improving every week, solving problems, and adapting quickly to new technologies.</p>
+    </article>
+  </div>
+</section>
+
+<section id="tic-tac-toe" class="tic-section">
+  <div class="section-header reveal-element" data-reveal>
+    <h2>Tic Tac Toe</h2>
+    <p>A playable mini project embedded directly into the portfolio.</p>
+  </div>
+  <div class="tic-shell reveal-element" data-reveal>
+    <div class="tic-copy">
+      <span class="project-eyebrow">Embedded Project</span>
+      <h3>Play a quick round</h3>
+      <p>Responsive, isolated, and styled to feel native to the portfolio without interfering with the rest of the site.</p>
+      <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+      <div class="project-links">
+        <a href="#" class="glass-btn secondary" data-icon-link="github">GitHub</a>
+        <a href="#tic-tac-toe" class="glass-btn primary" data-icon-link="live">Live Demo</a>
+      </div>
+    </div>
+    <div class="tic-game" data-tic-game>
+      <div class="tic-status" data-tic-status>X starts</div>
+      <div class="tic-board" role="grid" aria-label="Playable Tic Tac Toe board">
+        <button type="button" aria-label="Cell 1"></button>
+        <button type="button" aria-label="Cell 2"></button>
+        <button type="button" aria-label="Cell 3"></button>
+        <button type="button" aria-label="Cell 4"></button>
+        <button type="button" aria-label="Cell 5"></button>
+        <button type="button" aria-label="Cell 6"></button>
+        <button type="button" aria-label="Cell 7"></button>
+        <button type="button" aria-label="Cell 8"></button>
+        <button type="button" aria-label="Cell 9"></button>
+      </div>
+      <button type="button" class="glass-btn secondary tic-reset" data-tic-reset>Reset Game</button>
+    </div>
+  </div>
+</section>
+
+    <script src="./script.js"></script>
+    <script src="./cursor.js"></script>
+  </body>
+</html>
