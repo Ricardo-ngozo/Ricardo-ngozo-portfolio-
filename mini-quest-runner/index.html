@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Quest Runner</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #10131f;
+        --panel: #171c2b;
+        --panel-strong: #20283d;
+        --text: #f8fafc;
+        --muted: #aeb8cb;
+        --line: rgba(255, 255, 255, 0.14);
+        --green: #5ee787;
+        --blue: #5cc8ff;
+        --yellow: #ffd166;
+        --red: #ff5c7a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+        background:
+          radial-gradient(circle at 16% 10%, rgba(92, 200, 255, 0.22), transparent 28%),
+          radial-gradient(circle at 88% 16%, rgba(94, 231, 135, 0.16), transparent 30%),
+          var(--bg);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .game-shell {
+        width: min(980px, 100%);
+        display: grid;
+        gap: 16px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      h1 {
+        margin: 0 0 6px;
+        font-size: clamp(2rem, 5vw, 4rem);
+        line-height: 1;
+      }
+
+      .subtitle {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .hud {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .hud span {
+        min-width: 96px;
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(23, 28, 43, 0.82);
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .hud strong {
+        display: block;
+        margin-top: 4px;
+        color: var(--text);
+        font-size: 1.25rem;
+      }
+
+      .stage {
+        position: relative;
+        overflow: hidden;
+        height: min(62vh, 430px);
+        min-height: 320px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background:
+          linear-gradient(180deg, rgba(92, 200, 255, 0.2), rgba(16, 19, 31, 0.1) 54%, rgba(16, 19, 31, 0.92)),
+          #11192a;
+        box-shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
+        outline: none;
+        touch-action: manipulation;
+      }
+
+      .stage:focus {
+        border-color: var(--blue);
+      }
+
+      .cloud {
+        position: absolute;
+        top: var(--top);
+        left: var(--left);
+        width: var(--width);
+        height: 22px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.13);
+        animation: drift var(--speed) linear infinite;
+      }
+
+      .cloud::before,
+      .cloud::after {
+        content: "";
+        position: absolute;
+        bottom: 5px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: inherit;
+      }
+
+      .cloud::before {
+        left: 16px;
+      }
+
+      .cloud::after {
+        right: 18px;
+      }
+
+      .moon {
+        position: absolute;
+        top: 44px;
+        right: 62px;
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        background: var(--yellow);
+        box-shadow: 0 0 38px rgba(255, 209, 102, 0.22);
+      }
+
+      .world,
+      .ground {
+        position: absolute;
+        inset: 0;
+      }
+
+      .ground {
+        top: auto;
+        height: 76px;
+        background:
+          repeating-linear-gradient(90deg, rgba(94, 231, 135, 0.3) 0 42px, rgba(92, 200, 255, 0.18) 42px 68px),
+          linear-gradient(180deg, rgba(94, 231, 135, 0.7), #182135);
+        border-top: 2px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .hero {
+        position: absolute;
+        left: 70px;
+        bottom: 76px;
+        width: 46px;
+        height: 70px;
+        transform: translateY(var(--hero-y, 0));
+        z-index: 4;
+      }
+
+      .hero * {
+        position: absolute;
+        display: block;
+      }
+
+      .head {
+        top: 0;
+        left: 13px;
+        width: 24px;
+        height: 24px;
+        border-radius: 7px;
+        background: #f5c98b;
+        box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.12);
+      }
+
+      .body {
+        top: 24px;
+        left: 9px;
+        width: 31px;
+        height: 34px;
+        border-radius: 8px 8px 5px 5px;
+        background: linear-gradient(135deg, var(--blue), var(--green));
+      }
+
+      .cape {
+        top: 27px;
+        left: 0;
+        width: 20px;
+        height: 30px;
+        border-radius: 12px 4px 10px 8px;
+        background: var(--red);
+        transform: skewX(-11deg);
+      }
+
+      .feet {
+        left: 8px;
+        bottom: 0;
+        width: 34px;
+        height: 10px;
+        border-radius: 999px;
+        background: #e8eef8;
+      }
+
+      .obstacle {
+        position: absolute;
+        bottom: 76px;
+        width: 38px;
+        height: 42px;
+        border-radius: 9px 9px 5px 5px;
+        background: linear-gradient(180deg, #9cff57, #168f4f);
+        box-shadow: inset 0 -9px 0 rgba(0, 0, 0, 0.14);
+      }
+
+      .obstacle::before,
+      .obstacle::after {
+        content: "";
+        position: absolute;
+        top: 12px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #0b1220;
+      }
+
+      .obstacle::before {
+        left: 9px;
+      }
+
+      .obstacle::after {
+        right: 9px;
+      }
+
+      .crystal {
+        position: absolute;
+        bottom: 150px;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(135deg, var(--yellow), var(--blue));
+        transform: rotate(45deg);
+        box-shadow: 0 0 22px rgba(255, 209, 102, 0.32);
+      }
+
+      .message {
+        position: absolute;
+        left: 50%;
+        top: 48%;
+        z-index: 10;
+        width: min(360px, 82%);
+        padding: 18px 20px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(16, 19, 31, 0.86);
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-weight: 800;
+      }
+
+      .message small {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-weight: 400;
+      }
+
+      .message.hidden {
+        display: none;
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        min-height: 44px;
+        padding: 0 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        color: var(--text);
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      button.primary {
+        background: linear-gradient(135deg, var(--blue), var(--green));
+        color: #071018;
+      }
+
+      button:hover {
+        filter: brightness(1.08);
+      }
+
+      .tip {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      @keyframes drift {
+        from {
+          transform: translateX(0);
+        }
+
+        to {
+          transform: translateX(-110vw);
+        }
+      }
+
+      @media (max-width: 640px) {
+        body {
+          padding: 14px;
+        }
+
+        .stage {
+          min-height: 300px;
+        }
+
+        .hero {
+          left: 42px;
+        }
+
+        .hud span {
+          min-width: 86px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="game-shell">
+      <div class="topbar">
+        <div>
+          <h1>Mini Quest Runner</h1>
+          <p class="subtitle">Jump over slime blocks, collect crystals, and keep the hero moving forward.</p>
+        </div>
+        <div class="hud" aria-label="Game stats">
+          <span>Score <strong id="score">0</strong></span>
+          <span>Crystals <strong id="crystals">0</strong></span>
+          <span>Hearts <strong id="hearts">3</strong></span>
+        </div>
+      </div>
+
+      <section class="stage" id="stage" tabindex="0" aria-label="Mini Quest Runner game">
+        <div class="moon" aria-hidden="true"></div>
+        <div class="cloud" style="--top: 52px; --left: 94%; --width: 104px; --speed: 34s;" aria-hidden="true"></div>
+        <div class="cloud" style="--top: 118px; --left: 58%; --width: 78px; --speed: 28s;" aria-hidden="true"></div>
+        <div class="cloud" style="--top: 86px; --left: 128%; --width: 126px; --speed: 38s;" aria-hidden="true"></div>
+        <div class="world" id="world">
+          <div class="hero" id="hero" aria-hidden="true">
+            <span class="cape"></span>
+            <span class="head"></span>
+            <span class="body"></span>
+            <span class="feet"></span>
+          </div>
+        </div>
+        <div class="ground" aria-hidden="true"></div>
+        <div class="message" id="message">
+          Press Space to start
+          <small>Use Space, Arrow Up, W, or tap Jump.</small>
+        </div>
+      </section>
+
+      <div class="controls">
+        <button class="primary" type="button" id="jumpButton">Jump</button>
+        <button type="button" id="restartButton">Restart</button>
+      </div>
+      <p class="tip">Controls: Space, Arrow Up, W, click the stage, or use the Jump button.</p>
+    </main>
+
+    <script>
+      const stage = document.getElementById("stage");
+      const world = document.getElementById("world");
+      const hero = document.getElementById("hero");
+      const message = document.getElementById("message");
+      const scoreEl = document.getElementById("score");
+      const crystalsEl = document.getElementById("crystals");
+      const heartsEl = document.getElementById("hearts");
+      const jumpButton = document.getElementById("jumpButton");
+      const restartButton = document.getElementById("restartButton");
+
+      const state = {
+        running: false,
+        over: false,
+        score: 0,
+        crystals: 0,
+        hearts: 3,
+        speed: 330,
+        heroY: 0,
+        velocity: 0,
+        lastTime: 0,
+        obstacleTimer: 0,
+        crystalTimer: 0,
+        entities: []
+      };
+
+      function resetGame() {
+        state.running = false;
+        state.over = false;
+        state.score = 0;
+        state.crystals = 0;
+        state.hearts = 3;
+        state.speed = 330;
+        state.heroY = 0;
+        state.velocity = 0;
+        state.lastTime = 0;
+        state.obstacleTimer = 650;
+        state.crystalTimer = 1300;
+        state.entities.forEach((entity) => entity.element.remove());
+        state.entities = [];
+        hero.style.setProperty("--hero-y", "0px");
+        message.innerHTML = "Press Space to start<small>Use Space, Arrow Up, W, or tap Jump.</small>";
+        message.classList.remove("hidden");
+        updateHud();
+        stage.focus();
+      }
+
+      function updateHud() {
+        scoreEl.textContent = Math.floor(state.score);
+        crystalsEl.textContent = state.crystals;
+        heartsEl.textContent = state.hearts;
+      }
+
+      function startGame() {
+        if (state.over) {
+          resetGame();
+        }
+        if (!state.running) {
+          state.running = true;
+          message.classList.add("hidden");
+          state.lastTime = performance.now();
+          requestAnimationFrame(loop);
+        }
+      }
+
+      function jump() {
+        if (!state.running) {
+          startGame();
+        }
+        if (state.heroY === 0 && !state.over) {
+          state.velocity = 720;
+        }
+      }
+
+      function spawn(type) {
+        const element = document.createElement("div");
+        element.className = type;
+        const startX = stage.clientWidth + 60;
+        world.appendChild(element);
+        state.entities.push({
+          type,
+          element,
+          x: startX,
+          collected: false
+        });
+      }
+
+      function rectsOverlap(a, b) {
+        return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+      }
+
+      function takeHit(entity) {
+        entity.collected = true;
+        entity.element.remove();
+        state.hearts -= 1;
+        if (state.hearts <= 0) {
+          endGame();
+        }
+      }
+
+      function collectCrystal(entity) {
+        entity.collected = true;
+        entity.element.remove();
+        state.crystals += 1;
+        state.score += 75;
+      }
+
+      function endGame() {
+        state.running = false;
+        state.over = true;
+        message.innerHTML = `Quest over - Score ${Math.floor(state.score)}<small>Press Space or Restart to play again.</small>`;
+        message.classList.remove("hidden");
+      }
+
+      function loop(time) {
+        if (!state.running) return;
+
+        const delta = Math.min((time - state.lastTime) / 1000, 0.035);
+        state.lastTime = time;
+        state.score += delta * 14;
+        state.speed += delta * 5;
+
+        state.velocity -= 1900 * delta;
+        state.heroY = Math.max(0, state.heroY + state.velocity * delta);
+        if (state.heroY === 0 && state.velocity < 0) {
+          state.velocity = 0;
+        }
+        hero.style.setProperty("--hero-y", `${-state.heroY}px`);
+
+        state.obstacleTimer -= delta * 1000;
+        state.crystalTimer -= delta * 1000;
+        if (state.obstacleTimer <= 0) {
+          spawn("obstacle");
+          state.obstacleTimer = 950 + Math.random() * 760;
+        }
+        if (state.crystalTimer <= 0) {
+          spawn("crystal");
+          state.crystalTimer = 1400 + Math.random() * 1200;
+        }
+
+        const heroBox = hero.getBoundingClientRect();
+        state.entities.forEach((entity) => {
+          entity.x -= state.speed * delta;
+          entity.element.style.left = `${entity.x}px`;
+
+          const box = entity.element.getBoundingClientRect();
+          if (!entity.collected && rectsOverlap(heroBox, box)) {
+            if (entity.type === "crystal") {
+              collectCrystal(entity);
+            } else {
+              takeHit(entity);
+            }
+          }
+        });
+
+        state.entities = state.entities.filter((entity) => {
+          if (entity.collected) return false;
+          if (entity.x < -80) {
+            entity.element.remove();
+            return false;
+          }
+          return true;
+        });
+
+        updateHud();
+        requestAnimationFrame(loop);
+      }
+
+      document.addEventListener("keydown", (event) => {
+        if (["Space", "ArrowUp", "KeyW"].includes(event.code)) {
+          event.preventDefault();
+          jump();
+        }
+      });
+
+      stage.addEventListener("pointerdown", jump);
+      jumpButton.addEventListener("click", jump);
+      restartButton.addEventListener("click", resetGame);
+
+      resetGame();
+    </script>
+  </body>
+</html>

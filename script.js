@@ -128,8 +128,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector('[data-header]');
   const navLinks = document.querySelectorAll('.nav-link');
   
+  const rocket = document.querySelector('.rocket-float');
+
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 60);
+    if (rocket) {
+      const offset = Math.min(window.scrollY * 0.45, 220);
+      rocket.style.setProperty('--rocket-offset', `${offset}px`);
+    }
   });
 
   const sectionObserver = new IntersectionObserver((entries) => {
@@ -208,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { text: "> Loading sense of humor... 100%", class: "term-success", speed: 20, delayAfter: 300 },
     { text: "> Compiling CSS... Failed. Just kidding.", class: "term-log", speed: 20, delayAfter: 800 },
     { text: "Hello. I'm Samukelo Ricardo Ngozo.", class: "term-p", speed: 50, delayAfter: 400 },
-    { text: "I am a full-stack web developer who builds responsive interfaces.", class: "term-p", speed: 30, delayAfter: 0 }
+    { text: "I am a developer building interactive experiences and working toward game programming.", class: "term-p", speed: 30, delayAfter: 0 }
   ];
 
   async function typeLine(lineObj) {
