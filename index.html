@@ -70,8 +70,9 @@
     <a href="./assets/docs/Ricardo_Ngozo_CV.pdf"
         target="_blank"
         rel="noopener noreferrer"
-        class="cv-floating-btn">
-        📄 View CV
+        class="cv-floating-btn cv-glow">
+        <span class="cv-pulse"></span>
+        📄 VIEW CV
       </a>
 
     <main>
@@ -249,12 +250,12 @@
 <section id="archive" class="project-archive-section">
   <div class="section-header reveal-element" data-reveal>
     <h2>Archive Vault.</h2>
-    <p>Secondary builds and older interfaces kept in a stacked gallery, flipping automatically to stay dynamic without cluttering the main showcase.</p>
+    <p>Secondary builds and explorations kept in an interactive gallery. Click cards to flip between projects in real-time—each showcasing a different approach to UI, interaction, and design.</p>
   </div>
 
   <div class="archive-grid">
     <div class="archive-stack reveal-element" data-reveal>
-      <div class="archive-card" data-id="ihub-prototype" data-title="iHub Prototype" data-category="Group Prototype" data-description="A collaborative education hub prototype focused on onboarding flows, modular dashboards, and polished responsive UI." data-live="https://giftmshengu250-pixel.github.io/Ihub-Prototype75/" data-code="#" style="--i:0;">
+      <div class="archive-card archive-active" data-id="ihub-prototype" data-title="iHub Prototype" data-category="Group Prototype" data-description="A collaborative education hub prototype focused on onboarding flows, modular dashboards, and polished responsive UI." data-live="https://giftmshengu250-pixel.github.io/Ihub-Prototype75/" data-code="#" style="--i:0;">
         <img src="./assets/images/iHub Prototype.png" alt="iHub Prototype screenshot" loading="lazy" />
         <span class="archive-label">iHub Prototype</span>
       </div>
@@ -273,30 +274,48 @@
     </div>
 
     <div class="archive-copy reveal-element" data-reveal>
-      <h3>Four archived builds in one stack</h3>
-      <p>This section is purposefully lower priority — it keeps the main case studies sleek while still letting visitors glimpse a deeper archive of work through a single project preview.</p>
-      <ul>
-        <li>Silent project vault</li>
-        <li>One image at a time</li>
-        <li>Next/previous project switch</li>
-      </ul>
+      <h3>Stacked Discovery</h3>
+      <p>Each card in the archive represents a different facet of my work—from education platforms to social networks, from interactive puzzles to productivity tools. Rather than a flat list, they stack dynamically, revealing one project at a time while keeping the others visible below. This creates visual depth and encourages exploration.</p>
+      <div class="archive-features">
+        <div class="feature-item">
+          <span class="feature-icon">🎨</span>
+          <div>
+            <h4>Visual Exploration</h4>
+            <p>Each card shows a unique visual approach</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🔄</span>
+          <div>
+            <h4>Interactive Flipping</h4>
+            <p>Click to navigate through archived work</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📌</span>
+          <div>
+            <h4>Live & Source Links</h4>
+            <p>Access both deployed and source code</p>
+          </div>
+        </div>
+      </div>
       <div class="archive-panel">
         <div class="archive-details">
-          <span class="archive-selected-label">Selected Project</span>
-          <span class="archive-category">Archived Build</span>
-          <h4 class="archive-title">Design Concept</h4>
-          <p class="archive-description">A mood-driven UI study built to explore layered glass textures and bold typography.</p>
+          <span class="archive-selected-label">Archive Project</span>
+          <span class="archive-category">Selected Build</span>
+          <h4 class="archive-title">iHub Prototype</h4>
+          <p class="archive-description">A collaborative education hub prototype focused on onboarding flows, modular dashboards, and polished responsive UI.</p>
         </div>
         <div class="archive-actions">
-          <a href="#" class="glass-btn primary archive-live" target="_blank" rel="noreferrer">View Live</a>
+          <a href="https://giftmshengu250-pixel.github.io/Ihub-Prototype75/" class="glass-btn primary archive-live" target="_blank" rel="noreferrer">View Live</a>
           <a href="#" class="glass-btn secondary archive-code" target="_blank" rel="noreferrer">View Code</a>
         </div>
         <div class="archive-controls">
-          <button type="button" class="control-btn prev">Previous</button>
-          <button type="button" class="control-btn next">Next</button>
+          <button type="button" class="control-btn prev" aria-label="Previous project">← Previous</button>
+          <button type="button" class="control-btn next" aria-label="Next project">Next →</button>
         </div>
       </div>
-      <p class="archive-note">Tap a card to lock its details, then use the links to open the live preview or source code.</p>
+      <p class="archive-note">💡 Tap or click a card to see its details and links update in real-time.</p>
     </div>
   </div>
 </section>
