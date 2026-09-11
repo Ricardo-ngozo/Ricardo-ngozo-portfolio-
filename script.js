@@ -816,15 +816,15 @@ document.querySelectorAll('a[href]').forEach((link) => {
   link.insertAdjacentHTML('afterbegin', icons[name]);
 });
 
-const journeyPath = document.querySelector('.journey-path');
-if (journeyPath) {
-  const journeyObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add('is-active');
-    });
-  }, { threshold: 0.35 });
-  journeyObserver.observe(journeyPath);
-}
+  const journeyPath = document.querySelector('.journey-path, .journey-timeline');
+  if (journeyPath) {
+    const journeyObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('is-active');
+      });
+    }, { threshold: 0.25 });
+    journeyObserver.observe(journeyPath);
+  }
 
 const ticGame = document.querySelector('[data-tic-game]');
 if (ticGame) {

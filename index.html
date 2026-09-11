@@ -142,23 +142,6 @@
   </a>
 </section>
       
-      <section id="about" class="about-section">
-  <div class="terminal-container reveal-element" data-terminal>
-    <div class="terminal-header">
-      <div class="terminal-buttons">
-        <span class="btn close"></span>
-        <span class="btn minimize"></span>
-        <span class="btn maximize"></span>
-      </div>
-      <div class="terminal-title">ricardo@portfolio: ~/about</div>
-    </div>
-    <div class="terminal-body">
-      <div id="terminal-content"></div>
-      <span class="terminal-cursor" id="terminal-cursor">_</span>
-    </div>
-  </div>
-</section>
-
       <section id="stack" class="stack-section">
   <div class="stack-header reveal-element" data-reveal>
     <h2>The Arsenal.</h2>
@@ -186,93 +169,103 @@
       <section id="projects" class="projects-section">
   <div class="section-header reveal-element" data-reveal>
     <h2>Featured Work.</h2>
-    <p>Selected projects that reflect my focus on interactive logic, polished UI, and game-minded development as both a game developer and a fullstack developer.</p>
+    <p>Selected projects — each one a different problem, a different solution.</p>
   </div>
 
-  <div class="projects-container">
-    <div class="project-row reveal-element" data-reveal>
-      <figure class="project-visual" data-tilt>
-        <div class="glass-overlay"></div>
-        <img src="./assets/images/lourve.png" alt="Urban Threads preview placeholder" class="project-img" loading="lazy" />
-        <figcaption class="project-caption">Urban Threads is a polished storefront concept with a strong visual identity.</figcaption>
-      </figure>
-      <div class="project-info">
-        <span class="project-eyebrow">E-commerce UI</span>
+  <div class="fw-grid">
+
+    <article class="fw-card fw-card-hero reveal-element" data-reveal data-tilt>
+      <div class="fw-card-img">
+        <img src="./assets/images/lourve.png" alt="Urban Threads" loading="lazy" />
+        <div class="fw-card-shine"></div>
+      </div>
+      <div class="fw-card-content">
+        <div class="fw-card-top">
+          <span class="fw-tag">E-commerce UI</span>
+          <span class="fw-year">2025</span>
+        </div>
         <h3>Urban Threads</h3>
-        <p>A clean fashion-inspired interface focused on product storytelling, modern layout, and conversion-friendly visuals.</p>
-        <div class="project-tech">
-          <span>React</span><span>UI Design</span><span>Landing Experience</span>
-        </div>
-        <div class="project-links">
-          <a href="https://lourve-reims.vercel.app/" class="glass-btn primary" target="_blank" rel="noreferrer">Live Demo</a>
-          <a href="https://github.com/Ricardo-ngozo/Lourve-reims.git" class="glass-btn secondary" target="_blank" rel="noreferrer">Source Code</a>
-          <a href="./urban-threads-case-study.html" class="glass-btn tertiary" aria-label="Read Urban Threads case study">Case Study</a>
+        <p>Fashion storefront with bold typography, product storytelling, and conversion-focused layout.</p>
+        <div class="fw-card-tech"><span>React</span><span>UI Design</span><span>Conversion UX</span></div>
+        <div class="fw-card-links">
+          <a href="https://lourve-reims.vercel.app/" target="_blank" rel="noreferrer" class="fw-btn-live">Live ↗</a>
+          <a href="./urban-threads-case-study.html" class="fw-btn-case">Case Study</a>
+          <a href="https://github.com/Ricardo-ngozo/Lourve-reims.git" target="_blank" rel="noreferrer" class="fw-btn-gh" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
+          </a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="project-row reveal-element" data-reveal>
-      <figure class="project-visual" data-tilt>
-        <div class="glass-overlay"></div>
-        <img src="./assets/images/the zone (1).png" alt="Anime List preview placeholder" class="project-img" loading="lazy" />
-        <figcaption class="project-caption">Anime List highlights discoverability and smooth browsing for media collections.</figcaption>
-      </figure>
-      <div class="project-info">
-        <span class="project-eyebrow">Content Catalog</span>
+    <article class="fw-card reveal-element" data-reveal data-tilt style="--fw-delay:80ms">
+      <div class="fw-card-img">
+        <img src="./assets/images/the zone (1).png" alt="Anime List" loading="lazy" />
+        <div class="fw-card-shine"></div>
+      </div>
+      <div class="fw-card-content">
+        <div class="fw-card-top">
+          <span class="fw-tag">Content Catalog</span>
+          <span class="fw-year">2025</span>
+        </div>
         <h3>Anime List</h3>
-        <p>A compact media directory built around intuitive browsing, cards, and a focused content-first experience.</p>
-        <div class="project-tech">
-          <span>JavaScript</span><span>Responsive UI</span><span>Catalog Layout</span>
-        </div>
-        <div class="project-links">
-          <a href="https://the-zone-anime-weather.vercel.app/" class="glass-btn primary" target="_blank" rel="noreferrer">Live Demo</a>
-          <a href="https://github.com/Ricardo-ngozo/Anime.list.git" class="glass-btn secondary" target="_blank" rel="noreferrer">Source Code</a>
-          <a href="./anime-list-case-study.html" class="glass-btn tertiary" aria-label="Read Anime List case study">Case Study</a>
+        <p>Live API-driven catalog with real-time filtering and a content-first card browsing experience.</p>
+        <div class="fw-card-tech"><span>JavaScript</span><span>Fetch API</span><span>Responsive</span></div>
+        <div class="fw-card-links">
+          <a href="https://the-zone-anime-weather.vercel.app/" target="_blank" rel="noreferrer" class="fw-btn-live">Live ↗</a>
+          <a href="./anime-list-case-study.html" class="fw-btn-case">Case Study</a>
+          <a href="https://github.com/Ricardo-ngozo/Anime.list.git" target="_blank" rel="noreferrer" class="fw-btn-gh" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
+          </a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="project-row reveal-element" data-reveal>
-      <figure class="project-visual" data-tilt>
-        <div class="glass-overlay"></div>
-        <img src="./assets/images/fm.png" alt="Game UI Setup preview placeholder" class="project-img" loading="lazy" />
-        <figcaption class="project-caption">Game UI Setup focuses on layered interface design and interactive components.</figcaption>
-      </figure>
-      <div class="project-info">
-        <span class="project-eyebrow">UI System</span>
+    <article class="fw-card reveal-element" data-reveal data-tilt style="--fw-delay:160ms">
+      <div class="fw-card-img">
+        <img src="./assets/images/fm.png" alt="Game UI Setup" loading="lazy" />
+        <div class="fw-card-shine"></div>
+      </div>
+      <div class="fw-card-content">
+        <div class="fw-card-top">
+          <span class="fw-tag fw-tag-purple">UI System</span>
+          <span class="fw-year">2025</span>
+        </div>
         <h3>Game UI Setup</h3>
-        <p>A component-driven interface concept built to feel immersive, modern, and easy to navigate.</p>
-        <div class="project-tech">
-          <span>React</span><span>UI Components</span><span>Design System</span>
-        </div>
-        <div class="project-links">
-          <a href="https://fm-react-eight.vercel.app/" class="glass-btn primary" target="_blank" rel="noreferrer">Live Demo</a>
-          <a href="https://github.com/Ricardo-ngozo/react.git" class="glass-btn secondary" target="_blank" rel="noreferrer">Source Code</a>
-          <a href="./game-ui-setup-case-study.html" class="glass-btn tertiary" aria-label="Read Game UI Setup case study">Case Study</a>
+        <p>React component system designed around game UI principles — layered panels, stat blocks, and animated states.</p>
+        <div class="fw-card-tech"><span>React</span><span>Components</span><span>Design System</span></div>
+        <div class="fw-card-links">
+          <a href="https://fm-react-eight.vercel.app/" target="_blank" rel="noreferrer" class="fw-btn-live">Live ↗</a>
+          <a href="./game-ui-setup-case-study.html" class="fw-btn-case">Case Study</a>
+          <a href="https://github.com/Ricardo-ngozo/react.git" target="_blank" rel="noreferrer" class="fw-btn-gh" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
+          </a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="project-row reveal-element" data-reveal>
-      <figure class="project-visual" data-tilt>
-        <div class="glass-overlay"></div>
-        <img src="./assets/images/tic tac toe.png" alt="Tic-Tac-Toe preview placeholder" class="project-img" loading="lazy" />
-        <figcaption class="project-caption">Tic-Tac-Toe is a polished mini-game experience with fun interaction and responsive play.</figcaption>
-      </figure>
-      <div class="project-info">
-        <span class="project-eyebrow">Mini Game</span>
-        <h3>Tic-Tac-Toe</h3>
-        <p>A responsive, lightweight game experience designed to feel playful while staying simple and fast.</p>
-        <div class="project-tech">
-          <span>JavaScript</span><span>Gameplay</span><span>Responsive UI</span>
+    <article class="fw-card reveal-element" data-reveal data-tilt style="--fw-delay:240ms">
+      <div class="fw-card-img">
+        <img src="./assets/images/tic tac toe.png" alt="Tic-Tac-Toe" loading="lazy" />
+        <div class="fw-card-shine"></div>
+      </div>
+      <div class="fw-card-content">
+        <div class="fw-card-top">
+          <span class="fw-tag fw-tag-green">Mini Game</span>
+          <span class="fw-year">2025</span>
         </div>
-        <div class="project-links">
-          <a href="https://tic-tac-toe-srt-75.vercel.app/" class="glass-btn primary" target="_blank" rel="noreferrer">Live Demo</a>
-          <a href="https://github.com/Ricardo-ngozo/Tic-tac-toe.git" class="glass-btn secondary" target="_blank" rel="noreferrer">Source Code</a>
-          <a href="./tic-tac-toe-case-study.html" class="glass-btn tertiary" aria-label="Read Tic-Tac-Toe case study">Case Study</a>
+        <h3>Tic-Tac-Toe</h3>
+        <p>Vanilla JS game with clean state architecture, win detection, and smooth interaction — no framework.</p>
+        <div class="fw-card-tech"><span>JavaScript</span><span>Game Logic</span><span>State</span></div>
+        <div class="fw-card-links">
+          <a href="https://tic-tac-toe-srt-75.vercel.app/" target="_blank" rel="noreferrer" class="fw-btn-live">Play ↗</a>
+          <a href="./tic-tac-toe-case-study.html" class="fw-btn-case">Case Study</a>
+          <a href="https://github.com/Ricardo-ngozo/Tic-tac-toe.git" target="_blank" rel="noreferrer" class="fw-btn-gh" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
+          </a>
         </div>
       </div>
-    </div>
+    </article>
+
   </div>
 </section>
 
@@ -385,131 +378,148 @@
 <section id="journey" class="journey-section">
   <div class="section-header reveal-element" data-reveal>
     <h2>My Journey</h2>
-    <p>A living graph of where I started, how I grew as a fullstack developer, and how I am building toward becoming a game developer.</p>
+    <p>Where I started, who I am, where I'm going.</p>
   </div>
 
-  <div class="journey-path reveal-element" data-reveal>
-    <div class="journey-line" aria-hidden="true"><span></span></div>
-    <article class="journey-node">
-      <span class="journey-icon" data-icon="spark"></span>
-      <p class="journey-label">Who I Was</p>
-      <h3>Beginner with a big curiosity</h3>
-      <div class="journey-tags"><span>Curious</span><span>Learning fundamentals</span><span>First projects</span></div>
-    </article>
-    <article class="journey-node">
-      <span class="journey-icon" data-icon="code"></span>
-      <p class="journey-label">Who I Am</p>
-      <h3>Fullstack Developer & Game Developer</h3>
-      <div class="journey-tags"><span>Problem Solver</span><span>Project Builder</span><span>Responsive UI</span><span>Gameplay Logic</span></div>
-    </article>
-    <article class="journey-node">
-      <span class="journey-icon" data-icon="rocket"></span>
-      <p class="journey-label">Who I Want To Become</p>
-      <h3>Engineer, AI builder, founder</h3>
-      <div class="journey-tags"><span>Software Engineer</span><span>AI Engineer</span><span>Tech Entrepreneur</span></div>
-    </article>
+  <div class="journey-timeline reveal-element" data-reveal>
+    <div class="jt-line" aria-hidden="true"><span></span></div>
+
+    <div class="jt-item jt-left">
+      <div class="jt-dot jt-dot-past"></div>
+      <div class="jt-card">
+        <p class="jt-label">2024 — Start</p>
+        <h3>The Spark</h3>
+        <p>Zero experience, infinite curiosity. First HTML file. First bug. First obsession.</p>
+        <div class="jt-tags"><span>HTML</span><span>CSS</span><span>Curiosity</span></div>
+      </div>
+    </div>
+
+    <div class="jt-item jt-right">
+      <div class="jt-dot jt-dot-now"></div>
+      <div class="jt-card jt-card-active">
+        <p class="jt-label">Now — Building</p>
+        <h3>Fullstack + Game Developer</h3>
+        <p>Shipping real projects. React, Node, JS, APIs. Gameplay logic. Design systems. Getting hired.</p>
+        <div class="jt-tags"><span>React</span><span>Node.js</span><span>Game Logic</span><span>Responsive UI</span></div>
+      </div>
+    </div>
+
+    <div class="jt-item jt-left">
+      <div class="jt-dot jt-dot-future"></div>
+      <div class="jt-card jt-card-future">
+        <p class="jt-label">Future — Engineering</p>
+        <h3>Software Engineer · AI Builder · Founder</h3>
+        <p>Building products that matter. AI-powered tools. Game engines. Systems at scale.</p>
+        <div class="jt-tags"><span>AI Engineering</span><span>Game Dev</span><span>Tech Founder</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="certifications" class="certifications-section">
   <div class="section-header reveal-element" data-reveal>
     <h2>Certifications</h2>
-    <p>Compact proof of the skills I am building and sharpening.</p>
+    <p>Proof of the foundations I've locked in.</p>
   </div>
-  <div class="cert-grid">
-    <article class="cert-card reveal-element" data-reveal>
-      <div class="cert-image"><img src="./assets/images/css certificate.png" alt="Certificate placeholder" loading="lazy" /></div>
-      <h3>CSS Fundamentals</h3>
-      <p>Zaio</p>
+  <div class="cert-strip">
+    <article class="cert-tile reveal-element" data-reveal>
+      <div class="cert-tile-img"><img src="./assets/images/html certificate.png" alt="HTML Certificate" loading="lazy" /></div>
+      <div class="cert-tile-info">
+        <span class="cert-tile-issuer">Zaio</span>
+        <h3>HTML Fundamentals</h3>
+        <span class="cert-tile-badge">Verified ✓</span>
+      </div>
     </article>
-    <article class="cert-card reveal-element" data-reveal>
-      <div class="cert-image"><img src="./assets/images/javascript certificate.png" alt="Certificate placeholder" loading="lazy" /></div>
-      <h3>JavaScript Essentials</h3>
-      <p>Zaio</p>
-      
+    <article class="cert-tile reveal-element" data-reveal style="transition-delay:60ms">
+      <div class="cert-tile-img"><img src="./assets/images/css certificate.png" alt="CSS Certificate" loading="lazy" /></div>
+      <div class="cert-tile-info">
+        <span class="cert-tile-issuer">Zaio</span>
+        <h3>CSS Fundamentals</h3>
+        <span class="cert-tile-badge">Verified ✓</span>
+      </div>
     </article>
-    <article class="cert-card reveal-element" data-reveal>
-      <div class="cert-image"><img src="./assets/images/git certificate.png" alt="Certificate placeholder" loading="lazy" /></div>
-      <h3>Git and GitHub</h3>
-      <p>Zaio</p>
-      
+    <article class="cert-tile reveal-element" data-reveal style="transition-delay:120ms">
+      <div class="cert-tile-img"><img src="./assets/images/javascript certificate.png" alt="JavaScript Certificate" loading="lazy" /></div>
+      <div class="cert-tile-info">
+        <span class="cert-tile-issuer">Zaio</span>
+        <h3>JavaScript Essentials</h3>
+        <span class="cert-tile-badge">Verified ✓</span>
+      </div>
     </article>
-    <article class="cert-card reveal-element" data-reveal>
-      <div class="cert-image"><img src="./assets/images/html certificate.png" alt="Certificate placeholder" loading="lazy" /></div>
-      <h3>HTML Fundamentals</h3>
-      <p>Zaio</p>
-      
+    <article class="cert-tile reveal-element" data-reveal style="transition-delay:180ms">
+      <div class="cert-tile-img"><img src="./assets/images/git certificate.png" alt="Git Certificate" loading="lazy" /></div>
+      <div class="cert-tile-info">
+        <span class="cert-tile-issuer">Zaio</span>
+        <h3>Git &amp; GitHub</h3>
+        <span class="cert-tile-badge">Verified ✓</span>
+      </div>
     </article>
   </div>
 </section>
 
 <section id="why-me" class="why-me-section">
   <div class="section-header reveal-element" data-reveal>
-    <h2>Why Choose Me</h2>
-    <p>Focused on building interactive experiences and growing steadily as both a game developer and a fullstack developer.</p>
+    <h2>Why Me</h2>
+    <p>Not just skills — mindset, availability, and drive.</p>
   </div>
-  <div class="why-grid">
-    <article class="featured-project-card featured-game-card reveal-element" data-reveal>
-      <div class="featured-game-frame">
-        <iframe src="./mini-quest-runner/index.html" title="Mini Quest Runner playable game" loading="lazy"></iframe>
+  <div class="why-bento">
+    <!-- Big game card -->
+    <article class="wb-game reveal-element" data-reveal>
+      <div class="wb-game-frame">
+        <iframe src="./mini-quest-runner/index.html" title="Mini Quest Runner — play now" loading="lazy"></iframe>
       </div>
-      <div>
-        <span class="project-eyebrow">Featured Project</span>
+      <div class="wb-game-info">
+        <span class="fw-tag fw-tag-green">Playable · Built by me</span>
         <h3>Mini Quest Runner</h3>
-        <p>A playful, browser-based game built to showcase interactive JavaScript, motion, and polished UI in a way visitors can actually play.</p>
-        <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-        <a href="./mini-quest-runner/index.html" class="glass-btn primary" target="_blank" rel="noreferrer">Play Game</a>
+        <p>A full browser game I built from scratch. JS, collision, game loop, UI — all vanilla.</p>
+        <a href="./mini-quest-runner/index.html" target="_blank" rel="noreferrer" class="fw-btn-live">Play Now ↗</a>
       </div>
     </article>
-    <article class="why-card reveal-element" data-reveal>
-      <span class="why-icon" data-icon="remote"></span>
-      <h3>Remote Ready</h3>
-      <p>Remote available, comfortable with async workflows, and focused on strong communication.</p>
-    </article>
-    <article class="why-card reveal-element" data-reveal>
-      <span class="why-icon" data-icon="hire"></span>
-      <h3>Available to Hire</h3>
-      <p>Open to junior developer opportunities with immediate availability.</p>
-    </article>
-    <article class="why-card reveal-element" data-reveal>
-      <span class="why-icon" data-icon="learn"></span>
-      <h3>Always Learning</h3>
-      <p>Improving every week, solving problems, and adapting quickly to new technologies.</p>
-    </article>
-  </div>
-</section>
 
-<section id="tic-tac-toe" class="tic-section">
-  <div class="section-header reveal-element" data-reveal>
-    <h2>Tic Tac Toe</h2>
-    <p>A playable mini project embedded directly into the portfolio.</p>
-  </div>
-  <div class="tic-shell reveal-element" data-reveal>
-    <div class="tic-copy">
-      <span class="project-eyebrow">Embedded Project</span>
-      <h3>Play a quick round</h3>
-      <p>Responsive, isolated, and styled to feel native to the portfolio without interfering with the rest of the site.</p>
-      <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-      <div class="project-links">
-        <a href="#" class="glass-btn secondary" data-icon-link="github">GitHub</a>
-        <a href="#tic-tac-toe" class="glass-btn primary" data-icon-link="live">Live Demo</a>
+    <article class="wb-card reveal-element" data-reveal style="--wb-delay:60ms">
+      <div class="wb-icon">🌍</div>
+      <h3>Remote Ready</h3>
+      <p>Async workflows, strong communication, timezone flexible. Built for distributed teams.</p>
+    </article>
+
+    <article class="wb-card reveal-element" data-reveal style="--wb-delay:120ms">
+      <div class="wb-icon">⚡</div>
+      <h3>Available Now</h3>
+      <p>Immediate availability. Open to junior dev roles, internships, or freelance work.</p>
+    </article>
+
+    <article class="wb-card reveal-element" data-reveal style="--wb-delay:180ms">
+      <div class="wb-icon">🧠</div>
+      <h3>Always Levelling</h3>
+      <p>Shipping something new every week. Fast learner, problem-first mindset, no ego.</p>
+    </article>
+
+    <!-- Tic-Tac-Toe game embedded here -->
+    <article class="wb-ttt reveal-element" data-reveal style="--wb-delay:240ms">
+      <div class="wb-ttt-header">
+        <span class="fw-tag fw-tag-purple">Live Game · Embedded</span>
+        <h3>Tic-Tac-Toe</h3>
+        <p>State machine, win detection, zero dependencies. Two players — play a round right here.</p>
+        <a href="https://github.com/Ricardo-ngozo/Tic-tac-toe.git" target="_blank" rel="noreferrer" class="fw-btn-gh" aria-label="GitHub" style="width:fit-content; margin-top:4px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
+        </a>
       </div>
-    </div>
-    <div class="tic-game" data-tic-game>
-      <div class="tic-status" data-tic-status>X starts</div>
-      <div class="tic-board" role="grid" aria-label="Playable Tic Tac Toe board">
-        <button type="button" aria-label="Cell 1"></button>
-        <button type="button" aria-label="Cell 2"></button>
-        <button type="button" aria-label="Cell 3"></button>
-        <button type="button" aria-label="Cell 4"></button>
-        <button type="button" aria-label="Cell 5"></button>
-        <button type="button" aria-label="Cell 6"></button>
-        <button type="button" aria-label="Cell 7"></button>
-        <button type="button" aria-label="Cell 8"></button>
-        <button type="button" aria-label="Cell 9"></button>
+      <div class="wb-ttt-game" data-tic-game>
+        <div class="tic-status" data-tic-status>X starts — your move</div>
+        <div class="tic-board" role="grid" aria-label="Tic Tac Toe board">
+          <button type="button" aria-label="Cell 1"></button>
+          <button type="button" aria-label="Cell 2"></button>
+          <button type="button" aria-label="Cell 3"></button>
+          <button type="button" aria-label="Cell 4"></button>
+          <button type="button" aria-label="Cell 5"></button>
+          <button type="button" aria-label="Cell 6"></button>
+          <button type="button" aria-label="Cell 7"></button>
+          <button type="button" aria-label="Cell 8"></button>
+          <button type="button" aria-label="Cell 9"></button>
+        </div>
+        <button type="button" class="wb-reset-btn" data-tic-reset>↺ Reset</button>
       </div>
-      <button type="button" class="glass-btn secondary tic-reset" data-tic-reset>Reset Game</button>
-    </div>
+    </article>
   </div>
 </section>
 
