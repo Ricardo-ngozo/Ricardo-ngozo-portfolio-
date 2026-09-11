@@ -116,8 +116,8 @@
   background: rgba(16, 185, 129, 0.1);
 }
 
-/* CV button for personal page */
-.cv-btn {
+/* CV button for personal page — sits in nav, normal flow */
+.p-cv-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -130,18 +130,22 @@
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: #ffffff;
   box-shadow: 0 0 18px rgba(16, 185, 129, 0.35), 0 0 36px rgba(16, 185, 129, 0.15);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   white-space: nowrap;
   position: relative;
   overflow: hidden;
+  /* NOT fixed — lives inside the nav */
+  flex-shrink: 0;
 }
-.cv-btn svg {
+.p-cv-btn svg {
   width: 15px;
   height: 15px;
   fill: currentColor;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
-.cv-btn::before {
+.p-cv-btn::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -149,20 +153,12 @@
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.cv-btn:hover::before { opacity: 1; }
-.cv-btn:hover {
+.p-cv-btn:hover::before { opacity: 1; }
+.p-cv-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 0 28px rgba(16, 185, 129, 0.55), 0 0 56px rgba(16, 185, 129, 0.25), 0 8px 24px rgba(0,0,0,0.3);
 }
-.cv-btn span, .cv-btn svg { position: relative; z-index: 1; }
-
-/* Fixed CV button on index.html */
-.cv-btn:not(.p-cv-btn) {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 9999;
-}
+.p-cv-btn span { position: relative; z-index: 1; }
 
 /* ── Main ── */
 .p-main {
