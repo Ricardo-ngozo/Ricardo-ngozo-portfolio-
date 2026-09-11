@@ -3,32 +3,128 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anime List Case Study</title>
+    <meta name="description" content="Anime List case study by Ricardo Ngozo — a media catalog built around fast browsing, clean card design, and a content-first experience." />
+    <title>Anime List Case Study | Ricardo Ngozo</title>
+    <link rel="icon" type="image/png" href="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
-    <main class="case-study-section">
-      <a href="./index.html" class="glass-btn secondary">Back to portfolio</a>
+  <body data-page="case-study" class="is-loading">
+    <div class="site-loader" data-site-loader aria-live="polite" aria-label="Portfolio loading">
+      <div class="score" aria-hidden="true">
+        <div>P1 <span data-loader-score-left>0</span></div>
+        <div>P2 <span data-loader-score-right>0</span></div>
+      </div>
+      <canvas class="loader-pong" data-loader-pong aria-hidden="true"></canvas>
+      <div class="loader-overlay">
+        <p class="brand">Ricardo.</p>
+        <h1>Loading the portfolio...</h1>
+        <p>Enjoy a quick rally while things warm up.</p>
+        <div class="prompt" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+      </div>
+    </div>
+    <canvas class="ambient-canvas" aria-hidden="true"></canvas>
+    <header class="morph-header" data-header>
+      <div class="nav-container">
+        <a class="brand-mark" href="./index.html" aria-label="Back to Portfolio">
+          <span class="site-title">Ricardo.</span>
+        </a>
+        <nav class="pill-nav" aria-label="Primary navigation" data-nav>
+          <a href="./index.html" class="nav-link">← Portfolio</a>
+        </nav>
+      </div>
+    </header>
+    <main>
       <section class="case-study-hero">
         <div class="case-study-hero-copy">
-          <span class="case-meta">Case Study</span>
+          <span class="case-meta">Case Study — Content Catalog</span>
           <h1>Anime List</h1>
-          <p>A content-first catalog experience built to be easy to browse, visually clear, and simple to navigate.</p>
+          <p>A media catalog built around fast, intuitive browsing — giving anime fans a clean space to discover, filter, and track titles without friction.</p>
           <div class="case-study-tags">
             <span>JavaScript</span>
             <span>Responsive UI</span>
-            <span>Catalog Flow</span>
+            <span>API Integration</span>
+            <span>Catalog Layout</span>
           </div>
           <div class="case-study-actions">
-            <a href="https://the-zone-anime-weather.vercel.app/" class="glass-btn primary" target="_blank" rel="noreferrer">View Live</a>
-            <a href="https://github.com/Ricardo-ngozo/Anime.list.git" class="glass-btn secondary" target="_blank" rel="noreferrer">View Code</a>
+            <a href="./index.html#projects" class="glass-btn secondary" data-icon-link="portfolio">Back to Projects</a>
+            <a href="https://the-zone-anime-weather.vercel.app/" class="glass-btn primary" target="_blank" rel="noreferrer" data-icon-link="live">View Live</a>
+            <a href="https://github.com/Ricardo-ngozo/Anime.list.git" class="glass-btn tertiary" target="_blank" rel="noreferrer" data-icon-link="github">Source Code</a>
           </div>
         </div>
-        <div class="case-study-hero-visual">
-          <img src="./assets/images/image-placeholder.svg" alt="Anime List preview" />
-          <span>Visual placeholder ready for your own screenshot.</span>
+        <figure class="case-study-hero-visual">
+          <img src="./assets/images/the zone (1).png" alt="Anime List interface screenshot" />
+          <figcaption>Card-based catalog layout with fast browsing and clean content hierarchy.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-study-details">
+        <article class="case-block">
+          <h2>What was the brief?</h2>
+          <p>The goal was to build a media catalog where users could browse anime titles quickly, see key information at a glance, and enjoy the experience across any screen size.</p>
+          <p>The challenge was balancing information density with visual breathing room — a catalog that shows enough to make decisions without overwhelming the viewer. I also wanted the data to feel live, not static, which pushed me toward API integration.</p>
+        </article>
+
+        <article class="case-block">
+          <h2>What decisions did I make and why?</h2>
+          <ul>
+            <li><strong>Card-first layout:</strong> Each anime gets a consistent card with cover art, title, genre tags, and a rating — keeping scanning fast and predictable.</li>
+            <li><strong>API-driven data:</strong> Pulling real anime metadata from an external source keeps the catalog fresh and shows I can work with live data, not just hardcoded content.</li>
+            <li><strong>Filter and search logic:</strong> JavaScript-driven filtering lets users narrow results by genre or search by title without a page reload — keeping the experience snappy.</li>
+            <li><strong>Responsive grid:</strong> The card grid reflows from 4 columns on desktop to a single column on mobile, so the catalog is equally usable on a phone.</li>
+            <li><strong>Hover interactions:</strong> Subtle scale and overlay effects on card hover add depth without slowing the browsing experience.</li>
+          </ul>
+        </article>
+
+        <article class="case-block">
+          <h2>Tools, technologies, and what I learned</h2>
+          <div class="case-study-grid">
+            <div>
+              <h3>Stack used</h3>
+              <ul>
+                <li>Vanilla JavaScript (ES6+)</li>
+                <li>CSS Grid and Flexbox</li>
+                <li>Fetch API for data</li>
+                <li>Responsive design patterns</li>
+                <li>Vercel for deployment</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Key learnings</h3>
+              <ul>
+                <li>How to structure a real-time filter without a framework — pure DOM manipulation at scale.</li>
+                <li>The importance of skeleton loading states when API data takes time to arrive.</li>
+                <li>How to balance content density in a catalog so the grid never feels cluttered or too sparse.</li>
+                <li>Working with external API pagination and mapping the response into a consistent UI structure.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-block">
+          <h2>What would I do differently? What am I proud of?</h2>
+          <p>Given more time I would add user-side lists — favourites, watchlist, completed — backed by localStorage or a lightweight backend. Personalisation turns a catalog into a tool.</p>
+          <p>I'd also improve the search with fuzzy matching so minor spelling differences still return relevant results.</p>
+          <p>What I'm proud of is the filtering speed and the clean visual rhythm of the cards. The grid feels considered, not just thrown together, and the API integration works reliably even on slow connections.</p>
+        </article>
+      </section>
+
+      <section class="case-study-visuals">
+        <div class="visual-card">
+          <h3>Design thinking</h3>
+          <p>The catalog deliberately keeps navigation minimal — the grid is the interface. Color accents are reserved for genre tags and ratings so they pop without competing with the cover art.</p>
         </div>
+        <figure class="visual-card image-card">
+          <img src="./assets/images/the zone (1).png" alt="Anime List card grid detail" loading="lazy" />
+          <figcaption>Card grid showing genre tags, cover art, and responsive column layout.</figcaption>
+        </figure>
       </section>
     </main>
+    <script src="./script.js"></script>
+    <script src="./cursor.js"></script>
   </body>
 </html>

@@ -3,32 +3,128 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Urban Threads Case Study</title>
+    <meta name="description" content="Urban Threads case study by Ricardo Ngozo — a fashion-forward e-commerce landing experience built in React around product storytelling and conversion." />
+    <title>Urban Threads Case Study | Ricardo Ngozo</title>
+    <link rel="icon" type="image/png" href="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
-    <main class="case-study-section">
-      <a href="./index.html" class="glass-btn secondary">Back to portfolio</a>
+  <body data-page="case-study" class="is-loading">
+    <div class="site-loader" data-site-loader aria-live="polite" aria-label="Portfolio loading">
+      <div class="score" aria-hidden="true">
+        <div>P1 <span data-loader-score-left>0</span></div>
+        <div>P2 <span data-loader-score-right>0</span></div>
+      </div>
+      <canvas class="loader-pong" data-loader-pong aria-hidden="true"></canvas>
+      <div class="loader-overlay">
+        <p class="brand">Ricardo.</p>
+        <h1>Loading the portfolio...</h1>
+        <p>Enjoy a quick rally while things warm up.</p>
+        <div class="prompt" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+      </div>
+    </div>
+    <canvas class="ambient-canvas" aria-hidden="true"></canvas>
+    <header class="morph-header" data-header>
+      <div class="nav-container">
+        <a class="brand-mark" href="./index.html" aria-label="Back to Portfolio">
+          <span class="site-title">Ricardo.</span>
+        </a>
+        <nav class="pill-nav" aria-label="Primary navigation" data-nav>
+          <a href="./index.html" class="nav-link">← Portfolio</a>
+        </nav>
+      </div>
+    </header>
+    <main>
       <section class="case-study-hero">
         <div class="case-study-hero-copy">
-          <span class="case-meta">Case Study</span>
+          <span class="case-meta">Case Study — E-commerce UI</span>
           <h1>Urban Threads</h1>
-          <p>A fashion-forward landing experience built around clear product storytelling, immersive visuals, and a modern browsing flow.</p>
+          <p>A fashion-forward storefront concept that uses bold typography, full-bleed imagery, and a clean product grid to tell a brand story that converts.</p>
           <div class="case-study-tags">
             <span>React</span>
             <span>UI Design</span>
-            <span>Conversion Focus</span>
+            <span>E-commerce</span>
+            <span>Conversion UX</span>
           </div>
           <div class="case-study-actions">
-            <a href="https://lourve-reims.vercel.app/" class="glass-btn primary" target="_blank" rel="noreferrer">View Live</a>
-            <a href="https://github.com/Ricardo-ngozo/Lourve-reims.git" class="glass-btn secondary" target="_blank" rel="noreferrer">View Code</a>
+            <a href="./index.html#projects" class="glass-btn secondary" data-icon-link="portfolio">Back to Projects</a>
+            <a href="https://lourve-reims.vercel.app/" class="glass-btn primary" target="_blank" rel="noreferrer" data-icon-link="live">View Live</a>
+            <a href="https://github.com/Ricardo-ngozo/Lourve-reims.git" class="glass-btn tertiary" target="_blank" rel="noreferrer" data-icon-link="github">Source Code</a>
           </div>
         </div>
-        <div class="case-study-hero-visual">
-          <img src="./assets/images/image-placeholder.svg" alt="Urban Threads preview" />
-          <span>Visual placeholder ready for your own screenshot.</span>
+        <figure class="case-study-hero-visual">
+          <img src="./assets/images/lourve.png" alt="Urban Threads storefront screenshot" />
+          <figcaption>Fashion landing page with bold hero, product grid, and brand-forward visual hierarchy.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-study-details">
+        <article class="case-block">
+          <h2>What was the brief?</h2>
+          <p>Urban Threads is a conceptual fashion brand project. The goal was to design and build a modern storefront landing page that felt like it belonged to a real premium streetwear label — strong brand identity, product showcase, and a path to purchase.</p>
+          <p>The design challenge was making the page feel editorial and aspirational while still being functional as a shopping experience. Fashion brands live or die on their visual identity, so the UI had to communicate the brand before a user reads a single word.</p>
+        </article>
+
+        <article class="case-block">
+          <h2>What decisions did I make and why?</h2>
+          <ul>
+            <li><strong>Full-bleed hero:</strong> The landing hero uses a full-viewport image with overlaid typography — putting the product front and center and immediately establishing the brand's visual language.</li>
+            <li><strong>Bold editorial typography:</strong> Large, confident headline text creates the fashion magazine feeling that streetwear brands rely on. It signals premium without needing luxury price tags.</li>
+            <li><strong>Product grid with hover states:</strong> Each product card reveals a secondary view on hover — showing an alternate angle or detail shot. This is a standard e-commerce pattern that increases engagement and reduces return rates.</li>
+            <li><strong>Minimal color palette:</strong> Black, white, and one accent color. This keeps the product imagery as the visual focus and prevents the UI from competing with the clothes.</li>
+            <li><strong>React component structure:</strong> Product cards, navigation, and layout sections are separate components — making it easy to swap in real product data from a headless CMS or Shopify API.</li>
+          </ul>
+        </article>
+
+        <article class="case-block">
+          <h2>Tools, technologies, and what I learned</h2>
+          <div class="case-study-grid">
+            <div>
+              <h3>Stack used</h3>
+              <ul>
+                <li>React (functional components)</li>
+                <li>CSS-in-JS for component styles</li>
+                <li>CSS Grid for product layout</li>
+                <li>Responsive images and art direction</li>
+                <li>Vercel for deployment</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Key learnings</h3>
+              <ul>
+                <li>How brand identity translates to UI decisions — every spacing choice, font weight, and color either supports or contradicts the brand voice.</li>
+                <li>E-commerce conversion patterns: what to put above the fold, how to sequence product information, and when to use a CTA versus letting the product speak.</li>
+                <li>How to build product card hover states that feel smooth and intentional rather than abrupt.</li>
+                <li>Image performance: large hero images need careful optimization — lazy loading, next-gen formats, and responsive srcset — to keep load times acceptable.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-block">
+          <h2>What would I do differently? What am I proud of?</h2>
+          <p>I would connect the product grid to a real headless CMS — Contentful or Sanity — so the catalog can be updated without touching the code. That's how production fashion sites actually work, and wiring it up would make this a genuinely deployable template.</p>
+          <p>I'd also add a cart interaction with a slide-in drawer, size selection, and local cart state — the core interaction loop of any real e-commerce experience.</p>
+          <p>I'm proud of the visual execution. The page has a real brand feel — it looks like a site a fashion label would actually ship. That came from making deliberate design decisions rather than just laying out content, and it showed me how much design thinking matters when you're building for an audience that judges by aesthetics first.</p>
+        </article>
+      </section>
+
+      <section class="case-study-visuals">
+        <div class="visual-card">
+          <h3>Brand-first design</h3>
+          <p>The layout hierarchy was built around the principle that the brand speaks before the product. Typography and image placement establish trust and aesthetic fit before the user consciously evaluates the clothes.</p>
         </div>
+        <figure class="visual-card image-card">
+          <img src="./assets/images/FASHION.jfif" alt="Urban Threads brand mood" loading="lazy" />
+          <figcaption>Fashion-forward visual language: bold crops, editorial spacing, and confident type.</figcaption>
+        </figure>
       </section>
     </main>
+    <script src="./script.js"></script>
+    <script src="./cursor.js"></script>
   </body>
 </html>

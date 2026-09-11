@@ -304,10 +304,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const drawLoaderPaddle = (x, y) => {
       const gradient = loaderCtx.createLinearGradient(x, y, x, y + paddleHeight);
-      gradient.addColorStop(0, '#38bdf8');
-      gradient.addColorStop(1, '#818cf8');
+      // Green paddles on personal page, cyan-purple on main
+      const isPersonal = document.body.classList.contains('personal-body') ||
+                         document.querySelector('.personal-loader') !== null;
+      if (isPersonal) {
+        gradient.addColorStop(0, '#10b981');
+        gradient.addColorStop(1, '#059669');
+        loaderCtx.shadowColor = 'rgba(16,185,129,0.6)';
+      } else {
+        gradient.addColorStop(0, '#38bdf8');
+        gradient.addColorStop(1, '#818cf8');
+        loaderCtx.shadowColor = 'rgba(56,189,248,0.55)';
+      }
       loaderCtx.fillStyle = gradient;
-      loaderCtx.shadowColor = 'rgba(56,189,248,0.55)';
       loaderCtx.shadowBlur = 14;
       loaderCtx.fillRect(x, y, paddleWidth, paddleHeight);
       loaderCtx.shadowBlur = 0;
@@ -315,7 +324,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const renderLoader = () => {
       loaderCtx.clearRect(0, 0, loaderWidth, loaderHeight);
-      loaderCtx.strokeStyle = 'rgba(255,255,255,0.08)';
+      const isPersonal = document.querySelector('.personal-loader') !== null;
+      loaderCtx.strokeStyle = isPersonal
+        ? 'rgba(16,185,129,0.12)'
+        : 'rgba(255,255,255,0.08)';
       loaderCtx.setLineDash([10, 14]);
       loaderCtx.beginPath();
       loaderCtx.moveTo(loaderWidth / 2, 0);
@@ -325,8 +337,10 @@ document.addEventListener("DOMContentLoaded", () => {
       drawLoaderPaddle(24, loaderLeftY);
       drawLoaderPaddle(loaderWidth - paddleWidth - 24, loaderRightY);
       loaderCtx.beginPath();
-      loaderCtx.fillStyle = '#ffffff';
-      loaderCtx.shadowColor = 'rgba(255,255,255,0.8)';
+      loaderCtx.fillStyle = isPersonal ? '#6ee7b7' : '#ffffff';
+      loaderCtx.shadowColor = isPersonal
+        ? 'rgba(110,231,183,0.8)'
+        : 'rgba(255,255,255,0.8)';
       loaderCtx.shadowBlur = 16;
       loaderCtx.arc(loaderBallX, loaderBallY, ballSize / 2, 0, Math.PI * 2);
       loaderCtx.fill();
@@ -474,8 +488,132 @@ document.addEventListener("DOMContentLoaded", () => {
   if (terminal) terminalObserver.observe(terminal);
 
   /* =========================================
-     4. STACK: Magnetic Effect & Reveal
+     3b. HERO: Typing subtitle + Code window
      ========================================= */
+  // Typing subtitle
+  const typedEl = document.getElementById('hero-typed');
+  if (typedEl) {
+    const phrases = [
+      'game experiences.',
+      'fullstack apps.',
+      'interactive UI.',
+      'clean systems.',
+      'things that ship.',
+    ];
+    let pIdx = 0, cIdx = 0, deleting = false;
+    const typeSpeed = 60, deleteSpeed = 35, pauseAfter = 1800, pauseBefore = 400;
+
+    const tick = () => {
+      const phrase = phrases[pIdx];
+      if (!deleting) {
+        typedEl.textContent = phrase.slice(0, ++cIdx);
+        if (cIdx === phrase.length) {
+          deleting = true;
+          setTimeout(tick, pauseAfter);
+          return;
+        }
+      } else {
+        typedEl.textContent = phrase.slice(0, --cIdx);
+        if (cIdx === 0) {
+          deleting = false;
+          pIdx = (pIdx + 1) % phrases.length;
+          setTimeout(tick, pauseBefore);
+          return;
+        }
+      }
+      setTimeout(tick, deleting ? deleteSpeed : typeSpeed);
+    };
+    setTimeout(tick, 900);
+  }
+
+  // Code window — typewriter with syntax highlighting
+  const codeDisplay = document.getElementById('hero-code-display');
+  if (codeDisplay) {
+    // Tokens: [cssClass, text]
+    const codeTokens = [
+      ['hcc-comment', '// Ricardo Ngozo — developer\n'],
+      ['hcc-keyword', 'const '],
+      ['hcc-fn',      'developer'],
+      ['hcc-punct',   ' = {\n'],
+      ['hcc-prop',    '  name'],
+      ['hcc-punct',   ': '],
+      ['hcc-str',     '"Samukelo Ricardo Ngozo"'],
+      ['hcc-punct',   ',\n'],
+      ['hcc-prop',    '  role'],
+      ['hcc-punct',   ': '],
+      ['hcc-str',     '"Fullstack + Game Dev"'],
+      ['hcc-punct',   ',\n'],
+      ['hcc-prop',    '  stack'],
+      ['hcc-punct',   ': ['],
+      ['hcc-str',     '"React"'],
+      ['hcc-punct',   ', '],
+      ['hcc-str',     '"Node"'],
+      ['hcc-punct',   ', '],
+      ['hcc-str',     '"JS"'],
+      ['hcc-punct',   '],\n'],
+      ['hcc-prop',    '  openTo'],
+      ['hcc-punct',   ': '],
+      ['hcc-str',     '"hire me"'],
+      ['hcc-punct',   ',\n'],
+      ['hcc-prop',    '  build'],
+      ['hcc-punct',   ': '],
+      ['hcc-keyword', 'async '],
+      ['hcc-punct',   '() => {\n'],
+      ['hcc-fn',      '    return '],
+      ['hcc-str',     '"something great"'],
+      ['hcc-punct',   ';\n'],
+      ['hcc-punct',   '  }\n'],
+      ['hcc-punct',   '};\n\n'],
+      ['hcc-fn',      'developer'],
+      ['hcc-punct',   '.'],
+      ['hcc-fn',      'build'],
+      ['hcc-punct',   '()'],
+      ['hcc-comment', ' // 🚀'],
+    ];
+
+    // Flatten tokens into characters with their class
+    const chars = [];
+    codeTokens.forEach(([cls, text]) => {
+      for (const ch of text) chars.push({ cls, ch });
+    });
+
+    // Build spans for each token, hidden initially
+    const spans = codeTokens.map(([cls, text]) => {
+      const s = document.createElement('span');
+      s.className = cls;
+      s.textContent = '';
+      codeDisplay.appendChild(s);
+      return { s, text, done: 0 };
+    });
+
+    // Cursor element
+    const cursorSpan = document.createElement('span');
+    cursorSpan.className = 'hcc-cursor';
+    codeDisplay.appendChild(cursorSpan);
+
+    // Typewriter: reveal chars one by one
+    let tIdx = 0; // token index
+    let cInTok = 0; // char index within token
+
+    const typeCode = () => {
+      if (tIdx >= spans.length) return; // done
+
+      const tok = spans[tIdx];
+      if (cInTok < tok.text.length) {
+        tok.s.textContent += tok.text[cInTok];
+        cInTok++;
+        setTimeout(typeCode, tok.text[cInTok - 1] === '\n' ? 55 : 28);
+      } else {
+        tIdx++;
+        cInTok = 0;
+        setTimeout(typeCode, tIdx === spans.length ? 0 : 8);
+      }
+    };
+
+    // Start after loader finishes (~1.4s)
+    setTimeout(typeCode, 1500);
+  }
+
   document.querySelectorAll('[data-magnet]').forEach(magnet => {
     magnet.addEventListener('mousemove', (e) => {
       magnet.classList.remove('release');

@@ -57,7 +57,7 @@
           <a href="#stack" class="nav-link" data-section="stack">Stack</a>
           <a href="#projects" class="nav-link" data-section="projects">Projects</a>
           <a href="#contact" class="nav-link" data-section="contact">Contact</a>
-          <a href="./personal.html" class="nav-link">Personal</a>
+          <a href="./personal.html" class="nav-link nav-link-personal">Personal</a>
         </nav>
 
         <button class="mobile-toggle" type="button" aria-label="Open menu" data-menu-toggle>
@@ -78,20 +78,67 @@
 
     <main>
 <section id="home" class="hero-section">
-  <div class="hero-content">
-    <div class="pixel-avatar-container">
-      <img src="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" alt="Ricardo 8-bit Avatar" class="pixel-avatar" />
-    </div>
-    <h1 class="hero-title">Ricardo.</h1>
-    <h2 class="hero-subtitle">Game Developer & Fullstack Developer.</h2>
-    <p class="hero-tagline">Building interactive systems, immersive experiences, and a future in game development while growing as a fullstack developer.</p>
+  <!-- Floating code snippets background -->
+  <div class="hero-bg-code" aria-hidden="true">
+    <span class="hbc hbc-1">const build = () =&gt; {</span>
+    <span class="hbc hbc-2">  return future;</span>
+    <span class="hbc hbc-3">};</span>
+    <span class="hbc hbc-4">import React from 'react';</span>
+    <span class="hbc hbc-5">addEventListener('click', play);</span>
+    <span class="hbc hbc-6">git commit -m "ship it"</span>
+    <span class="hbc hbc-7">npm run dev</span>
+    <span class="hbc hbc-8">export default App;</span>
   </div>
-  
-  <!-- Glowing Scroll Indicator -->
-  <a href="#about" class="scroll-indicator" aria-label="Scroll down to About section">
-    <div class="mouse">
-      <div class="wheel"></div>
+
+  <div class="hero-layout">
+    <!-- Left: main identity -->
+    <div class="hero-identity">
+      <div class="hero-badge-row">
+        <span class="hero-badge">
+          <span class="hero-badge-dot"></span>Available to hire
+        </span>
+        <span class="hero-badge hero-badge-alt">Fullstack · Game Dev · AI</span>
+      </div>
+
+      <div class="pixel-avatar-container">
+        <img src="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" alt="Ricardo avatar" class="pixel-avatar" />
+      </div>
+
+      <h1 class="hero-title">Ricardo.</h1>
+
+      <h2 class="hero-subtitle">
+        <span class="hero-subtitle-static">I build </span><span class="hero-subtitle-typed" id="hero-typed"></span><span class="hero-cursor-blink">|</span>
+      </h2>
+
+      <p class="hero-tagline">Building interactive systems, immersive experiences, and a future in game development while growing as a fullstack developer.</p>
+
+      <div class="hero-cta-row">
+        <a href="#projects" class="hero-cta-primary">See the work</a>
+        <a href="#about" class="hero-cta-secondary">Who I am</a>
+      </div>
     </div>
+
+    <!-- Right: animated code window -->
+    <div class="hero-code-window" aria-hidden="true">
+      <div class="hcw-header">
+        <span class="hcw-btn hcw-close"></span>
+        <span class="hcw-btn hcw-min"></span>
+        <span class="hcw-btn hcw-max"></span>
+        <span class="hcw-title">ricardo.js</span>
+      </div>
+      <div class="hcw-body">
+        <pre class="hcw-code" id="hero-code-display"></pre>
+      </div>
+      <div class="hcw-footer">
+        <span class="hcw-lang">JavaScript</span>
+        <span class="hcw-status"><span class="hcw-status-dot"></span>Running</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <a href="#about" class="scroll-indicator" aria-label="Scroll down to About section">
+    <div class="mouse"><div class="wheel"></div></div>
   </a>
 </section>
       
