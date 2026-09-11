@@ -70,9 +70,10 @@
     <a href="./assets/docs/Ricardo_Ngozo_CV.pdf"
         target="_blank"
         rel="noopener noreferrer"
-        class="cv-floating-btn cv-glow">
-        <span class="cv-pulse"></span>
-        📄 VIEW CV
+        class="cv-btn"
+        aria-label="View Ricardo Ngozo CV">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6ZM14 3.5 18.5 8H14V3.5ZM8 13h8v1.5H8V13Zm0 3h8v1.5H8V16Zm0-6h5v1.5H8V10Z"/></svg>
+        View CV
       </a>
 
     <main>
@@ -114,39 +115,20 @@
       <section id="stack" class="stack-section">
   <div class="stack-header reveal-element" data-reveal>
     <h2>The Arsenal.</h2>
-    <p>Tools and techniques I use while growing as both a game developer and a fullstack developer.</p>
+    <p>The technologies powering my work as a fullstack developer and game developer.</p>
   </div>
 
-  <div class="bento-grid">
-    <div class="bento-card reveal-element" data-reveal>
-      <h3>Frontend</h3>
-      <div class="pill-group">
-        <div class="tech-pill" data-magnet>HTML5</div>
-        <div class="tech-pill" data-magnet>CSS3</div>
-        <div class="tech-pill" data-magnet>JavaScript (ES6+)</div>
-        <div class="tech-pill" data-magnet>React</div>
-        <div class="tech-pill" data-magnet>Tailwind CSS</div>
+  <div class="globe-wrapper reveal-element" data-reveal>
+    <canvas id="tech-globe" aria-label="3D rotating tech stack globe" role="img"></canvas>
+    <div class="globe-legend">
+      <div class="legend-group">
+        <span class="legend-dot" style="background:#38bdf8"></span>Frontend
       </div>
-    </div>
-
-    <div class="bento-card reveal-element" data-reveal style="transition-delay: 100ms;">
-      <h3>Backend</h3>
-      <div class="pill-group">
-        <div class="tech-pill" data-magnet>Node.js</div>
-        <div class="tech-pill" data-magnet>Python</div>
-        
-        
+      <div class="legend-group">
+        <span class="legend-dot" style="background:#818cf8"></span>Backend
       </div>
-    </div>
-
-    <div class="bento-card reveal-element" data-reveal style="transition-delay: 200ms;">
-      <h3>Tools & Architecture</h3>
-      <div class="pill-group">
-        <div class="tech-pill" data-magnet>Git & GitHub</div>
-        <div class="tech-pill" data-magnet>RESTful APIs</div>
-        <div class="tech-pill" data-magnet>Vite</div>
-        <div class="tech-pill" data-magnet>Figma</div>
-        <div class="tech-pill" data-magnet>Responsive Design</div>
+      <div class="legend-group">
+        <span class="legend-dot" style="background:#10b981"></span>Tools
       </div>
     </div>
   </div>
@@ -250,73 +232,73 @@
 <section id="archive" class="project-archive-section">
   <div class="section-header reveal-element" data-reveal>
     <h2>Archive Vault.</h2>
-    <p>Secondary builds and explorations kept in an interactive gallery. Click cards to flip between projects in real-time—each showcasing a different approach to UI, interaction, and design.</p>
+    <p>Secondary builds and explorations — each one a different problem, a different solution.</p>
   </div>
 
-  <div class="archive-grid">
-    <div class="archive-stack reveal-element" data-reveal>
-      <div class="archive-card archive-active" data-id="ihub-prototype" data-title="iHub Prototype" data-category="Group Prototype" data-description="A collaborative education hub prototype focused on onboarding flows, modular dashboards, and polished responsive UI." data-live="https://giftmshengu250-pixel.github.io/Ihub-Prototype75/" data-code="#" style="--i:0;">
-        <img src="./assets/images/iHub Prototype.png" alt="iHub Prototype screenshot" loading="lazy" />
-        <span class="archive-label">iHub Prototype</span>
+  <div class="archive-cards-grid">
+    <article class="archive-item reveal-element" data-reveal
+      data-live="https://giftmshengu250-pixel.github.io/Ihub-Prototype75/"
+      data-code="#">
+      <div class="archive-item-img">
+        <img src="./assets/images/iHub Prototype.png" alt="iHub Prototype" loading="lazy" />
+        <div class="archive-item-overlay">
+          <a href="https://giftmshengu250-pixel.github.io/Ihub-Prototype75/" target="_blank" rel="noreferrer" class="archive-overlay-btn">Live ↗</a>
+        </div>
       </div>
-      <div class="archive-card" data-id="quiz-widget" data-title="Interactive Quiz Widget" data-category="Group Project" data-description="A collaborative quiz app with instant feedback, adaptive scoring, and mobile-friendly interactions." data-live="https://kmukendi10.github.io/quiz-widget-project/" data-code="#" style="--i:1;">
-        <img src="./assets/images/Quiz widget.png" alt="Interactive Quiz Widget screenshot" loading="lazy" />
-        <span class="archive-label">Quiz Widget</span>
+      <div class="archive-item-body">
+        <span class="archive-item-tag">Group Prototype</span>
+        <h3>iHub Prototype</h3>
+        <p>A collaborative education hub with onboarding flows, modular dashboards, and polished responsive UI.</p>
       </div>
-      <div class="archive-card" data-id="x-clone" data-title="X Clone" data-category="Social Feed Replica" data-description="A social feed experience with responsive cards, post states, and a polished timeline layout." data-live="https://x-frpgiqze3-the-hub75.vercel.app/" data-code="#" style="--i:2;">
-        <img src="./assets/images/x clone.png" alt="X Clone screenshot" loading="lazy" />
-        <span class="archive-label">X Clone</span>
-      </div>
-      <div class="archive-card" data-id="task-manager" data-title="Task Manager" data-category="Interactive App" data-description="A task manager built around local persistence, smooth state changes, and dynamic list updates." data-live="#" data-code="#" style="--i:3;">
-        <img src="./assets/images/todo-list.png" alt="Task Manager screenshot" loading="lazy" />
-        <span class="archive-label">Task Manager</span>
-      </div>
-    </div>
+    </article>
 
-    <div class="archive-copy reveal-element" data-reveal>
-      <h3>Stacked Discovery</h3>
-      <p>Each card in the archive represents a different facet of my work—from education platforms to social networks, from interactive puzzles to productivity tools. Rather than a flat list, they stack dynamically, revealing one project at a time while keeping the others visible below. This creates visual depth and encourages exploration.</p>
-      <div class="archive-features">
-        <div class="feature-item">
-          <span class="feature-icon">🎨</span>
-          <div>
-            <h4>Visual Exploration</h4>
-            <p>Each card shows a unique visual approach</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <span class="feature-icon">🔄</span>
-          <div>
-            <h4>Interactive Flipping</h4>
-            <p>Click to navigate through archived work</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <span class="feature-icon">📌</span>
-          <div>
-            <h4>Live & Source Links</h4>
-            <p>Access both deployed and source code</p>
-          </div>
+    <article class="archive-item reveal-element" data-reveal style="transition-delay:80ms"
+      data-live="https://kmukendi10.github.io/quiz-widget-project/"
+      data-code="#">
+      <div class="archive-item-img">
+        <img src="./assets/images/Quiz widget.png" alt="Quiz Widget" loading="lazy" />
+        <div class="archive-item-overlay">
+          <a href="https://kmukendi10.github.io/quiz-widget-project/" target="_blank" rel="noreferrer" class="archive-overlay-btn">Live ↗</a>
         </div>
       </div>
-      <div class="archive-panel">
-        <div class="archive-details">
-          <span class="archive-selected-label">Archive Project</span>
-          <span class="archive-category">Selected Build</span>
-          <h4 class="archive-title">iHub Prototype</h4>
-          <p class="archive-description">A collaborative education hub prototype focused on onboarding flows, modular dashboards, and polished responsive UI.</p>
-        </div>
-        <div class="archive-actions">
-          <a href="https://giftmshengu250-pixel.github.io/Ihub-Prototype75/" class="glass-btn primary archive-live" target="_blank" rel="noreferrer">View Live</a>
-          <a href="#" class="glass-btn secondary archive-code" target="_blank" rel="noreferrer">View Code</a>
-        </div>
-        <div class="archive-controls">
-          <button type="button" class="control-btn prev" aria-label="Previous project">← Previous</button>
-          <button type="button" class="control-btn next" aria-label="Next project">Next →</button>
+      <div class="archive-item-body">
+        <span class="archive-item-tag">Group Project</span>
+        <h3>Interactive Quiz Widget</h3>
+        <p>Instant feedback, adaptive scoring, and mobile-friendly quiz interactions built collaboratively.</p>
+      </div>
+    </article>
+
+    <article class="archive-item reveal-element" data-reveal style="transition-delay:160ms"
+      data-live="https://x-frpgiqze3-the-hub75.vercel.app/"
+      data-code="#">
+      <div class="archive-item-img">
+        <img src="./assets/images/x clone.png" alt="X Clone" loading="lazy" />
+        <div class="archive-item-overlay">
+          <a href="https://x-frpgiqze3-the-hub75.vercel.app/" target="_blank" rel="noreferrer" class="archive-overlay-btn">Live ↗</a>
         </div>
       </div>
-      <p class="archive-note">💡 Tap or click a card to see its details and links update in real-time.</p>
-    </div>
+      <div class="archive-item-body">
+        <span class="archive-item-tag">Social Feed Replica</span>
+        <h3>X Clone</h3>
+        <p>Responsive feed cards, post states, and a polished social timeline layout.</p>
+      </div>
+    </article>
+
+    <article class="archive-item reveal-element" data-reveal style="transition-delay:240ms"
+      data-live="#"
+      data-code="#">
+      <div class="archive-item-img">
+        <img src="./assets/images/todo-list.png" alt="Task Manager" loading="lazy" />
+        <div class="archive-item-overlay">
+          <a href="#" class="archive-overlay-btn">Coming ↗</a>
+        </div>
+      </div>
+      <div class="archive-item-body">
+        <span class="archive-item-tag">Interactive App</span>
+        <h3>Task Manager</h3>
+        <p>Local persistence, smooth state changes, and dynamic list updates in a clean interface.</p>
+      </div>
+    </article>
   </div>
 </section>
 
