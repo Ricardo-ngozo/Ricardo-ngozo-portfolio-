@@ -3833,3 +3833,45 @@ body.is-loading > main {
   .why-bento { grid-template-columns: 1fr; }
   .wb-game, .wb-ttt { grid-column: span 1; }
 }
+
+/* Python Learning Log button — stacked above CV */
+.python-btn {
+  position: fixed;
+  bottom: 88px;
+  right: 28px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 100px;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  color: #ffffff;
+  background: linear-gradient(135deg, #a78bfa 0%, #818cf8 100%);
+  box-shadow: 0 0 16px rgba(167,139,250,0.4), 0 0 32px rgba(167,139,250,0.18), 0 6px 20px rgba(0,0,0,0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.python-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: skewX(-20deg);
+  animation: cvShine 4s ease-in-out infinite;
+  pointer-events: none;
+}
+.python-btn svg { width: 0; height: 0; display: none; }
+.python-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 26px rgba(167,139,250,0.6), 0 0 48px rgba(167,139,250,0.25), 0 10px 28px rgba(0,0,0,0.4);
+}
+@media (max-width: 600px) {
+  .python-btn { bottom: 76px; right: 18px; padding: 10px 16px; font-size: 0.76rem; }
+}
