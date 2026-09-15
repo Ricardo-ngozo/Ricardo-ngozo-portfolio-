@@ -83,7 +83,7 @@ Ricardo-ngozo-portfolio-/
 - Completely different visual identity: `#0a0f0d` background, Space Grotesk font, green/lime palette
 - Green pong loader (green paddles, green ball)
 - Floating hero image cards with independent float animations
-- Origin section with stats (2024, 8+ projects, ZA)
+- Origin section with stats (2026, 8+ projects, ZA)
 - Sparks masonry grid — books, movies, games, communities, tools (hover reveals description)
 - Building section with direction cards (Fullstack, Game Dev, AI)
 - Beyond Coding mosaic — Drake, Last of Us, Boxing, Fashion, South Africa, Japan
@@ -139,4 +139,4 @@ To deploy on Vercel: connect the repo, set output to `/`, done.
 
 ---
 
-*Built by Samukelo Ricardo Ngozo — 2025*
+*Built by Samukelo Ricardo Ngozo — 2026*
