@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Tic-Tac-Toe case study by Ricardo Ngozo â€” a playful browser game demonstrating game logic, state management, and polished UI in vanilla JavaScript." />
+    <meta name="description" content="Tic-Tac-Toe case study by Ricardo Ngozo "” a playful browser game demonstrating game logic, state management, and polished UI in vanilla JavaScript." />
     <title>Tic-Tac-Toe Case Study | Ricardo Ngozo</title>
     <link rel="icon" type="image/png" href="../assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,16 +34,16 @@
           <span class="site-title">Ricardo.</span>
         </a>
         <nav class="pill-nav" aria-label="Primary navigation" data-nav>
-          <a href="../index.html" class="nav-link">â† Portfolio</a>
+          <a href="../index.html" class="nav-link">← Portfolio</a>
         </nav>
       </div>
     </header>
     <main>
       <section class="case-study-hero">
         <div class="case-study-hero-copy">
-          <span class="case-meta">Case Study â€” Mini Game</span>
+          <span class="case-meta">Case Study "” Mini Game</span>
           <h1>Tic-Tac-Toe</h1>
-          <p>A fully playable browser game that proves clean game logic, smooth state management, and polished UI can live entirely in vanilla JavaScript â€” no framework required.</p>
+          <p>A fully playable browser game that proves clean game logic, smooth state management, and polished UI can live entirely in vanilla JavaScript "” no framework required.</p>
           <div class="case-study-tags">
             <span>JavaScript</span>
             <span>Game Logic</span>
@@ -65,18 +65,18 @@
       <section class="case-study-details">
         <article class="case-block">
           <h2>What was the brief?</h2>
-          <p>Build a playable Tic-Tac-Toe game entirely in the browser â€” two-player, with win detection, draw detection, turn tracking, and a reset function. Everything had to work without a framework and feel polished enough to embed in a portfolio.</p>
-          <p>This project was intentionally scoped small to prove that the fundamentals â€” logic, state, and UI feedback â€” can be done cleanly in vanilla JS. It's the same problem space as game development, just at a smaller scale.</p>
+          <p>Build a playable Tic-Tac-Toe game entirely in the browser "” two-player, with win detection, draw detection, turn tracking, and a reset function. Everything had to work without a framework and feel polished enough to embed in a portfolio.</p>
+          <p>This project was intentionally scoped small to prove that the fundamentals "” logic, state, and UI feedback "” can be done cleanly in vanilla JS. It's the same problem space as game development, just at a smaller scale.</p>
         </article>
 
         <article class="case-block">
           <h2>What decisions did I make and why?</h2>
           <ul>
-            <li><strong>Array-based game state:</strong> The board is a 9-element array. Every click updates the array, then the entire UI re-renders from that single source of truth â€” the same pattern React uses, just without the library.</li>
-            <li><strong>Win detection via combinations:</strong> I preloaded all 8 winning combinations (3 rows, 3 columns, 2 diagonals) and check against the array after each move. It's O(1) â€” fast regardless of how many cells exist.</li>
+            <li><strong>Array-based game state:</strong> The board is a 9-element array. Every click updates the array, then the entire UI re-renders from that single source of truth "” the same pattern React uses, just without the library.</li>
+            <li><strong>Win detection via combinations:</strong> I preloaded all 8 winning combinations (3 rows, 3 columns, 2 diagonals) and check against the array after each move. It's O(1) "” fast regardless of how many cells exist.</li>
             <li><strong>Immutable-style updates:</strong> Rather than mutating DOM nodes directly, I clear and re-render on every state change. This eliminates a whole class of bugs where stale DOM state contradicts game state.</li>
             <li><strong>Visual win highlight:</strong> Winning cells get a distinct CSS class with a glow effect, giving the player clear and immediate feedback about why the game ended.</li>
-            <li><strong>Reset without reload:</strong> Game reset wipes the state array and re-renders â€” no page reload needed. This keeps the experience fluid and respects the player's time.</li>
+            <li><strong>Reset without reload:</strong> Game reset wipes the state array and re-renders "” no page reload needed. This keeps the experience fluid and respects the player's time.</li>
           </ul>
         </article>
 
@@ -97,7 +97,7 @@
               <h3>Key learnings</h3>
               <ul>
                 <li>State management patterns: keeping a single source of truth and deriving all UI from it eliminates entire categories of bugs.</li>
-                <li>Game loop thinking: even a simple game needs a clear cycle â€” input â†’ update state â†’ render â€” and respecting that cycle keeps code maintainable.</li>
+                <li>Game loop thinking: even a simple game needs a clear cycle "” input → update state → render "” and respecting that cycle keeps code maintainable.</li>
                 <li>The value of small projects: scoping tightly forces you to implement things correctly rather than hiding complexity behind abstractions.</li>
                 <li>Accessibility in interactive elements: every cell needs a proper aria-label so screen reader users know which cell they're interacting with.</li>
               </ul>
@@ -107,8 +107,8 @@
 
         <article class="case-block">
           <h2>What would I do differently? What am I proud of?</h2>
-          <p>I would add a single-player mode with an AI opponent using the minimax algorithm â€” a classic CS problem that maps directly to this game's structure. That would turn a two-player demo into a genuinely replayable experience.</p>
-          <p>I'd also add an animation when the winning line is drawn across the board â€” a visual that traces the three cells â€” to make the win feel more satisfying.</p>
+          <p>I would add a single-player mode with an AI opponent using the minimax algorithm "” a classic CS problem that maps directly to this game's structure. That would turn a two-player demo into a genuinely replayable experience.</p>
+          <p>I'd also add an animation when the winning line is drawn across the board "” a visual that traces the three cells "” to make the win feel more satisfying.</p>
           <p>I'm proud of the state architecture. The code reads clearly, the logic is self-contained, and there are no hacky DOM checks scattered through the codebase. It's the kind of clean, maintainable code I want to write on every project.</p>
         </article>
       </section>
@@ -116,7 +116,7 @@
       <section class="case-study-visuals">
         <div class="visual-card">
           <h3>Game logic breakdown</h3>
-          <p>Win detection runs in constant time. The preloaded combinations array means the check never gets slower as the game scales â€” a pattern that applies directly to larger game systems.</p>
+          <p>Win detection runs in constant time. The preloaded combinations array means the check never gets slower as the game scales "” a pattern that applies directly to larger game systems.</p>
         </div>
         <figure class="visual-card image-card">
           <img src="../assets/images/tic tac toe.png" alt="Tic-Tac-Toe win state detail" loading="lazy" />

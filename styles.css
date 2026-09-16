@@ -1071,7 +1071,7 @@ body::after {
 }
 
 .case-block ul li::before {
-  content: 'â€¢';
+  content: '"¢';
   margin-right: 10px;
   color: var(--accent-cyan);
 }

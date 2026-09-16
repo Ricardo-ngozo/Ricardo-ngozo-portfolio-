@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Airbnb Capstone case study by Ricardo Ngozo â€” a full-stack Airbnb clone with search, listings, booking UI, and South African property data." />
+    <meta name="description" content="Airbnb Capstone case study by Ricardo Ngozo "” a full-stack Airbnb clone with search, listings, booking UI, and South African property data." />
     <title>Airbnb Capstone Case Study | Ricardo Ngozo</title>
     <link rel="icon" type="image/png" href="../assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +34,7 @@
           <span class="site-title">Ricardo.</span>
         </a>
         <nav class="pill-nav" aria-label="Primary navigation" data-nav>
-          <a href="../index.html" class="nav-link">â† Portfolio</a>
+          <a href="../index.html" class="nav-link">← Portfolio</a>
         </nav>
       </div>
     </header>
@@ -42,9 +42,9 @@
     <main>
       <section class="case-study-hero">
         <div class="case-study-hero-copy">
-          <span class="case-meta">Case Study â€” Full-Stack Clone</span>
+          <span class="case-meta">Case Study "” Full-Stack Clone</span>
           <h1>Airbnb Capstone</h1>
-          <p>A production-quality Airbnb clone built from scratch â€” full search interface, property listings, booking flow, and a South African property dataset. Deployed and live.</p>
+          <p>A production-quality Airbnb clone built from scratch "” full search interface, property listings, booking flow, and a South African property dataset. Deployed and live.</p>
           <div class="case-study-tags">
             <span>React</span>
             <span>Node.js</span>
@@ -61,7 +61,7 @@
         </div>
         <figure class="case-study-hero-visual">
           <img src="../assets/images/airbnb-capstone.png" alt="Airbnb Capstone screenshot" />
-          <figcaption>Full Airbnb clone â€” search bar, listing grid, and South African property data.</figcaption>
+          <figcaption>Full Airbnb clone "” search bar, listing grid, and South African property data.</figcaption>
         </figure>
       </section>
 
@@ -69,20 +69,20 @@
 
         <article class="case-block">
           <h2>What was the brief?</h2>
-          <p>Build a capstone project that proves end-to-end web development ability â€” not a toy, but a real clone of one of the most recognisable product interfaces in the world. The Airbnb UI is deceptively complex: a multi-field search bar, a responsive property grid, detailed listing pages, a booking sidebar, and a navigation system that all need to work together seamlessly.</p>
-          <p>The South African angle was intentional. Rather than using generic Lorem Ipsum listings, I wanted the data to feel real and local â€” Cape Town, the Kruger, the Garden Route â€” so the experience would resonate with an audience that knows these places. That decision forced me to think about data structure and content design as seriously as the UI.</p>
+          <p>Build a capstone project that proves end-to-end web development ability "” not a toy, but a real clone of one of the most recognisable product interfaces in the world. The Airbnb UI is deceptively complex: a multi-field search bar, a responsive property grid, detailed listing pages, a booking sidebar, and a navigation system that all need to work together seamlessly.</p>
+          <p>The South African angle was intentional. Rather than using generic Lorem Ipsum listings, I wanted the data to feel real and local "” Cape Town, the Kruger, the Garden Route "” so the experience would resonate with an audience that knows these places. That decision forced me to think about data structure and content design as seriously as the UI.</p>
         </article>
 
         <article class="case-block">
           <h2>What decisions did I make and why?</h2>
           <ul>
-            <li><strong>Airbnb's search bar as the centrepiece:</strong> The search bar â€” Where / When / Who â€” is Airbnb's most iconic UI element. I prioritised getting it right before anything else, including the check-in/check-out date inputs, guest count selector, and the search trigger. It needed to feel native, not like a copy.</li>
+            <li><strong>Airbnb's search bar as the centrepiece:</strong> The search bar "” Where / When / Who "” is Airbnb's most iconic UI element. I prioritised getting it right before anything else, including the check-in/check-out date inputs, guest count selector, and the search trigger. It needed to feel native, not like a copy.</li>
             <li><strong>Category navigation (All / Homes / Experiences / Services):</strong> I built tab-based category filtering so users could switch between property types instantly without a page reload. This mirrors how real Airbnb works and required managing active state cleanly across components.</li>
-            <li><strong>South African property data:</strong> I hand-curated listings for Cape Town, Johannesburg, the Kruger National Park area, and the Garden Route. Each listing has realistic pricing in ZAR, accurate location data, and representative imagery â€” making the clone feel like a real product rather than a demo.</li>
+            <li><strong>South African property data:</strong> I hand-curated listings for Cape Town, Johannesburg, the Kruger National Park area, and the Garden Route. Each listing has realistic pricing in ZAR, accurate location data, and representative imagery "” making the clone feel like a real product rather than a demo.</li>
             <li><strong>Responsive grid layout:</strong> The property grid uses CSS Grid with auto-fill columns, so it collapses cleanly from 4 columns on desktop to 2 on tablet to 1 on mobile without any JavaScript breakpoint switching.</li>
-            <li><strong>Booking sidebar:</strong> The listing detail page includes a sticky booking sidebar with a price calculator, date selection, and a total cost breakdown â€” the core conversion UI of any accommodation platform.</li>
+            <li><strong>Booking sidebar:</strong> The listing detail page includes a sticky booking sidebar with a price calculator, date selection, and a total cost breakdown "” the core conversion UI of any accommodation platform.</li>
             <li><strong>Become a Host CTA:</strong> Implemented the secondary navigation action that Airbnb uses to drive host acquisition, keeping the header clean while giving the feature visibility.</li>
-            <li><strong>Deployed on Render:</strong> I chose Render over Vercel for this project to practice deploying a Node backend alongside the frontend â€” a real full-stack deployment rather than a static site.</li>
+            <li><strong>Deployed on Render:</strong> I chose Render over Vercel for this project to practice deploying a Node backend alongside the frontend "” a real full-stack deployment rather than a static site.</li>
           </ul>
         </article>
 
@@ -115,9 +115,9 @@
         <article class="case-block">
           <h2>Key technical challenges</h2>
           <ul>
-            <li><strong>Search state management:</strong> The search bar has three independent fields (location, dates, guests) that need to combine into a single query. Managing this state cleanly â€” without prop drilling or unnecessary re-renders â€” required lifting state to a shared parent and passing handlers down, a pattern I'll use on every data-driven project going forward.</li>
-            <li><strong>Date input UX:</strong> Native HTML date inputs are notoriously inconsistent across browsers. I had to normalise their appearance with CSS while keeping them accessible and functional â€” a real cross-browser challenge that taught me the limits of styling form elements.</li>
-            <li><strong>Deployment configuration:</strong> Getting a Node + React app to deploy correctly on Render required understanding how the build process works end to end â€” building the React app to a `dist` folder, serving it from Express, and configuring Render's environment variables and start commands. First real full-stack deployment experience.</li>
+            <li><strong>Search state management:</strong> The search bar has three independent fields (location, dates, guests) that need to combine into a single query. Managing this state cleanly "” without prop drilling or unnecessary re-renders "” required lifting state to a shared parent and passing handlers down, a pattern I'll use on every data-driven project going forward.</li>
+            <li><strong>Date input UX:</strong> Native HTML date inputs are notoriously inconsistent across browsers. I had to normalise their appearance with CSS while keeping them accessible and functional "” a real cross-browser challenge that taught me the limits of styling form elements.</li>
+            <li><strong>Deployment configuration:</strong> Getting a Node + React app to deploy correctly on Render required understanding how the build process works end to end "” building the React app to a `dist` folder, serving it from Express, and configuring Render's environment variables and start commands. First real full-stack deployment experience.</li>
             <li><strong>Image performance:</strong> Property listing images need to load fast. I implemented lazy loading on all listing images and compressed assets to keep the initial load time acceptable on the Render free tier.</li>
           </ul>
         </article>
@@ -128,19 +128,19 @@
             <div>
               <h3>Technical</h3>
               <ul>
-                <li>Full-stack deployment â€” not just pushing to Vercel, but configuring a Node server to serve a React build.</li>
-                <li>State architecture at scale â€” when a component tree gets deep, how you manage shared state matters more than the code itself.</li>
-                <li>Data design â€” a good UI is only as good as the data behind it. Structuring the listings JSON correctly made every feature easier to build.</li>
-                <li>REST API design â€” thinking about endpoints before writing UI forced me to separate concerns properly from the start.</li>
+                <li>Full-stack deployment "” not just pushing to Vercel, but configuring a Node server to serve a React build.</li>
+                <li>State architecture at scale "” when a component tree gets deep, how you manage shared state matters more than the code itself.</li>
+                <li>Data design "” a good UI is only as good as the data behind it. Structuring the listings JSON correctly made every feature easier to build.</li>
+                <li>REST API design "” thinking about endpoints before writing UI forced me to separate concerns properly from the start.</li>
               </ul>
             </div>
             <div>
               <h3>Product thinking</h3>
               <ul>
-                <li>Why Airbnb's search bar is designed the way it is â€” every field reduces friction in the booking decision funnel.</li>
-                <li>The value of real data over placeholder content â€” South African listings made the project feel alive and worth sharing.</li>
-                <li>How booking flow UX works â€” price visibility, date selection, and the CTA placement are all deliberate conversion decisions.</li>
-                <li>Accessibility in form design â€” date inputs and dropdowns need more care than standard text fields.</li>
+                <li>Why Airbnb's search bar is designed the way it is "” every field reduces friction in the booking decision funnel.</li>
+                <li>The value of real data over placeholder content "” South African listings made the project feel alive and worth sharing.</li>
+                <li>How booking flow UX works "” price visibility, date selection, and the CTA placement are all deliberate conversion decisions.</li>
+                <li>Accessibility in form design "” date inputs and dropdowns need more care than standard text fields.</li>
               </ul>
             </div>
           </div>
@@ -148,9 +148,9 @@
 
         <article class="case-block">
           <h2>What would I do differently? What am I proud of?</h2>
-          <p>The biggest thing I would change is the data layer. Right now the listings live in a JSON file served by Express. In a real product, this would be a database â€” PostgreSQL or MongoDB â€” with a proper query layer for filtering by location, price range, dates, and guest count on the server side rather than the client. That would make the search genuinely scalable.</p>
-          <p>I would also add user authentication â€” a proper sign-up/login flow with JWT tokens â€” so users could save listings, manage bookings, and have a persistent session. That would make it a full product rather than a UI clone.</p>
-          <p>What I'm most proud of is that it's actually deployed and works. A lot of portfolio projects exist only as screenshots. This one is live at a real URL, handles real HTTP requests, and looks like something a real company shipped. The South African data makes it feel personal and specific rather than generic, and the booking sidebar shows I understand the conversion mechanics of accommodation platforms â€” not just how to style a grid of cards.</p>
+          <p>The biggest thing I would change is the data layer. Right now the listings live in a JSON file served by Express. In a real product, this would be a database "” PostgreSQL or MongoDB "” with a proper query layer for filtering by location, price range, dates, and guest count on the server side rather than the client. That would make the search genuinely scalable.</p>
+          <p>I would also add user authentication "” a proper sign-up/login flow with JWT tokens "” so users could save listings, manage bookings, and have a persistent session. That would make it a full product rather than a UI clone.</p>
+          <p>What I'm most proud of is that it's actually deployed and works. A lot of portfolio projects exist only as screenshots. This one is live at a real URL, handles real HTTP requests, and looks like something a real company shipped. The South African data makes it feel personal and specific rather than generic, and the booking sidebar shows I understand the conversion mechanics of accommodation platforms "” not just how to style a grid of cards.</p>
           <p>This was the most ambitious project I'd built at the time and it proved to me that I can take a complex product interface, understand how it works at a system level, and rebuild it from scratch.</p>
         </article>
 
@@ -159,11 +159,11 @@
       <section class="case-study-visuals">
         <div class="visual-card">
           <h3>Why Airbnb?</h3>
-          <p>Airbnb is one of the hardest consumer UIs to clone well because every element â€” the search bar, the listing grid, the booking sidebar â€” has been obsessively refined for conversion. Building it meant understanding every design decision, not just copying the aesthetics. That forced a level of product thinking that a simpler clone wouldn't have required.</p>
+          <p>Airbnb is one of the hardest consumer UIs to clone well because every element "” the search bar, the listing grid, the booking sidebar "” has been obsessively refined for conversion. Building it meant understanding every design decision, not just copying the aesthetics. That forced a level of product thinking that a simpler clone wouldn't have required.</p>
         </div>
         <div class="visual-card">
           <h3>South Africa as the dataset</h3>
-          <p>Choosing South African properties was a deliberate decision to make the project feel real and personal. Cape Town's Atlantic Seaboard, Kruger safari lodges, and the Garden Route â€” locations that mean something. It also meant writing real listing copy and thinking about what makes each property worth staying in, which is a skill that crosses into product writing and content design.</p>
+          <p>Choosing South African properties was a deliberate decision to make the project feel real and personal. Cape Town's Atlantic Seaboard, Kruger safari lodges, and the Garden Route "” locations that mean something. It also meant writing real listing copy and thinking about what makes each property worth staying in, which is a skill that crosses into product writing and content design.</p>
         </div>
       </section>
     </main>
