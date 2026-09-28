@@ -313,9 +313,9 @@ document.addEventListener("DOMContentLoaded", () => {
         gradient.addColorStop(1, '#059669');
         loaderCtx.shadowColor = 'rgba(16,185,129,0.6)';
       } else {
-        gradient.addColorStop(0, '#38bdf8');
-        gradient.addColorStop(1, '#818cf8');
-        loaderCtx.shadowColor = 'rgba(56,189,248,0.55)';
+        gradient.addColorStop(0, '#e8484f');
+        gradient.addColorStop(1, '#e6d9c9');
+        loaderCtx.shadowColor = 'rgba(232,72,79,0.55)';
       }
       loaderCtx.fillStyle = gradient;
       loaderCtx.shadowBlur = 14;
