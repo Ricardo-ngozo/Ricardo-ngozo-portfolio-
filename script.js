@@ -28,10 +28,11 @@ function initTechGlobe() {
     { label:'Responsive', cat:'tools', icon:'M3 5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h6v2H7v2h10v-2h-2v-2h.5A1.5 1.5 0 0 0 17 15.5V14h3a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H3zm0 2h14v6H3V7zm14 5v1.5a.5.5 0 0 1-.5.5H17v-2h0zm2-5h1v5h-1V7z' },
   ];
 
-  const CATS = {
-    fe:    { color: '#38bdf8', label: 'Frontend'  },
-    be:    { color: '#818cf8', label: 'Backend'   },
-    tools: { color: '#10b981', label: 'Tools'     },
+  const isPersonalGlobe = document.body.classList.contains('personal-body');
+  const CATS = isPersonalGlobe ? {
+    fe: { color: '#10b981', label: 'Frontend' }, be: { color: '#818cf8', label: 'Backend' }, tools: { color: '#059669', label: 'Tools' },
+  } : {
+    fe: { color: '#e8484f', label: 'Frontend' }, be: { color: '#e6d9c9', label: 'Backend' }, tools: { color: '#ffffff', label: 'Tools' },
   };
 
   // Assign spherical coords to each node
