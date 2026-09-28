@@ -330,6 +330,7 @@
         kind = phases[(number - 1) % phases.length];
       }
       if (section.matches("header.hero")) kind = "turtle";
+      if (section.classList.contains("p-footer-cta")) kind = "firefly";
       kind ||= ["bee","firefly","butterfly","fox"][index % 4];
       section.classList.add("has-companion");
       const button = document.createElement("button");
