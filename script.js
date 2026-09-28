@@ -401,53 +401,81 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('section[id]').forEach(section => sectionObserver.observe(section));
 
   /* =========================================
-     2. HERO: Ambient Canvas Particles
+     2. HERO: Falling red particles with soft trails
      ========================================= */
   const canvas = document.querySelector('.ambient-canvas');
   if (canvas) {
     const ctx = canvas.getContext('2d');
-    let width, height, particles = [];
+    let width = 0, height = 0, particles = [];
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const resizeCanvas = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      const bounds = canvas.getBoundingClientRect();
+      width = Math.max(1, Math.round(bounds.width));
+      height = Math.max(1, Math.round(bounds.height));
+      canvas.width = width;
+      canvas.height = height;
+      const count = Math.max(12, Math.min(42, Math.round((width * height) / 60000)));
+      particles = Array.from({ length: count }, () => new Particle(true));
     };
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
 
     class Particle {
-      constructor() {
+      constructor(scatter = false) {
         this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.size = Math.random() * 2 + 0.5;
-        this.speedX = Math.random() * 0.3 - 0.15;
-        this.speedY = Math.random() * 0.3 - 0.15;
-        this.opacity = Math.random() * 0.4 + 0.1;
+        this.y = scatter ? Math.random() * height : -8;
+        this.size = Math.random() * 1.5 + 0.8;
+        this.speedY = Math.random() * 0.75 + 0.45;
+        this.drift = Math.random() * 0.28 - 0.14;
+        this.opacity = Math.random() * 0.32 + 0.28;
+        this.phase = Math.random() * Math.PI * 2;
+        this.history = [];
       }
       update() {
-        this.x += this.speedX; this.y += this.speedY;
-        if (this.x < 0 || this.x > width) this.speedX *= -1;
-        if (this.y < 0 || this.y > height) this.speedY *= -1;
+        this.phase += 0.018;
+        this.x += this.drift + Math.sin(this.phase) * 0.12;
+        this.y += this.speedY;
+        this.history.push({ x: this.x, y: this.y });
+        if (this.history.length > 9) this.history.shift();
+        if (this.y > height + 12 || this.x < -12 || this.x > width + 12) {
+          this.x = Math.random() * width;
+          this.y = -12;
+          this.history = [];
+        }
       }
       draw() {
+        if (this.history.length > 1) {
+          for (let i = 1; i < this.history.length; i++) {
+            const from = this.history[i - 1], to = this.history[i];
+            const fade = (i / this.history.length) * this.opacity;
+            ctx.beginPath();
+            ctx.moveTo(from.x, from.y);
+            ctx.lineTo(to.x, to.y);
+            ctx.strokeStyle = `rgba(232, 72, 79, ${fade * 0.72})`;
+            ctx.lineWidth = this.size * (0.45 + i / this.history.length);
+            ctx.lineCap = 'round';
+            ctx.shadowColor = 'rgba(232, 55, 65, 0.9)';
+            ctx.shadowBlur = 9;
+            ctx.stroke();
+          }
+        }
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.fillStyle = `rgba(255, 112, 116, ${this.opacity})`;
+        ctx.shadowColor = 'rgba(232, 55, 65, 0.95)';
+        ctx.shadowBlur = 12;
         ctx.fill();
+        ctx.shadowBlur = 0;
       }
     }
 
-    const initParticles = () => {
-      particles = [];
-      for (let i = 0; i < (width * height) / 12000; i++) particles.push(new Particle());
-    };
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+    resizeCanvas();
     const animate = () => {
-      ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => { p.update(); p.draw(); });
-      requestAnimationFrame(animate);
+      particles.forEach(particle => { particle.update(); particle.draw(); });
+      if (!reducedMotion) requestAnimationFrame(animate);
     };
-    initParticles();
-    animate();
+    if (reducedMotion) particles.forEach(particle => particle.draw());
+    else animate();
   }
 
   /* =========================================

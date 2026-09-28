@@ -26,7 +26,7 @@ img { max-width:100%; }
 button,a { -webkit-tap-highlight-color:transparent; }
 body.is-loading { overflow:visible; }
 .site-loader { display:none!important; }
-.ambient-canvas,.rocket-float { display:none!important; }
+.rocket-float { display:none!important; }
 
 /* The navbar belongs to the page, rather than floating as a separate pill. */
 .morph-header {
@@ -55,7 +55,10 @@ body.is-loading { overflow:visible; }
 
 /* A focused hero: clear role, clear work sample, two useful next steps. */
 .hero-section { position:relative;isolation:isolate;min-height:min(790px,96svh);padding:140px 32px 100px;display:flex;align-items:center;overflow:clip;background:none; }
-.hero-section::before { content:"";position:absolute;z-index:-1;inset:76px 0 0;pointer-events:none;background:radial-gradient(ellipse at 72% 43%,rgba(210,66,73,.14),transparent 32rem); }
+.hero-section .ambient-canvas { position:absolute;z-index:0;inset:0;display:block!important;width:100%;height:100%;pointer-events:none;opacity:.82;mask-image:linear-gradient(180deg,transparent 0%,#000 16%,#000 78%,transparent 100%); }
+.hero-section::before { z-index:0; }
+.hero-section .hero-layout { position:relative;z-index:1; }
+.hero-section::before { content:"";position:absolute;z-index:0;inset:76px 0 0;pointer-events:none;background:radial-gradient(ellipse at 72% 43%,rgba(210,66,73,.14),transparent 32rem); }
 .hero-layout { width:min(1220px,100%);margin:0 auto;display:grid;grid-template-columns:1fr .88fr;align-items:center;gap:clamp(44px,8vw,120px); }
 .hero-identity { max-width:650px; }
 .hero-eyebrow,.section-kicker { display:flex;align-items:center;gap:10px;color:#e0d2c0;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase; }
