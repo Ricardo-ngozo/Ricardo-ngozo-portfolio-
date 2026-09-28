@@ -415,55 +415,33 @@ document.addEventListener("DOMContentLoaded", () => {
       height = Math.max(1, Math.round(bounds.height));
       canvas.width = width;
       canvas.height = height;
-      const count = Math.max(6, Math.min(18, Math.round((width * height) / 100000)));
+      const count = Math.max(5, Math.min(12, Math.round((width * height) / 150000)));
       particles = Array.from({ length: count }, () => new Particle(true));
     };
 
     class Particle {
       constructor(scatter = false) {
         this.x = Math.random() * width;
-        this.y = scatter ? Math.random() * height : -8;
-        this.size = Math.random() * 0.7 + 0.55;
-        this.speedY = Math.random() * 0.75 + 0.45;
-        this.drift = Math.random() * 0.28 - 0.14;
-        this.opacity = Math.random() * 0.14 + 0.08;
-        this.phase = Math.random() * Math.PI * 2;
-        this.history = [];
+        this.y = scatter ? Math.random() * height : -6;
+        this.size = Math.random() * 0.55 + 0.65;
+        this.speedY = Math.random() * 0.28 + 0.16;
+        this.drift = Math.random() * 0.14 - 0.07;
+        this.opacity = Math.random() * 0.13 + 0.12;
       }
       update() {
-        this.phase += 0.018;
-        this.x += this.drift + Math.sin(this.phase) * 0.12;
+        this.x += this.drift;
         this.y += this.speedY;
-        this.history.push({ x: this.x, y: this.y });
-        if (this.history.length > 9) this.history.shift();
-        if (this.y > height + 12 || this.x < -12 || this.x > width + 12) {
+        if (this.y > height + 4 || this.x < -6 || this.x > width + 6) {
           this.x = Math.random() * width;
-          this.y = -12;
-          this.history = [];
+          this.y = -6;
         }
       }
       draw() {
-        if (this.history.length > 1) {
-          for (let i = 1; i < this.history.length; i++) {
-            const from = this.history[i - 1], to = this.history[i];
-            const fade = (i / this.history.length) * this.opacity * Math.min(1, Math.max(0, (height - this.y) / (height * 0.2)));
-            ctx.beginPath();
-            ctx.moveTo(from.x, from.y);
-            ctx.lineTo(to.x, to.y);
-            ctx.strokeStyle = `rgba(214, 54, 62, ${fade * 0.48})`;
-            ctx.lineWidth = this.size * (0.45 + i / this.history.length);
-            ctx.lineCap = 'round';
-            ctx.shadowColor = 'rgba(185, 35, 43, 0.45)';
-            ctx.shadowBlur = 5;
-            ctx.stroke();
-          }
-        }
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        const fadeOut = Math.min(1, Math.max(0, (height - this.y) / (height * 0.2)));
-        ctx.fillStyle = `rgba(232, 80, 86, ${this.opacity * fadeOut})`;
-        ctx.shadowColor = `rgba(185, 35, 43, ${fadeOut * 0.55})`;
-        ctx.shadowBlur = 7;
+        ctx.fillStyle = `rgba(232, 72, 79, ${this.opacity})`;
+        ctx.shadowColor = 'rgba(232, 72, 79, 0.32)';
+        ctx.shadowBlur = 4;
         ctx.fill();
         ctx.shadowBlur = 0;
       }
