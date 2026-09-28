@@ -58,7 +58,7 @@ body.is-loading { overflow:visible; }
 .hero-section .ambient-canvas { position:absolute;z-index:0;inset:0;display:block!important;width:100%;height:100%;pointer-events:none;opacity:.82;mask-image:linear-gradient(180deg,transparent 0%,#000 16%,#000 78%,transparent 100%); }
 .hero-section::before { z-index:0; }
 .hero-section .hero-layout { position:relative;z-index:1; }
-.hero-section::before { content:"";position:absolute;z-index:-1;inset:76px 0 0;pointer-events:none;background:radial-gradient(ellipse at 72% 43%,rgba(210,66,73,.14),transparent 32rem); }
+.hero-section::before { content:"";position:absolute;z-index:0;inset:76px 0 0;pointer-events:none;background:radial-gradient(ellipse at 72% 43%,rgba(210,66,73,.14),transparent 32rem); }
 .hero-layout { width:min(1220px,100%);margin:0 auto;display:grid;grid-template-columns:1fr .88fr;align-items:center;gap:clamp(44px,8vw,120px); }
 .hero-identity { max-width:650px; }
 .hero-eyebrow,.section-kicker { display:flex;align-items:center;gap:10px;color:#e0d2c0;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase; }
