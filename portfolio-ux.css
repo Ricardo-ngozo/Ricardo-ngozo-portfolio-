@@ -443,8 +443,8 @@ body[data-page="tech"].loader-complete .site-loader { opacity:0;visibility:hidde
 .motion-bird-flight-2 { --bird-size:25px;--bird-height:35%;--bird-speed:43s;--bird-delay:-31s; }
 .motion-bird-flight-3 { --bird-size:30px;--bird-height:57%;--bird-speed:40s;--bird-delay:-8s; }
 
-.motion-runway { position:relative;width:min(1220px,calc(100% - 48px));height:42px;margin:0 auto;overflow:hidden;isolation:isolate; }
-.motion-runway::before { content:"";position:absolute;left:0;right:0;top:13px;height:1px;background:linear-gradient(90deg,transparent,rgba(230,217,201,.28) 8%,rgba(232,72,79,.36) 50%,rgba(230,217,201,.24) 92%,transparent); }
+.motion-runway { position:relative;left:50%;transform:translateX(-50%);width:100vw;height:42px;margin:0;overflow:hidden;isolation:isolate; }
+.motion-runway::before { content:"";position:absolute;left:0;right:0;top:34px;height:1px;background:linear-gradient(90deg,transparent,rgba(230,217,201,.28) 8%,rgba(232,72,79,.36) 50%,rgba(230,217,201,.24) 92%,transparent); }
 .motion-runway::after { content:"";position:absolute;left:0;right:0;top:13px;height:1px;background:repeating-linear-gradient(90deg,transparent 0 36px,rgba(232,72,79,.55) 36px 43px,transparent 43px 84px);opacity:.5;animation:runwayDash 8s linear infinite; }
 .motion-runner { position:absolute;z-index:1;left:0;top:-2px;width:94px;height:44px;padding:0;border:0;background:transparent;color:#e6d9c9;cursor:pointer;animation:dogRun 25s linear infinite; }
 .motion-runner:focus-visible { outline:2px solid #e8484f;outline-offset:-2px;border-radius:10px; }
@@ -466,7 +466,7 @@ body[data-page="tech"].loader-complete .site-loader { opacity:0;visibility:hidde
 .phase.motion-seen,.jt-item.motion-seen { opacity:1;transform:translateY(0); }
 .python-log-body .phase.motion-seen .line { transform-origin:top;animation:pythonRailDraw .8s ease both; }
 .journey-timeline .jt-item.motion-seen .jt-dot { animation:journeyDotArrive .6s cubic-bezier(.2,.8,.2,1) both; }
-.contribution-graph .day:not(.day-spacer) { animation:contributionCellIn .42s cubic-bezier(.2,.8,.2,1) both;animation-delay:min(calc(var(--day-index,0) * 1.5ms),560ms); }
+.contribution-graph .day:not(.day-spacer) { animation:contributionCellIn .42s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--day-delay,0ms); }
 body.personal-body .p-mosaic-item img { transition:transform .9s cubic-bezier(.2,.75,.25,1),filter .5s; }
 body.personal-body .p-mosaic-item:hover img { transform:scale(1.045);filter:saturate(1.08); }
 body.personal-body .p-section-label { position:relative; }
@@ -499,7 +499,7 @@ body.personal-body .p-section-label::after { content:"";display:block;width:34px
   .contribution-graph .day:not(.day-spacer) { animation:none; }
 }
 @media(max-width:760px) {
-  .motion-runway { width:calc(100% - 36px); }
+  .motion-runway::before,.motion-runway::after { top:31px; }
   .motion-runner { width:82px; }
   .motion-bird-flight-3 { display:none; }
 }
