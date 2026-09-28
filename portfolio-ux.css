@@ -254,3 +254,9 @@ body:not(.personal-body).cursor-ready .custom-cursor-dot { opacity:1; }
 body:not(.personal-body) .custom-cursor-label { color:#fff; font:600 9px/1 var(--font-main); }
 @media (max-width:780px) { body:not(.personal-body) .floating-actions { right:14px; bottom:14px; } body:not(.personal-body) .tech-globe-wrap { height:290px; } }
 @media (pointer:fine) { body:not(.personal-body).cursor-ready,body:not(.personal-body).cursor-ready a,body:not(.personal-body).cursor-ready button { cursor:none; } }
+
+/* Preserve the personal page's original green identity. */
+body.personal-body { --accent-cyan:#c7f17a; --accent-purple:#78d8c1; --accent-green:#c7f17a; --accent-lime:#d7f5a1; }
+body.personal-body .brand-monogram span,body.personal-body .footer-brand span { color:#c7f17a; }
+body.personal-body .custom-cursor,body.personal-body .custom-cursor-dot { display:none; }
+[id] { scroll-margin-top:92px; }
