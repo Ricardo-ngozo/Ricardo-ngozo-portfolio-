@@ -239,8 +239,22 @@
     });
   }
 
+  function initFloatingActions() {
+    const actions = document.querySelector(".floating-actions");
+    const footer = document.querySelector(".site-footer");
+    if (!actions || !footer) return;
+    const updatePosition = () => {
+      const footerOverlap = Math.max(0, window.innerHeight - footer.getBoundingClientRect().top);
+      actions.style.setProperty("--footer-lift", footerOverlap ? `${Math.ceil(footerOverlap + 18)}px` : "0px");
+    };
+    window.addEventListener("scroll", updatePosition, { passive: true });
+    window.addEventListener("resize", updatePosition);
+    updatePosition();
+  }
+
   function init() {
     initMobileNav();
+    initFloatingActions();
     initRoleChanger();
     initInteractiveAvatars();
     initArchive();
