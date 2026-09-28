@@ -415,7 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
       height = Math.max(1, Math.round(bounds.height));
       canvas.width = width;
       canvas.height = height;
-      const count = Math.max(12, Math.min(42, Math.round((width * height) / 60000)));
+      const count = Math.max(6, Math.min(18, Math.round((width * height) / 100000)));
       particles = Array.from({ length: count }, () => new Particle(true));
     };
 
@@ -423,10 +423,10 @@ document.addEventListener("DOMContentLoaded", () => {
       constructor(scatter = false) {
         this.x = Math.random() * width;
         this.y = scatter ? Math.random() * height : -8;
-        this.size = Math.random() * 1.5 + 0.8;
+        this.size = Math.random() * 0.7 + 0.55;
         this.speedY = Math.random() * 0.75 + 0.45;
         this.drift = Math.random() * 0.28 - 0.14;
-        this.opacity = Math.random() * 0.32 + 0.28;
+        this.opacity = Math.random() * 0.14 + 0.08;
         this.phase = Math.random() * Math.PI * 2;
         this.history = [];
       }
@@ -446,23 +446,24 @@ document.addEventListener("DOMContentLoaded", () => {
         if (this.history.length > 1) {
           for (let i = 1; i < this.history.length; i++) {
             const from = this.history[i - 1], to = this.history[i];
-            const fade = (i / this.history.length) * this.opacity;
+            const fade = (i / this.history.length) * this.opacity * Math.max(0, 1 - this.y / height);
             ctx.beginPath();
             ctx.moveTo(from.x, from.y);
             ctx.lineTo(to.x, to.y);
-            ctx.strokeStyle = `rgba(232, 72, 79, ${fade * 0.72})`;
+            ctx.strokeStyle = `rgba(214, 54, 62, ${fade * 0.48})`;
             ctx.lineWidth = this.size * (0.45 + i / this.history.length);
             ctx.lineCap = 'round';
-            ctx.shadowColor = 'rgba(232, 55, 65, 0.9)';
-            ctx.shadowBlur = 9;
+            ctx.shadowColor = 'rgba(185, 35, 43, 0.45)';
+            ctx.shadowBlur = 5;
             ctx.stroke();
           }
         }
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 112, 116, ${this.opacity})`;
-        ctx.shadowColor = 'rgba(232, 55, 65, 0.95)';
-        ctx.shadowBlur = 12;
+        const fadeOut = Math.max(0, 1 - this.y / height);
+        ctx.fillStyle = `rgba(232, 80, 86, ${this.opacity * fadeOut})`;
+        ctx.shadowColor = `rgba(185, 35, 43, ${fadeOut * 0.55})`;
+        ctx.shadowBlur = 7;
         ctx.fill();
         ctx.shadowBlur = 0;
       }
