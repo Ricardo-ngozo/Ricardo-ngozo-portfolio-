@@ -28,10 +28,11 @@ function initTechGlobe() {
     { label:'Responsive', cat:'tools', icon:'M3 5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h6v2H7v2h10v-2h-2v-2h.5A1.5 1.5 0 0 0 17 15.5V14h3a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H3zm0 2h14v6H3V7zm14 5v1.5a.5.5 0 0 1-.5.5H17v-2h0zm2-5h1v5h-1V7z' },
   ];
 
-  const CATS = {
-    fe:    { color: '#38bdf8', label: 'Frontend'  },
-    be:    { color: '#818cf8', label: 'Backend'   },
-    tools: { color: '#10b981', label: 'Tools'     },
+  const isPersonalGlobe = document.body.classList.contains('personal-body');
+  const CATS = isPersonalGlobe ? {
+    fe: { color: '#10b981', label: 'Frontend' }, be: { color: '#818cf8', label: 'Backend' }, tools: { color: '#059669', label: 'Tools' },
+  } : {
+    fe: { color: '#e8484f', label: 'Frontend' }, be: { color: '#e6d9c9', label: 'Backend' }, tools: { color: '#ffffff', label: 'Tools' },
   };
 
   // Assign spherical coords to each node
@@ -144,7 +145,7 @@ function initTechGlobe() {
     });
 
     // Draw globe wire circles (faint)
-    ctx.strokeStyle = 'rgba(56,189,248,0.07)';
+    ctx.strokeStyle = isPersonalGlobe ? 'rgba(16,185,129,0.12)' : 'rgba(232,72,79,0.14)';
     ctx.lineWidth = 1;
     for (let i = 0; i < 6; i++) {
       const angle = (i / 6) * Math.PI;
@@ -201,7 +202,7 @@ function initTechGlobe() {
       // Background pill
       ctx.save();
       ctx.globalAlpha = finalAlpha;
-      ctx.fillStyle = 'rgba(7,10,19,0.85)';
+      ctx.fillStyle = isPersonalGlobe ? 'rgba(7,10,19,0.85)' : 'rgba(12,11,11,0.92)';
       ctx.strokeStyle = cat.color;
       ctx.lineWidth = 1.2;
       ctx.beginPath();
@@ -219,7 +220,7 @@ function initTechGlobe() {
       if (alpha > 0.62 && iconSize > 12) {
         ctx.save();
         ctx.globalAlpha = (alpha - 0.6) * 2.5;
-        ctx.fillStyle = '#e2e8f0';
+        ctx.fillStyle = isPersonalGlobe ? '#e2e8f0' : '#e6d9c9';
         ctx.font = `600 ${Math.max(9, 10 * scale)}px "Plus Jakarta Sans", system-ui, sans-serif`;
         ctx.textAlign = 'center';
         ctx.fillText(n.label, px, py + bgRadius + Math.max(10, 13 * scale));
@@ -380,7 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const rocket = document.querySelector('.rocket-float');
 
   window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 60);
+    if (header) header.classList.toggle('scrolled', window.scrollY > 60);
     if (rocket) {
       const offset = Math.min(window.scrollY * 0.45, 220);
       rocket.style.setProperty('--rocket-offset', `${offset}px`);
@@ -568,7 +569,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ['hcc-punct',   '.'],
       ['hcc-fn',      'build'],
       ['hcc-punct',   '()'],
-      ['hcc-comment', ' // 🚀'],
+      ['hcc-comment', ' // build complete'],
     ];
 
     // Flatten tokens into characters with their class

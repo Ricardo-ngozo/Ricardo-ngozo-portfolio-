@@ -20,30 +20,24 @@
   </head>
   <body data-page="tech">
     <a class="skip-link" href="#home">Skip to content</a>
-    <header class="morph-header" data-header><div class="nav-container">
-<a class="brand-mark" href="#home" aria-label="Ricardo Ngozo — home"><span class="brand-monogram" aria-hidden="true">R<span>.</span></span><span class="site-title">Ricardo Ngozo</span></a>
-<nav class="pill-nav" id="primary-navigation" aria-label="Primary navigation" data-nav>
-<a href="#home" class="nav-link active" data-section="home">Home</a><a href="#projects" class="nav-link" data-section="projects">Work</a><a href="#why-me" class="nav-link" data-section="why-me">About</a><a href="#stack" class="nav-link" data-section="stack">Stack</a><a href="#contact" class="nav-link" data-section="contact">Contact</a></nav>
 
-<button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle><span></span><span></span></button></div></header>
 
     <main>
-<section id="home" class="hero-section"><div class="hero-layout">
-<div class="hero-identity"><p class="hero-eyebrow"><span class="availability-dot" aria-hidden="true"></span> Samukelo Ricardo Ngozo <span class="eyebrow-divider">/</span> South Africa</p>
-<h1 class="hero-title">Thoughtful interfaces.<br /><span>Playful engineering.</span></h1>
-<p class="hero-subtitle">Full-stack developer &amp; game creator</p>
-<p class="hero-tagline">I build responsive apps and interactive experiences—from the first sketch to the last detail that makes them feel right.</p>
-<div class="hero-cta-row"><a href="#projects" class="hero-cta-primary">Explore my work <span aria-hidden="true">↘</span></a><a href="#why-me" class="hero-cta-secondary">A little about me</a></div>
-<a class="hero-resource-link" href="./python-learning-log.html">Follow my Python learning log <span aria-hidden="true">↗</span></a></div>
-<article class="hero-project-card"><a class="hero-project-image" href="https://lourve-reims.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="View the Urban Threads live project"><img src="./assets/images/lourve.png" alt="Urban Threads storefront interface" fetchpriority="high" /><span class="hero-project-open" aria-hidden="true">↗</span></a>
-<div class="hero-project-caption"><div><span class="hero-project-kicker">SELECTED BUILD · 2026</span><h2>Urban Threads</h2><p>Commerce, with character.</p></div><a href="./case-studies/urban-threads-case-study.html" class="hero-case-link">Read the case study <span aria-hidden="true">→</span></a></div></article>
-</div><div class="hero-bottom-note"><span>01 — SELECTED WORK</span><span>Scroll to explore <span aria-hidden="true">↓</span></span></div></section>
-      
-      
+<section id="home" class="hero-section hero-section-simple">
+  <div class="hero-layout hero-layout-simple">
+    <div class="hero-identity">
+      <p class="hero-eyebrow"><span class="availability-dot" aria-hidden="true"></span> Samukelo Ricardo Ngozo <span class="eyebrow-divider">/</span> South Africa</p>
+      <h1 class="hero-title">Thoughtful interfaces.<br /><span>Playful engineering.</span></h1>
+      <p class="hero-subtitle">Full-stack developer &amp; game creator</p>
+      <p class="hero-tagline">I build responsive apps and interactive experiences—from the first sketch to the last detail that makes them feel right.</p>
+      <div class="hero-cta-row"><a href="#projects" class="hero-cta-primary">Explore my work <span aria-hidden="true">↘</span></a><a href="#why-me" class="hero-cta-secondary">A little about me</a></div>
+    </div>
+  </div>
+</section>
 
-
-
-      <section id="projects" class="projects-section">
+<section id="stack" class="stack-section"><div class="section-header reveal-element" data-reveal><p class="section-kicker">TOOLS I USE</p><h2>My toolkit</h2><p>Built to orbit. Grab and spin the stack.</p></div>
+<div class="tech-globe-wrap reveal-element" data-reveal><canvas id="tech-globe" role="img" aria-label="Spinning globe of the technologies I use"></canvas></div></section>
+<section id="projects" class="projects-section">
   <div class="section-header reveal-element" data-reveal>
     <h2>Selected work</h2>
     <p>A few projects that show how I think, design, and build.</p>
@@ -146,8 +140,6 @@
   </div>
 </section>
 
-<section id="stack" class="stack-section"><div class="section-header reveal-element" data-reveal><p class="section-kicker">TOOLS I USE</p><h2>My toolkit</h2><p>Practical tools for building thoughtful, working products.</p></div>
-<div class="tech-globe-wrap reveal-element" data-reveal><canvas id="tech-globe" role="img" aria-label="Spinning globe of the technologies I use"></canvas></div></section>
 <section id="archive" class="project-archive-section">
   <div class="section-header reveal-element" data-reveal>
     <h2>More to explore</h2>
@@ -164,7 +156,7 @@
   <div class="archive-cards-grid">
     <article class="archive-item reveal-element" data-reveal
       data-live="https://airbnb-capstone-fixed.onrender.com/"
-      data-code="https://github.com/Ricardo-ngozo/airbnb-capstone-fixed.git">
+      data-code="https://github.com/Ricardo-ngozo/airbnb-capstone-fixed">
       <div class="archive-item-img">
         <img src="./assets/images/Screenshot 2026-09-15 155420.png" alt="Airbnb Capstone" loading="lazy" />
         <div class="archive-item-overlay">
@@ -172,16 +164,13 @@
         </div>
       </div>
       <div class="archive-item-body">
-        <span class="archive-item-tag">Full-Stack Clone</span>
+        <div class="archive-meta"><span class="archive-item-tag">Full-Stack Clone</span><span class="archive-year">2026</span></div>
         <h3>Airbnb Capstone</h3>
         <p>Full Airbnb clone — search, booking flow, SA listings. React + Node, deployed on Render.</p>
-        <a href="./case-studies/airbnb-case-study.html" style="font-size:0.78rem;color:#38bdf8;text-decoration:none;margin-top:6px;display:inline-block;">Case Study →</a>
-      </div>
-    </article>
-
-    <article class="archive-item reveal-element" data-reveal
+        
+      <div class="archive-actions"><a href="https://airbnb-capstone-fixed.onrender.com/" target="_blank" rel="noopener noreferrer" class="archive-action">Live ↗</a><a href="https://github.com/Ricardo-ngozo/airbnb-capstone-fixed" target="_blank" rel="noopener noreferrer" class="archive-action">GitHub ↗</a><a href="./case-studies/archive-case-study.html?project=airbnb" class="archive-action archive-action-case">Case study</a></div></div>\n    </article><article class="archive-item reveal-element" data-reveal
       data-live="https://giftmshengu250-pixel.github.io/Ihub-Prototype75/"
-      data-code="#">
+      data-code="https://github.com/Ricardo-ngozo/Ihub-clone">
       <div class="archive-item-img">
         <img src="./assets/images/iHub Prototype.png" alt="iHub Prototype" loading="lazy" />
         <div class="archive-item-overlay">
@@ -189,15 +178,12 @@
         </div>
       </div>
       <div class="archive-item-body">
-        <span class="archive-item-tag">Group Prototype</span>
+        <div class="archive-meta"><span class="archive-item-tag">Group Prototype</span><span class="archive-year">2026</span></div>
         <h3>iHub Prototype</h3>
         <p>A collaborative education hub with onboarding flows, modular dashboards, and polished responsive UI.</p>
-      </div>
-    </article>
-
-    <article class="archive-item reveal-element" data-reveal style="transition-delay:80ms"
+      <div class="archive-actions"><a href="https://giftmshengu250-pixel.github.io/Ihub-Prototype75/" target="_blank" rel="noopener noreferrer" class="archive-action">Live ↗</a><a href="https://github.com/Ricardo-ngozo/Ihub-clone" target="_blank" rel="noopener noreferrer" class="archive-action">GitHub ↗</a><a href="./case-studies/archive-case-study.html?project=ihub" class="archive-action archive-action-case">Case study</a></div></div>\n    </article><article class="archive-item reveal-element" data-reveal style="transition-delay:80ms"
       data-live="https://kmukendi10.github.io/quiz-widget-project/"
-      data-code="#">
+      data-code="https://github.com/KMukendi10/quiz-widget-project">
       <div class="archive-item-img">
         <img src="./assets/images/Quiz widget.png" alt="Quiz Widget" loading="lazy" />
         <div class="archive-item-overlay">
@@ -205,15 +191,12 @@
         </div>
       </div>
       <div class="archive-item-body">
-        <span class="archive-item-tag">Group Project</span>
+        <div class="archive-meta"><span class="archive-item-tag">Group Project</span><span class="archive-year">2026</span></div>
         <h3>Interactive Quiz Widget</h3>
         <p>Instant feedback, adaptive scoring, and mobile-friendly quiz interactions built collaboratively.</p>
-      </div>
-    </article>
-
-    <article class="archive-item reveal-element" data-reveal style="transition-delay:160ms"
+      <div class="archive-actions"><a href="https://kmukendi10.github.io/quiz-widget-project/" target="_blank" rel="noopener noreferrer" class="archive-action">Live ↗</a><a href="https://github.com/KMukendi10/quiz-widget-project" target="_blank" rel="noopener noreferrer" class="archive-action">GitHub ↗</a><a href="./case-studies/archive-case-study.html?project=quiz" class="archive-action archive-action-case">Case study</a></div></div>\n    </article><article class="archive-item reveal-element" data-reveal style="transition-delay:160ms"
       data-live="https://x-frpgiqze3-the-hub75.vercel.app/"
-      data-code="#">
+      data-code="https://github.com/Ricardo-ngozo/x">
       <div class="archive-item-img">
         <img src="./assets/images/x clone.png" alt="X Clone" loading="lazy" />
         <div class="archive-item-overlay">
@@ -221,15 +204,12 @@
         </div>
       </div>
       <div class="archive-item-body">
-        <span class="archive-item-tag">Social Feed Replica</span>
+        <div class="archive-meta"><span class="archive-item-tag">Social Feed Replica</span><span class="archive-year">2026</span></div>
         <h3>X Clone</h3>
         <p>Responsive feed cards, post states, and a polished social timeline layout.</p>
-      </div>
-    </article>
-
-    <article class="archive-item reveal-element" data-reveal style="transition-delay:240ms"
+      <div class="archive-actions"><a href="https://x-frpgiqze3-the-hub75.vercel.app/" target="_blank" rel="noopener noreferrer" class="archive-action">Live ↗</a><a href="https://github.com/Ricardo-ngozo/x" target="_blank" rel="noopener noreferrer" class="archive-action">GitHub ↗</a><a href="./case-studies/archive-case-study.html?project=x" class="archive-action archive-action-case">Case study</a></div></div>\n    </article><article class="archive-item reveal-element" data-reveal style="transition-delay:240ms"
       data-live="#"
-      data-code="#">
+      data-code="https://github.com/Ricardo-ngozo/mdn-todo-board">
       <div class="archive-item-img">
         <img src="./assets/images/todo-list.png" alt="Task Manager" loading="lazy" />
         <div class="archive-item-overlay">
@@ -237,10 +217,30 @@
         </div>
       </div>
       <div class="archive-item-body">
-        <span class="archive-item-tag">Interactive App</span>
+        <div class="archive-meta"><span class="archive-item-tag">Interactive App</span><span class="archive-year">2026</span></div>
         <h3>Task Manager</h3>
-        <p>Local persistence, smooth state changes, and dynamic list updates in a clean interface.</p>
+        <p>Local persistence, smooth state changes, and dynamic list updates in a clean interface.</p><div class="archive-actions"><a href="https://github.com/Ricardo-ngozo/mdn-todo-board" target="_blank" rel="noopener noreferrer" class="archive-action">GitHub ↗</a><a href="./case-studies/archive-case-study.html?project=todo" class="archive-action archive-action-case">Case study</a></div>
       </div>
+    </article>
+    <article class="archive-item reveal-element" data-reveal data-year="2026">
+      <div class="archive-image-placeholder archive-art-tesla" role="img" aria-label="Tesla landing page preview pending screenshot"><span class="archive-art-index">01 / FRONTEND</span><strong>Tesla</strong><span class="archive-art-caption">Precision in motion</span></div>
+      <div class="archive-item-body"><div class="archive-meta"><span class="archive-item-tag">Landing page · HTML / CSS</span><span class="archive-year">2026</span></div><h3>Tesla Landing Page</h3><p>A vehicle landing-page study focused on product storytelling, navigation, and a high-impact automotive layout.</p><div class="archive-actions"><a href="https://github.com/Ricardo-ngozo/Ricardo_Tesla-landing-page" target="_blank" rel="noopener noreferrer" class="archive-action">GitHub ↗</a><a href="./case-studies/archive-case-study.html?project=tesla" class="archive-action archive-action-case">Case study</a></div></div>
+    </article>
+    <article class="archive-item reveal-element" data-reveal data-year="2026">
+      <div class="archive-image-placeholder archive-art-youtube" role="img" aria-label="YouTube interface preview pending screenshot"><span class="archive-art-index">02 / INTERFACE</span><strong>YouTube</strong><span class="archive-art-caption">A familiar video home</span></div>
+      <div class="archive-item-body"><div class="archive-meta"><span class="archive-item-tag">Frontend clone · HTML / CSS / JS</span><span class="archive-year">2026</span></div><h3>YouTube Interface</h3><p>A responsive video-browsing interface study, with emphasis on layout, navigation, and clear content hierarchy.</p><div class="archive-actions"><a href="https://github.com/Ricardo-ngozo/Youtube-clone" target="_blank" rel="noopener noreferrer" class="archive-action">GitHub ↗</a><a href="./case-studies/archive-case-study.html?project=youtube" class="archive-action archive-action-case">Case study</a></div></div>
+    </article>
+    <article class="archive-item reveal-element" data-reveal data-year="2026">
+      <div class="archive-image-placeholder archive-art-netflix" role="img" aria-label="Netflix landing page preview pending screenshot"><span class="archive-art-index">03 / STORY</span><strong>NETFLIX</strong><span class="archive-art-caption">Streaming, at a glance</span></div>
+      <div class="archive-item-body"><div class="archive-meta"><span class="archive-item-tag">Responsive landing page</span><span class="archive-year">2026</span></div><h3>Netflix Landing Page</h3><p>A responsive streaming-service landing page clone built with HTML, CSS, and JavaScript, centered on a cinematic hero and clear entry points.</p><div class="archive-actions"><a href="https://github.com/Ricardo-ngozo/Netblip_ricardo-ngozo" target="_blank" rel="noopener noreferrer" class="archive-action">GitHub ↗</a><a href="./case-studies/archive-case-study.html?project=netflix" class="archive-action archive-action-case">Case study</a></div></div>
+    </article>
+    <article class="archive-item reveal-element" data-reveal data-year="2026">
+      <div class="archive-image-placeholder archive-art-gamevault" role="img" aria-label="GameVault preview pending screenshot"><span class="archive-art-index">04 / REACT APP</span><strong>GameVault</strong><span class="archive-art-caption">Find your next game</span></div>
+      <div class="archive-item-body"><div class="archive-meta"><span class="archive-item-tag">Game discovery · React</span><span class="archive-year">2026</span></div><h3>GameVault</h3><p>A React game-discovery app with search, genre filters, sorting, details, and favorites saved between visits.</p><div class="archive-actions"><a href="https://github.com/Ricardo-ngozo/gamevault" target="_blank" rel="noopener noreferrer" class="archive-action">GitHub ↗</a><a href="./case-studies/archive-case-study.html?project=gamevault" class="archive-action archive-action-case">Case study</a></div></div>
+    </article>
+    <article class="archive-item reveal-element" data-reveal data-year="2026">
+      <div class="archive-image-placeholder archive-art-todo" role="img" aria-label="To-do board preview pending screenshot"><span class="archive-art-index">05 / VANILLA JS</span><strong>To-do Board</strong><span class="archive-art-caption">Small tasks, clear flow</span></div>
+      <div class="archive-item-body"><div class="archive-meta"><span class="archive-item-tag">Interactive app · HTML / CSS / JS</span><span class="archive-year">2026</span></div><h3>MDN To-do Board</h3><p>A focused task app for adding, completing, deleting, and filtering tasks, with local storage for persistence.</p><div class="archive-actions"><a href="https://github.com/Ricardo-ngozo/mdn-todo-board" target="_blank" rel="noopener noreferrer" class="archive-action">GitHub ↗</a><a href="./case-studies/archive-case-study.html?project=todo" class="archive-action archive-action-case">Case study</a></div></div>
     </article>
   </div>
   <p class="archive-empty" data-archive-empty hidden>No projects match that search. Try a different term.</p>
