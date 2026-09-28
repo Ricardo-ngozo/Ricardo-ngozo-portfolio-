@@ -125,7 +125,7 @@
       for (const day of slots) {
         const cell = document.createElement("span");
         cell.className = "day";
-        cell.style.setProperty("--day-index", graph.childElementCount);
+        cell.style.setProperty("--day-delay", `${Math.min(graph.childElementCount * 1.5, 560)}ms`);
         cell.setAttribute("aria-hidden", "true");
         if (!day) cell.classList.add("day-spacer");
         else {
