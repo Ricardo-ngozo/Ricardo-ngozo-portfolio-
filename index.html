@@ -16,6 +16,7 @@
     
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="./portfolio-polish.css" />
+    <link rel="stylesheet" href="./portfolio-ux.css" />
 
   </head>
   <body data-page="tech" class="is-loading">
@@ -125,7 +126,7 @@
 
       <div class="hero-cta-row">
         <a href="#projects" class="hero-cta-primary">See the work</a>
-        <a href="#about" class="hero-cta-secondary">Who I am</a>
+        <a href="#journey" class="hero-cta-secondary">Who I am</a>
       </div>
     </div>
 
@@ -180,7 +181,7 @@
       <section id="projects" class="projects-section">
   <div class="section-header reveal-element" data-reveal>
     <h2>Featured Work.</h2>
-    <p>Selected projects "” each one a different problem, a different solution.</p>
+    <p>Selected projects — each one a different problem, a different solution.</p>
   </div>
 
   <div class="fw-grid">
@@ -242,7 +243,7 @@
           <span class="fw-year">2026</span>
         </div>
         <h3>Game UI Setup</h3>
-        <p>React component system designed around game UI principles "” layered panels, stat blocks, and animated states.</p>
+        <p>React component system designed around game UI principles — layered panels, stat blocks, and animated states.</p>
         <div class="fw-card-tech"><span>React</span><span>Components</span><span>Design System</span></div>
         <div class="fw-card-links">
           <a href="https://fm-react-eight.vercel.app/" target="_blank" rel="noreferrer" class="fw-btn-live">Live ↗</a>
@@ -265,7 +266,7 @@
           <span class="fw-year">2026</span>
         </div>
         <h3>Tic-Tac-Toe</h3>
-        <p>Vanilla JS game with clean state architecture, win detection, and smooth interaction "” no framework.</p>
+        <p>Vanilla JS game with clean state architecture, win detection, and smooth interaction — no framework.</p>
         <div class="fw-card-tech"><span>JavaScript</span><span>Game Logic</span><span>State</span></div>
         <div class="fw-card-links">
           <a href="https://tic-tac-toe-srt-75.vercel.app/" target="_blank" rel="noreferrer" class="fw-btn-live">Play ↗</a>
@@ -283,9 +284,14 @@
 <section id="archive" class="project-archive-section">
   <div class="section-header reveal-element" data-reveal>
     <h2>Archive Vault.</h2>
-    <p>Secondary builds and explorations "” each one a different problem, a different solution.</p>
+    <p>Secondary builds and explorations — each one a different problem, a different solution.</p>
   </div>
 
+  <div class="archive-filter">
+    <label class="sr-only" for="archive-search">Search projects</label>
+    <input id="archive-search" type="search" data-archive-search placeholder="Search projects by name or type…" autocomplete="off" />
+    <span class="archive-filter-count" data-archive-count aria-live="polite"></span>
+  </div>
   <div class="archive-cards-grid">
     <article class="archive-item reveal-element" data-reveal
       data-live="https://airbnb-capstone-fixed.onrender.com/"
@@ -299,7 +305,7 @@
       <div class="archive-item-body">
         <span class="archive-item-tag">Full-Stack Clone</span>
         <h3>Airbnb Capstone</h3>
-        <p>Full Airbnb clone "” search, booking flow, SA listings. React + Node, deployed on Render.</p>
+        <p>Full Airbnb clone — search, booking flow, SA listings. React + Node, deployed on Render.</p>
         <a href="./case-studies/airbnb-case-study.html" style="font-size:0.78rem;color:#38bdf8;text-decoration:none;margin-top:6px;display:inline-block;">Case Study →</a>
       </div>
     </article>
@@ -358,7 +364,7 @@
       <div class="archive-item-img">
         <img src="./assets/images/todo-list.png" alt="Task Manager" loading="lazy" />
         <div class="archive-item-overlay">
-          <a href="#" class="archive-overlay-btn">Coming ↗</a>
+          <span class="archive-overlay-btn archive-coming-soon" aria-label="Task Manager project coming soon">In progress</span>
         </div>
       </div>
       <div class="archive-item-body">
@@ -372,28 +378,29 @@
 
 <section id="contributions" class="contribution-section">
   <div class="section-header reveal-element" data-reveal>
-    <h2>457 contributions in the last year</h2>
+    <p class="eyebrow">OPEN SOURCE · LIVE ACTIVITY</p>
+    <div class="contribution-heading-row">
+      <h2><span data-contribution-total>—</span> contributions in the last year</h2>
+      <a class="contribution-profile-link" href="https://github.com/Ricardo-ngozo" target="_blank" rel="noopener noreferrer">View GitHub profile ↗</a>
+    </div>
   </div>
-  
   <div class="contribution-wrapper reveal-element" data-reveal>
-    <div class="graph-months">
-      <span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span>
-      <span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+    <div class="contribution-status-row">
+      <p data-contribution-status role="status" aria-live="polite">Loading public GitHub activity…</p>
+      <button class="contribution-refresh" type="button" data-contribution-refresh>Refresh</button>
     </div>
-    
-    <div class="graph-body">
-      <div class="graph-days">
-        <span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span>
+    <div class="graph-scroll" tabindex="0" role="region" aria-label="Scrollable GitHub contribution calendar">
+      <div class="graph-months" aria-hidden="true"></div>
+      <div class="graph-body">
+        <div class="graph-days" aria-hidden="true">
+          <span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span>
+        </div>
+        <div class="contribution-graph" id="contribution-graph" aria-busy="true"></div>
       </div>
-      <div class="contribution-graph" id="contribution-graph"></div>
     </div>
-
-    <div class="graph-legend">
+    <div class="graph-legend" aria-hidden="true">
       <span>Less</span>
-      <div class="legend-scale">
-        <div class="lvl-0"></div><div class="lvl-1"></div>
-        <div class="lvl-2"></div><div class="lvl-3"></div><div class="lvl-4"></div>
-      </div>
+      <div class="legend-scale"><div class="lvl-0"></div><div class="lvl-1"></div><div class="lvl-2"></div><div class="lvl-3"></div><div class="lvl-4"></div></div>
       <span>More</span>
     </div>
   </div>
@@ -415,7 +422,7 @@
     <div class="jt-item jt-left">
       <div class="jt-dot jt-dot-past"></div>
       <div class="jt-card">
-        <p class="jt-label">2026 "” Start</p>
+        <p class="jt-label">2026 — Start</p>
         <h3>The Spark</h3>
         <p>Zero experience, infinite curiosity. First HTML file. First bug. First obsession.</p>
         <div class="jt-tags"><span>HTML</span><span>CSS</span><span>Curiosity</span></div>
@@ -425,7 +432,7 @@
     <div class="jt-item jt-right">
       <div class="jt-dot jt-dot-now"></div>
       <div class="jt-card jt-card-active">
-        <p class="jt-label">Now "” Building</p>
+        <p class="jt-label">Now — Building</p>
         <h3>Fullstack + Game Developer</h3>
         <p>Shipping real projects. React, Node, JS, APIs. Gameplay logic. Design systems. Getting hired.</p>
         <div class="jt-tags"><span>React</span><span>Node.js</span><span>Game Logic</span><span>Responsive UI</span></div>
@@ -435,7 +442,7 @@
     <div class="jt-item jt-left">
       <div class="jt-dot jt-dot-future"></div>
       <div class="jt-card jt-card-future">
-        <p class="jt-label">Future "” Engineering</p>
+        <p class="jt-label">Future — Engineering</p>
         <h3>Software Engineer · AI Builder · Founder</h3>
         <p>Building products that matter. AI-powered tools. Game engines. Systems at scale.</p>
         <div class="jt-tags"><span>AI Engineering</span><span>Game Dev</span><span>Tech Founder</span></div>
@@ -488,18 +495,18 @@
 <section id="why-me" class="why-me-section">
   <div class="section-header reveal-element" data-reveal>
     <h2>Why Me</h2>
-    <p>Not just skills "” mindset, availability, and drive.</p>
+    <p>Not just skills — mindset, availability, and drive.</p>
   </div>
   <div class="why-bento">
     <!-- Big game card -->
     <article class="wb-game reveal-element" data-reveal>
       <div class="wb-game-frame">
-        <iframe src="./mini-quest-runner/index.html" title="Mini Quest Runner "” play now" loading="lazy"></iframe>
+        <iframe src="./mini-quest-runner/index.html" title="Mini Quest Runner — play now" loading="lazy"></iframe>
       </div>
       <div class="wb-game-info">
         <span class="fw-tag fw-tag-green">Playable · Built by me</span>
         <h3>Mini Quest Runner</h3>
-        <p>A full browser game I built from scratch. JS, collision, game loop, UI "” all vanilla.</p>
+        <p>A full browser game I built from scratch. JS, collision, game loop, UI — all vanilla.</p>
         <a href="./mini-quest-runner/index.html" target="_blank" rel="noreferrer" class="fw-btn-live">Play Now ↗</a>
       </div>
     </article>
@@ -511,7 +518,7 @@
     </article>
 
     <article class="wb-card reveal-element" data-reveal style="--wb-delay:120ms">
-      <div class="wb-icon">âš¡</div>
+      <div class="wb-icon">⚡</div>
       <h3>Available Now</h3>
       <p>Immediate availability. Open to junior dev roles, internships, or freelance work.</p>
     </article>
@@ -527,13 +534,13 @@
       <div class="wb-ttt-header">
         <span class="fw-tag fw-tag-purple">Live Game · Embedded</span>
         <h3>Tic-Tac-Toe</h3>
-        <p>State machine, win detection, zero dependencies. Two players "” play a round right here.</p>
+        <p>State machine, win detection, zero dependencies. Two players — play a round right here.</p>
         <a href="https://github.com/Ricardo-ngozo/Tic-tac-toe.git" target="_blank" rel="noreferrer" class="fw-btn-gh" aria-label="GitHub" style="width:fit-content; margin-top:4px;">
           <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
         </a>
       </div>
       <div class="wb-ttt-game" data-tic-game>
-        <div class="tic-status" data-tic-status>X starts "” your move</div>
+        <div class="tic-status" data-tic-status>X starts — your move</div>
         <div class="tic-board" role="grid" aria-label="Tic Tac Toe board">
           <button type="button" aria-label="Cell 1"></button>
           <button type="button" aria-label="Cell 2"></button>
@@ -586,6 +593,7 @@
       </section>
 
     <script src="./script.js"></script>
+    <script src="./portfolio-ux.js"></script>
     <script src="./cursor.js"></script>
   </body>
 </html>
