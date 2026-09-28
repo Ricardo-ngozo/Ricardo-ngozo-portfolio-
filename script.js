@@ -446,7 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (this.history.length > 1) {
           for (let i = 1; i < this.history.length; i++) {
             const from = this.history[i - 1], to = this.history[i];
-            const fade = (i / this.history.length) * this.opacity * Math.max(0, 1 - this.y / height);
+            const fade = (i / this.history.length) * this.opacity * Math.min(1, Math.max(0, (height - this.y) / (height * 0.2)));
             ctx.beginPath();
             ctx.moveTo(from.x, from.y);
             ctx.lineTo(to.x, to.y);
@@ -460,7 +460,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        const fadeOut = Math.max(0, 1 - this.y / height);
+        const fadeOut = Math.min(1, Math.max(0, (height - this.y) / (height * 0.2)));
         ctx.fillStyle = `rgba(232, 80, 86, ${this.opacity * fadeOut})`;
         ctx.shadowColor = `rgba(185, 35, 43, ${fadeOut * 0.55})`;
         ctx.shadowBlur = 7;
