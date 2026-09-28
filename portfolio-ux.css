@@ -55,7 +55,8 @@ body.is-loading { overflow:visible; }
 
 /* A focused hero: clear role, clear work sample, two useful next steps. */
 .hero-section { position:relative;isolation:isolate;min-height:min(790px,96svh);padding:140px 32px 100px;display:flex;align-items:center;overflow:clip;background:none; }
-.hero-section .ambient-canvas { position:absolute;z-index:0;inset:0;display:block!important;width:100%;height:100%;pointer-events:none;opacity:.82;mask-image:linear-gradient(180deg,transparent 0%,#000 16%,#000 78%,transparent 100%); }
+body[data-page="tech"] .ambient-canvas { position:fixed;z-index:0;inset:0;display:block!important;width:100%;height:100%;pointer-events:none;opacity:.82;mask-image:linear-gradient(180deg,transparent 0%,#000 12%,#000 84%,transparent 100%); }
+body[data-page="tech"] main { position:relative;z-index:1; }
 .hero-section::before { z-index:0; }
 .hero-section .hero-layout { position:relative;z-index:1; }
 .hero-section::before { content:"";position:absolute;z-index:0;inset:76px 0 0;pointer-events:none;background:radial-gradient(ellipse at 72% 43%,rgba(210,66,73,.14),transparent 32rem); }
