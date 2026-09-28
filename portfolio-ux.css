@@ -503,3 +503,41 @@ body.personal-body .p-section-label::after { content:"";display:block;width:34px
   .motion-runner { width:82px; }
   .motion-bird-flight-3 { display:none; }
 }
+
+
+/* A tiny, clickable creature or object gives every section its own response. */
+.has-companion { position:relative; }
+.section-companion { position:absolute;z-index:8;top:12px;right:12px;display:grid;place-items:center;width:42px;height:42px;padding:5px;border:1px solid rgba(230,217,201,.13);border-radius:50%;background:rgba(17,13,14,.62);color:#e6d9c9;opacity:.64;cursor:pointer;backdrop-filter:blur(8px);animation:companionDrift 5.6s ease-in-out infinite;transition:opacity .25s,border-color .25s,background .25s,box-shadow .25s,transform .25s; }
+.section-companion.companion-left { right:auto;left:12px; }
+.section-companion svg { position:relative;z-index:1;width:29px;height:29px;overflow:visible;fill:currentColor;filter:drop-shadow(0 2px 4px rgba(232,72,79,.18));transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .3s; }
+.section-companion:hover,.section-companion:focus-visible,.section-companion.is-awake { opacity:1;border-color:rgba(232,72,79,.62);background:rgba(42,20,22,.9);box-shadow:0 0 0 5px rgba(232,72,79,.07),0 8px 24px rgba(0,0,0,.22); }
+.section-companion:hover svg,.section-companion:focus-visible svg,.section-companion.is-awake svg { transform:scale(1.13) rotate(-7deg);filter:drop-shadow(0 0 8px rgba(232,72,79,.46)); }
+.section-companion--butterfly svg,.section-companion--bee svg,.section-companion--firefly svg,.section-companion--bird svg { animation:companionFlutter 1.4s ease-in-out infinite alternate; }
+.section-companion--rabbit svg,.section-companion--ball svg { animation:companionHop 2.8s ease-in-out infinite; }
+.section-companion--cat svg,.section-companion--fox svg,.section-companion--owl svg { animation:companionPeek 4.5s ease-in-out infinite; }
+.section-companion--rocket svg,.section-companion--firework svg { animation:companionOrbit 5.2s ease-in-out infinite; }
+.companion-spark { position:absolute;top:4px;right:3px;width:5px;height:5px;border-radius:50%;background:#e8484f;box-shadow:0 0 9px rgba(232,72,79,.8);animation:companionSpark 2.4s ease-in-out infinite; }
+.section-companion.companion-left .companion-spark { right:auto;left:3px; }
+.companion-reacted:is(.fw-card,.archive-item,.cert-tile,.wb-card,.jt-card,.contact-form,.contribution-wrapper,.phase-body,.p-mosaic-item,.hero-canvas-box) { border-color:rgba(232,72,79,.62)!important;box-shadow:0 0 0 4px rgba(232,72,79,.075),0 18px 44px rgba(0,0,0,.22);animation:companionAnswer .9s cubic-bezier(.2,.8,.2,1); }
+.companion-reacted:is(h1,h2) { text-shadow:0 0 24px rgba(232,72,79,.3);animation:companionAnswer .9s ease; }
+.tech-globe-wrap.companion-reacted { filter:drop-shadow(0 0 22px rgba(232,72,79,.3));transition:filter .4s; }
+.section-companion:focus-visible { outline:2px solid #e6d9c9;outline-offset:4px; }
+
+@keyframes companionDrift { 0%,100%{translate:0 0} 50%{translate:0 -4px} }
+@keyframes companionFlutter { from{transform:rotate(-8deg) scale(.94)} to{transform:rotate(8deg) scale(1.04)} }
+@keyframes companionHop { 0%,82%,100%{transform:translateY(0)} 88%{transform:translateY(-7px)} 94%{transform:translateY(0)} }
+@keyframes companionPeek { 0%,100%{transform:translateX(0) rotate(0)} 45%{transform:translateX(3px) rotate(4deg)} 60%{transform:translateX(-2px) rotate(-3deg)} }
+@keyframes companionOrbit { 0%,100%{transform:translateY(2px) rotate(-5deg)} 50%{transform:translateY(-3px) rotate(7deg)} }
+@keyframes companionSpark { 0%,100%{transform:scale(.55);opacity:.4} 50%{transform:scale(1.25);opacity:1} }
+@keyframes companionAnswer { 0%{transform:translateY(0) scale(1)} 38%{transform:translateY(-4px) scale(1.015)} 100%{transform:translateY(0) scale(1)} }
+
+@media(prefers-reduced-motion:reduce) {
+  .section-companion,.section-companion svg,.companion-spark { animation:none!important;transition:none!important; }
+  .companion-reacted { animation:none!important; }
+}
+@media(max-width:760px) {
+  .section-companion { top:9px;right:7px;width:36px;height:36px;padding:4px; }
+  .section-companion.companion-left { left:7px; }
+  .section-companion svg { width:25px;height:25px; }
+  .phase.has-companion { padding-right:40px; }
+}
