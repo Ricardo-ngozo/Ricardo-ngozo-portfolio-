@@ -246,7 +246,7 @@ body:not(.personal-body) .morph-header { position:fixed!important; top:0!importa
 body:not(.personal-body) .morph-header.scrolled { transform:none!important; }
 body:not(.personal-body) .tech-globe-wrap { width:min(560px,100%); height:350px; margin:12px auto 34px; position:relative; }
 body:not(.personal-body) #tech-globe { display:block; width:100%; height:100%; }
-body:not(.personal-body) .floating-actions { position:fixed; right:24px; bottom:24px; z-index:2500; display:flex; flex-direction:column; gap:10px; }
+body:not(.personal-body) .floating-actions { position:fixed; right:24px; bottom:calc(24px + var(--footer-lift,0px)); z-index:2500; display:flex; flex-direction:column; gap:10px; }
 body:not(.personal-body) .floating-action { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:46px; padding:0 18px; border:1px solid rgba(255,110,117,.4); border-radius:12px; background:rgba(24,15,17,.94); color:#ffdfe0; box-shadow:0 12px 34px rgba(0,0,0,.28); backdrop-filter:blur(14px); font-weight:700; font-size:.83rem; transition:transform .2s,background .2s,border-color .2s; }
 body:not(.personal-body) .floating-action:hover { transform:translateY(-2px); background:#281518; border-color:#ff525b; }
 body:not(.personal-body) .floating-action-primary { background:#ff525b; color:#21090b; border-color:#ff525b; }
@@ -256,7 +256,7 @@ body:not(.personal-body).cursor-ready .custom-cursor { opacity:1; }
 body:not(.personal-body) .custom-cursor-dot { position:fixed; z-index:5001; top:0; left:0; width:5px; height:5px; border-radius:50%; background:#ff525b; pointer-events:none; opacity:0; }
 body:not(.personal-body).cursor-ready .custom-cursor-dot { opacity:1; }
 body:not(.personal-body) .custom-cursor-label { color:#ffffff; font:600 9px/1 var(--font-main); }
-@media (max-width:780px) { body:not(.personal-body) .floating-actions { right:14px; bottom:14px; } body:not(.personal-body) .tech-globe-wrap { height:290px; } }
+@media (max-width:780px) { body:not(.personal-body) .floating-actions { right:14px; bottom:calc(14px + var(--footer-lift,0px)); } body:not(.personal-body) .tech-globe-wrap { height:290px; } }
 @media (pointer:fine) { body:not(.personal-body).cursor-ready,body:not(.personal-body).cursor-ready a,body:not(.personal-body).cursor-ready button { cursor:none; } }
 
 /* Preserve the personal page's original green identity. */
