@@ -198,8 +198,51 @@
     load();
   }
 
+  function initRoleChanger() {
+    const target = document.querySelector("[data-role-changer]");
+    if (!target) return;
+    const roles = ["Game Developer", "Full-stack Developer", "Creative Technologist", "Software Engineer"];
+    let index = 0;
+    window.setInterval(() => {
+      index = (index + 1) % roles.length;
+      target.classList.add("is-changing");
+      window.setTimeout(() => {
+        target.textContent = roles[index];
+        target.classList.remove("is-changing");
+      }, 210);
+    }, 3400);
+  }
+
+  function initInteractiveAvatars() {
+    document.querySelectorAll("[data-avatar-interactive]").forEach(scene => {
+      const hint = scene.querySelector("[data-avatar-hint]");
+      scene.addEventListener("pointermove", event => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const bounds = scene.getBoundingClientRect();
+        const x = (event.clientX - bounds.left) / bounds.width;
+        const y = (event.clientY - bounds.top) / bounds.height;
+        scene.style.setProperty("--pointer-x", ((x - 0.5) * 2).toFixed(3));
+        scene.style.setProperty("--pointer-y", ((y - 0.5) * 2).toFixed(3));
+        scene.classList.add("is-pointed");
+      });
+      scene.addEventListener("pointerleave", () => {
+        scene.style.setProperty("--pointer-x", "0");
+        scene.style.setProperty("--pointer-y", "0");
+        scene.classList.remove("is-pointed");
+      });
+      scene.addEventListener("click", () => {
+        const awake = scene.getAttribute("aria-pressed") !== "true";
+        scene.setAttribute("aria-pressed", String(awake));
+        scene.classList.toggle("is-awake", awake);
+        if (hint) hint.textContent = awake ? "Orbit active · Click to settle" : "Move me · Click to interact";
+      });
+    });
+  }
+
   function init() {
     initMobileNav();
+    initRoleChanger();
+    initInteractiveAvatars();
     initArchive();
     initGameLaunch();
     initCopyEmail();
