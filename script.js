@@ -144,7 +144,7 @@ function initTechGlobe() {
     });
 
     // Draw globe wire circles (faint)
-    ctx.strokeStyle = 'rgba(56,189,248,0.07)';
+    ctx.strokeStyle = isPersonalGlobe ? 'rgba(16,185,129,0.12)' : 'rgba(232,72,79,0.14)';
     ctx.lineWidth = 1;
     for (let i = 0; i < 6; i++) {
       const angle = (i / 6) * Math.PI;
@@ -201,7 +201,7 @@ function initTechGlobe() {
       // Background pill
       ctx.save();
       ctx.globalAlpha = finalAlpha;
-      ctx.fillStyle = 'rgba(7,10,19,0.85)';
+      ctx.fillStyle = isPersonalGlobe ? 'rgba(7,10,19,0.85)' : 'rgba(12,11,11,0.92)';
       ctx.strokeStyle = cat.color;
       ctx.lineWidth = 1.2;
       ctx.beginPath();
@@ -219,7 +219,7 @@ function initTechGlobe() {
       if (alpha > 0.62 && iconSize > 12) {
         ctx.save();
         ctx.globalAlpha = (alpha - 0.6) * 2.5;
-        ctx.fillStyle = '#e2e8f0';
+        ctx.fillStyle = isPersonalGlobe ? '#e2e8f0' : '#e6d9c9';
         ctx.font = `600 ${Math.max(9, 10 * scale)}px "Plus Jakarta Sans", system-ui, sans-serif`;
         ctx.textAlign = 'center';
         ctx.fillText(n.label, px, py + bgRadius + Math.max(10, 13 * scale));
@@ -380,7 +380,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const rocket = document.querySelector('.rocket-float');
 
   window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 60);
+    if (header) header.classList.toggle('scrolled', window.scrollY > 60);
     if (rocket) {
       const offset = Math.min(window.scrollY * 0.45, 220);
       rocket.style.setProperty('--rocket-offset', `${offset}px`);
@@ -568,7 +568,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ['hcc-punct',   '.'],
       ['hcc-fn',      'build'],
       ['hcc-punct',   '()'],
-      ['hcc-comment', ' // 🚀'],
+      ['hcc-comment', ' // build complete'],
     ];
 
     // Flatten tokens into characters with their class
