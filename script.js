@@ -472,6 +472,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('resize', resizeCanvas, { passive: true });
     resizeCanvas();
     const animate = () => {
+      ctx.clearRect(0, 0, width, height);
       particles.forEach(particle => { particle.update(); particle.draw(); });
       if (!reducedMotion) requestAnimationFrame(animate);
     };
