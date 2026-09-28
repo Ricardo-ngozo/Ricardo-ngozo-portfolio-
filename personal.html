@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./personal.css" />
       <link rel="stylesheet" href="./portfolio-ux.css" />
   </head>
-  <body class="personal-body">
+  <body class="personal-body is-loading">
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <!-- Loader "” green themed for personal page -->
@@ -75,19 +75,24 @@
           </a>
         </div>
         <!-- floating image cards -->
-        <div class="p-hero-cards" aria-hidden="true">
-          <div class="p-card p-card-1">
+        <div class="p-hero-cards p-avatar-stage">
+          <div class="p-card p-card-1" aria-hidden="true">
             <img src="./assets/images/Think different_.jfif" alt="" />
           </div>
-          <div class="p-card p-card-2">
+          <div class="p-card p-card-2" aria-hidden="true">
             <img src="./assets/images/Mr_ robot 2015-2019.jfif" alt="" />
           </div>
-          <div class="p-card p-card-3">
+          <div class="p-card p-card-3" aria-hidden="true">
             <img src="./assets/images/55802482886459427.jfif" alt="" />
           </div>
-          <div class="p-card p-card-4">
+          <div class="p-card p-card-4" aria-hidden="true">
             <img src="./assets/images/fire.png" alt="" />
           </div>
+          <button class="p-avatar-character" type="button" data-avatar-interactive data-cursor-label="Meet Ricardo" aria-label="Ricardo's avatar. Click to light up the orbit." aria-pressed="false">
+            <span class="p-avatar-halo" aria-hidden="true"></span>
+            <img src="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" alt="Ricardo Ngozo illustrated avatar" />
+            <span class="p-avatar-caption"><span class="p-avatar-dot"></span><span data-avatar-hint>Meet Ricardo · Click to interact</span></span>
+          </button>
         </div>
       </section>
 
@@ -361,6 +366,7 @@
 
     <script src="./script.js"></script>
     <script src="./portfolio-ux.js"></script>
+    <script src="./cursor.js"></script>
     <script>
       // Personal page reveal on scroll
       const pRevealEls = document.querySelectorAll('.p-reveal');
