@@ -47,8 +47,10 @@
   .chain span.step.next{border-color:var(--amber);color:var(--amber);}.chain .arrow{color:var(--text-dim);font-size:13px;}
   footer{border-top:1px solid var(--border);padding:32px 0 50px;color:var(--text-dim);font-size:13px;}
 </style>
-</head>
+    <link rel="stylesheet" href="./portfolio-ux.css" />
+  </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 <a href="./index.html" style="position:fixed;top:20px;left:24px;z-index:9999;display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:100px;background:rgba(10,10,20,0.85);border:1px solid rgba(255,255,255,0.12);color:#e7eaf2;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.85rem;font-weight:600;text-decoration:none;backdrop-filter:blur(12px);transition:all 0.25s ease;" onmouseover="this.style.background='rgba(94,234,212,0.15)';this.style.borderColor='rgba(94,234,212,0.4)'" onmouseout="this.style.background='rgba(10,10,20,0.85)';this.style.borderColor='rgba(255,255,255,0.12)'">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m11 5-7 7 7 7 1.4-1.4L7.8 13H20v-2H7.8l4.6-4.6L11 5Z"/></svg>
   Portfolio
@@ -71,7 +73,7 @@
     </div>
   </div>
 </header>
-<main class="wrap">
+<main id="main-content" class="wrap">
   <div class="timeline-intro"><h2>The path, in order</h2><p>Each phase below was built directly on the last one — same loop, same coordinate logic, one new idea added at a time.</p></div>
   <div class="phase"><div class="rail"><div class="num">1</div><div class="line"></div></div><div class="phase-body"><h3>Moving a shape</h3><div class="skill-tags"><span>loops</span><span>variables</span><span>coordinates</span></div><p class="desc">The first thing that isn't a print statement: a turtle walking across a fixed line, one step per loop iteration.</p><div class="demo-grid"><div class="panel"><div class="panel-head"><span>moving_shape.py</span></div><pre><code class="py" data-code="l1"></code></pre></div><div class="panel canvas-panel"><div class="panel-head"><span>canvas — 1:1 loop</span></div><canvas id="c1" width="320" height="180"></canvas></div></div></div></div>
   <div class="phase"><div class="rail"><div class="num">2</div><div class="line"></div></div><div class="phase-body"><h3>Bouncing ball</h3><div class="skill-tags"><span>conditions</span><span>velocity</span><span>continuous animation</span></div><p class="desc">Adding a direction that flips when it hits an edge — the first real "if" doing something visual.</p><div class="demo-grid"><div class="panel"><div class="panel-head"><span>bouncing_ball.py</span></div><pre><code class="py" data-code="l2"></code></pre></div><div class="panel canvas-panel"><div class="panel-head"><span>canvas — 1:1 loop</span></div><canvas id="c2" width="320" height="180"></canvas></div></div></div></div>
@@ -102,5 +104,6 @@ function ctxOf(id){const c=document.getElementById(id);return[c,c.getContext('2d
 (function(){const[c,ctx]=ctxOf('c9');const W=c.width,H=c.height;let parts=[];const colors=['#5eead4','#a78bfa','#f5b95e','#f5768a','#82b1ff','#a3e6a1'];function launch(x,y){const col=colors[Math.floor(Math.random()*colors.length)];for(let i=0;i<60;i++){const a=Math.random()*Math.PI*2,sp=Math.random()*3.2+0.5;parts.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,col});}}c.addEventListener('click',e=>{const r=c.getBoundingClientRect();launch((e.clientX-r.left)*(W/r.width),(e.clientY-r.top)*(H/r.height));});let t=0;function draw(){ctx.fillStyle='rgba(0,0,0,0.18)';ctx.fillRect(0,0,W,H);t++;if(t%140===0)launch(Math.random()*W*0.6+W*0.2,Math.random()*H*0.4+20);parts.forEach(p=>{p.vy+=0.045;p.vx*=0.99;p.vy*=0.99;p.x+=p.vx;p.y+=p.vy;p.life-=0.013;ctx.globalAlpha=Math.max(p.life,0);ctx.fillStyle=p.col;ctx.fillRect(p.x,p.y,2.2,2.2);});ctx.globalAlpha=1;parts=parts.filter(p=>p.life>0);requestAnimationFrame(draw);}draw();})();
 (function(){const c=document.getElementById('c-hero'),ctx=c.getContext('2d');let x=0,y=0,dx=3.4,dy=2.6;function draw(){ctx.fillStyle='rgba(0,0,0,0.22)';ctx.fillRect(0,0,c.width,c.height);x+=dx;y+=dy;if(Math.abs(x)>c.width/2-10)dx*=-1;if(Math.abs(y)>c.height/2-10)dy*=-1;ctx.fillStyle='#5eead4';ctx.beginPath();ctx.arc(c.width/2+x,c.height/2+y,9,0,7);ctx.fill();requestAnimationFrame(draw);}draw();})();
 </script>
+  <script src="./portfolio-ux.js"></script>
 </body>
 </html>
