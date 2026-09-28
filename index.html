@@ -18,11 +18,16 @@
     <link rel="stylesheet" href="./portfolio-ux.css" />
 
   </head>
-  <body data-page="tech">
+  <body data-page="tech" class="is-loading">
     <a class="skip-link" href="#home">Skip to content</a>
 
 
     <main>
+<div class="site-loader" data-site-loader aria-live="polite">
+  <canvas class="loader-pong" data-loader-pong aria-hidden="true"></canvas>
+  <div class="score" aria-hidden="true"><span data-loader-score-left>0</span><span data-loader-score-right>0</span></div>
+  <div class="loader-overlay"><p class="brand">Ricardo Ngozo</p><h1>Loading the portfolio...</h1><p>Rallying the pixels into place.</p><div class="prompt" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
+</div>
 <section id="home" class="hero-section hero-section-simple">
   <canvas class="ambient-canvas" aria-hidden="true"></canvas>
   <div class="hero-layout hero-layout-simple">
