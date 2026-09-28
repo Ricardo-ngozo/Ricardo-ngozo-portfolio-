@@ -411,3 +411,18 @@ body.python-log-body .hero-canvas-box { position:relative;isolation:isolate; }
 @keyframes turtleFloat { 0%,100%{margin-top:0} 50%{margin-top:-7px} }
 @keyframes turtleCelebrate { 0%,100%{transform:translateY(-8px) rotate(8deg) scale(1.08)} 35%{transform:translateY(-18px) rotate(-12deg) scale(1.12)} 68%{transform:translateY(-7px) rotate(12deg) scale(1.06)} }
 @media(max-width:760px) { body.personal-body .p-avatar-stage{width:min(340px,90vw);height:430px;margin:0 auto;} body.personal-body .p-avatar-character{width:190px;height:228px;} body.python-log-body .python-guide-avatar{width:96px;height:100px;right:4px;bottom:5px;} body.python-log-body .python-guide-label{font-size:.52rem;} }
+
+/* The homepage also uses the red-and-beige Pong intro. */
+body[data-page="tech"] .site-loader { display:flex!important;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;background:#0c0b0b;transition:opacity .65s ease,visibility .65s ease; }
+body[data-page="tech"] .site-loader[hidden] { display:none!important; }
+body[data-page="tech"] .loader-pong { position:absolute;inset:0;width:100%;height:100%; }
+body[data-page="tech"] .site-loader .score { position:absolute;top:30px;left:50%;transform:translateX(-50%);display:flex;gap:48px;z-index:2;color:#e6d9c9;font-size:1.15rem;font-weight:700;letter-spacing:.08em;pointer-events:none; }
+body[data-page="tech"] .site-loader .score span { color:#fff; }
+body[data-page="tech"] .loader-overlay { position:relative;z-index:2;padding:32px 40px;text-align:center;border-radius:22px;border:1px solid rgba(230,217,201,.2);background:rgba(15,13,13,.78);box-shadow:0 22px 80px rgba(0,0,0,.4);backdrop-filter:blur(18px);pointer-events:none; }
+body[data-page="tech"] .loader-overlay h1 { margin:.3em 0;color:#fff;font-size:clamp(1.4rem,4vw,2.4rem); }
+body[data-page="tech"] .loader-overlay p { color:#e6d9c9; }
+body[data-page="tech"] .loader-overlay .brand { margin:0;color:#e8484f;font-weight:800;letter-spacing:.08em; }
+body[data-page="tech"] .loader-overlay .dot { display:inline-block;width:7px;height:7px;margin:0 4px;border-radius:50%;background:#e6d9c9;animation:avatarPulse 1.1s ease-in-out infinite; }
+body[data-page="tech"] .loader-overlay .dot:nth-child(2) { animation-delay:.16s; }
+body[data-page="tech"] .loader-overlay .dot:nth-child(3) { animation-delay:.32s; }
+body[data-page="tech"].loader-complete .site-loader { opacity:0;visibility:hidden;pointer-events:none; }
