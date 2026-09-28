@@ -15,166 +15,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="./portfolio-polish.css" />
     <link rel="stylesheet" href="./portfolio-ux.css" />
 
   </head>
   <body data-page="tech" class="is-loading">
     <a class="skip-link" href="#home">Skip to content</a>
-    <div class="site-loader" data-site-loader aria-live="polite" aria-label="Portfolio loading">
-      <div class="score" aria-hidden="true">
-        <div>P1 <span data-loader-score-left>0</span></div>
-        <div>P2 <span data-loader-score-right>0</span></div>
-      </div>
-      <canvas class="loader-pong" data-loader-pong aria-hidden="true"></canvas>
-      <div class="loader-overlay">
-        <p class="brand">Ricardo.</p>
-        <h1>Loading the portfolio...</h1>
-        <p>Enjoy a quick rally while things warm up.</p>
-        <div class="prompt" aria-hidden="true">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        </div>
-      </div>
-    </div>
-    <canvas class="ambient-canvas" aria-hidden="true"></canvas>
-
-    <div class="rocket-float" aria-hidden="true">
-      <svg viewBox="0 0 64 64" role="img">
-        <path d="M30 8c-8 5-15 14-15 24 0 9 7 18 14 24 3 2 5 2 8 0 7-6 14-15 14-24 0-10-7-19-15-24-2-1-4-1-6 0Z" fill="#f8fafc"/>
-        <path d="M22 20c4-3 8-4 12-4l-2 12-10 1Z" fill="#38bdf8"/>
-        <path d="M42 20c-3-5-8-8-14-8 3 6 4 11 5 16l9-8Z" fill="#818cf8"/>
-        <path d="M28 38l-4 14 7-6 7 6-4-14-6 0Z" fill="#ffb454"/>
-      </svg>
-    </div>
-
-    <header class="morph-header" data-header>
-      <div class="nav-container">
-        <a class="brand-mark" href="#home" aria-label="Samukelo Home">
-          <span class="site-title">Samukelo Ricardo Ngozo</span>
-          <img src="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" alt="Ricardo Avatar" class="brand-avatar" />
-        </a>
-
-        <nav class="pill-nav" aria-label="Primary navigation" data-nav>
-          <a href="#home" class="nav-link active" data-section="home">Home</a>
-          <a href="#about" class="nav-link" data-section="about">About</a>
-          <a href="#stack" class="nav-link" data-section="stack">Stack</a>
-          <a href="#projects" class="nav-link" data-section="projects">Projects</a>
-          <a href="#contact" class="nav-link" data-section="contact">Contact</a>
-          <a href="./personal.html" class="nav-link nav-link-personal">Personal</a>
-        </nav>
-
-        <button class="mobile-toggle" type="button" aria-label="Open menu" data-menu-toggle>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </header>
-
-    <a href="./python-learning-log.html"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="python-btn"
-        aria-label="View Python Learning Log">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
-        🐍 Python Log
-      </a>
-
-    <a href="./assets/docs/Ricardo_Ngozo_CV.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="cv-btn cv-btn-fixed"
-        aria-label="View Ricardo Ngozo CV">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6ZM14 3.5 18.5 8H14V3.5ZM8 13h8v1.5H8V13Zm0 3h8v1.5H8V16Zm0-6h5v1.5H8V10Z"/></svg>
-        View CV
-      </a>
+    <header class="morph-header" data-header><div class="nav-container">
+<a class="brand-mark" href="#home" aria-label="Ricardo Ngozo — home"><span class="brand-monogram" aria-hidden="true">R<span>.</span></span><span class="site-title">Ricardo Ngozo</span></a>
+<nav class="pill-nav" id="primary-navigation" aria-label="Primary navigation" data-nav>
+<a href="#home" class="nav-link active" data-section="home">Home</a><a href="#projects" class="nav-link" data-section="projects">Work</a><a href="#why-me" class="nav-link" data-section="why-me">About</a><a href="#stack" class="nav-link" data-section="stack">Stack</a><a href="#contact" class="nav-link" data-section="contact">Contact</a><a href="./personal.html" class="nav-link nav-link-personal">Personal</a></nav>
+<a href="./assets/docs/Ricardo_Ngozo_CV.pdf" target="_blank" rel="noopener noreferrer" class="nav-resume">Resume <span aria-hidden="true">↗</span></a>
+<button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle><span></span><span></span></button></div></header>
 
     <main>
-<section id="home" class="hero-section">
-  <!-- Floating code snippets background -->
-  <div class="hero-bg-code" aria-hidden="true">
-    <span class="hbc hbc-1">const build = () =&gt; {</span>
-    <span class="hbc hbc-2">  return future;</span>
-    <span class="hbc hbc-3">};</span>
-    <span class="hbc hbc-4">import React from 'react';</span>
-    <span class="hbc hbc-5">addEventListener('click', play);</span>
-    <span class="hbc hbc-6">git commit -m "ship it"</span>
-    <span class="hbc hbc-7">npm run dev</span>
-    <span class="hbc hbc-8">export default App;</span>
-  </div>
-
-  <div class="hero-layout">
-    <!-- Left: main identity -->
-    <div class="hero-identity">
-      <div class="hero-badge-row">
-        <span class="hero-badge">
-          <span class="hero-badge-dot"></span>Available to hire
-        </span>
-        <span class="hero-badge hero-badge-alt">Fullstack · Game Dev · AI</span>
-      </div>
-
-      <div class="pixel-avatar-container">
-        <img src="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" alt="Ricardo avatar" class="pixel-avatar" />
-      </div>
-
-      <h1 class="hero-title">Ricardo.</h1>
-
-      <h2 class="hero-subtitle">
-        <span class="hero-subtitle-static">I build </span><span class="hero-subtitle-typed" id="hero-typed"></span><span class="hero-cursor-blink">|</span>
-      </h2>
-
-      <p class="hero-tagline">Building interactive systems, immersive experiences, and a future in game development while growing as a fullstack developer.</p>
-
-      <div class="hero-cta-row">
-        <a href="#projects" class="hero-cta-primary">See the work</a>
-        <a href="#journey" class="hero-cta-secondary">Who I am</a>
-      </div>
-    </div>
-
-    <!-- Right: animated code window -->
-    <div class="hero-code-window" aria-hidden="true">
-      <div class="hcw-header">
-        <span class="hcw-btn hcw-close"></span>
-        <span class="hcw-btn hcw-min"></span>
-        <span class="hcw-btn hcw-max"></span>
-        <span class="hcw-title">ricardo.js</span>
-      </div>
-      <div class="hcw-body">
-        <pre class="hcw-code" id="hero-code-display"></pre>
-      </div>
-      <div class="hcw-footer">
-        <span class="hcw-lang">JavaScript</span>
-        <span class="hcw-status"><span class="hcw-status-dot"></span>Running</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scroll Indicator -->
-  <a href="#about" class="scroll-indicator" aria-label="Scroll down to About section">
-    <div class="mouse"><div class="wheel"></div></div>
-  </a>
-</section>
+<section id="home" class="hero-section"><div class="hero-layout">
+<div class="hero-identity"><p class="hero-eyebrow"><span class="availability-dot" aria-hidden="true"></span> Samukelo Ricardo Ngozo <span class="eyebrow-divider">/</span> South Africa</p>
+<h1 class="hero-title">Thoughtful interfaces.<br /><span>Playful engineering.</span></h1>
+<p class="hero-subtitle">Full-stack developer &amp; game creator</p>
+<p class="hero-tagline">I build responsive apps and interactive experiences—from the first sketch to the last detail that makes them feel right.</p>
+<div class="hero-cta-row"><a href="#projects" class="hero-cta-primary">Explore my work <span aria-hidden="true">↘</span></a><a href="#why-me" class="hero-cta-secondary">A little about me</a></div>
+<a class="hero-resource-link" href="./python-learning-log.html">Follow my Python learning log <span aria-hidden="true">↗</span></a></div>
+<article class="hero-project-card"><a class="hero-project-image" href="https://lourve-reims.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="View the Urban Threads live project"><img src="./assets/images/lourve.png" alt="Urban Threads storefront interface" fetchpriority="high" /><span class="hero-project-open" aria-hidden="true">↗</span></a>
+<div class="hero-project-caption"><div><span class="hero-project-kicker">SELECTED BUILD · 2026</span><h2>Urban Threads</h2><p>Commerce, with character.</p></div><a href="./case-studies/urban-threads-case-study.html" class="hero-case-link">Read the case study <span aria-hidden="true">→</span></a></div></article>
+</div><div class="hero-bottom-note"><span>01 — SELECTED WORK</span><span>Scroll to explore <span aria-hidden="true">↓</span></span></div></section>
       
-      <section id="stack" class="stack-section">
-  <div class="stack-header reveal-element" data-reveal>
-    <h2>The Arsenal.</h2>
-    <p>The technologies powering my work as a fullstack developer and game developer.</p>
-  </div>
-
-  <div class="globe-wrapper reveal-element" data-reveal>
-    <canvas id="tech-globe" aria-label="3D rotating tech stack globe" role="img"></canvas>
-    <div class="globe-legend">
-      <div class="legend-group">
-        <span class="legend-dot" style="background:#38bdf8"></span>Frontend
-      </div>
-      <div class="legend-group">
-        <span class="legend-dot" style="background:#818cf8"></span>Backend
-      </div>
-      <div class="legend-group">
-        <span class="legend-dot" style="background:#10b981"></span>Tools
-      </div>
-    </div>
-  </div>
-</section>
+      <section id="stack" class="stack-section"><div class="section-header reveal-element" data-reveal><p class="section-kicker">TOOLS I USE</p><h2>My toolkit</h2><p>Practical tools for building thoughtful, working products.</p></div>
+<div class="skills-grid reveal-element" data-reveal>
+<article class="skill-group"><span class="skill-number">01</span><h3>Interface</h3><p>Turning clear ideas into responsive, accessible experiences.</p><div class="skill-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span><span>Tailwind</span></div></article>
+<article class="skill-group"><span class="skill-number">02</span><h3>Application</h3><p>Connecting frontends to useful data and reliable behavior.</p><div class="skill-tags"><span>Node.js</span><span>Python</span><span>REST APIs</span><span>Responsive UI</span></div></article>
+<article class="skill-group"><span class="skill-number">03</span><h3>Workflow</h3><p>Building, iterating, and shipping with a collaborative mindset.</p><div class="skill-tags"><span>Git</span><span>GitHub</span><span>Vite</span><span>Figma</span></div></article></div></section>
 
 
 
@@ -186,7 +55,7 @@
 
   <div class="fw-grid">
 
-    <article class="fw-card fw-card-hero reveal-element" data-reveal data-tilt>
+    <article class="fw-card fw-card-hero reveal-element" data-reveal>
       <div class="fw-card-img">
         <img src="./assets/images/lourve.png" alt="Urban Threads" loading="lazy" />
         <div class="fw-card-shine"></div>
@@ -287,9 +156,11 @@
     <p>Secondary builds and explorations — each one a different problem, a different solution.</p>
   </div>
 
+  <button class="archive-toggle" type="button" aria-expanded="false" aria-controls="archive-panel" data-archive-toggle>Explore the full archive <span aria-hidden="true">＋</span></button>
+  <div class="archive-panel" id="archive-panel" hidden>
   <div class="archive-filter">
     <label class="sr-only" for="archive-search">Search projects</label>
-    <input id="archive-search" type="search" data-archive-search placeholder="Search projects by name or type…" autocomplete="off" />
+    <input id="archive-search" type="search" data-archive-search placeholder="Find a project…" autocomplete="off" />
     <span class="archive-filter-count" data-archive-count aria-live="polite"></span>
   </div>
   <div class="archive-cards-grid">
@@ -374,6 +245,9 @@
       </div>
     </article>
   </div>
+  <p class="archive-empty" data-archive-empty hidden>No projects match that search. Try a different term.</p>
+  </div>
+</div>
 </section>
 
 <section id="contributions" class="contribution-section">
@@ -500,9 +374,7 @@
   <div class="why-bento">
     <!-- Big game card -->
     <article class="wb-game reveal-element" data-reveal>
-      <div class="wb-game-frame">
-        <iframe src="./mini-quest-runner/index.html" title="Mini Quest Runner — play now" loading="lazy"></iframe>
-      </div>
+      <div class="wb-game-frame game-launch-frame" data-game-frame><div class="game-launch-card"><span class="section-kicker">A SMALL GAME I BUILT</span><strong>Mini Quest Runner</strong><p>Jump, collect crystals, and see how far you get.</p><button class="button button-secondary" type="button" data-load-game data-game-src="./mini-quest-runner/index.html">Play Mini Quest Runner <span aria-hidden="true">→</span></button></div></div>
       <div class="wb-game-info">
         <span class="fw-tag fw-tag-green">Playable · Built by me</span>
         <h3>Mini Quest Runner</h3>
@@ -569,6 +441,7 @@
             <div class="contact-info">
               <h3>Reach out directly</h3>
               <p>I typically respond within 24 hours.</p>
+                <div class="contact-action-row"><a href="mailto:Ultrazen75@gmail.com" class="button button-primary">Send an email <span aria-hidden="true">↗</span></a><button class="button button-secondary" type="button" data-copy-email>Copy email</button><span class="copy-status" data-copy-status role="status" aria-live="polite"></span></div>
                 <div class="social-links">
                   <a href="mailto:Ultrazen75@gmail.com" class="social-link social-email" aria-label="Email Me">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm8 7.2L4.8 8H4v.6l8 5.8 8-5.8V8h-.8L12 13.2Z"/></svg>
@@ -582,19 +455,14 @@
                 </div>
             </div>
 
-            <form class="contact-form" action="https://formspree.io/f/xrennagy" method="POST">
-              <input type="text" name="name" placeholder="Name" required />
-              <input type="email" name="email" placeholder="Email" required />
-              <textarea name="message" rows="4" placeholder="Your message..." required></textarea>
-              <button type="submit" class="glass-btn primary">Send Message</button>
-            </form>
+            <form class="contact-form" action="https://formspree.io/f/xrennagy" method="POST"><label for="contact-name">Your name</label><input id="contact-name" type="text" name="name" placeholder="Jane Doe" autocomplete="name" required /><label for="contact-email">Email address</label><input id="contact-email" type="email" name="email" placeholder="jane@example.com" autocomplete="email" required /><label for="contact-message">What would you like to build?</label><textarea id="contact-message" name="message" rows="4" placeholder="Tell me a little about it…" required></textarea><button type="submit" class="button button-primary">Send message <span aria-hidden="true">↗</span></button></form>
           </div>
         </div>
       </section>
 
     <script src="./script.js"></script>
     <script src="./portfolio-ux.js"></script>
-    <script src="./cursor.js"></script>
+    
   </body>
 </html>
 
