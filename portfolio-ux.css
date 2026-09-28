@@ -165,3 +165,33 @@ button, a { -webkit-tap-highlight-color: transparent; }
   *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition-duration:.01ms !important; }
   .reveal-element[data-reveal] { opacity:1; transform:none; }
 }
+
+.archive-item[hidden] { display:none !important; }
+.day-spacer { visibility:hidden; }
+.contribution-profile-link { color:#cde9b8; font-size:.84rem; text-underline-offset:4px; }
+.contribution-profile-link:hover { color:var(--accent-lime); }
+.contribution-status-row [data-state="error"] { color:#f3b4a1; }
+.contribution-refresh:disabled { opacity:.68; cursor:wait; }
+.graph-scroll:focus-visible { outline-offset:6px; border-radius:8px; }
+.case-study-hero {
+  width:min(1200px,calc(100% - 48px)); margin:70px auto 54px; gap:clamp(28px,5vw,68px);
+}
+.case-study-hero-copy h1, .case-study-hero h1 {
+  color:var(--text-primary); font-size:clamp(2.5rem,6vw,5rem);
+  letter-spacing:-.065em; line-height:1.04; text-wrap:balance;
+}
+.case-meta { color:var(--accent-lime); letter-spacing:.14em; }
+.case-study-tags span { border:1px solid rgba(180,239,105,.18); background:rgba(180,239,105,.06); border-radius:999px; padding:6px 11px; }
+.case-study-hero-visual, .case-study-visuals, .visual-card {
+  border:1px solid var(--line); border-radius:20px; overflow:hidden; background:var(--surface);
+}
+.case-study-hero-visual img, .case-study-visuals img { display:block; width:100%; height:auto; transition:transform .65s var(--ease-out); }
+.case-study-hero-visual:hover img, .case-study-visuals:hover img { transform:scale(1.025); }
+.case-study-details { width:min(1100px,calc(100% - 48px)); margin:0 auto 100px; gap:18px; }
+.case-block, .visual-card { padding:clamp(20px,3vw,34px); border:1px solid var(--line); border-radius:20px; background:linear-gradient(145deg,rgba(21,32,31,.88),rgba(13,20,20,.9)); }
+.case-block h2, .case-block h3, .visual-card h3 { color:var(--text-primary); letter-spacing:-.035em; }
+.case-block p, .visual-card p { color:var(--text-secondary); line-height:1.8; }
+@media(max-width:700px) {
+  .case-study-hero { width:calc(100% - 32px); margin-top:100px; }
+  .case-study-details { width:calc(100% - 32px); margin-bottom:72px; }
+}
