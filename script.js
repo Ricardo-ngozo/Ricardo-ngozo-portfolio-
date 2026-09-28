@@ -659,30 +659,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =========================================
-     6. CONTRIBUTIONS: Realistic Timeline
-     ========================================= */
-  const graph = document.getElementById('contribution-graph');
-  if (graph) {
-    graph.innerHTML = ''; // Clear previous
-    // 53 weeks * 7 days = 371 total potential slots
-    for (let i = 0; i < 371; i++) {
-      const day = document.createElement('div');
-      day.className = 'day';
-      
-      // March 2026 starts around column 40 (approx 40 weeks into a year)
-      // We apply activity if the index corresponds to March - June
-      if (i > 280) { 
-        // 20% chance of no activity, 80% chance of random level 1-4
-        if (Math.random() > 0.2) {
-          const level = Math.floor(Math.random() * 4) + 1;
-          day.setAttribute('data-level', level);
-        }
-      }
-      graph.appendChild(day);
-    }
-  }
-
-  /* =========================================
    PERSONAL: Dynamic Case Study Injection
    ========================================= */
 const caseStudies = [
