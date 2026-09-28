@@ -295,6 +295,71 @@
     }
   }
 
+  function initSectionCompanions() {
+    const creatures = {
+      bird: '<path d="M4 22c9-9 16-10 24-2 8-8 15-8 22-2-9-3-14 0-19 8l-5-5-5 5c-4-6-9-7-17-4Z"/><path d="M26 19C18 9 11 8 5 10c8 1 13 6 18 14Zm4 0c6-9 13-11 19-8-7 2-11 6-15 13Z" opacity=".72"/>',
+      butterfly: '<path d="M30 30c-2-8-15-23-24-19-7 3 0 17 12 20-10 1-14 11-8 15 8 5 18-7 20-13Zm4 0c2-8 15-23 24-19 7 3 0 17-12 20 10 1 14 11 8 15-8 5-18-7-20-13Z"/><path d="M31 21v25m-2-25-7-7m12 7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+      fox: '<path d="m9 17 5-12 10 8q6-3 12 0l10-8 5 12q4 15-10 23l-11 8-11-8Q5 32 9 17Z"/><path d="M18 27q4 4 8 0m8 0q4 4 8 0M23 37q7 5 14 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="m26 32 4 3 4-3-4-2Z"/>',
+      cat: '<path d="m10 24 2-16 12 9q6-2 12 0l12-9 2 16q1 19-20 25Q9 43 10 24Z"/><path d="M18 29h1m22 0h1M25 35q5 4 10 0m-5-3v3" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M10 42Q1 37 6 29" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>',
+      bee: '<ellipse cx="31" cy="32" rx="17" ry="13"/><path d="M24 20v24m12-23v22M21 17l-5-6m26 6 5-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M22 19q-12-13-15-3-2 8 13 11m25-8q12-13 15-3 2 8-13 11" fill="none" stroke="currentColor" stroke-width="2" opacity=".72"/>',
+      firefly: '<ellipse cx="31" cy="33" rx="11" ry="14"/><path d="M22 29h18m-18 8h18M25 20q-9-13-14-4-3 7 10 12m20-8q9-13 14-4 3 7-10 12M27 18l-4-7m14 7 4-7" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/><circle cx="31" cy="49" r="4"/>',
+      rabbit: '<ellipse cx="21" cy="17" rx="6" ry="15" transform="rotate(-12 21 17)"/><ellipse cx="40" cy="17" rx="6" ry="15" transform="rotate(12 40 17)"/><circle cx="31" cy="34" r="18"/><circle cx="25" cy="33" r="1.8"/><circle cx="37" cy="33" r="1.8"/><path d="M28 40q3 3 6 0m-3-2v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+      owl: '<path d="M10 20 8 8l15 7q8-4 16 0l15-7-2 12q7 23-21 29Q3 43 10 20Z"/><circle cx="23" cy="28" r="8"/><circle cx="37" cy="28" r="8"/><circle cx="23" cy="28" r="2"/><circle cx="37" cy="28" r="2"/><path d="m27 37 4 5 4-5Z"/>',
+      dog: '<path d="M10 20q4-12 17-10l8 5q9-5 17 2l-4 9q-2 15-17 20Q13 42 10 29Z"/><path d="M13 17Q4 6 7 26m38-11q11-10 10 8M22 28h1m17 0h1m-12 8q4 3 8 0" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>',
+      turtle: '<ellipse cx="32" cy="34" rx="20" ry="15"/><path d="M16 34q16-16 32 0-16 17-32 0Zm-8-8-7-5m45 4 8-5M13 43l-5 7m38-7 5 7M48 30q13-5 14 4-1 7-13 5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/><circle cx="55" cy="32" r="1.4"/>',
+      ball: '<circle cx="32" cy="32" r="23"/><path d="M12 20q13 1 18 12-7 10-4 22M50 13q-2 13-18 19 10 9 17 25M11 43q10-10 21-11 9-13 17-17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>',
+      arrow: '<path d="M12 49 49 12M19 12h30v30" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="50" r="5"/>',
+      star: '<path d="m32 5 7 18 19 1-15 12 5 19-16-11-16 11 5-19L6 24l19-1Z"/><circle cx="32" cy="32" r="5" fill="#e8484f"/>',
+      rocket: '<path d="M36 8Q53 9 54 26L36 44 20 28Q20 11 36 8Z"/><path d="m21 28-9 3-4 12 14-3m14 4-3 10 12-4 3-10M28 36l-9 9m16-32 8 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="23" r="4"/>',
+      shield: '<path d="M32 6 53 14v16q-2 19-21 28Q13 49 11 30V14Z"/><path d="m21 32 7 7 15-16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>',
+      firework: '<path d="M31 27 33 5l5 20 16-15-12 18 20 3-21 3 13 17-17-13-5 22-3-22-18 12 13-17L4 31l21-3L13 9l17 16Z"/><circle cx="32" cy="31" r="5" fill="#e8484f"/>'
+    };
+    const byId = {
+      home:"bird", stack:"butterfly", projects:"fox", archive:"cat", contributions:"firefly",
+      journey:"rabbit", certifications:"bee", "why-me":"owl", contact:"firefly",
+      "p-hero":"bird", "p-origin":"fox", "p-sparks":"cat", "p-building":"dog",
+      "p-beyond":"butterfly", "p-footer-cta":"firefly"
+    };
+    const phases = ["turtle","ball","bee","arrow","star","rocket","shield","bird","firework"];
+    const sections = document.querySelectorAll("section[id], .p-footer-cta, .phase, header.hero");
+    sections.forEach((section, index) => {
+      if (section.querySelector(":scope > .section-companion")) return;
+      let kind = byId[section.id];
+      if (section.classList.contains("phase")) {
+        const number = Number(section.querySelector(".num")?.textContent.trim()) || 1;
+        kind = phases[(number - 1) % phases.length];
+      }
+      if (section.matches("header.hero")) kind = "turtle";
+      if (section.classList.contains("p-footer-cta")) kind = "firefly";
+      kind ||= ["bee","firefly","butterfly","fox"][index % 4];
+      section.classList.add("has-companion");
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `section-companion section-companion--${kind} ${index % 2 ? "companion-left" : ""}`;
+      button.setAttribute("aria-label", `Let the ${kind} interact with this section`);
+      button.title = `Let the ${kind} interact with this section`;
+      button.innerHTML = `<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">${creatures[kind]}</svg><span class="companion-spark" aria-hidden="true"></span>`;
+      const target = section.querySelector(".fw-card, .archive-item, .contribution-wrapper, .jt-card, .cert-tile, .wb-card, .contact-form, .phase-body, .p-mosaic-item, .hero-canvas-box, .tech-globe-wrap, h1, h2") || section;
+      const wake = () => {
+        button.classList.add("is-awake");
+        target.classList.add("companion-reacted");
+      };
+      const settle = () => {
+        button.classList.remove("is-awake");
+        target.classList.remove("companion-reacted");
+      };
+      button.addEventListener("pointerenter", wake);
+      button.addEventListener("pointerleave", settle);
+      button.addEventListener("focus", wake);
+      button.addEventListener("blur", settle);
+      button.addEventListener("click", () => {
+        wake();
+        window.setTimeout(settle, 1150);
+      });
+      section.append(button);
+    });
+  }
+
   function initFloatingActions() {
     const actions = document.querySelector(".floating-actions");
     const footer = document.querySelector(".site-footer");
@@ -312,6 +377,7 @@
   function init() {
     initMobileNav();
     initLivingMotion();
+    initSectionCompanions();
     initFloatingActions();
     initRoleChanger();
     initInteractiveAvatars();
