@@ -427,3 +427,79 @@ body[data-page="tech"] .loader-overlay .dot { display:inline-block;width:7px;hei
 body[data-page="tech"] .loader-overlay .dot:nth-child(2) { animation-delay:.16s; }
 body[data-page="tech"] .loader-overlay .dot:nth-child(3) { animation-delay:.32s; }
 body[data-page="tech"].loader-complete .site-loader { opacity:0;visibility:hidden;pointer-events:none; }
+
+
+/* Living details: quiet page-wide motion with original inline SVG artwork. */
+.motion-stage { position:relative;isolation:isolate; }
+.motion-stage > :not(.motion-flock) { position:relative;z-index:1; }
+.motion-flock { position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none; }
+.motion-bird-flight { position:absolute;left:-12vw;top:var(--bird-height,22%);width:var(--bird-size,34px);opacity:0;animation:birdCross var(--bird-speed,34s) linear var(--bird-delay,0s) infinite; }
+.motion-bird { width:100%;height:auto;overflow:visible;fill:#e6d9c9;filter:drop-shadow(0 2px 5px rgba(232,72,79,.25)); }
+.bird-body { opacity:.82; }
+.bird-wing { transform-box:fill-box; }
+.bird-wing-left { transform-origin:100% 75%;animation:birdWingDown .72s ease-in-out infinite alternate; }
+.bird-wing-right { transform-origin:0 75%;animation:birdWingUp .72s ease-in-out infinite alternate; }
+.motion-bird-flight-1 { --bird-size:38px;--bird-height:19%;--bird-speed:38s;--bird-delay:-17s; }
+.motion-bird-flight-2 { --bird-size:25px;--bird-height:35%;--bird-speed:43s;--bird-delay:-31s; }
+.motion-bird-flight-3 { --bird-size:30px;--bird-height:57%;--bird-speed:40s;--bird-delay:-8s; }
+
+.motion-runway { position:relative;width:min(1220px,calc(100% - 48px));height:42px;margin:0 auto;overflow:hidden;isolation:isolate; }
+.motion-runway::before { content:"";position:absolute;left:0;right:0;top:13px;height:1px;background:linear-gradient(90deg,transparent,rgba(230,217,201,.28) 8%,rgba(232,72,79,.36) 50%,rgba(230,217,201,.24) 92%,transparent); }
+.motion-runway::after { content:"";position:absolute;left:0;right:0;top:13px;height:1px;background:repeating-linear-gradient(90deg,transparent 0 36px,rgba(232,72,79,.55) 36px 43px,transparent 43px 84px);opacity:.5;animation:runwayDash 8s linear infinite; }
+.motion-runner { position:absolute;z-index:1;left:0;top:-2px;width:94px;height:44px;padding:0;border:0;background:transparent;color:#e6d9c9;cursor:pointer;animation:dogRun 25s linear infinite; }
+.motion-runner:focus-visible { outline:2px solid #e8484f;outline-offset:-2px;border-radius:10px; }
+.motion-dog-svg { width:100%;height:100%;overflow:visible;animation:dogBodyBounce .34s ease-in-out infinite alternate;filter:drop-shadow(0 5px 7px rgba(0,0,0,.28)); }
+.dog-body,.dog-head,.dog-neck { fill:#e6d9c9;stroke:#181314;stroke-width:1.5;stroke-linejoin:round; }
+.dog-eye { fill:#171112; }
+.dog-ear { fill:#bda999;stroke:#181314;stroke-width:1.5;stroke-linejoin:round; }
+.dog-tail { fill:none;stroke:#e6d9c9;stroke-width:4;stroke-linecap:round;transform-box:fill-box;transform-origin:100% 100%;animation:dogTailWag .42s ease-in-out infinite alternate; }
+.dog-collar { fill:none;stroke:#e8484f;stroke-width:4;stroke-linecap:round; }
+.dog-leg { fill:none;stroke:#e6d9c9;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;transform-box:fill-box; }
+.dog-leg-a,.dog-leg-c { transform-origin:50% 0;animation:dogStrideA .34s ease-in-out infinite alternate; }
+.dog-leg-b,.dog-leg-d { transform-origin:50% 0;animation:dogStrideB .34s ease-in-out infinite alternate; }
+.motion-runner.is-boosted { animation-duration:8s; }
+.motion-runner.is-boosted .motion-dog-svg { animation-duration:.2s; }
+.motion-runner.is-boosted .dog-leg { animation-duration:.2s; }
+
+.motion-prep { transition:opacity .65s cubic-bezier(.2,.75,.25,1),transform .65s cubic-bezier(.2,.75,.25,1); }
+.phase.motion-prep,.jt-item.motion-prep { opacity:.18;transform:translateY(20px); }
+.phase.motion-seen,.jt-item.motion-seen { opacity:1;transform:translateY(0); }
+.python-log-body .phase.motion-seen .line { transform-origin:top;animation:pythonRailDraw .8s ease both; }
+.journey-timeline .jt-item.motion-seen .jt-dot { animation:journeyDotArrive .6s cubic-bezier(.2,.8,.2,1) both; }
+.contribution-graph .day:not(.day-spacer) { animation:contributionCellIn .42s cubic-bezier(.2,.8,.2,1) both;animation-delay:min(calc(var(--day-index,0) * 1.5ms),560ms); }
+body.personal-body .p-mosaic-item img { transition:transform .9s cubic-bezier(.2,.75,.25,1),filter .5s; }
+body.personal-body .p-mosaic-item:hover img { transform:scale(1.045);filter:saturate(1.08); }
+body.personal-body .p-section-label { position:relative; }
+body.personal-body .p-section-label::after { content:"";display:block;width:34px;height:1px;margin-top:9px;background:linear-gradient(90deg,#c7f17a,transparent);transform-origin:left;animation:sectionSignal 3.4s ease-in-out infinite; }
+.python-log-body .hero-canvas-box { box-shadow:0 22px 65px rgba(0,0,0,.22);animation:pythonPanelBreathe 7s ease-in-out infinite; }
+
+@keyframes birdCross { 0%{transform:translate3d(-5vw,9px,0) scale(.76);opacity:0} 9%{opacity:.72} 48%{transform:translate3d(48vw,-2px,0) scale(.95)} 90%{opacity:.62} 100%{transform:translate3d(112vw,8px,0) scale(1.05);opacity:0} }
+@keyframes birdWingDown { from{transform:rotate(8deg) scaleY(.9)} to{transform:rotate(-30deg) scaleY(1.08)} }
+@keyframes birdWingUp { from{transform:rotate(-8deg) scaleY(.9)} to{transform:rotate(30deg) scaleY(1.08)} }
+@keyframes dogRun { 0%{transform:translateX(-105px)} 100%{transform:translateX(calc(100vw + 105px)} }
+@keyframes dogBodyBounce { from{transform:translateY(1px) rotate(-1deg)} to{transform:translateY(-3px) rotate(1deg)} }
+@keyframes dogStrideA { from{transform:rotate(-32deg)} to{transform:rotate(28deg)} }
+@keyframes dogStrideB { from{transform:rotate(26deg)} to{transform:rotate(-34deg)} }
+@keyframes dogTailWag { from{transform:rotate(-24deg)} to{transform:rotate(24deg)} }
+@keyframes runwayDash { to{transform:translateX(84px)} }
+@keyframes pythonRailDraw { from{clip-path:inset(0 0 100%)} to{clip-path:inset(0)} }
+@keyframes journeyDotArrive { 0%{transform:scale(.6);box-shadow:0 0 0 0 rgba(232,72,79,.4)} 70%{transform:scale(1.18);box-shadow:0 0 0 9px rgba(232,72,79,0)} 100%{transform:scale(1)} }
+@keyframes contributionCellIn { from{opacity:0;transform:scale(.3)} to{opacity:1;transform:scale(1)} }
+@keyframes sectionSignal { 0%,100%{transform:scaleX(.55);opacity:.5} 50%{transform:scaleX(1);opacity:1} }
+@keyframes pythonPanelBreathe { 0%,100%{box-shadow:0 22px 65px rgba(0,0,0,.2)} 50%{box-shadow:0 26px 72px rgba(232,72,79,.1)} }
+
+@media(prefers-reduced-motion:reduce) {
+  .motion-bird-flight,.bird-wing,.motion-runner,.motion-dog-svg,.dog-tail,.dog-leg,
+  .motion-runway::after,.p-section-label::after,.python-log-body .hero-canvas-box {
+    animation:none!important;transition:none!important;
+  }
+  .motion-bird-flight { opacity:.5;transform:translateX(10vw); }
+  .motion-runner { transform:translateX(12px); }
+  .phase.motion-prep,.jt-item.motion-prep { opacity:1;transform:none; }
+  .contribution-graph .day:not(.day-spacer) { animation:none; }
+}
+@media(max-width:760px) {
+  .motion-runway { width:calc(100% - 36px); }
+  .motion-runner { width:82px; }
+  .motion-bird-flight-3 { display:none; }
+}
