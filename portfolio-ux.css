@@ -476,7 +476,7 @@ body.personal-body .p-section-label::after { content:"";display:block;width:34px
 @keyframes birdCross { 0%{transform:translate3d(-5vw,9px,0) scale(.76);opacity:0} 9%{opacity:.72} 48%{transform:translate3d(48vw,-2px,0) scale(.95)} 90%{opacity:.62} 100%{transform:translate3d(112vw,8px,0) scale(1.05);opacity:0} }
 @keyframes birdWingDown { from{transform:rotate(8deg) scaleY(.9)} to{transform:rotate(-30deg) scaleY(1.08)} }
 @keyframes birdWingUp { from{transform:rotate(-8deg) scaleY(.9)} to{transform:rotate(30deg) scaleY(1.08)} }
-@keyframes dogRun { 0%{transform:translateX(-105px)} 100%{transform:translateX(calc(100vw + 105px)} }
+@keyframes dogRun { 0%{transform:translateX(-105px)} 100%{transform:translateX(calc(100vw + 105px))} }
 @keyframes dogBodyBounce { from{transform:translateY(1px) rotate(-1deg)} to{transform:translateY(-3px) rotate(1deg)} }
 @keyframes dogStrideA { from{transform:rotate(-32deg)} to{transform:rotate(28deg)} }
 @keyframes dogStrideB { from{transform:rotate(26deg)} to{transform:rotate(-34deg)} }
