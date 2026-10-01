@@ -25,7 +25,7 @@ workshop-globe.js owns the canvas and its equivalent list.
 workshop-pets.js connects existing SVG artwork to the layout.
 python-lab.js owns all nine simulations. python-snippets.js contains educational Python excerpts.
 archive-notes.js contains the archive notes used in previews. Keep these synchronized with case-studies/archive-case-study.html.
-workshop.css styles the additions after atelier-theme.css.
+workshop.css styles interaction components. studio-theme.css loads last and replaces the former numbered panels with open scenes, angled paper edges, a charcoal/porcelain/vermilion/electric-blue palette and Syne typography. studio-motion.js adds decorative scroll-linked ribbons and one-time heading reveals. Both honor Calm and system reduced-motion preferences.
 
 ## Content and behaviour rules
 
@@ -41,4 +41,4 @@ Heavy project demos stay behind their existing Play controls. The animation sche
 
 Representative browser checks exercise filtering, preview deep links and fetched notes, Escape/focus restoration, technology evidence, saved preferences, Pong controls, lab settings/progress, and Personal timeline/captions.
 All 14 HTML pages are checked at 1440px and 390px widths.
-The local source preview does not include the repository's large image assets. Full image presentation and physical-device performance still require a deployed preview.
+The repository's real image assets are available in the local review. Vercel's branch preview requires sign-in, so hosted presentation and physical-device performance remain separate review steps.

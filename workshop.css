@@ -1,23 +1,23 @@
 /* Ricardo's workshop: shared interaction surfaces. */
 .sr-only {position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;}
 [hidden],.fw-card[hidden],.archive-item[hidden] {display:none!important;}
-.workshop-button {display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#192133;color:var(--paper);font:500 .8rem/1.35 var(--font-main);text-decoration:none;cursor:pointer;transition:background .2s,border-color .2s,transform .2s;}
-.workshop-button:hover {background:#252d40;border-color:var(--lavender);transform:translateY(-1px);}
+.workshop-button {display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#171719;color:var(--paper);font:500 .8rem/1.35 var(--font-main);text-decoration:none;cursor:pointer;transition:background .2s,border-color .2s,transform .2s;}
+.workshop-button:hover {background:#242426;border-color:var(--lavender);transform:translateY(-1px);}
 .workshop-button[aria-pressed="true"],.workshop-button[aria-selected="true"] {background:var(--gold);color:var(--ink);border-color:var(--gold);}
 .workshop-button:disabled {opacity:.5;cursor:default;transform:none;}
 .workshop-actions {display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
 .workshop-settings {position:fixed;left:18px;bottom:18px;z-index:3500;font-family:var(--font-main);}
-.workshop-settings summary {list-style:none;display:flex;align-items:center;gap:8px;min-height:42px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#101522f5;color:var(--paper);cursor:pointer;font-size:.76rem;box-shadow:0 8px 26px #0004;}
+.workshop-settings summary {list-style:none;display:flex;align-items:center;gap:8px;min-height:42px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#0d0d0ff5;color:var(--paper);cursor:pointer;font-size:.76rem;box-shadow:0 8px 26px #0004;}
 .workshop-settings summary::-webkit-details-marker {display:none;}
 .workshop-settings summary::before {content:"";width:9px;height:9px;border:1px solid var(--gold);border-radius:50%;box-shadow:inset 0 0 0 2px var(--ink);background:var(--gold);}
-.experience-panel {position:absolute;bottom:calc(100% + 10px);left:0;width:min(320px,calc(100vw - 36px));padding:20px;border:1px solid var(--line);border-radius:18px;background:#151c2c;box-shadow:0 18px 64px #0008;}
+.experience-panel {position:absolute;bottom:calc(100% + 10px);left:0;width:min(320px,calc(100vw - 36px));padding:20px;border:1px solid var(--line);border-radius:18px;background:#171719;box-shadow:0 18px 64px #0008;}
 .experience-panel strong {display:block;font:500 1.3rem var(--font-display);margin-bottom:16px;}
 .experience-panel>.workshop-button {margin:4px 6px 0 0;}
 .experience-note {font:400 .76rem/1.6 var(--font-main);color:var(--muted);margin:12px 0;}
 body.dialog-open {overflow:hidden;}
-.workshop-dialog {width:min(900px,calc(100% - 28px));max-height:calc(100dvh - 40px);margin:auto;padding:0;border:1px solid #55566f;border-radius:22px;background:#151c2c;color:var(--paper);box-shadow:0 30px 120px #0008;overscroll-behavior:contain;}
+.workshop-dialog {width:min(900px,calc(100% - 28px));max-height:calc(100dvh - 40px);margin:auto;padding:0;border:1px solid #55566f;border-radius:22px;background:#171719;color:var(--paper);box-shadow:0 30px 120px #0008;overscroll-behavior:contain;}
 .workshop-dialog::backdrop {background:#070b16cc;backdrop-filter:blur(8px);}
-.dialog-head {position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 28px;background:#151c2cf5;border-bottom:1px solid var(--line);}
+.dialog-head {position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 28px;background:#171719f5;border-bottom:1px solid var(--line);}
 .dialog-head h2 {font:500 clamp(1.5rem,3vw,2.4rem)/1.1 var(--font-display);margin:0;}
 .dialog-head .workshop-button {flex-shrink:0;}
 .dialog-content {padding:28px;}
@@ -41,15 +41,15 @@ body .fw-card-top .project-status,body .archive-meta .project-status {width:100%
 body[data-page="tech"] .project-preview {font-size:.71rem;min-height:36px;padding:7px 10px;flex-basis:100%;background:transparent;}
 .project-summary {font-size:1.1rem;line-height:1.75;}
 .project-gallery {margin:26px 0;}
-.gallery-stage {background:#101522;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+.gallery-stage {background:#0d0d0f;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
 .gallery-stage img {display:block;width:100%;max-height:520px;object-fit:contain;}
 .gallery-caption {font-size:.75rem;min-height:1.6em;margin:10px 0;}
 .preview-notes {display:grid;gap:16px;margin-top:24px;}
-.preview-note {padding:24px;border:1px solid var(--line);border-radius:14px;background:#1d2538;}
-.preview-note:nth-child(even){background:#272238;}
+.preview-note {padding:24px;border:1px solid var(--line);border-radius:14px;background:#202022;}
+.preview-note:nth-child(even){background:#202022;}
 .preview-note h3 {font:500 1.6rem/1.2 var(--font-display);margin:0 0 14px;}
 .preview-note p {white-space:pre-line;font-size:.93rem;line-height:1.8;}
-.currently-building {margin:36px auto 0;padding:28px;max-width:940px;background:#101522;border:1px solid var(--line);border-radius:16px;}
+.currently-building {margin:36px auto 0;padding:28px;max-width:940px;background:#0d0d0f;border:1px solid var(--line);border-radius:16px;}
 .currently-building h3 {font:500 1.8rem var(--font-display);margin:12px 0;}
 .currently-building p {color:var(--muted);}
 .currently-building time {display:block;}
@@ -68,7 +68,7 @@ body[data-page="tech"] .project-preview {font-size:.71rem;min-height:36px;paddin
 .technology-list {max-width:740px;margin:0 auto;text-align:center;}
 .technology-list summary {display:inline-flex;padding:10px 16px;cursor:pointer;color:var(--lavender);font-size:.84rem;border-bottom:1px solid var(--line);}
 .technology-buttons {display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:20px 0;}
-.technology-detail {max-width:740px;margin:24px auto 0;padding:28px;background:#1e263b;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:16px;text-align:left;}
+.technology-detail {max-width:740px;margin:24px auto 0;padding:28px;background:#202022;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:16px;text-align:left;}
 .technology-detail h3 {font:500 2rem var(--font-display);margin:8px 0;}
 .technology-detail p {color:var(--muted);line-height:1.8;}
 .technology-detail .workshop-button {margin-top:16px;}
@@ -98,23 +98,23 @@ body .fetch-runway::after {display:none;}
 body .fetch-runway .motion-runner {animation:none;top:36px;transform:scaleX(var(--dog-direction,1));transition:none;}
 body .fetch-runway .motion-runner:not(.is-fetching) .dog-leg,
 body .fetch-runway .motion-runner:not(.is-fetching) .motion-dog-svg {animation-play-state:paused;}
-.fetch-ball {position:absolute;top:58px;width:21px;height:21px;padding:0;border:1px solid #ffe2b4;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff1d5,#efbd73 50%,#9b6a40);box-shadow:0 4px 4px #0005;cursor:grab;touch-action:none;}
+.fetch-ball {position:absolute;top:58px;width:21px;height:21px;padding:0;border:1px solid #ffe2b4;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff1d5,#ff624b 50%,#9b6a40);box-shadow:0 4px 4px #0005;cursor:grab;touch-action:none;}
 .fetch-ball::before {content:"";position:absolute;inset:-12px;}
 .fetch-hint {position:absolute;left:8px;bottom:10px;margin:0;color:var(--muted);font:400 .64rem/1.4 var(--font-code);}
 /* Personal scrapbook: selectable memories and captions for touch and keyboard. */
 .memory-timeline {margin-top:36px;border-top:1px solid var(--line);padding-top:28px;}
 .memory-tabs {display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
-.memory-detail {display:grid;grid-template-columns:160px 1fr;gap:24px;padding:24px;border:1px solid var(--line);border-radius:16px;background:#101522;align-items:center;min-height:220px;}
+.memory-detail {display:grid;grid-template-columns:160px 1fr;gap:24px;padding:24px;border:1px solid var(--line);border-radius:16px;background:#0d0d0f;align-items:center;min-height:220px;}
 .memory-detail img {width:160px;height:170px;object-fit:cover;border-radius:10px;}
 .memory-detail h3 {font:500 1.8rem var(--font-display);margin-bottom:12px;}
 .memory-detail p {color:var(--muted);line-height:1.75;}
-.influence-toggle,.memory-open {display:inline-flex;width:fit-content;align-items:center;min-height:36px;margin-top:10px;padding:6px 10px;background:#101522dd;border:1px solid #f6efe344;border-radius:8px;color:var(--paper);font:500 .72rem var(--font-main);cursor:pointer;}
+.influence-toggle,.memory-open {display:inline-flex;width:fit-content;align-items:center;min-height:36px;margin-top:10px;padding:6px 10px;background:#0d0d0fdd;border:1px solid #f3f0e944;border-radius:8px;color:var(--paper);font:500 .72rem var(--font-main);cursor:pointer;}
 body .p-spark-card .p-spark-info p {display:none;opacity:1;max-height:none;}
 body .p-spark-card.influence-open .p-spark-info p {display:block;}
 body .p-spark-card.influence-open img {filter:brightness(.25);}
 body .p-spark-info {overflow:auto;}
 /* A common control surface for every lab experiment. */
-.lab-progress {padding:24px;background:#101522;border:1px solid var(--line);border-radius:16px;margin-bottom:34px;}
+.lab-progress {padding:24px;background:#0d0d0f;border:1px solid var(--line);border-radius:16px;margin-bottom:34px;}
 .lab-progress h3 {font:500 1.7rem var(--font-display);margin:0 0 12px;}
 .lab-progress p {color:var(--muted);font-size:.82rem;margin:0 0 16px;}
 .lab-progress>.workshop-button {margin:4px 8px 0 0;}

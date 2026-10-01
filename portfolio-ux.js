@@ -310,10 +310,10 @@
       turtle: '<ellipse cx="32" cy="34" rx="20" ry="15"/><path d="M16 34q16-16 32 0-16 17-32 0Zm-8-8-7-5m45 4 8-5M13 43l-5 7m38-7 5 7M48 30q13-5 14 4-1 7-13 5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/><circle cx="55" cy="32" r="1.4"/>',
       ball: '<circle cx="32" cy="32" r="23"/><path d="M12 20q13 1 18 12-7 10-4 22M50 13q-2 13-18 19 10 9 17 25M11 43q10-10 21-11 9-13 17-17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>',
       arrow: '<path d="M12 49 49 12M19 12h30v30" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="50" r="5"/>',
-      star: '<path d="m32 5 7 18 19 1-15 12 5 19-16-11-16 11 5-19L6 24l19-1Z"/><circle cx="32" cy="32" r="5" fill="#efbd73"/>',
+      star: '<path d="m32 5 7 18 19 1-15 12 5 19-16-11-16 11 5-19L6 24l19-1Z"/><circle cx="32" cy="32" r="5" fill="#ff624b"/>',
       rocket: '<path d="M36 8Q53 9 54 26L36 44 20 28Q20 11 36 8Z"/><path d="m21 28-9 3-4 12 14-3m14 4-3 10 12-4 3-10M28 36l-9 9m16-32 8 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="23" r="4"/>',
       shield: '<path d="M32 6 53 14v16q-2 19-21 28Q13 49 11 30V14Z"/><path d="m21 32 7 7 15-16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>',
-      firework: '<path d="M31 27 33 5l5 20 16-15-12 18 20 3-21 3 13 17-17-13-5 22-3-22-18 12 13-17L4 31l21-3L13 9l17 16Z"/><circle cx="32" cy="31" r="5" fill="#efbd73"/>'
+      firework: '<path d="M31 27 33 5l5 20 16-15-12 18 20 3-21 3 13 17-17-13-5 22-3-22-18 12 13-17L4 31l21-3L13 9l17 16Z"/><circle cx="32" cy="31" r="5" fill="#ff624b"/>'
     };
     const byId = {
       home:"bird", stack:"butterfly", projects:"fox", archive:"cat", contributions:"firefly",

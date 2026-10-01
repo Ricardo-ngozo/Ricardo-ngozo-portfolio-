@@ -69,7 +69,7 @@
     const ctx=canvas.getContext("2d");let running=false,y=115,other=115,x=360,by=150,vx=-220,vy=92,hits=0,won=false;
     const clamp=v=>Math.max(0,Math.min(230,v));
     function restart(){x=360;by=150;vx=-220;vy=92;y=115;hits=0;won=false;result.textContent="Return five shots. You control the left paddle.";paint();}
-    function paint(){ctx.fillStyle="#101522";ctx.fillRect(0,0,720,300);ctx.strokeStyle="#394258";ctx.setLineDash([5,10]);ctx.beginPath();ctx.moveTo(360,0);ctx.lineTo(360,300);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle="#efbd73";ctx.fillRect(20,y,10,70);ctx.fillStyle="#c5b5ee";ctx.fillRect(690,other,10,70);ctx.fillStyle="#f6efe3";ctx.beginPath();ctx.arc(x,by,6,0,Math.PI*2);ctx.fill();}
+    function paint(){ctx.fillStyle="#0d0d0f";ctx.fillRect(0,0,720,300);ctx.strokeStyle="#394258";ctx.setLineDash([5,10]);ctx.beginPath();ctx.moveTo(360,0);ctx.lineTo(360,300);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle="#ff624b";ctx.fillRect(20,y,10,70);ctx.fillStyle="#8b9eff";ctx.fillRect(690,other,10,70);ctx.fillStyle="#f3f0e9";ctx.beginPath();ctx.arc(x,by,6,0,Math.PI*2);ctx.fill();}
     const stop=W.loop(canvas,dt=>{
       if(!running)return;other+=(by-35-other)*Math.min(1,dt*7);other=clamp(other);x+=vx*dt;by+=vy*dt;
       if(by<6){by=6;vy=Math.abs(vy);}if(by>294){by=294;vy=-Math.abs(vy);}
@@ -105,7 +105,7 @@
       if(read("ricardo:entered",false,"session")||W.calm)finish();
       else{
         const intro=loader.querySelector("canvas"),ctx=intro?.getContext("2d");
-        if(ctx){intro.width=900;intro.height=500;let t=0,hand=null;const draw=()=>{ctx.clearRect(0,0,900,500);const y=hand??(200+Math.sin(t)*120);ctx.fillStyle="#efbd73";ctx.fillRect(40,y,10,85);ctx.fillStyle="#c5b5ee";ctx.fillRect(850,200+Math.cos(t)*120,10,85);ctx.fillStyle="#f6efe3";ctx.beginPath();ctx.arc(450+Math.sin(t*2)*390,250+Math.cos(t)*120,6,0,7);ctx.fill();};draw();intro.addEventListener("pointermove",e=>{const r=intro.getBoundingClientRect();hand=Math.max(0,Math.min(415,(e.clientY-r.top)*500/r.height-42));});stopIntro=W.loop(intro,dt=>{t+=dt;draw();},{manual:true});}
+        if(ctx){intro.width=900;intro.height=500;let t=0,hand=null;const draw=()=>{ctx.clearRect(0,0,900,500);const y=hand??(200+Math.sin(t)*120);ctx.fillStyle="#ff624b";ctx.fillRect(40,y,10,85);ctx.fillStyle="#8b9eff";ctx.fillRect(850,200+Math.cos(t)*120,10,85);ctx.fillStyle="#f3f0e9";ctx.beginPath();ctx.arc(450+Math.sin(t*2)*390,250+Math.cos(t)*120,6,0,7);ctx.fill();};draw();intro.addEventListener("pointermove",e=>{const r=intro.getBoundingClientRect();hand=Math.max(0,Math.min(415,(e.clientY-r.top)*500/r.height-42));});stopIntro=W.loop(intro,dt=>{t+=dt;draw();},{manual:true});}
         const skip=W.el("button","workshop-button loader-enter","Enter now");skip.type="button";
         const challenge=W.el("button","workshop-button loader-challenge","Play while you’re here");
         challenge.type="button";loader.append(skip,challenge);

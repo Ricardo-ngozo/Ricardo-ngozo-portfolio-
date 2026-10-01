@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Python Animations — Learning Log</title>
 <style>
-  :root{--bg-base:#101522;--bg-panel:rgba(255,255,255,0.04);--bg-panel-hi:rgba(255,255,255,0.07);--border:rgba(255,255,255,0.09);--cyan:#efbd73;--purple:#c5b5ee;--amber:#efbd73;--text:#f6efe3;--text-dim:#b9bfce;--code-bg:#151c2c;}
+  :root{--bg-base:#0d0d0f;--bg-panel:rgba(255,255,255,0.04);--bg-panel-hi:rgba(255,255,255,0.07);--border:rgba(255,255,255,0.09);--cyan:#ff624b;--purple:#8b9eff;--amber:#ff624b;--text:#f3f0e9;--text-dim:#aaa9ae;--code-bg:#171719;}
   *{box-sizing:border-box;}html{scroll-behavior:smooth;}
-  body{margin:0;background:radial-gradient(60vw 40vh at 85% -5%, rgba(197,181,238,0.14), transparent 60%),radial-gradient(50vw 40vh at 5% 10%, rgba(239,189,115,0.10), transparent 60%),var(--bg-base);color:var(--text);font-family:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;}
+  body{margin:0;background:radial-gradient(60vw 40vh at 85% -5%, rgba(139,158,255,0.14), transparent 60%),radial-gradient(50vw 40vh at 5% 10%, rgba(255,98,75,0.10), transparent 60%),var(--bg-base);color:var(--text);font-family:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;}
   code,.mono{font-family:"JetBrains Mono","Fira Code",ui-monospace,SFMono-Regular,Menlo,monospace;}
   a{color:inherit;}.wrap{max-width:920px;margin:0 auto;padding:0 24px;}
   .hero{padding:96px 0 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
@@ -31,7 +31,7 @@
   .phase:last-of-type .line{display:none;}
   .phase-body{padding-bottom:64px;}.phase-body h3{font-size:19px;margin:2px 0 4px;}
   .phase-body .skill-tags{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 16px;}
-  .skill-tags span{font-size:11.5px;color:var(--purple);border:1px solid rgba(197,181,238,0.3);background:rgba(197,181,238,0.08);padding:3px 9px;border-radius:20px;}
+  .skill-tags span{font-size:11.5px;color:var(--purple);border:1px solid rgba(139,158,255,0.3);background:rgba(139,158,255,0.08);padding:3px 9px;border-radius:20px;}
   .phase-body p.desc{color:var(--text-dim);margin:0 0 18px;max-width:62ch;}
   .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   @media(max-width:760px){.demo-grid{grid-template-columns:1fr;}.hero .wrap{grid-template-columns:1fr;}}
@@ -39,7 +39,7 @@
   .panel .panel-head{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid var(--border);font-size:11.5px;color:var(--text-dim);}
   .canvas-panel canvas{border-radius:0;}.canvas-panel .hint{font-size:11.5px;color:var(--text-dim);padding:8px 14px;border-top:1px solid var(--border);}
   pre{margin:0;padding:14px;font-size:12.6px;overflow-x:auto;background:var(--code-bg);max-height:280px;}
-  .kw{color:#c5b5ee;}.st{color:#f6dfb5;}.cm{color:#929db3;font-style:italic;}.fn{color:#c5b5ee;}.nu{color:var(--amber);}
+  .kw{color:#8b9eff;}.st{color:#f6dfb5;}.cm{color:#929db3;font-style:italic;}.fn{color:#8b9eff;}.nu{color:var(--amber);}
   .roadmap{border:1px solid var(--border);background:var(--bg-panel);border-radius:14px;padding:28px;margin-top:8px;}
   .roadmap h3{margin:0 0 6px;font-size:18px;}.roadmap p{color:var(--text-dim);margin:0 0 20px;max-width:58ch;}
   .chain{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
@@ -48,9 +48,10 @@
   footer{border-top:1px solid var(--border);padding:32px 0 50px;color:var(--text-dim);font-size:13px;}
 </style>
     <link rel="stylesheet" href="./portfolio-ux.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Syne:wght@500;600;700;800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" />
     <link rel="stylesheet" href="./atelier-theme.css" />
   <link rel="stylesheet" href="./workshop.css" />
+<link rel="stylesheet" href="./studio-theme.css" />
 <script src="./workshop-core.js"></script>
 </head>
 <body class="python-log-body is-loading">
@@ -83,19 +84,19 @@
       <button class="python-guide-avatar" type="button" data-avatar-interactive data-cursor-label="Meet your guide" aria-label="3D turtle guide. Move to tilt and click to animate." aria-pressed="false">
         <svg class="python-turtle-model" viewBox="0 0 180 160" role="img" aria-label="A softly lit three-dimensional turtle">
           <defs>
-            <linearGradient id="turtle-shell" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6dfb5"/><stop offset=".48" stop-color="#efbd73"/><stop offset="1" stop-color="#655583"/></linearGradient>
-            <linearGradient id="turtle-shell-face" x1="0" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#f6efe3"/><stop offset="1" stop-color="#c5b5ee"/></linearGradient>
-            <linearGradient id="turtle-skin" x1="0" y1="0" x2=".9" y2="1"><stop offset="0" stop-color="#f6dfb5"/><stop offset=".55" stop-color="#efbd73"/><stop offset="1" stop-color="#efbd73"/></linearGradient>
+            <linearGradient id="turtle-shell" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6dfb5"/><stop offset=".48" stop-color="#ff624b"/><stop offset="1" stop-color="#655583"/></linearGradient>
+            <linearGradient id="turtle-shell-face" x1="0" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#f3f0e9"/><stop offset="1" stop-color="#8b9eff"/></linearGradient>
+            <linearGradient id="turtle-skin" x1="0" y1="0" x2=".9" y2="1"><stop offset="0" stop-color="#f6dfb5"/><stop offset=".55" stop-color="#ff624b"/><stop offset="1" stop-color="#ff624b"/></linearGradient>
             <radialGradient id="turtle-glint" cx=".34" cy=".24" r=".72"><stop offset="0" stop-color="#fff" stop-opacity=".92"/><stop offset=".38" stop-color="#fff" stop-opacity=".17"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-            <filter id="turtle-shadow" x="-40%" y="-40%" width="180%" height="200%"><feDropShadow dx="0" dy="13" stdDeviation="9" flood-color="#151c2c" flood-opacity=".65"/></filter>
+            <filter id="turtle-shadow" x="-40%" y="-40%" width="180%" height="200%"><feDropShadow dx="0" dy="13" stdDeviation="9" flood-color="#171719" flood-opacity=".65"/></filter>
           </defs>
-          <ellipse cx="89" cy="139" rx="54" ry="11" fill="#151c2c" opacity=".4"/>
+          <ellipse cx="89" cy="139" rx="54" ry="11" fill="#171719" opacity=".4"/>
           <g filter="url(#turtle-shadow)">
             <path d="M53 94 37 109q-8 9 3 15l17 2 9-20M110 104l6 19q2 8 11 7l12-5q7-5 2-13l-12-15M54 69l-19 2q-8 1-8 9l3 10q4 7 12 4l18-8M115 66l17-7q8-3 12 3l3 11q1 8-7 10l-19 4" fill="url(#turtle-skin)" stroke="#795632" stroke-width="2"/>
             <path d="M111 69q18-3 23 8l3 8-5 9q-7 9-23 3l-12-8V73z" fill="url(#turtle-skin)" stroke="#795632" stroke-width="2"/>
             <path d="M125 74q7-4 10 2" fill="none" stroke="#795632" stroke-width="2" stroke-linecap="round"/>
             <ellipse cx="127" cy="74" rx="2.2" ry="3" fill="#20283b"/><circle cx="127.7" cy="73" r=".8" fill="#fff"/>
-            <path d="M122 87q6 4 11 0" fill="none" stroke="#efbd73" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M122 87q6 4 11 0" fill="none" stroke="#ff624b" stroke-width="1.8" stroke-linecap="round"/>
             <path d="M43 79q0-24 22-35 22-11 45 1 22 12 21 34l-11 22q-26 13-56 3L47 93z" fill="url(#turtle-shell)" stroke="#655583" stroke-width="3"/>
             <path d="m64 49 14 14-14 12-14-9q5-11 14-17zm16 14 16-14 16 15-7 18H74zm-15 14 14 11-4 19q-15-2-25-12zm24 11 8-13h15l12 14q-14 10-33 8z" fill="url(#turtle-shell-face)" stroke="#655583" stroke-width="2"/>
             <path d="M61 47q27-16 52 2" fill="none" stroke="url(#turtle-glint)" stroke-width="7" stroke-linecap="round"/>
@@ -130,5 +131,6 @@
   <script src="./portfolio-ux.js"></script>
 <script src="./workshop-explorer.js" defer></script>
 <script src="./workshop-pets.js" defer></script>
+<script src="./studio-motion.js" defer></script>
 </body>
 </html>

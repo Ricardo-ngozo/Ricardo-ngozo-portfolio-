@@ -7,7 +7,7 @@ html { scroll-behavior: smooth; }
 body { text-rendering: optimizeLegibility; }
 a, button, input, textarea { -webkit-tap-highlight-color: transparent; }
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-  outline: 3px solid var(--accent-cyan, #c5b5ee);
+  outline: 3px solid var(--accent-cyan, #8b9eff);
   outline-offset: 4px;
 }
 .skip-link {
@@ -17,14 +17,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   left: 1rem;
   padding: .8rem 1rem;
   border-radius: .75rem;
-  color: #101522;
-  background: #c5b5ee;
+  color: #0d0d0f;
+  background: #8b9eff;
   font-weight: 700;
   transform: translateY(-180%);
   transition: transform 180ms ease;
 }
 .skip-link:focus { transform: translateY(0); }
-::selection { color: #101522; background: #c5b5ee; }
+::selection { color: #0d0d0f; background: #8b9eff; }
 img { max-width: 100%; }
 button, .glass-btn, .nav-link { touch-action: manipulation; }
 .contact-form input, .contact-form textarea {
@@ -32,7 +32,7 @@ button, .glass-btn, .nav-link { touch-action: manipulation; }
   font: inherit;
 }
 .contact-form input::placeholder, .contact-form textarea::placeholder {
-  color: var(--text-secondary, #b9bfce);
+  color: var(--text-secondary, #aaa9ae);
   opacity: .9;
 }
 @media (max-width: 640px) {
