@@ -3,14 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Anime List case study by Ricardo Ngozo "” a media catalog built around fast browsing, clean card design, and a content-first experience." />
+    <meta name="description" content="Anime List case study by Ricardo Ngozo — a media catalog built around fast browsing, clean card design, and a content-first experience." />
     <title>Anime List Case Study | Ricardo Ngozo</title>
     <link rel="icon" type="image/png" href="../assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css" />
       <link rel="stylesheet" href="../portfolio-ux.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" />
+    <link rel="stylesheet" href="../atelier-theme.css" />
   </head>
   <body data-page="case-study" class="is-loading">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -30,22 +31,13 @@
       </div>
     </div>
     <canvas class="ambient-canvas" aria-hidden="true"></canvas>
-    <header class="morph-header" data-header>
-      <div class="nav-container">
-        <a class="brand-mark" href="../index.html" aria-label="Back to Portfolio">
-          <span class="site-title">Ricardo.</span>
-        </a>
-        <nav class="pill-nav" aria-label="Primary navigation" data-nav>
-          <a href="../index.html" class="nav-link">← Portfolio</a>
-        </nav>
-      </div>
-    </header>
+    <a class="page-return" href="../index.html#projects"><span aria-hidden="true">←</span> Portfolio</a>
     <main id="main-content">
       <section class="case-study-hero">
         <div class="case-study-hero-copy">
-          <span class="case-meta">Case Study "” Content Catalog</span>
+          <span class="case-meta">Case Study — Content Catalog</span>
           <h1>Anime List</h1>
-          <p>A media catalog built around fast, intuitive browsing "” giving anime fans a clean space to discover, filter, and track titles without friction.</p>
+          <p>A media catalog built around fast, intuitive browsing — giving anime fans a clean space to discover, filter, and track titles without friction.</p>
           <div class="case-study-tags">
             <span>JavaScript</span>
             <span>Responsive UI</span>
@@ -68,15 +60,15 @@
         <article class="case-block">
           <h2>What was the brief?</h2>
           <p>The goal was to build a media catalog where users could browse anime titles quickly, see key information at a glance, and enjoy the experience across any screen size.</p>
-          <p>The challenge was balancing information density with visual breathing room "” a catalog that shows enough to make decisions without overwhelming the viewer. I also wanted the data to feel live, not static, which pushed me toward API integration.</p>
+          <p>The challenge was balancing information density with visual breathing room — a catalog that shows enough to make decisions without overwhelming the viewer. I also wanted the data to feel live, not static, which pushed me toward API integration.</p>
         </article>
 
         <article class="case-block">
           <h2>What decisions did I make and why?</h2>
           <ul>
-            <li><strong>Card-first layout:</strong> Each anime gets a consistent card with cover art, title, genre tags, and a rating "” keeping scanning fast and predictable.</li>
+            <li><strong>Card-first layout:</strong> Each anime gets a consistent card with cover art, title, genre tags, and a rating — keeping scanning fast and predictable.</li>
             <li><strong>API-driven data:</strong> Pulling real anime metadata from an external source keeps the catalog fresh and shows I can work with live data, not just hardcoded content.</li>
-            <li><strong>Filter and search logic:</strong> JavaScript-driven filtering lets users narrow results by genre or search by title without a page reload "” keeping the experience snappy.</li>
+            <li><strong>Filter and search logic:</strong> JavaScript-driven filtering lets users narrow results by genre or search by title without a page reload — keeping the experience snappy.</li>
             <li><strong>Responsive grid:</strong> The card grid reflows from 4 columns on desktop to a single column on mobile, so the catalog is equally usable on a phone.</li>
             <li><strong>Hover interactions:</strong> Subtle scale and overlay effects on card hover add depth without slowing the browsing experience.</li>
           </ul>
@@ -98,7 +90,7 @@
             <div>
               <h3>Key learnings</h3>
               <ul>
-                <li>How to structure a real-time filter without a framework "” pure DOM manipulation at scale.</li>
+                <li>How to structure a real-time filter without a framework — pure DOM manipulation at scale.</li>
                 <li>The importance of skeleton loading states when API data takes time to arrive.</li>
                 <li>How to balance content density in a catalog so the grid never feels cluttered or too sparse.</li>
                 <li>Working with external API pagination and mapping the response into a consistent UI structure.</li>
@@ -109,7 +101,7 @@
 
         <article class="case-block">
           <h2>What would I do differently? What am I proud of?</h2>
-          <p>Given more time I would add user-side lists "” favourites, watchlist, completed "” backed by localStorage or a lightweight backend. Personalisation turns a catalog into a tool.</p>
+          <p>Given more time I would add user-side lists — favourites, watchlist, completed — backed by localStorage or a lightweight backend. Personalisation turns a catalog into a tool.</p>
           <p>I'd also improve the search with fuzzy matching so minor spelling differences still return relevant results.</p>
           <p>What I'm proud of is the filtering speed and the clean visual rhythm of the cards. The grid feels considered, not just thrown together, and the API integration works reliably even on slow connections.</p>
         </article>
@@ -118,7 +110,7 @@
       <section class="case-study-visuals">
         <div class="visual-card">
           <h3>Design thinking</h3>
-          <p>The catalog deliberately keeps navigation minimal "” the grid is the interface. Color accents are reserved for genre tags and ratings so they pop without competing with the cover art.</p>
+          <p>The catalog deliberately keeps navigation minimal — the grid is the interface. Color accents are reserved for genre tags and ratings so they pop without competing with the cover art.</p>
         </div>
         <figure class="visual-card image-card">
           <img src="../assets/images/the zone (1).png" alt="Anime List card grid detail" loading="lazy" />

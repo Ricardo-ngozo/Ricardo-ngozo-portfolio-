@@ -30,9 +30,9 @@ function initTechGlobe() {
 
   const isPersonalGlobe = document.body.classList.contains('personal-body');
   const CATS = isPersonalGlobe ? {
-    fe: { color: '#10b981', label: 'Frontend' }, be: { color: '#818cf8', label: 'Backend' }, tools: { color: '#059669', label: 'Tools' },
+    fe: { color: '#efbd73', label: 'Frontend' }, be: { color: '#c5b5ee', label: 'Backend' }, tools: { color: '#c39556', label: 'Tools' },
   } : {
-    fe: { color: '#e8484f', label: 'Frontend' }, be: { color: '#e6d9c9', label: 'Backend' }, tools: { color: '#ffffff', label: 'Tools' },
+    fe: { color: '#efbd73', label: 'Frontend' }, be: { color: '#c5b5ee', label: 'Backend' }, tools: { color: '#f6efe3', label: 'Tools' },
   };
 
   // Assign spherical coords to each node
@@ -145,7 +145,7 @@ function initTechGlobe() {
     });
 
     // Draw globe wire circles (faint)
-    ctx.strokeStyle = isPersonalGlobe ? 'rgba(16,185,129,0.12)' : 'rgba(232,72,79,0.14)';
+    ctx.strokeStyle = isPersonalGlobe ? 'rgba(239,189,115,0.12)' : 'rgba(239,189,115,0.14)';
     ctx.lineWidth = 1;
     for (let i = 0; i < 6; i++) {
       const angle = (i / 6) * Math.PI;
@@ -202,7 +202,7 @@ function initTechGlobe() {
       // Background pill
       ctx.save();
       ctx.globalAlpha = finalAlpha;
-      ctx.fillStyle = isPersonalGlobe ? 'rgba(7,10,19,0.85)' : 'rgba(12,11,11,0.92)';
+      ctx.fillStyle = isPersonalGlobe ? 'rgba(16,21,34,0.85)' : 'rgba(16,21,34,0.92)';
       ctx.strokeStyle = cat.color;
       ctx.lineWidth = 1.2;
       ctx.beginPath();
@@ -220,8 +220,8 @@ function initTechGlobe() {
       if (alpha > 0.62 && iconSize > 12) {
         ctx.save();
         ctx.globalAlpha = (alpha - 0.6) * 2.5;
-        ctx.fillStyle = isPersonalGlobe ? '#e2e8f0' : '#e6d9c9';
-        ctx.font = `600 ${Math.max(9, 10 * scale)}px "Plus Jakarta Sans", system-ui, sans-serif`;
+        ctx.fillStyle = isPersonalGlobe ? '#f6efe3' : '#ddd5c8';
+        ctx.font = `600 ${Math.max(9, 10 * scale)}px "Space Grotesk", system-ui, sans-serif`;
         ctx.textAlign = 'center';
         ctx.fillText(n.label, px, py + bgRadius + Math.max(10, 13 * scale));
         ctx.restore();
@@ -309,13 +309,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const isPersonal = document.body.classList.contains('personal-body') ||
                          document.querySelector('.personal-loader') !== null;
       if (isPersonal) {
-        gradient.addColorStop(0, '#10b981');
-        gradient.addColorStop(1, '#059669');
-        loaderCtx.shadowColor = 'rgba(16,185,129,0.6)';
+        gradient.addColorStop(0, '#efbd73');
+        gradient.addColorStop(1, '#c39556');
+        loaderCtx.shadowColor = 'rgba(239,189,115,0.6)';
       } else {
-        gradient.addColorStop(0, '#e8484f');
-        gradient.addColorStop(1, '#e6d9c9');
-        loaderCtx.shadowColor = 'rgba(232,72,79,0.55)';
+        gradient.addColorStop(0, '#efbd73');
+        gradient.addColorStop(1, '#ddd5c8');
+        loaderCtx.shadowColor = 'rgba(239,189,115,0.55)';
       }
       loaderCtx.fillStyle = gradient;
       loaderCtx.shadowBlur = 14;
@@ -327,7 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
       loaderCtx.clearRect(0, 0, loaderWidth, loaderHeight);
       const isPersonal = document.querySelector('.personal-loader') !== null;
       loaderCtx.strokeStyle = isPersonal
-        ? 'rgba(16,185,129,0.12)'
+        ? 'rgba(239,189,115,0.12)'
         : 'rgba(255,255,255,0.08)';
       loaderCtx.setLineDash([10, 14]);
       loaderCtx.beginPath();
@@ -338,9 +338,9 @@ document.addEventListener("DOMContentLoaded", () => {
       drawLoaderPaddle(24, loaderLeftY);
       drawLoaderPaddle(loaderWidth - paddleWidth - 24, loaderRightY);
       loaderCtx.beginPath();
-      loaderCtx.fillStyle = isPersonal ? '#6ee7b7' : '#ffffff';
+      loaderCtx.fillStyle = isPersonal ? '#f6dfb5' : '#f6efe3';
       loaderCtx.shadowColor = isPersonal
-        ? 'rgba(110,231,183,0.8)'
+        ? 'rgba(246,223,181,0.8)'
         : 'rgba(255,255,255,0.8)';
       loaderCtx.shadowBlur = 16;
       loaderCtx.arc(loaderBallX, loaderBallY, ballSize / 2, 0, Math.PI * 2);
@@ -439,8 +439,8 @@ document.addEventListener("DOMContentLoaded", () => {
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(232, 72, 79, ${this.opacity})`;
-        ctx.shadowColor = 'rgba(232, 72, 79, 0.32)';
+        ctx.fillStyle = `rgba(239,189,115, ${this.opacity})`;
+        ctx.shadowColor = 'rgba(239,189,115, 0.32)';
         ctx.shadowBlur = 4;
         ctx.fill();
         ctx.shadowBlur = 0;

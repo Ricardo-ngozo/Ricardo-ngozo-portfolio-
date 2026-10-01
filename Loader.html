@@ -8,20 +8,16 @@
     <link rel="icon" type="image/png" href="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
     <style>
       :root {
-        --bg-base: #070a13;
-        --nav-glass: rgba(15, 20, 35, 0.65);
+        --bg-base: #101522;
+        --nav-glass: rgba(21,28,44, 0.65);
         --border-glass: rgba(255, 255, 255, 0.08);
-        --text-primary: #ffffff;
-        --text-secondary: #94a3b8;
-        --accent-cyan: #38bdf8;
-        --accent-purple: #818cf8;
-        --font-main: "Plus Jakarta Sans", system-ui, sans-serif;
+        --text-primary: #f6efe3;
+        --text-secondary: #b9bfce;
+        --accent-cyan: #c5b5ee;
+        --accent-purple: #c5b5ee;
+        --font-main: "Space Grotesk", system-ui, sans-serif;
       }
 
       * {
@@ -87,7 +83,7 @@
         margin: 0 0 8px;
         font-size: clamp(1.6rem, 4vw, 2.4rem);
         font-weight: 700;
-        background: linear-gradient(135deg, #ffffff 0%, var(--accent-cyan) 100%);
+        background: linear-gradient(135deg, #f6efe3 0%, var(--accent-cyan) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -176,6 +172,8 @@
       }
     </style>
       <link rel="stylesheet" href="./portfolio-ux.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" />
+    <link rel="stylesheet" href="./atelier-theme.css" />
   </head>
   <body>
     <div class="loader-wrap" id="loaderWrap">
@@ -245,10 +243,10 @@
 
       function drawPaddle(x, y) {
         const grad = ctx.createLinearGradient(x, y, x, y + paddleHeight);
-        grad.addColorStop(0, "#38bdf8");
-        grad.addColorStop(1, "#818cf8");
+        grad.addColorStop(0, "#c5b5ee");
+        grad.addColorStop(1, "#c5b5ee");
         ctx.fillStyle = grad;
-        ctx.shadowColor = "rgba(56,189,248,0.6)";
+        ctx.shadowColor = "rgba(197,181,238,0.6)";
         ctx.shadowBlur = 14;
         ctx.fillRect(x, y, paddleWidth, paddleHeight);
         ctx.shadowBlur = 0;
@@ -256,7 +254,7 @@
 
       function drawBall() {
         ctx.beginPath();
-        ctx.fillStyle = "#ffffff";
+        ctx.fillStyle = "#f6efe3";
         ctx.shadowColor = "rgba(255,255,255,0.8)";
         ctx.shadowBlur = 16;
         ctx.arc(ballX, ballY, ballSize / 2, 0, Math.PI * 2);
