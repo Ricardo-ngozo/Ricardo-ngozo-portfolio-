@@ -205,6 +205,7 @@
     const roles = ["Game Developer", "Full-stack Developer", "Creative Technologist", "Software Engineer"];
     let index = 0;
     window.setInterval(() => {
+      if (window.Workshop?.calm || document.hidden) return;
       index = (index + 1) % roles.length;
       target.classList.add("is-changing");
       window.setTimeout(() => {
@@ -218,7 +219,7 @@
     document.querySelectorAll("[data-avatar-interactive]").forEach(scene => {
       const hint = scene.querySelector("[data-avatar-hint]");
       scene.addEventListener("pointermove", event => {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        if (window.Workshop?.calm || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
         const bounds = scene.getBoundingClientRect();
         const x = (event.clientX - bounds.left) / bounds.width;
         const y = (event.clientY - bounds.top) / bounds.height;

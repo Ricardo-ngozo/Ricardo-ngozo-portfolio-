@@ -1,0 +1,170 @@
+/* Ricardo's workshop: shared interaction surfaces. */
+.sr-only {position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;}
+[hidden],.fw-card[hidden],.archive-item[hidden] {display:none!important;}
+.workshop-button {display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#192133;color:var(--paper);font:500 .8rem/1.35 var(--font-main);text-decoration:none;cursor:pointer;transition:background .2s,border-color .2s,transform .2s;}
+.workshop-button:hover {background:#252d40;border-color:var(--lavender);transform:translateY(-1px);}
+.workshop-button[aria-pressed="true"],.workshop-button[aria-selected="true"] {background:var(--gold);color:var(--ink);border-color:var(--gold);}
+.workshop-button:disabled {opacity:.5;cursor:default;transform:none;}
+.workshop-actions {display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.workshop-settings {position:fixed;left:18px;bottom:18px;z-index:3500;font-family:var(--font-main);}
+.workshop-settings summary {list-style:none;display:flex;align-items:center;gap:8px;min-height:42px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#101522f5;color:var(--paper);cursor:pointer;font-size:.76rem;box-shadow:0 8px 26px #0004;}
+.workshop-settings summary::-webkit-details-marker {display:none;}
+.workshop-settings summary::before {content:"";width:9px;height:9px;border:1px solid var(--gold);border-radius:50%;box-shadow:inset 0 0 0 2px var(--ink);background:var(--gold);}
+.experience-panel {position:absolute;bottom:calc(100% + 10px);left:0;width:min(320px,calc(100vw - 36px));padding:20px;border:1px solid var(--line);border-radius:18px;background:#151c2c;box-shadow:0 18px 64px #0008;}
+.experience-panel strong {display:block;font:500 1.3rem var(--font-display);margin-bottom:16px;}
+.experience-panel>.workshop-button {margin:4px 6px 0 0;}
+.experience-note {font:400 .76rem/1.6 var(--font-main);color:var(--muted);margin:12px 0;}
+body.dialog-open {overflow:hidden;}
+.workshop-dialog {width:min(900px,calc(100% - 28px));max-height:calc(100dvh - 40px);margin:auto;padding:0;border:1px solid #55566f;border-radius:22px;background:#151c2c;color:var(--paper);box-shadow:0 30px 120px #0008;overscroll-behavior:contain;}
+.workshop-dialog::backdrop {background:#070b16cc;backdrop-filter:blur(8px);}
+.dialog-head {position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 28px;background:#151c2cf5;border-bottom:1px solid var(--line);}
+.dialog-head h2 {font:500 clamp(1.5rem,3vw,2.4rem)/1.1 var(--font-display);margin:0;}
+.dialog-head .workshop-button {flex-shrink:0;}
+.dialog-content {padding:28px;}
+.dialog-content p {color:var(--muted);}
+.copy-fallback {width:100%;min-height:180px;background:var(--ink);color:var(--paper);padding:16px;border:1px solid var(--line);}
+.rally-canvas {display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:14px;margin:22px 0 14px;touch-action:none;}
+.rally-score {min-height:3em;font:500 .85rem var(--font-code);}
+body .site-loader .loader-enter,body .site-loader .loader-challenge {position:absolute;z-index:10;bottom:40px;pointer-events:auto;}
+.loader-enter {left:calc(50% - 150px);background:var(--gold);color:var(--ink);}
+.loader-challenge {right:calc(50% - 180px);}
+body .site-loader {animation:loaderFailOpen 0s 4s forwards;}
+@keyframes loaderFailOpen {to{visibility:hidden;pointer-events:none;}}
+/* Compact filtering, previews and galleries. */
+.project-toolbar {display:grid;gap:14px;margin:0 0 28px;}
+.project-filters {display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
+.project-search {width:min(500px,100%);min-height:48px;padding:12px 16px;margin:auto;background:var(--ink);color:var(--paper);border:1px solid var(--line);border-radius:12px;font:400 .9rem var(--font-main);}
+.project-results {text-align:center;color:var(--muted);font:400 .75rem var(--font-code);min-height:1.6em;}
+body .fw-card-top,body .archive-meta {flex-wrap:wrap;}
+body .project-status {display:inline-block;font:400 .62rem/1.5 var(--font-code);letter-spacing:.04em;color:var(--muted);}
+body .fw-card-top .project-status,body .archive-meta .project-status {width:100%;margin-top:4px;}
+body[data-page="tech"] .project-preview {font-size:.71rem;min-height:36px;padding:7px 10px;flex-basis:100%;background:transparent;}
+.project-summary {font-size:1.1rem;line-height:1.75;}
+.project-gallery {margin:26px 0;}
+.gallery-stage {background:#101522;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+.gallery-stage img {display:block;width:100%;max-height:520px;object-fit:contain;}
+.gallery-caption {font-size:.75rem;min-height:1.6em;margin:10px 0;}
+.preview-notes {display:grid;gap:16px;margin-top:24px;}
+.preview-note {padding:24px;border:1px solid var(--line);border-radius:14px;background:#1d2538;}
+.preview-note:nth-child(even){background:#272238;}
+.preview-note h3 {font:500 1.6rem/1.2 var(--font-display);margin:0 0 14px;}
+.preview-note p {white-space:pre-line;font-size:.93rem;line-height:1.8;}
+.currently-building {margin:36px auto 0;padding:28px;max-width:940px;background:#101522;border:1px solid var(--line);border-radius:16px;}
+.currently-building h3 {font:500 1.8rem var(--font-display);margin:12px 0;}
+.currently-building p {color:var(--muted);}
+.currently-building time {display:block;}
+.currently-building .workshop-actions {margin-top:16px;}
+.case-at-a-glance {margin-top:28px;padding-top:24px;border-top:1px solid var(--line);}
+.case-at-a-glance>.workshop-button {margin:8px 8px 0 0;}
+.case-at-a-glance p {font-size:.85rem;}
+.case-contents {display:flex;flex-wrap:wrap;gap:10px;max-width:1160px;width:calc(100% - 48px);margin:0 auto 24px;}
+.case-contents a {font-size:.76rem;text-align:left;}
+.image-zoom {display:block;width:100%;border:0;background:none;padding:0;cursor:zoom-in;}
+.image-zoom img {width:100%;}
+.lightbox-image {display:block;margin:auto;max-width:100%;max-height:68dvh;object-fit:contain;border-radius:12px;}
+/* Globe evidence lives below the globe, in a separate readable panel. */
+.globe-controls {display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;margin:6px auto 18px;}
+.globe-controls p {margin:0;}
+.technology-list {max-width:740px;margin:0 auto;text-align:center;}
+.technology-list summary {display:inline-flex;padding:10px 16px;cursor:pointer;color:var(--lavender);font-size:.84rem;border-bottom:1px solid var(--line);}
+.technology-buttons {display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:20px 0;}
+.technology-detail {max-width:740px;margin:24px auto 0;padding:28px;background:#1e263b;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:16px;text-align:left;}
+.technology-detail h3 {font:500 2rem var(--font-display);margin:8px 0;}
+.technology-detail p {color:var(--muted);line-height:1.8;}
+.technology-detail .workshop-button {margin-top:16px;}
+#tech-globe {touch-action:pan-y;}
+/* Greeting and an orbit-to-toolkit visual path. */
+body[data-page="tech"] .hero-layout-simple {position:relative;padding-bottom:55px;}
+.hero-welcome {grid-column:2;justify-self:center;width:min(360px,100%);text-align:center;margin-top:-32px;}
+.avatar-greeting {font:400 .8rem/1.6 var(--font-main);color:var(--muted);min-height:3.2em;}
+body .hero-identity,body .p-hero-content {position:relative;}
+.perched-bird {display:block;width:90px;height:64px;padding:0;background:none;border:0;cursor:pointer;margin:0 0 6px;color:var(--gold);filter:drop-shadow(0 5px 6px #0005);}
+.perched-bird svg {width:100%;height:100%;}
+.perched-wing {transform-origin:50% 50%;transition:transform .4s;}
+.perched-bird:hover .perched-wing,.perched-bird.bird-awake .perched-wing {transform:rotate(-16deg);}
+.workshop-path {position:absolute!important;bottom:10px;left:50%;transform:translateX(-50%);display:grid;justify-items:center;color:var(--lavender);font:400 .64rem var(--font-code);text-align:center;gap:4px;}
+.workshop-path svg {width:100px;height:48px;}
+body.personal-body .hero-welcome {position:absolute;bottom:30px;right:40px;}
+/* Animals occupy a dedicated ledge; nothing sits above reading content. */
+body .companion-habitat {display:flex;align-items:center;gap:12px;min-height:78px;position:relative;margin:-24px 0 24px;border-bottom:1px solid var(--line);padding:0 0 6px;}
+body .companion-habitat .section-companion.workshop-pet {position:relative;top:auto;left:auto;right:auto;flex-shrink:0;width:80px;height:70px;border:0;border-radius:14px;background:transparent;opacity:1;padding:8px;transform:rotate(var(--pet-lean,0deg));}
+body .companion-habitat .section-companion svg {width:56px;height:56px;filter:drop-shadow(0 5px 3px #0005);}
+body .pet-caption {font:400 .7rem/1.5 var(--font-code);color:var(--muted);max-width:34ch;margin:0;}
+body .companion-habitat .companion-spark {right:12px;top:12px;}
+body .phase .companion-habitat {grid-column:2;margin:20px 0 0;min-height:66px;}
+body .fetch-runway {height:124px;width:min(1220px,calc(100% - 36px));left:auto;transform:none;margin:20px auto 0;border-bottom:1px solid var(--line);touch-action:pan-y;}
+body .fetch-runway::before {top:78px;}
+body .fetch-runway::after {display:none;}
+body .fetch-runway .motion-runner {animation:none;top:36px;transform:scaleX(var(--dog-direction,1));transition:none;}
+body .fetch-runway .motion-runner:not(.is-fetching) .dog-leg,
+body .fetch-runway .motion-runner:not(.is-fetching) .motion-dog-svg {animation-play-state:paused;}
+.fetch-ball {position:absolute;top:58px;width:21px;height:21px;padding:0;border:1px solid #ffe2b4;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff1d5,#efbd73 50%,#9b6a40);box-shadow:0 4px 4px #0005;cursor:grab;touch-action:none;}
+.fetch-ball::before {content:"";position:absolute;inset:-12px;}
+.fetch-hint {position:absolute;left:8px;bottom:10px;margin:0;color:var(--muted);font:400 .64rem/1.4 var(--font-code);}
+/* Personal scrapbook: selectable memories and captions for touch and keyboard. */
+.memory-timeline {margin-top:36px;border-top:1px solid var(--line);padding-top:28px;}
+.memory-tabs {display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+.memory-detail {display:grid;grid-template-columns:160px 1fr;gap:24px;padding:24px;border:1px solid var(--line);border-radius:16px;background:#101522;align-items:center;min-height:220px;}
+.memory-detail img {width:160px;height:170px;object-fit:cover;border-radius:10px;}
+.memory-detail h3 {font:500 1.8rem var(--font-display);margin-bottom:12px;}
+.memory-detail p {color:var(--muted);line-height:1.75;}
+.influence-toggle,.memory-open {display:inline-flex;width:fit-content;align-items:center;min-height:36px;margin-top:10px;padding:6px 10px;background:#101522dd;border:1px solid #f6efe344;border-radius:8px;color:var(--paper);font:500 .72rem var(--font-main);cursor:pointer;}
+body .p-spark-card .p-spark-info p {display:none;opacity:1;max-height:none;}
+body .p-spark-card.influence-open .p-spark-info p {display:block;}
+body .p-spark-card.influence-open img {filter:brightness(.25);}
+body .p-spark-info {overflow:auto;}
+/* A common control surface for every lab experiment. */
+.lab-progress {padding:24px;background:#101522;border:1px solid var(--line);border-radius:16px;margin-bottom:34px;}
+.lab-progress h3 {font:500 1.7rem var(--font-display);margin:0 0 12px;}
+.lab-progress p {color:var(--muted);font-size:.82rem;margin:0 0 16px;}
+.lab-progress>.workshop-button {margin:4px 8px 0 0;}
+.lab-controls {display:grid;gap:16px;margin-top:18px;border-top:1px solid var(--line);padding-top:20px;}
+.lab-knob {display:grid;grid-template-columns:1fr auto;gap:8px;font:500 .78rem var(--font-code);color:var(--muted);}
+.lab-knob input {grid-column:1/-1;width:100%;accent-color:var(--gold);min-height:28px;}
+.lab-complete {font-size:.8rem;display:flex;align-items:center;gap:10px;color:var(--paper);}
+.lab-complete input {width:18px;height:18px;accent-color:var(--gold);}
+.lab-readout {font-size:.82rem;line-height:1.75;min-height:3.5em;color:var(--muted);margin:0;}
+.lab-source {font-size:.76rem;color:var(--lavender);text-decoration:underline;text-underline-offset:4px;}
+body.python-log-body .phase {scroll-margin-top:85px;}
+body.python-log-body .phase-body h3 {padding-right:0;}
+body.python-log-body .panel canvas {display:block;max-width:100%;width:100%;height:auto;}
+body.python-log-body .panel {min-width:0;}
+body.python-log-body .panel pre {tab-size:4;}
+body.python-log-body .hero-canvas-box {animation:none;}
+/* Calm mode is live, saved, and also enforced by the OS preference. */
+html[data-motion="calm"] {scroll-behavior:auto;}
+html[data-motion="calm"] *,html[data-motion="calm"] *::before,html[data-motion="calm"] *::after {animation:none!important;scroll-behavior:auto!important;transition:none!important;}
+html[data-motion="calm"] :is(.reveal-element,.p-reveal,.phase,.jt-item,.p-hero-overline,.p-hero-title,.p-hero-tagline,.p-scroll-cue) {opacity:1!important;transform:none!important;}
+html[data-motion="calm"] :is(.ambient-canvas,.motion-flock,.custom-cursor,.custom-cursor-dot) {display:none!important;}
+html[data-motion="calm"] body.cursor-ready,html[data-motion="calm"] body.cursor-ready a,html[data-motion="calm"] body.cursor-ready button {cursor:auto!important;}
+html[data-motion="calm"] .hero-avatar-scene,html[data-motion="calm"] .p-avatar-character {--pointer-x:0!important;--pointer-y:0!important;}
+@media(max-width:760px){
+  .dialog-head {padding:16px;gap:12px;}.dialog-content {padding:18px;}.workshop-dialog {max-height:calc(100dvh - 20px);border-radius:16px;}
+  .hero-welcome {grid-column:1;margin:0 auto;}.perched-bird {margin-inline:auto;}
+  body[data-page="tech"] .hero-layout-simple {padding-bottom:74px;}
+  body.personal-body .hero-welcome {position:static;margin:0 auto;}
+  body .companion-habitat {margin:-12px 0 24px;}
+  .memory-detail {grid-template-columns:1fr;}.memory-detail img {width:100%;height:190px;}
+  .lab-controls .workshop-actions {display:grid;grid-template-columns:1fr 1fr;}
+  .lab-controls .workshop-button {font-size:.72rem;padding:9px 8px;}
+  .workshop-settings {left:12px;bottom:68px;}.workshop-settings summary {font-size:.68rem;min-height:36px;padding:8px 10px;}
+  .project-filters {gap:6px;}.project-filters .workshop-button {min-height:40px;padding:8px 10px;font-size:.72rem;}
+  .preview-note {padding:18px;}.preview-note h3 {font-size:1.4rem;}
+  body .phase .companion-habitat {grid-column:1/-1;}
+  .loader-enter {left:20px;}.loader-challenge {right:20px;}
+  .fetch-hint {font-size:.57rem;max-width:90%;}
+}
+
+.workshop-entry{max-width:800px;margin:15vh auto;padding:36px;} .workshop-entry h1{font:500 clamp(3rem,7vw,6rem)/1.05 var(--font-display);margin:26px 0;} .workshop-entry p{color:var(--muted);margin-bottom:24px;} .workshop-entry .workshop-actions{margin-top:30px;}
+
+/* Keep intrinsic text widths and injected link icons inside their layouts. */
+.has-link-icon > svg {width:16px;height:16px;min-width:16px;max-width:16px;flex-shrink:0;fill:currentColor;vertical-align:middle;}
+.lab-source {display:inline-flex;gap:8px;align-items:center;}
+body.personal-body .p-building-grid > *,body.personal-body .p-origin-grid > * {min-width:0;}
+body.personal-body .p-dir-card > div,body.personal-body .p-story-info {min-width:0;overflow-wrap:anywhere;}
+body.personal-body .p-building-grid,body.personal-body .p-origin-grid {grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+@media(max-width:900px){body.personal-body .p-building-grid,body.personal-body .p-origin-grid{grid-template-columns:minmax(0,1fr);}}
+
+body .section-companion.globe-orbit-pet {position:absolute!important;left:var(--pet-x)!important;top:var(--pet-y)!important;right:auto!important;translate:22px -48px;width:52px;height:52px;border:0;background:transparent;transition:left .7s ease,top .7s ease;z-index:3;}
+body .section-companion.globe-orbit-pet svg {width:40px;height:40px;}
+html[data-motion="full"] .workshop-path path {stroke-dasharray:200;stroke-dashoffset:calc(140 - var(--path-progress,0)*140);transition:stroke-dashoffset .1s linear;}

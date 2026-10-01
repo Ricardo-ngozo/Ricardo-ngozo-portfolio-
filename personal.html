@@ -13,7 +13,9 @@
       <link rel="stylesheet" href="./portfolio-ux.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" />
     <link rel="stylesheet" href="./atelier-theme.css" />
-  </head>
+  <link rel="stylesheet" href="./workshop.css" />
+<script src="./workshop-core.js"></script>
+</head>
   <body class="personal-body is-loading">
     <a class="skip-link" href="#main-content">Skip to content</a>
 
@@ -245,21 +247,21 @@
             </p>
             <div class="p-direction-cards">
               <div class="p-dir-card">
-                <span class="p-dir-icon">âš™ï¸</span>
+                <span class="p-dir-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m8 5-6 7 6 7m8-14 6 7-6 7m-3-17-2 24"/></svg></span>
                 <div>
                   <h4>Fullstack Direction</h4>
                   <p>React, Node, REST APIs — building products end to end.</p>
                 </div>
               </div>
               <div class="p-dir-card">
-                <span class="p-dir-icon">ðŸŽ®</span>
+                <span class="p-dir-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m8 5-6 7 6 7m8-14 6 7-6 7m-3-17-2 24"/></svg></span>
                 <div>
                   <h4>Game Dev Direction</h4>
                   <p>Interactive systems, gameplay logic, and immersive UI.</p>
                 </div>
               </div>
               <div class="p-dir-card">
-                <span class="p-dir-icon">ðŸ¤–</span>
+                <span class="p-dir-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m8 5-6 7 6 7m8-14 6 7-6 7m-3-17-2 24"/></svg></span>
                 <div>
                   <h4>AI / Future</h4>
                   <p>AI-powered tools, smart interfaces, and engineering at scale.</p>
@@ -388,6 +390,8 @@
       }, { threshold: 0.12 });
       pRevealEls.forEach(el => pObserver.observe(el));
     </script>
-  </body>
+  <script src="./workshop-explorer.js" defer></script>
+<script src="./workshop-pets.js" defer></script>
+</body>
 </html>
 

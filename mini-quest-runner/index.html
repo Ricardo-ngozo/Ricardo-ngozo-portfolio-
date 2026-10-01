@@ -344,7 +344,9 @@
       <link rel="stylesheet" href="../portfolio-ux.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" />
     <link rel="stylesheet" href="../atelier-theme.css" />
-  </head>
+  <link rel="stylesheet" href="../workshop.css" />
+<script src="../workshop-core.js"></script>
+</head>
   <body>
     <main class="game-shell">
       <div class="topbar">
@@ -457,6 +459,7 @@
         }
         if (state.heroY === 0 && !state.over) {
           state.velocity = 720;
+          window.Workshop?.tone(400);
         }
       }
 
@@ -487,6 +490,7 @@
       }
 
       function collectCrystal(entity) {
+        window.Workshop?.tone(660);
         entity.collected = true;
         entity.element.remove();
         state.crystals += 1;
@@ -555,17 +559,26 @@
       }
 
       document.addEventListener("keydown", (event) => {
+        if (event.target.closest("input,textarea,select,button,summary,dialog")) return;
         if (["Space", "ArrowUp", "KeyW"].includes(event.code)) {
           event.preventDefault();
           jump();
         }
       });
 
+      const pauseButton = document.createElement("button");
+      pauseButton.type="button";pauseButton.textContent="Pause / resume";
+      restartButton.after(pauseButton);
+      const pauseGame=()=>{state.running=false;message.innerHTML="Paused<small>Press Jump or Pause / resume when you are ready.</small>";message.classList.remove("hidden");};
+      pauseButton.addEventListener("click",()=>{if(state.running)pauseGame();else startGame();});
+      document.addEventListener("visibilitychange",()=>{if(document.hidden&&state.running)pauseGame();});
       stage.addEventListener("pointerdown", jump);
       jumpButton.addEventListener("click", jump);
       restartButton.addEventListener("click", resetGame);
 
       resetGame();
     </script>
-  </body>
+  <script src="../workshop-explorer.js" defer></script>
+<script src="../workshop-pets.js" defer></script>
+</body>
 </html>
