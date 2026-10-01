@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cursorScale += (targetScale - cursorScale) * 0.18;
     cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) scale(${cursorScale})`;
     dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-    requestAnimationFrame(animateCursor);
+
   };
 
   window.addEventListener("mousemove", (event) => {
@@ -74,5 +74,5 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("mouseleave", () => document.body.classList.add("cursor-hidden"));
   window.addEventListener("mouseenter", () => document.body.classList.remove("cursor-hidden"));
 
-  animateCursor();
+  window.Workshop ? window.Workshop.loop(document.body, animateCursor) : animateCursor();
 });

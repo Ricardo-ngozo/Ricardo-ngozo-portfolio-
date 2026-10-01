@@ -7,14 +7,14 @@
     <style>
       :root {
         color-scheme: dark;
-        --bg: #151c2c;
+        --bg: #171719;
         --panel: #20283b;
         --panel-strong: #20283b;
-        --text: #f6efe3;
-        --muted: #b9bfce;
+        --text: #f3f0e9;
+        --muted: #aaa9ae;
         --line: rgba(255, 255, 255, 0.14);
-        --green: #efbd73;
-        --blue: #c5b5ee;
+        --green: #ff624b;
+        --blue: #8b9eff;
         --yellow: #ffd59b;
         --red: #dd927d;
       }
@@ -30,8 +30,8 @@
         place-items: center;
         padding: 20px;
         background:
-          radial-gradient(circle at 16% 10%, rgba(197,181,238, 0.22), transparent 28%),
-          radial-gradient(circle at 88% 16%, rgba(239,189,115, 0.16), transparent 30%),
+          radial-gradient(circle at 16% 10%, rgba(139,158,255, 0.22), transparent 28%),
+          radial-gradient(circle at 88% 16%, rgba(255,98,75, 0.16), transparent 30%),
           var(--bg);
         color: var(--text);
         font-family: var(--font-main);
@@ -95,8 +95,8 @@
         border: 1px solid var(--line);
         border-radius: 8px;
         background:
-          linear-gradient(180deg, rgba(197,181,238, 0.2), rgba(21,28,44, 0.1) 54%, rgba(21,28,44, 0.92)),
-          #151c2c;
+          linear-gradient(180deg, rgba(139,158,255, 0.2), rgba(21,28,44, 0.1) 54%, rgba(21,28,44, 0.92)),
+          #171719;
         box-shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
         outline: none;
         touch-action: manipulation;
@@ -157,8 +157,8 @@
         top: auto;
         height: 76px;
         background:
-          repeating-linear-gradient(90deg, rgba(239,189,115, 0.3) 0 42px, rgba(197,181,238, 0.18) 42px 68px),
-          linear-gradient(180deg, rgba(239,189,115, 0.7), #20283b);
+          repeating-linear-gradient(90deg, rgba(255,98,75, 0.3) 0 42px, rgba(139,158,255, 0.18) 42px 68px),
+          linear-gradient(180deg, rgba(255,98,75, 0.7), #20283b);
         border-top: 2px solid rgba(255, 255, 255, 0.18);
       }
 
@@ -212,7 +212,7 @@
         width: 34px;
         height: 10px;
         border-radius: 999px;
-        background: #f6efe3;
+        background: #f3f0e9;
       }
 
       .obstacle {
@@ -233,7 +233,7 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: #151c2c;
+        background: #171719;
       }
 
       .obstacle::before {
@@ -300,7 +300,7 @@
 
       button.primary {
         background: linear-gradient(135deg, var(--blue), var(--green));
-        color: #101522;
+        color: #0d0d0f;
       }
 
       button:hover {
@@ -342,9 +342,12 @@
       }
     </style>
       <link rel="stylesheet" href="../portfolio-ux.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Syne:wght@500;600;700;800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" />
     <link rel="stylesheet" href="../atelier-theme.css" />
-  </head>
+  <link rel="stylesheet" href="../workshop.css" />
+<link rel="stylesheet" href="../studio-theme.css" />
+<script src="../workshop-core.js"></script>
+</head>
   <body>
     <main class="game-shell">
       <div class="topbar">
@@ -457,6 +460,7 @@
         }
         if (state.heroY === 0 && !state.over) {
           state.velocity = 720;
+          window.Workshop?.tone(400);
         }
       }
 
@@ -487,6 +491,7 @@
       }
 
       function collectCrystal(entity) {
+        window.Workshop?.tone(660);
         entity.collected = true;
         entity.element.remove();
         state.crystals += 1;
@@ -555,17 +560,27 @@
       }
 
       document.addEventListener("keydown", (event) => {
+        if (event.target.closest("input,textarea,select,button,summary,dialog")) return;
         if (["Space", "ArrowUp", "KeyW"].includes(event.code)) {
           event.preventDefault();
           jump();
         }
       });
 
+      const pauseButton = document.createElement("button");
+      pauseButton.type="button";pauseButton.textContent="Pause / resume";
+      restartButton.after(pauseButton);
+      const pauseGame=()=>{state.running=false;message.innerHTML="Paused<small>Press Jump or Pause / resume when you are ready.</small>";message.classList.remove("hidden");};
+      pauseButton.addEventListener("click",()=>{if(state.running)pauseGame();else startGame();});
+      document.addEventListener("visibilitychange",()=>{if(document.hidden&&state.running)pauseGame();});
       stage.addEventListener("pointerdown", jump);
       jumpButton.addEventListener("click", jump);
       restartButton.addEventListener("click", resetGame);
 
       resetGame();
     </script>
-  </body>
+  <script src="../workshop-explorer.js" defer></script>
+<script src="../workshop-pets.js" defer></script>
+<script src="../studio-motion.js" defer></script>
+</body>
 </html>
