@@ -429,11 +429,6 @@ export function initHomePage() {
 
   // ─── 18. Workshop pets ────────────────────────────────────────────────────
   import('./workshop-pets.js').catch(() => {});
-
-  // ─── 19. Custom cursor ────────────────────────────────────────────────────
-  if (!document.querySelector('.custom-cursor')) {
-    import('./cursor.js').catch(() => {});
-  }
 }
 
 // Allow reset for hot-reload in dev

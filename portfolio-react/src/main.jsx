@@ -9,6 +9,7 @@ import './portfolio-ux.css';
 import './atelier-theme.css';
 import './workshop.css';
 import './studio-theme.css';
+import './components/cursor.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

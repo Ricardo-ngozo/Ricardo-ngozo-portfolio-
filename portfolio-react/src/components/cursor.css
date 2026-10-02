@@ -1,0 +1,198 @@
+/* ============================================================
+   CUSTOM CURSOR — works on every page
+   Only active on fine-pointer (mouse) devices.
+   Respects prefers-reduced-motion via the parent Workshop flag.
+   ============================================================ */
+
+/* Hide the system cursor everywhere when our cursor is active */
+@media (pointer: fine) {
+  body.cursor-ready,
+  body.cursor-ready * {
+    cursor: none !important;
+  }
+}
+
+/* ── Trail container ────────────────────────────────────────── */
+.cursor-trail-container {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Individual trail dots */
+.cursor-trail-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: #ff624b;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* Burst dots on click */
+.cursor-burst-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffd59b;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* ── Inner dot ──────────────────────────────────────────────── */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff624b;
+  z-index: 10001;
+  pointer-events: none;
+  will-change: transform;
+  transition: width 200ms ease, height 200ms ease, background 200ms ease;
+}
+
+body.cursor-down .cursor-dot {
+  width: 4px;
+  height: 4px;
+  background: #ffd59b;
+}
+
+/* ── Outer ring (base) ──────────────────────────────────────── */
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 98, 75, 0.85);
+  z-index: 10000;
+  pointer-events: none;
+  will-change: transform;
+  display: grid;
+  place-items: center;
+  /* Smooth size & color transitions */
+  transition:
+    width 300ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    height 300ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    border-radius 300ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    border-color 250ms ease,
+    background 250ms ease,
+    box-shadow 250ms ease;
+}
+
+/* ── Mode: hover (buttons, links) ───────────────────────────── */
+.cursor-ring--hover {
+  width: 56px;
+  height: 56px;
+  border-color: #ffd59b;
+  background: rgba(255, 213, 155, 0.07);
+  box-shadow: 0 0 0 1px rgba(255, 213, 155, 0.12), 0 0 22px rgba(255, 98, 75, 0.18);
+}
+
+body.cursor-down .cursor-ring--hover {
+  width: 46px;
+  height: 46px;
+  background: rgba(255, 213, 155, 0.12);
+}
+
+/* ── Mode: text (paragraphs, headings) ──────────────────────── */
+.cursor-ring--text {
+  width: 3px;
+  height: 36px;
+  border-radius: 2px;
+  border-color: #f3f0e9;
+  background: rgba(243, 240, 233, 0.85);
+}
+
+/* ── Mode: media (project cards, images) ────────────────────── */
+.cursor-ring--media {
+  width: 72px;
+  height: 72px;
+  border-color: rgba(255, 98, 75, 0.5);
+  background: rgba(255, 98, 75, 0.06);
+  box-shadow:
+    0 0 0 1px rgba(255, 98, 75, 0.08),
+    inset 0 0 22px rgba(255, 98, 75, 0.05);
+}
+
+/* ── Mode: label (data-cursor-label or auto-detected) ───────── */
+.cursor-ring--label {
+  width: auto;
+  min-width: 60px;
+  height: 34px;
+  border-radius: 999px;
+  padding: 0 14px;
+  border-color: rgba(255, 98, 75, 0.6);
+  background: rgba(13, 13, 15, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  /* Override transform on ring — let the JS handle positioning */
+  white-space: nowrap;
+}
+
+/* ── Click pulse ─────────────────────────────────────────────── */
+.cursor-ring--click {
+  animation: cursor-click-pulse 200ms ease forwards;
+}
+
+@keyframes cursor-click-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 98, 75, 0.55); }
+  60%  { box-shadow: 0 0 0 14px rgba(255, 98, 75, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 98, 75, 0); }
+}
+
+/* ── Label text inside ring ──────────────────────────────────── */
+.cursor-ring-label {
+  color: #f3f0e9;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  transform: scale(0.7) translateY(4px);
+  transition: opacity 180ms ease, transform 180ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+/* ── Entrance — fade in on first move ────────────────────────── */
+.cursor-ring,
+.cursor-dot {
+  opacity: 0;
+  transition:
+    opacity 300ms ease,
+    width 300ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    height 300ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    border-radius 300ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    border-color 250ms ease,
+    background 250ms ease,
+    box-shadow 250ms ease;
+}
+
+body.cursor-ready .cursor-ring,
+body.cursor-ready .cursor-dot {
+  opacity: 1;
+}
+
+/* ── Respect reduced motion ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-ring,
+  .cursor-dot,
+  .cursor-trail-dot,
+  .cursor-burst-dot {
+    display: none !important;
+  }
+}

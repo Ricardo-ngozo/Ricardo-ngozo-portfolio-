@@ -5,6 +5,7 @@ import PersonalPage from './pages/PersonalPage.jsx';
 import PythonLogPage from './pages/PythonLogPage.jsx';
 import ArchiveCaseStudy from './pages/ArchiveCaseStudy.jsx';
 import CaseStudyPage from './pages/CaseStudyPage.jsx';
+import Cursor from './components/Cursor.jsx';
 
 // Run workshop-core (the global Workshop object) once at app level
 import './scripts/workshop-core.js';
@@ -26,12 +27,15 @@ export default function App() {
   }, [location.pathname]);
 
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/personal" element={<PersonalPage />} />
-      <Route path="/python-learning-log" element={<PythonLogPage />} />
-      <Route path="/case-studies/archive" element={<ArchiveCaseStudy />} />
-      <Route path="/case-studies/:slug" element={<CaseStudyPage />} />
-    </Routes>
+    <>
+      <Cursor />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/personal" element={<PersonalPage />} />
+        <Route path="/python-learning-log" element={<PythonLogPage />} />
+        <Route path="/case-studies/archive" element={<ArchiveCaseStudy />} />
+        <Route path="/case-studies/:slug" element={<CaseStudyPage />} />
+      </Routes>
+    </>
   );
 }

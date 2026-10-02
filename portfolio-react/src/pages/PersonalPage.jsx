@@ -10,7 +10,6 @@ export default function PersonalPage() {
     const run = async () => {
       await import('../scripts/workshop-core.js');
       await import('../scripts/portfolio-ux.js');
-      await import('../scripts/cursor.js');
       await import('../scripts/workshop-explorer.js');
       await import('../scripts/workshop-pets.js');
       await import('../scripts/studio-motion.js');

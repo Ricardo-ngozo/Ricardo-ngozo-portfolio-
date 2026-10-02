@@ -9,7 +9,6 @@ export default function PythonLogPage() {
     const run = async () => {
       await import('../scripts/workshop-core.js');
       await import('../scripts/portfolio-ux.js');
-      await import('../scripts/cursor.js');
       await import('../scripts/studio-motion.js');
     };
     const timer = setTimeout(run, 0);
