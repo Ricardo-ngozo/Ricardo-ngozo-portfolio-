@@ -1,0 +1,10 @@
+import "./bundle-character.mjs";
+import {readdir,mkdir,copyFile,cp,readFile} from "node:fs/promises";
+import path from "node:path";
+const root=process.cwd(),dist=path.resolve(root,"dist");
+if(path.dirname(dist)!==root)throw Error("Build output must be inside the project.");
+await mkdir(dist,{recursive:true});
+for(const file of await readdir(root))if(/\.(html|css|js)$/.test(file))await copyFile(path.join(root,file),path.join(dist,file));
+for(const dir of ["assets","case-studies","mini-quest-runner","character"])await cp(path.join(root,dir),path.join(dist,dir),{recursive:true});
+const model=JSON.parse(await readFile("assets/character/model-stats.json","utf8"));
+console.log("Production static site built in dist. Character:",model);

@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="./workshop.css" />
 <link rel="stylesheet" href="./studio-theme.css" />
 <script src="./workshop-core.js"></script>
+<link rel="stylesheet" href="./character/character.css" />
 </head>
   <body data-page="tech" class="is-loading">
     <a class="skip-link" href="#home">Skip to content</a>
@@ -41,13 +42,25 @@
       <p class="hero-tagline">I create thoughtful interfaces, playful software, and the small details that make a digital experience feel alive.</p>
       <div class="hero-cta-row"><a href="#projects" class="hero-cta-primary">Explore my work <span aria-hidden="true">↘</span></a><a href="#why-me" class="hero-cta-secondary">A little about me</a></div>
     </div>
-    <button class="hero-avatar-scene" type="button" data-avatar-interactive data-cursor-label="Say hello" aria-label="Ricardo's avatar. Click to activate its orbit effect." aria-pressed="false">
-      <span class="avatar-orbit avatar-orbit-one" aria-hidden="true"></span><span class="avatar-orbit avatar-orbit-two" aria-hidden="true"></span><span class="avatar-orbit avatar-orbit-three" aria-hidden="true"></span>
-      <span class="avatar-scene-glow" aria-hidden="true"></span>
-      <img src="./assets/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" alt="Ricardo Ngozo illustrated avatar" />
-      <span class="avatar-scene-label"><span class="avatar-live-dot"></span> Welcome in</span>
-      <span class="avatar-scene-hint" data-avatar-hint>Move me · Click to interact</span>
-    </button>
+    <div class="hero-avatar-scene character-mount" data-character data-character-state="poster" role="group" aria-label="Interactive Ricardo character">
+      <div class="character-stage" role="button" tabindex="0" aria-label="Say hello to Ricardo. Drag or use Left and Right arrows to turn him; Home resets the view.">
+        <img class="character-poster" src="./assets/character/ricardo-poster.webp" alt="Ricardo wearing a black cap and headphones, cream hoodie, checked jacket and trousers, and sneakers" width="520" height="650" fetchpriority="high" />
+      </div>
+      <p class="character-hint" data-character-hint>Meet Ricardo</p>
+      <details class="character-options"><summary>Character controls</summary><div class="character-option-panel">
+        <p>Try an expression</p>
+        <div class="character-emotions" role="group" aria-label="Character expression">
+          <button class="workshop-button" type="button" data-emotion="neutral" aria-pressed="true">Neutral</button>
+          <button class="workshop-button" type="button" data-emotion="happy" aria-pressed="false">Happy</button>
+          <button class="workshop-button" type="button" data-emotion="curious" aria-pressed="false">Curious</button>
+          <button class="workshop-button" type="button" data-emotion="surprised" aria-pressed="false">Surprised</button>
+          <button class="workshop-button" type="button" data-emotion="annoyed" aria-pressed="false">Annoyed</button>
+        </div>
+        <button class="workshop-button" type="button" data-wave>Say hello</button>
+        <button class="workshop-button" type="button" data-portrait aria-pressed="false">Portrait view</button>
+      </div></details>
+      <p class="character-status" data-character-status role="status" aria-live="polite"></p>
+    </div>
   </div>
 </section>
 
@@ -496,6 +509,7 @@
 <script src="./workshop-explorer.js" defer></script>
 <script src="./workshop-pets.js" defer></script>
 <script src="./studio-motion.js" defer></script>
+<script type="module" src="./character/boot.js"></script>
+<script src="./character/contact.js" defer></script>
 </body>
 </html>
-

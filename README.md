@@ -17,15 +17,17 @@ A portfolio for Samukelo Ricardo Ngozo, a fullstack developer and aspiring game 
 
 ## Run locally
 
-The public portfolio is static HTML, CSS and JavaScript with no build step. Serve the repository over HTTP so project previews can fetch case-study notes.
+The portfolio uses static HTML, CSS and JavaScript. Its Three.js character viewer is bundled during the production build; the output remains a static site. See [CHARACTER.md](CHARACTER.md) for the model source, controls, validation and asset limitations.
 
 ```sh
 git clone https://github.com/Ricardo-ngozo/Ricardo-ngozo-portfolio-.git
 cd Ricardo-ngozo-portfolio-
-python -m http.server 8000
+npm ci
+npm run build
+npm run preview
 ```
 
-Open [localhost:8000](http://localhost:8000). A static server such as an editor's Live Server works too.
+Open [localhost:4173](http://localhost:4173). The production output is dist/. The committed viewer bundle also allows serving the source directory with a static server.
 
 ## Pages
 
