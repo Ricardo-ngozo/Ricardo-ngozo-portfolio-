@@ -2,12 +2,12 @@
   "use strict";
   const W=window.Workshop;if(!W)return;
   function init(){
-    const hero=document.querySelector(".hero-section,.p-hero"),avatar=hero?.querySelector("[data-avatar-interactive]");
+    const hero=document.querySelector(".hero-section,.p-hero"),avatar=hero?.querySelector("[data-avatar-interactive],[data-character]");
     if(hero&&avatar){
       const greeting=W.el("p","avatar-greeting","Welcome to my workshop. Have a look around.");greeting.setAttribute("aria-live","polite");
       const bubble=W.el("div","hero-welcome");bubble.append(greeting);avatar.after(bubble);
       const welcome=()=>{greeting.textContent=W.read("ricardo:rally",false)?"Five returns. Nicely played — welcome to the workshop!":"Hey, I’m Ricardo. Pick a project, spin the globe, or try the lab.";avatar.classList.add("is-awake");W.tone(520);};
-      avatar.addEventListener("click",welcome);document.addEventListener("workshop:reward",welcome);
+      if(avatar.hasAttribute("data-character"))document.addEventListener("character:reaction",e=>{if(e.detail.source==="wave")welcome();});else avatar.addEventListener("click",welcome);document.addEventListener("workshop:reward",welcome);
       if(W.read("ricardo:rally",false))welcome();
       const bird=W.el("button","perched-bird");bird.type="button";bird.setAttribute("aria-label","Say hello to Ricardo’s bird");
       bird.innerHTML='<svg viewBox="0 0 110 74" aria-hidden="true"><defs><linearGradient id="welcome-bird" x2=".8" y2="1"><stop stop-color="#fff1d5"/><stop offset=".5" stop-color="#ff624b"/><stop offset="1" stop-color="#956640"/></linearGradient></defs><ellipse cx="55" cy="64" rx="28" ry="4" fill="#0d0d0f" opacity=".5"/><path d="M19 44Q29 7 63 27Q77 6 91 24L105 29 91 35Q85 58 58 56L31 53 10 60Z" fill="url(#welcome-bird)"/><path class="perched-wing" d="M26 40Q39 15 71 36Q62 57 31 52Z" fill="#8b9eff"/><circle cx="85" cy="24" r="2.5" fill="#0d0d0f"/><path d="m56 56-3 8m14-9 3 9" fill="none" stroke="#ff624b" stroke-width="3"/></svg>';
