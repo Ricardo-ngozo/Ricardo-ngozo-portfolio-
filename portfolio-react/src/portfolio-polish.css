@@ -1,0 +1,52 @@
+/* Portfolio polish: accessible defaults, clearer focus, and compact screens. */
+:root {
+  color-scheme: dark;
+  scroll-padding-top: 6rem;
+}
+html { scroll-behavior: smooth; }
+body { text-rendering: optimizeLegibility; }
+a, button, input, textarea { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--accent-cyan, #8b9eff);
+  outline-offset: 4px;
+}
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 1rem;
+  left: 1rem;
+  padding: .8rem 1rem;
+  border-radius: .75rem;
+  color: #0d0d0f;
+  background: #8b9eff;
+  font-weight: 700;
+  transform: translateY(-180%);
+  transition: transform 180ms ease;
+}
+.skip-link:focus { transform: translateY(0); }
+::selection { color: #0d0d0f; background: #8b9eff; }
+img { max-width: 100%; }
+button, .glass-btn, .nav-link { touch-action: manipulation; }
+.contact-form input, .contact-form textarea {
+  color: var(--text-primary, #fff);
+  font: inherit;
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder {
+  color: var(--text-secondary, #aaa9ae);
+  opacity: .9;
+}
+@media (max-width: 640px) {
+  :root { scroll-padding-top: 5rem; }
+  .hero-cta-row { gap: .75rem; }
+  .hero-cta-row > a, .contact-form button { min-height: 44px; }
+  .contact-form input, .contact-form textarea { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

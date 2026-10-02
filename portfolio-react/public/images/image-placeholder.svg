@@ -1,0 +1,23 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="36" fill="#0B1220"/>
+  <rect x="24" y="24" width="1152" height="752" rx="28" stroke="url(#paint0_linear_1_2)" stroke-width="4"/>
+  <rect x="132" y="164" width="936" height="472" rx="24" fill="url(#paint1_linear_1_2)"/>
+  <circle cx="342" cy="404" r="92" fill="#38BDF8" fill-opacity="0.55"/>
+  <circle cx="676" cy="340" r="128" fill="#818CF8" fill-opacity="0.45"/>
+  <rect x="216" y="528" width="324" height="24" rx="12" fill="white" fill-opacity="0.78"/>
+  <rect x="216" y="568" width="220" height="18" rx="9" fill="white" fill-opacity="0.45"/>
+  <path d="M310 204C310 182.461 327.461 165 349 165H391C412.539 165 430 182.461 430 204V246H310V204Z" fill="white" fill-opacity="0.5"/>
+  <rect x="780" y="236" width="204" height="172" rx="18" fill="white" fill-opacity="0.16"/>
+  <path d="M844 354L882 300L930 346L962 302" stroke="white" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="690" text-anchor="middle" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="600">Add your image here</text>
+  <defs>
+    <linearGradient id="paint0_linear_1_2" x1="120" y1="84" x2="1068" y2="716" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#818CF8"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear_1_2" x1="170" y1="196" x2="925" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14213D"/>
+      <stop offset="1" stop-color="#1D2C5F"/>
+    </linearGradient>
+  </defs>
+</svg>
