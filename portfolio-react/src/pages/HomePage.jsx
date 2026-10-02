@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
 import FloatingActions from '../components/FloatingActions.jsx';
+import CharacterScene from '../components/Character/CharacterScene.jsx';
 import { initHomePage, resetHomePage } from '../scripts/init-home.js';
 
 export default function HomePage() {
@@ -79,27 +80,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <button
-              className="hero-avatar-scene"
-              type="button"
-              data-avatar-interactive
-              data-cursor-label="Say hello"
-              aria-label="Ricardo's avatar. Click to activate its orbit effect."
-              aria-pressed="false"
-            >
-              <span className="avatar-orbit avatar-orbit-one" aria-hidden="true"></span>
-              <span className="avatar-orbit avatar-orbit-two" aria-hidden="true"></span>
-              <span className="avatar-orbit avatar-orbit-three" aria-hidden="true"></span>
-              <span className="avatar-scene-glow" aria-hidden="true"></span>
-              <img
-                src="/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png"
-                alt="Ricardo Ngozo illustrated avatar"
-              />
-              <span className="avatar-scene-label">
-                <span className="avatar-live-dot"></span> Welcome in
-              </span>
-              <span className="avatar-scene-hint" data-avatar-hint>Move me · Click to interact</span>
-            </button>
+            <CharacterScene />
           </div>
         </section>
 

@@ -41,6 +41,13 @@ export default function Cursor() {
     const trail = trailContainerRef.current;
     const s = stateRef.current;
 
+    s.mouseX = window.innerWidth / 2;
+    s.mouseY = window.innerHeight / 2;
+    s.ringX = s.mouseX;
+    s.ringY = s.mouseY;
+    s.hasMoved = true;
+    document.body.classList.add('cursor-ready');
+
     // ── Helpers ─────────────────────────────────────────────────────────────
     const lerp = (a, b, t) => a + (b - a) * t;
 
