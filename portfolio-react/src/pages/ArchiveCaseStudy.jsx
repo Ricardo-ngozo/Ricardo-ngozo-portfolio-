@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 const ARCHIVE_NOTES = {
   tesla: { title: "Tesla Landing Page", category: "Frontend study · 2026", summary: "A focused landing-page study inspired by Tesla's product presentation, built with HTML and CSS.", stack: ["HTML", "CSS", "Responsive layout"], code: "https://github.com/Ricardo-ngozo/Ricardo_Tesla-landing-page", brief: "Recreate a polished vehicle landing experience with a strong product focal point and familiar navigation.", approach: "Built the page structure in semantic HTML and composed its visual hierarchy, navigation, and responsive presentation with CSS.", learning: "Practiced visual hierarchy, image-led layouts, and organizing a small standalone frontend build." },
@@ -37,12 +37,12 @@ export default function ArchiveCaseStudy() {
   if (!project) {
     return (
       <main className="case-page">
-        <Link className="case-back" to="/#archive">
+        <a className="case-back" href="/#archive">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
             <path d="m14 5-7 7 7 7M8 12h13"/>
           </svg>
           Back to project archive
-        </Link>
+        </a>
         <header className="case-hero">
           <p className="case-eyebrow">Project archive</p>
           <h1>Case study not found</h1>
@@ -54,12 +54,12 @@ export default function ArchiveCaseStudy() {
 
   return (
     <main className="case-page">
-      <Link className="case-back" to="/#archive">
+      <a className="case-back" href="/#archive">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
           <path d="m14 5-7 7 7 7M8 12h13"/>
         </svg>
         Back to project archive
-      </Link>
+      </a>
 
       <header className="case-hero">
         <p className="case-eyebrow">{project.category}</p>
@@ -100,9 +100,9 @@ export default function ArchiveCaseStudy() {
 
       <footer className="case-footer">
         More of my work is in the{' '}
-        <Link to="/#projects" style={{color:'#fff'}}>selected projects</Link>
+        <a href="/#projects" style={{color:'#fff'}}>selected projects</a>
         {' '}and{' '}
-        <Link to="/#archive" style={{color:'#fff'}}>archive</Link>.
+        <a href="/#archive" style={{color:'#fff'}}>archive</a>.
       </footer>
     </main>
   );

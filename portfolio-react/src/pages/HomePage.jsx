@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
 import FloatingActions from '../components/FloatingActions.jsx';
@@ -145,7 +146,7 @@ export default function HomePage() {
                 </div>
                 <div className="fw-card-links">
                   <a href="https://lourve-reims.vercel.app/" target="_blank" rel="noreferrer" className="fw-btn-live">Live ↗</a>
-                  <a href="#/case-studies/urban-threads" className="fw-btn-case">Case Study</a>
+                  <Link to="/case-studies/urban-threads" className="fw-btn-case">Case Study</Link>
                   <a href="https://github.com/Ricardo-ngozo/Lourve-reims.git" target="_blank" rel="noreferrer" className="fw-btn-gh" aria-label="GitHub">
                     <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
                   </a>
@@ -170,7 +171,7 @@ export default function HomePage() {
                 </div>
                 <div className="fw-card-links">
                   <a href="https://the-zone-anime-weather.vercel.app/" target="_blank" rel="noreferrer" className="fw-btn-live">Live ↗</a>
-                  <a href="#/case-studies/anime-list" className="fw-btn-case">Case Study</a>
+                  <Link to="/case-studies/anime-list" className="fw-btn-case">Case Study</Link>
                   <a href="https://github.com/Ricardo-ngozo/Anime.list.git" target="_blank" rel="noreferrer" className="fw-btn-gh" aria-label="GitHub">
                     <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
                   </a>
@@ -195,7 +196,7 @@ export default function HomePage() {
                 </div>
                 <div className="fw-card-links">
                   <a href="https://fm-react-eight.vercel.app/" target="_blank" rel="noreferrer" className="fw-btn-live">Live ↗</a>
-                  <a href="#/case-studies/game-ui-setup" className="fw-btn-case">Case Study</a>
+                  <Link to="/case-studies/game-ui-setup" className="fw-btn-case">Case Study</Link>
                   <a href="https://github.com/Ricardo-ngozo/react.git" target="_blank" rel="noreferrer" className="fw-btn-gh" aria-label="GitHub">
                     <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
                   </a>
@@ -220,7 +221,7 @@ export default function HomePage() {
                 </div>
                 <div className="fw-card-links">
                   <a href="https://tic-tac-toe-srt-75.vercel.app/" target="_blank" rel="noreferrer" className="fw-btn-live">Play ↗</a>
-                  <a href="#/case-studies/tic-tac-toe" className="fw-btn-case">Case Study</a>
+                  <Link to="/case-studies/tic-tac-toe" className="fw-btn-case">Case Study</Link>
                   <a href="https://github.com/Ricardo-ngozo/Tic-tac-toe.git" target="_blank" rel="noreferrer" className="fw-btn-gh" aria-label="GitHub">
                     <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
                   </a>
@@ -281,7 +282,7 @@ export default function HomePage() {
                   <div className="archive-actions">
                     <a href="https://airbnb-capstone-fixed.onrender.com/" target="_blank" rel="noopener noreferrer" className="archive-action">Live ↗</a>
                     <a href="https://github.com/Ricardo-ngozo/airbnb-capstone-fixed" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
-                    <a href="#/case-studies/archive?project=airbnb" className="archive-action archive-action-case">Case study</a>
+                    <Link to="/case-studies/archive?project=airbnb" className="archive-action archive-action-case">Case study</Link>
                   </div>
                 </div>
               </article>
@@ -305,7 +306,7 @@ export default function HomePage() {
                   <div className="archive-actions">
                     <a href="https://giftmshengu250-pixel.github.io/Ihub-Prototype75/" target="_blank" rel="noopener noreferrer" className="archive-action">Live ↗</a>
                     <a href="https://github.com/Ricardo-ngozo/Ihub-clone" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
-                    <a href="#/case-studies/archive?project=ihub" className="archive-action archive-action-case">Case study</a>
+                    <Link to="/case-studies/archive?project=ihub" className="archive-action archive-action-case">Case study</Link>
                   </div>
                 </div>
               </article>
@@ -329,7 +330,7 @@ export default function HomePage() {
                   <div className="archive-actions">
                     <a href="https://kmukendi10.github.io/quiz-widget-project/" target="_blank" rel="noopener noreferrer" className="archive-action">Live ↗</a>
                     <a href="https://github.com/KMukendi10/quiz-widget-project" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
-                    <a href="#/case-studies/archive?project=quiz" className="archive-action archive-action-case">Case study</a>
+                    <Link to="/case-studies/archive?project=quiz" className="archive-action archive-action-case">Case study</Link>
                   </div>
                 </div>
               </article>
@@ -353,7 +354,7 @@ export default function HomePage() {
                   <div className="archive-actions">
                     <a href="https://x-frpgiqze3-the-hub75.vercel.app/" target="_blank" rel="noopener noreferrer" className="archive-action">Preview · sign-in required</a>
                     <a href="https://github.com/Ricardo-ngozo/x" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
-                    <a href="#/case-studies/archive?project=x" className="archive-action archive-action-case">Case study</a>
+                    <Link to="/case-studies/archive?project=x" className="archive-action archive-action-case">Case study</Link>
                   </div>
                 </div>
               </article>
@@ -376,7 +377,7 @@ export default function HomePage() {
                   <p>Local persistence, smooth state changes, and dynamic list updates in a clean interface.</p>
                   <div className="archive-actions">
                     <a href="https://github.com/Ricardo-ngozo/mdn-todo-board" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
-                    <a href="#/case-studies/archive?project=todo" className="archive-action archive-action-case">Case study</a>
+                    <Link to="/case-studies/archive?project=todo" className="archive-action archive-action-case">Case study</Link>
                   </div>
                 </div>
               </article>
@@ -396,7 +397,7 @@ export default function HomePage() {
                   <p>A vehicle landing-page study focused on product storytelling, navigation, and a high-impact automotive layout.</p>
                   <div className="archive-actions">
                     <a href="https://github.com/Ricardo-ngozo/Ricardo_Tesla-landing-page" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
-                    <a href="#/case-studies/archive?project=tesla" className="archive-action archive-action-case">Case study</a>
+                    <Link to="/case-studies/archive?project=tesla" className="archive-action archive-action-case">Case study</Link>
                   </div>
                 </div>
               </article>
@@ -416,7 +417,7 @@ export default function HomePage() {
                   <p>A responsive video-browsing interface study, with emphasis on layout, navigation, and clear content hierarchy.</p>
                   <div className="archive-actions">
                     <a href="https://github.com/Ricardo-ngozo/Youtube-clone" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
-                    <a href="#/case-studies/archive?project=youtube" className="archive-action archive-action-case">Case study</a>
+                    <Link to="/case-studies/archive?project=youtube" className="archive-action archive-action-case">Case study</Link>
                   </div>
                 </div>
               </article>
@@ -436,7 +437,7 @@ export default function HomePage() {
                   <p>A responsive streaming-service landing page clone built with HTML, CSS, and JavaScript.</p>
                   <div className="archive-actions">
                     <a href="https://github.com/Ricardo-ngozo/Netblip_ricardo-ngozo" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
-                    <a href="#/case-studies/archive?project=netflix" className="archive-action archive-action-case">Case study</a>
+                    <Link to="/case-studies/archive?project=netflix" className="archive-action archive-action-case">Case study</Link>
                   </div>
                 </div>
               </article>
@@ -456,7 +457,7 @@ export default function HomePage() {
                   <p>A React game-discovery app with search, genre filters, sorting, details, and favorites saved between visits.</p>
                   <div className="archive-actions">
                     <a href="https://github.com/Ricardo-ngozo/gamevault" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
-                    <a href="#/case-studies/archive?project=gamevault" className="archive-action archive-action-case">Case study</a>
+                    <Link to="/case-studies/archive?project=gamevault" className="archive-action archive-action-case">Case study</Link>
                   </div>
                 </div>
               </article>
@@ -476,7 +477,7 @@ export default function HomePage() {
                   <p>A focused task app for adding, completing, deleting, and filtering tasks, with local storage for persistence.</p>
                   <div className="archive-actions">
                     <a href="https://github.com/Ricardo-ngozo/mdn-todo-board" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
-                    <a href="#/case-studies/archive?project=todo" className="archive-action archive-action-case">Case study</a>
+                    <Link to="/case-studies/archive?project=todo" className="archive-action archive-action-case">Case study</Link>
                   </div>
                 </div>
               </article>

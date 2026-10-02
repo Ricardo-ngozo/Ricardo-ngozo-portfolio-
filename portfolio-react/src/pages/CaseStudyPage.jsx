@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 // All case study data from the original HTML files
 const CASE_STUDIES = {
@@ -204,7 +204,7 @@ export default function CaseStudyPage() {
     <>
       <a className="skip-link" href="#main-content">Skip to content</a>
       <canvas className="ambient-canvas" aria-hidden="true"></canvas>
-      <Link className="page-return" to="/#projects"><span aria-hidden="true">←</span> Portfolio</Link>
+      <a className="page-return" href="/#projects"><span aria-hidden="true">←</span> Portfolio</a>
 
       <main id="main-content">
         <section className="case-study-hero">
@@ -216,7 +216,7 @@ export default function CaseStudyPage() {
               {study.tags.map(t => <span key={t}>{t}</span>)}
             </div>
             <div className="case-study-actions">
-              <Link to="/#projects" className="glass-btn secondary">Back to Projects</Link>
+              <a href="/#projects" className="glass-btn secondary">Back to Projects</a>
               {study.live && (
                 <a href={study.live} className="glass-btn primary" target="_blank" rel="noreferrer">
                   View Live
