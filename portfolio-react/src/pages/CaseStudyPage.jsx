@@ -1,3 +1,4 @@
+import { usePageFeatures } from '../runtime/usePageFeatures.js';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -174,21 +175,8 @@ export default function CaseStudyPage() {
   const { slug } = useParams();
   const study = CASE_STUDIES[slug];
 
-  useEffect(() => {
-    document.body.setAttribute('data-page', 'case-study');
-    document.body.classList.add('is-loading');
-    document.title = study ? `${study.title} Case Study | Ricardo Ngozo` : 'Case Study | Ricardo Ngozo';
-
-    const run = async () => {
-      await import('../scripts/workshop-core.js');
-    };
-    const timer = setTimeout(run, 0);
-
-    return () => {
-      clearTimeout(timer);
-      document.body.removeAttribute('data-page');
-    };
-  }, [slug, study]);
+  usePageFeatures('case', slug);
+  useEffect(() => { document.title = study ? `${study.title} Case Study | Ricardo Ngozo` : 'Case Study | Ricardo Ngozo'; }, [slug]);
 
   if (!study) {
     return (

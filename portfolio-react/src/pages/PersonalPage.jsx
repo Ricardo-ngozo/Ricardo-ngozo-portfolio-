@@ -1,49 +1,16 @@
-import { useEffect } from 'react';
+import { usePageFeatures } from '../runtime/usePageFeatures.js';
+import PongLoader from '../components/PongLoader.jsx';
 import { Link } from 'react-router-dom';
-import '../personal.css';
 
 export default function PersonalPage() {
-  useEffect(() => {
-    document.body.className = 'personal-body is-loading';
-
-    // Run personal-page scripts
-    const run = async () => {
-      await import('../scripts/workshop-core.js');
-      await import('../scripts/portfolio-ux.js');
-      await import('../scripts/workshop-explorer.js');
-      await import('../scripts/workshop-pets.js');
-      await import('../scripts/studio-motion.js');
-    };
-    const timer = setTimeout(run, 0);
-
-    return () => {
-      clearTimeout(timer);
-      document.body.className = '';
-    };
-  }, []);
+  usePageFeatures('personal');
 
   return (
     <>
       <a className="skip-link" href="#main-content">Skip to content</a>
 
       {/* Loader */}
-      <div className="site-loader personal-loader" data-site-loader aria-live="polite">
-        <div className="score" aria-hidden="true">
-          <div>P1 <span data-loader-score-left>0</span></div>
-          <div>P2 <span data-loader-score-right>0</span></div>
-        </div>
-        <canvas className="loader-pong" data-loader-pong aria-hidden="true"></canvas>
-        <div className="loader-overlay">
-          <p className="brand">Ricardo.</p>
-          <h1>Loading the personal side...</h1>
-          <p>A different world lives here.</p>
-          <div className="prompt" aria-hidden="true">
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-          </div>
-        </div>
-      </div>
+      <PongLoader />
 
       <div className="p-grain" aria-hidden="true"></div>
 
@@ -114,16 +81,16 @@ export default function PersonalPage() {
           </div>
           <div className="p-sparks-grid">
             {[
-              { tag: 'FILM', title: 'The Social Network', note: 'The movie that made building software feel electric. Zuckerberg typing at 3am — something clicked.' },
-              { tag: 'GAME', title: 'Mr. Robot', note: 'Showed me technology as power. Real hacking. Real consequences. Made me want to understand systems.' },
-              { tag: 'MUSIC', title: 'OVO Sound / Drake', note: 'The aesthetic. The precision. The brand. Music that cares about craft — the same way good code does.' },
-              { tag: 'CULTURE', title: 'Think Different', note: 'Apple\'s design philosophy shaped how I see products. Simple, intentional, no wasted space.' },
-              { tag: 'GAME', title: 'The Last of Us', note: 'Storytelling through interaction. Game design that made me want to create experiences, not just interfaces.' },
-              { tag: 'CREATOR', title: 'MKBHD', note: 'Marques Brownlee: clear thinking, beautiful presentation, expertise earned through work. A blueprint.' },
-            ].map(({ tag, title, note }) => (
+              { tag: 'FILM', title: 'The Social Network', img: '/images/The Social Network poster.jfif', note: 'The movie that made building software feel electric. Zuckerberg typing at 3am — something clicked.' },
+              { tag: 'SERIES', title: 'Mr. Robot', img: '/images/Mr_ robot 2015-2019.jfif', note: 'Showed me technology as power. Real hacking. Real consequences. Made me want to understand systems.' },
+              { tag: 'MUSIC', title: 'OVO Sound / Drake', img: '/images/OVO.jfif', note: 'The aesthetic. The precision. The brand. Music that cares about craft — the same way good code does.' },
+              { tag: 'CULTURE', title: 'Think Different', img: '/images/Think different_.jfif', note: 'Apple\'s design philosophy shaped how I see products. Simple, intentional, no wasted space.' },
+              { tag: 'GAME', title: 'The Last of Us', img: '/images/THE LAST OF US_ PART II (2020 VIDEO GAME) - ONE EYE SYMBOLISM.jfif', note: 'Storytelling through interaction. Game design that made me want to create experiences, not just interfaces.' },
+              { tag: 'CREATOR', title: 'MKBHD', img: '/images/Marques Brownlee.jfif', note: 'Marques Brownlee: clear thinking, beautiful presentation, expertise earned through work. A blueprint.' },
+            ].map(({ tag, title, note, img }) => (
               <article key={title} className="p-spark-card">
                 <div className="p-spark-image-wrap">
-                  <div className="p-spark-placeholder" aria-hidden="true"></div>
+                  <img src={img} alt={title} loading="lazy" />
                 </div>
                 <div className="p-spark-info">
                   <span className="p-spark-tag">{tag}</span>

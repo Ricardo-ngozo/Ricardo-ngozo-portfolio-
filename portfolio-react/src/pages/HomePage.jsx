@@ -1,27 +1,15 @@
-import { useEffect } from 'react';
+import { lazy, Suspense } from 'react';
+import { usePageFeatures } from '../runtime/usePageFeatures.js';
+import PongLoader from '../components/PongLoader.jsx';
 import { Link } from 'react-router-dom';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
 import FloatingActions from '../components/FloatingActions.jsx';
-import CharacterScene from '../components/Character/CharacterScene.jsx';
-import { initHomePage, resetHomePage } from '../scripts/init-home.js';
+
+const CharacterScene = lazy(() => import('../components/Character/CharacterScene.jsx'));
 
 export default function HomePage() {
-  useEffect(() => {
-    document.body.setAttribute('data-page', 'tech');
-    document.body.classList.add('is-loading');
-
-    // Wait one tick so React has fully committed the DOM
-    const timer = setTimeout(() => {
-      initHomePage();
-    }, 0);
-
-    return () => {
-      clearTimeout(timer);
-      resetHomePage();
-      document.body.removeAttribute('data-page');
-    };
-  }, []);
+  usePageFeatures('home');
 
   return (
     <>
@@ -31,23 +19,7 @@ export default function HomePage() {
 
       <main>
         {/* Site Loader */}
-        <div className="site-loader" data-site-loader aria-live="polite">
-          <canvas className="loader-pong" data-loader-pong aria-hidden="true"></canvas>
-          <div className="score" aria-hidden="true">
-            <span data-loader-score-left>0</span>
-            <span data-loader-score-right>0</span>
-          </div>
-          <div className="loader-overlay">
-            <p className="brand">Ricardo Ngozo</p>
-            <h1>Loading the portfolio...</h1>
-            <p>Rallying the pixels into place.</p>
-            <div className="prompt" aria-hidden="true">
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-            </div>
-          </div>
-        </div>
+        <PongLoader />
 
         <canvas className="ambient-canvas" aria-hidden="true"></canvas>
 
@@ -80,7 +52,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            <CharacterScene />
+            <Suspense fallback={<div className="hero-character-placeholder"><img src="/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" alt="Ricardo's character" /></div>}>
+              <CharacterScene />
+            </Suspense>
           </div>
         </section>
 

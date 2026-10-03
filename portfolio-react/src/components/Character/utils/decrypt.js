@@ -10,8 +10,9 @@ async function generateAESKey(password) {
   );
 }
 
-export const decryptFile = async (url, password) => {
-  const response = await fetch(url);
+export const decryptFile = async (url, password, signal) => {
+  const response = await fetch(url, { signal });
+  if (!response.ok) throw new Error(`Character request failed: ${response.status}`);
   const encryptedData = await response.arrayBuffer();
   const iv = new Uint8Array(encryptedData.slice(0, 16));
   const data = encryptedData.slice(16);

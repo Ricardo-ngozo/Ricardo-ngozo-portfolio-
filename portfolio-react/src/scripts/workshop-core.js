@@ -1,9 +1,5 @@
-// workshop-core.js — patched for React/Vite module loading
-// Original: IIFE that runs immediately. In React, we wrap to allow re-init.
-// The Workshop global is set once; subsequent imports are no-ops.
+export function mountWorkshop(scope) {
 
-if (!window.Workshop) {
-  (() => {
     "use strict";
     const root = document.documentElement;
     const reduce = matchMedia("(prefers-reduced-motion: reduce)");
@@ -33,7 +29,7 @@ if (!window.Workshop) {
         } catch {}
       },
       async copy(value, trigger) {
-        try { await navigator.clipboard.writeText(value); W.announce("Copied to clipboard."); if (trigger) { const old = trigger.textContent; trigger.textContent = "Copied"; setTimeout(() => trigger.textContent = old, 1600); } }
+        try { await navigator.clipboard.writeText(value); W.announce("Copied to clipboard."); if (trigger) { const old = trigger.textContent; trigger.textContent = "Copied"; scope.timeout(() => trigger.textContent = old, 1600); } }
         catch { const d = W.dialog("Copy this link or text"); const field = W.el("textarea", "copy-fallback"); field.value = value; field.readOnly = true; d.content.append(field); d.show(); field.focus(); field.select(); }
       },
       announce(text) { if (W.status) W.status.textContent = text; },
@@ -41,11 +37,11 @@ if (!window.Workshop) {
         const dialog = W.el("dialog", "workshop-dialog"), head = W.el("div", "dialog-head"), h = W.el("h2", "", title), close = W.el("button", "workshop-button", "Close");
         const id = "dialog-" + Math.random().toString(36).slice(2);
         h.id = id; dialog.setAttribute("aria-labelledby", id); close.type = "button"; close.setAttribute("aria-label", "Close " + title);
-        head.append(h, close); const content = W.el("div", "dialog-content"); dialog.append(head, content); document.body.append(dialog);
+        head.append(h, close); const content = W.el("div", "dialog-content"); dialog.append(head, content); document.body.append(dialog); const removeDialog = scope.defer(() => { if (dialog.open) dialog.close(); dialog.remove(); });
         let opener = document.activeElement;
-        close.addEventListener("click", () => dialog.close());
-        dialog.addEventListener("click", e => { if (e.target === dialog) { const b = dialog.getBoundingClientRect(); if (e.clientX < b.left || e.clientX > b.right || e.clientY < b.top || e.clientY > b.bottom) dialog.close(); } });
-        dialog.addEventListener("close", () => { document.body.classList.remove("dialog-open"); opener?.focus?.(); W.emit("dialogclosed", dialog); dialog.remove(); });
+        scope.listen(close, "click", () => dialog.close());
+        scope.listen(dialog, "click", e => { if (e.target === dialog) { const b = dialog.getBoundingClientRect(); if (e.clientX < b.left || e.clientX > b.right || e.clientY < b.top || e.clientY > b.bottom) dialog.close(); } });
+        scope.listen(dialog, "close", () => { document.body.classList.remove("dialog-open"); opener?.focus?.(); W.emit("dialogclosed", dialog); removeDialog(); });
         return { dialog, content, show() { opener = document.activeElement; dialog.showModal(); document.body.classList.add("dialog-open"); close.focus(); } };
       },
       loop(element, tick, { manual = false } = {}) {
@@ -54,7 +50,7 @@ if (!window.Workshop) {
         const sync = () => { if (frame) cancelAnimationFrame(frame); frame = 0; last = 0; if (!stopped && visible && !document.hidden && (manual || !W.calm)) frame = requestAnimationFrame(run); };
         const observer = new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }, { rootMargin: "80px" });
         observer.observe(element); document.addEventListener("visibilitychange", sync); document.addEventListener("workshop:motion", sync);
-        return () => { stopped = true; cancelAnimationFrame(frame); observer.disconnect(); document.removeEventListener("visibilitychange", sync); document.removeEventListener("workshop:motion", sync); };
+        return scope.defer(() => { stopped = true; cancelAnimationFrame(frame); observer.disconnect(); document.removeEventListener("visibilitychange", sync); document.removeEventListener("workshop:motion", sync); });
       }
     };
 
@@ -65,7 +61,7 @@ if (!window.Workshop) {
       document.querySelectorAll("[data-motion-choice]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.motionChoice === (W.calm ? "calm" : "full"))));
       const note = document.querySelector("[data-motion-note]"); if (note) note.textContent = reduce.matches ? "Your device's reduced-motion preference is active." : "Your choice is saved on this device.";
     }
-    apply(); reduce.addEventListener("change", apply);
+    apply(); scope.listen(reduce, "change", apply);
 
     function pong(host, onWin) {
       const canvas = W.el("canvas", "rally-canvas"); canvas.width = 720; canvas.height = 300; canvas.tabIndex = 0;
@@ -85,40 +81,33 @@ if (!window.Workshop) {
         if (x < 0 || x > 720) { x = 360; by = 150; vx = -220; vy = 92; result.textContent = "Keep going — " + hits + " / 5 returns."; }
         paint();
       }, { manual: true });
-      play.addEventListener("click", () => { if (won) restart(); running = !running; play.textContent = running ? "Pause rally" : "Resume rally"; canvas.focus(); });
-      reset.addEventListener("click", () => { running = false; restart(); play.textContent = "Start rally"; });
+      scope.listen(play, "click", () => { if (won) restart(); running = !running; play.textContent = running ? "Pause rally" : "Resume rally"; canvas.focus(); });
+      scope.listen(reset, "click", () => { running = false; restart(); play.textContent = "Start rally"; });
       const move = dy => { y = clamp(y + dy); paint(); };
-      up.addEventListener("click", () => move(-35)); down.addEventListener("click", () => move(35));
-      canvas.addEventListener("keydown", e => { if (["ArrowUp", "ArrowDown", " "].includes(e.key)) { e.preventDefault(); if (e.key === " ") play.click(); else move(e.key === "ArrowUp" ? -28 : 28); } });
+      scope.listen(up, "click", () => move(-35)); scope.listen(down, "click", () => move(35));
+      scope.listen(canvas, "keydown", e => { if (["ArrowUp", "ArrowDown", " "].includes(e.key)) { e.preventDefault(); if (e.key === " ") play.click(); else move(e.key === "ArrowUp" ? -28 : 28); } });
       const pointer = e => { const r = canvas.getBoundingClientRect(); y = clamp((e.clientY - r.top) * 300 / r.height - 35); paint(); };
-      canvas.addEventListener("pointerdown", e => { canvas.setPointerCapture(e.pointerId); pointer(e); }); canvas.addEventListener("pointermove", e => { if (e.pointerType === "mouse" || canvas.hasPointerCapture(e.pointerId)) pointer(e); });
+      scope.listen(canvas, "pointerdown", e => { canvas.setPointerCapture(e.pointerId); pointer(e); }); scope.listen(canvas, "pointermove", e => { if (e.pointerType === "mouse" || canvas.hasPointerCapture(e.pointerId)) pointer(e); });
       paint(); return stop;
     }
 
-    W.openRally = () => { const d = W.dialog("A little friendly competition"); d.content.append(W.el("p", "", "Control the amber paddle. Five returns unlock a welcome from Ricardo's avatar.")); const stop = pong(d.content); d.dialog.addEventListener("close", stop, { once: true }); d.show(); };
+    W.openRally = () => { const d = W.dialog("A little friendly competition"); d.content.append(W.el("p", "", "Control the amber paddle. Five returns unlock a welcome from Ricardo's avatar.")); const stop = pong(d.content); scope.listen(d.dialog, "close", stop, { once: true }); d.show(); };
 
     function init() {
-      W.status = W.el("p", "sr-only"); W.status.setAttribute("role", "status"); W.status.setAttribute("aria-live", "polite"); document.body.append(W.status);
+      W.status = W.el("p", "sr-only"); W.status.setAttribute("role", "status"); W.status.setAttribute("aria-live", "polite"); document.body.append(W.status); scope.defer(() => W.status.remove());
       const settings = W.el("details", "workshop-settings"), summary = W.el("summary", "", "Experience"), panel = W.el("div", "experience-panel"), row = W.el("div", "workshop-actions");
       panel.append(W.el("strong", "", "Make yourself at home"));
-      ["calm", "full"].forEach(value => { const b = W.el("button", "workshop-button", value === "calm" ? "Calm motion" : "Full motion"); b.type = "button"; b.dataset.motionChoice = value; b.addEventListener("click", () => { mode = value; apply(); }); row.append(b); });
+      ["calm", "full"].forEach(value => { const b = W.el("button", "workshop-button", value === "calm" ? "Calm motion" : "Full motion"); b.type = "button"; b.dataset.motionChoice = value; scope.listen(b, "click", () => { mode = value; apply(); }); row.append(b); });
       const note = W.el("p", "experience-note"); note.dataset.motionNote = ""; panel.append(row, note);
-      const audioButton = W.el("button", "workshop-button", sound ? "Sound on" : "Sound off"); audioButton.type = "button"; audioButton.setAttribute("aria-pressed", String(sound)); audioButton.addEventListener("click", () => { sound = !sound; audioButton.textContent = sound ? "Sound on" : "Sound off"; audioButton.setAttribute("aria-pressed", String(sound)); apply(); W.tone(); });
-      const rally = W.el("button", "workshop-button", "Play a rally"); rally.type = "button"; rally.addEventListener("click", () => { settings.open = false; W.openRally(); }); panel.append(audioButton, rally); settings.append(summary, panel); document.body.append(settings); if (window.self !== window.top) settings.hidden = true; apply();
-      document.addEventListener("pointerdown", e => { if (!settings.contains(e.target)) settings.open = false; });
-      document.addEventListener("keydown", e => { if (e.key === "Escape") settings.open = false; });
+      const audioButton = W.el("button", "workshop-button", sound ? "Sound on" : "Sound off"); audioButton.type = "button"; audioButton.setAttribute("aria-pressed", String(sound)); scope.listen(audioButton, "click", () => { sound = !sound; audioButton.textContent = sound ? "Sound on" : "Sound off"; audioButton.setAttribute("aria-pressed", String(sound)); apply(); W.tone(); });
+      const rally = W.el("button", "workshop-button", "Play a rally"); rally.type = "button"; scope.listen(rally, "click", () => { settings.open = false; W.openRally(); }); panel.append(audioButton, rally); settings.append(summary, panel); document.body.append(settings); scope.defer(() => settings.remove()); if (window.self !== window.top) settings.hidden = true; apply();
+      scope.listen(document, "pointerdown", e => { if (!settings.contains(e.target)) settings.open = false; });
+      scope.listen(document, "keydown", e => { if (e.key === "Escape") settings.open = false; });
 
-      // Loader: skip it in React (already mounted)
-      const loader = document.querySelector("[data-site-loader]");
-      if (loader) {
-        const finish = () => { loader.hidden = true; document.body.classList.remove("is-loading"); document.body.classList.add("loader-complete"); save("ricardo:entered", true, "session"); };
-        // Always skip loader in SPA context
-        setTimeout(finish, 400);
-      }
       document.querySelectorAll("img").forEach(img => { img.decoding = "async"; });
     }
 
-    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
-    else init();
-  })();
+    init();
+    scope.defer(() => { delete window.Workshop; document.body.classList.remove("dialog-open"); });
+
 }

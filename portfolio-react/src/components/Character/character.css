@@ -1,56 +1,14 @@
-.character-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 620px;
-  height: 120vh;
-  margin-left: auto;
-  overflow: visible;
-  z-index: 2;
+.character-wrap, .hero-character-placeholder {
+  position: relative; width: 100%; max-width: 620px; height: clamp(420px, 65vh, 640px);
+  min-width: 0; margin: 0 auto; align-self: center; isolation: isolate;
 }
-
-.character-wrap::-webkit-scrollbar {
-  display: none;
-}
-
-.character-sticky {
-  position: sticky;
-  top: 72px;
-  width: 100%;
-  height: 72vh;
-  min-height: 500px;
-}
-
-.character-canvas-div {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  background: transparent;
-}
-
-.character-rim {
-  position: absolute;
-  left: 52%;
-  top: 52%;
-  width: min(68vw, 520px);
-  height: min(68vw, 520px);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(186, 120, 255, 0.42) 0%, rgba(119, 77, 255, 0.26) 18%, rgba(74, 47, 128, 0.1) 60%, transparent 100%);
-  filter: blur(42px);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.character-hover {
-  position: absolute;
-  left: 52%;
-  top: 55%;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
-  z-index: 3;
-  pointer-events: auto;
-}
+.character-sticky, .character-canvas-div { position: absolute; inset: 0; overflow: hidden; }
+.character-canvas-div { background: transparent; touch-action: pan-y; }
+.character-canvas-div canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+.character-rim { position: absolute; inset: 12%; border-radius: 50%; background: radial-gradient(ellipse, #8170ff25, transparent 68%); filter: blur(32px); pointer-events: none; z-index: 0; }
+.character-hover { position: absolute; left: 25%; top: 15%; width: 50%; height: 55%; border-radius: 50%; z-index: 2; }
+.character-fallback, .hero-character-placeholder img { width: 100%; height: 100%; object-fit: contain; }
+.character-fallback { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.character-wrap[data-state="ready"] .character-fallback { visibility: hidden; }
+.character-status { position: absolute; bottom: 8px; left: 0; width: 100%; text-align: center; color: #aaa9ae; font-size: .75rem; pointer-events: none; }
+@media(max-width:760px) { .character-wrap,.hero-character-placeholder { height: 420px; max-width: 420px; } }

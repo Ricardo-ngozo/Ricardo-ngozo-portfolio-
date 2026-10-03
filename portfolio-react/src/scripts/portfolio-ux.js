@@ -1,4 +1,4 @@
-(() => {
+export function initPortfolioUX(scope) {
   "use strict";
   const username = "Ricardo-ngozo";
   const apiUrl = `https://github-contributions-api.jogruber.de/v4/${username}?y=last`;
@@ -14,22 +14,22 @@
       toggle.setAttribute("aria-expanded", "false");
       toggle.setAttribute("aria-label", "Open menu");
     };
-    toggle.addEventListener("click", () => {
+    scope.listen(toggle, "click", () => {
       const opening = toggle.getAttribute("aria-expanded") !== "true";
       nav.dataset.open = String(opening);
       toggle.setAttribute("aria-expanded", String(opening));
       toggle.setAttribute("aria-label", opening ? "Close menu" : "Open menu");
     });
-    nav.addEventListener("click", event => {
+    scope.listen(nav, "click", event => {
       if (event.target.closest("a")) close();
     });
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape") { close(); toggle.focus(); }
+    scope.listen(document, "keydown", event => {
+      if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") { close(); toggle.focus(); }
     });
-    document.addEventListener("click", event => {
+    scope.listen(document, "click", event => {
       if (!header.contains(event.target)) close();
     });
-    window.addEventListener("resize", () => {
+    scope.listen(window, "resize", () => {
       if (window.innerWidth > 780) close();
     });
   }
@@ -42,7 +42,7 @@
     const count = document.querySelector("[data-archive-count]");
     const empty = document.querySelector("[data-archive-empty]");
     if (toggle && panel) {
-      toggle.addEventListener("click", () => {
+      scope.listen(toggle, "click", () => {
         const opening = toggle.getAttribute("aria-expanded") !== "true";
         toggle.setAttribute("aria-expanded", String(opening));
         toggle.innerHTML = opening
@@ -64,16 +64,16 @@
       if (count) count.textContent = query ? `${visible} of ${items.length} projects` : `${items.length} projects`;
       if (empty) empty.hidden = visible !== 0;
     };
-    input.addEventListener("input", update);
+    scope.listen(input, "input", update);
     update();
   }
 
   function initGameLaunch() {
     document.querySelectorAll("[data-load-game]").forEach(button => {
-      button.addEventListener("click", () => {
+      scope.listen(button, "click", () => {
         const frameHost = button.closest("[data-game-frame]");
         if (!frameHost || frameHost.querySelector("iframe")) return;
-        const frame = document.createElement("iframe");
+        const frame = scope.element("iframe");
         frame.src = button.dataset.gameSrc;
         frame.title = "Mini Quest Runner game";
         frame.loading = "eager";
@@ -87,7 +87,7 @@
     const button = document.querySelector("[data-copy-email]");
     const status = document.querySelector("[data-copy-status]");
     if (!button) return;
-    button.addEventListener("click", async () => {
+    scope.listen(button, "click", async () => {
       try {
         await navigator.clipboard.writeText(email);
         if (status) status.textContent = "Email copied to clipboard.";
@@ -123,7 +123,7 @@
       graph.setAttribute("role", "img");
       graph.setAttribute("aria-label", "GitHub contribution activity for the last twelve months");
       for (const day of slots) {
-        const cell = document.createElement("span");
+        const cell = scope.element("span");
         cell.className = "day";
         cell.style.setProperty("--day-delay", `${Math.min(graph.childElementCount * 1.5, 560)}ms`);
         cell.setAttribute("aria-hidden", "true");
@@ -144,7 +144,7 @@
           const index = Math.max(0, week * 7 - leading);
           const date = new Date(entries[index].date + "T00:00:00Z");
           const key = `${date.getUTCFullYear()}-${date.getUTCMonth()}`;
-          const label = document.createElement("span");
+          const label = scope.element("span");
           if (key !== previous) {
             label.textContent = monthFormat.format(date);
             previous = key;
@@ -169,7 +169,7 @@
       if (refresh) { refresh.disabled = true; refresh.textContent = "Updating…"; }
       graph.setAttribute("aria-busy", "true");
       try {
-        const response = await fetch(apiUrl, { headers: { Accept: "application/json" }, cache: "no-store", signal: AbortSignal.timeout(10000) });
+        const response = await scope.fetch(apiUrl, { headers: { Accept: "application/json" }, cache: "no-store", signal: AbortSignal.timeout(10000) });
         if (!response.ok) throw new Error(`Contribution service returned ${response.status}`);
         const payload = await response.json();
         paint(payload);
@@ -195,7 +195,7 @@
         if (refresh) { refresh.disabled = false; refresh.textContent = "Refresh"; }
       }
     };
-    refresh?.addEventListener("click", load);
+    scope.listen(refresh, "click", load);
     load();
   }
 
@@ -204,11 +204,11 @@
     if (!target) return;
     const roles = ["Game Developer", "Full-stack Developer", "Creative Technologist", "Software Engineer"];
     let index = 0;
-    window.setInterval(() => {
+    scope.interval(() => {
       if (window.Workshop?.calm || document.hidden) return;
       index = (index + 1) % roles.length;
       target.classList.add("is-changing");
-      window.setTimeout(() => {
+      scope.timeout(() => {
         target.textContent = roles[index];
         target.classList.remove("is-changing");
       }, 210);
@@ -218,7 +218,7 @@
   function initInteractiveAvatars() {
     document.querySelectorAll("[data-avatar-interactive]").forEach(scene => {
       const hint = scene.querySelector("[data-avatar-hint]");
-      scene.addEventListener("pointermove", event => {
+      scope.listen(scene, "pointermove", event => {
         if (window.Workshop?.calm || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
         const bounds = scene.getBoundingClientRect();
         const x = (event.clientX - bounds.left) / bounds.width;
@@ -227,12 +227,12 @@
         scene.style.setProperty("--pointer-y", ((y - 0.5) * 2).toFixed(3));
         scene.classList.add("is-pointed");
       });
-      scene.addEventListener("pointerleave", () => {
+      scope.listen(scene, "pointerleave", () => {
         scene.style.setProperty("--pointer-x", "0");
         scene.style.setProperty("--pointer-y", "0");
         scene.classList.remove("is-pointed");
       });
-      scene.addEventListener("click", () => {
+      scope.listen(scene, "click", () => {
         const awake = scene.getAttribute("aria-pressed") !== "true";
         scene.setAttribute("aria-pressed", String(awake));
         scene.classList.toggle("is-awake", awake);
@@ -245,12 +245,12 @@
     const flightStage = document.querySelector(".hero-section, .p-hero, header.hero");
     if (flightStage) {
       flightStage.classList.add("motion-stage");
-      const flock = document.createElement("div");
+      const flock = scope.element("div");
       flock.className = "motion-flock";
       flock.setAttribute("aria-hidden", "true");
       const bird = `<svg class="motion-bird" viewBox="0 0 54 32" focusable="false"><path class="bird-wing bird-wing-left" d="M27 17C20 7 11 4 3 7c9 2 15 7 20 15Z"/><path class="bird-wing bird-wing-right" d="M29 17C36 8 44 7 51 10c-8 1-13 5-17 12Z"/><path class="bird-body" d="M20 17c5-5 12-5 17 0l12-2-8 7-8-1-6 8-4-8-10 2Z"/></svg>`;
       [0, 1, 2].forEach((index) => {
-        const wrapper = document.createElement("span");
+        const wrapper = scope.element("span");
         wrapper.className = `motion-bird-flight motion-bird-flight-${index + 1}`;
         wrapper.innerHTML = bird;
         flock.append(wrapper);
@@ -260,18 +260,18 @@
 
     const ending = document.querySelector(".site-footer, .p-footer-cta, footer.wrap");
     if (ending && !ending.previousElementSibling?.classList.contains("motion-runway")) {
-      const runway = document.createElement("div");
+      const runway = scope.element("div");
       runway.className = "motion-runway";
       runway.innerHTML = `<button class="motion-runner" type="button" aria-label="Give the running dog a speed boost" aria-pressed="false"><svg class="motion-dog-svg" viewBox="0 0 156 68" aria-hidden="true"><path class="dog-tail" d="M23 29C11 24 8 15 14 11"/><path class="dog-body" d="M25 31c8-11 25-15 43-12 12 2 20 7 30 6l11-8 9 1-4 7c8 0 15-3 21 1l9 4-10 3-11-1c-5 7-17 9-30 5-17-5-31 4-46 5l-18-4Z"/><path class="dog-neck" d="M94 26c6-6 13-11 22-12 4 0 8 2 10 5l-5 5-12 5"/><path class="dog-head" d="M119 15c4-5 11-7 17-4l7 6-4 6-11 1-8-4Z"/><path class="dog-ear" d="M126 12l-2-7 7 5"/><circle class="dog-eye" cx="137" cy="17" r="1.3"/><path class="dog-collar" d="M113 18l4 11" /><g class="dog-leg dog-leg-a"><path d="M42 40l-6 13-9 6m9-6 7 4"/></g><g class="dog-leg dog-leg-b"><path d="M59 39l4 10-2 10m2-10 9 4"/></g><g class="dog-leg dog-leg-c"><path d="M89 38l-2 12-8 7m8-7 8 5"/></g><g class="dog-leg dog-leg-d"><path d="M103 36l7 11-1 10m1-10 9 4"/></g></svg></button>`;
       ending.parentNode.insertBefore(runway, ending);
       const runner = runway.querySelector(".motion-runner");
       let boostTimer;
-      runner.addEventListener("click", () => {
+      scope.listen(runner, "click", () => {
         runner.classList.add("is-boosted");
         runner.setAttribute("aria-pressed", "true");
         runner.setAttribute("aria-label", "Running dog boosted");
         window.clearTimeout(boostTimer);
-        boostTimer = window.setTimeout(() => {
+        boostTimer = scope.timeout(() => {
           runner.classList.remove("is-boosted");
           runner.setAttribute("aria-pressed", "false");
           runner.setAttribute("aria-label", "Give the running dog a speed boost");
@@ -281,7 +281,7 @@
 
     const motionTargets = document.querySelectorAll(".phase, .jt-item");
     if ("IntersectionObserver" in window && motionTargets.length) {
-      const observer = new IntersectionObserver((entries) => {
+      const observer = new scope.IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("motion-seen");
@@ -334,7 +334,7 @@
       if (section.classList.contains("p-footer-cta")) kind = "firefly";
       kind ||= ["bee","firefly","butterfly","fox"][index % 4];
       section.classList.add("has-companion");
-      const button = document.createElement("button");
+      const button = scope.element("button");
       button.type = "button";
       button.className = `section-companion section-companion--${kind} ${index % 2 ? "companion-left" : ""}`;
       button.setAttribute("aria-label", `Let the ${kind} interact with this section`);
@@ -349,13 +349,13 @@
         button.classList.remove("is-awake");
         target.classList.remove("companion-reacted");
       };
-      button.addEventListener("pointerenter", wake);
-      button.addEventListener("pointerleave", settle);
-      button.addEventListener("focus", wake);
-      button.addEventListener("blur", settle);
-      button.addEventListener("click", () => {
+      scope.listen(button, "pointerenter", wake);
+      scope.listen(button, "pointerleave", settle);
+      scope.listen(button, "focus", wake);
+      scope.listen(button, "blur", settle);
+      scope.listen(button, "click", () => {
         wake();
-        window.setTimeout(settle, 1150);
+        scope.timeout(settle, 1150);
       });
       section.append(button);
     });
@@ -370,23 +370,23 @@
       const footerOverlap = Math.max(0, window.innerHeight - runway.getBoundingClientRect().top);
       actions.style.setProperty("--footer-lift", footerOverlap ? `${Math.ceil(footerOverlap + 18)}px` : "0px");
     };
-    window.addEventListener("scroll", updatePosition, { passive: true });
-    window.addEventListener("resize", updatePosition);
+    scope.listen(window, "scroll", updatePosition, { passive: true });
+    scope.listen(window, "resize", updatePosition);
     updatePosition();
   }
 
   function init() {
-    initMobileNav();
+    const home = document.body.dataset.page === "tech";
+    if (!home) initMobileNav();
     initLivingMotion();
     initSectionCompanions();
-    initFloatingActions();
-    initRoleChanger();
-    initInteractiveAvatars();
-    initArchive();
-    initGameLaunch();
-    initCopyEmail();
-    initContributions();
+    if (!home) initFloatingActions();
+    if (!home) initRoleChanger();
+    if (!home) initInteractiveAvatars();
+    if (!home) initArchive();
+    if (!home) initGameLaunch();
+    if (!home) initCopyEmail();
+    if (!home) initContributions();
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
-  else init();
-})();
+  init();
+}

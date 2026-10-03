@@ -1,6 +1,6 @@
-(() => {
+export function initGlobe(scope) {
 'use strict';
-const W=window.Workshop,canvas=document.getElementById('tech-globe');if(!W||!canvas)return;
+const W=scope.workshop(),canvas=document.getElementById('tech-globe');if(!W||!canvas)return;
   const NODES = [
     // Frontend — cyan
     { label:'HTML5',      cat:'fe', icon:'M4 2h16l-1.5 16.5L12 21l-6.5-2.5L4 2zm2.3 2 .9 10.5 4.8 1.4 4.8-1.4.6-6.5H8.3l-.2-2h8.7l.2-2H6.3zm.5 6h4.4l.1 1.5-3.1.9-.2-2.4zm5.3-2-.1-2h1.9l-.2 2h-1.6z' },
@@ -44,19 +44,19 @@ const W=window.Workshop,canvas=document.getElementById('tech-globe');if(!W||!can
   canvas.tabIndex=0;canvas.setAttribute("role","group");canvas.setAttribute("aria-label","Interactive technology globe. Use Left and Right arrows to select a technology. The list below provides the same choices.");
   let angle=0,playing=true,index=-1,size=400,points=[],dragging=false,last=0,travel=0;
   const golden=Math.PI*(3-Math.sqrt(5));
-  NODES.forEach((n,i)=>{n.phi=Math.acos(1-2*(i+.5)/NODES.length);n.theta=golden*i;const b=W.el("button","workshop-button",n.label);b.type="button";b.setAttribute("aria-pressed","false");b.addEventListener("click",()=>select(i));buttons.append(b);});
+  NODES.forEach((n,i)=>{n.phi=Math.acos(1-2*(i+.5)/NODES.length);n.theta=golden*i;const b=W.el("button","workshop-button",n.label);b.type="button";b.setAttribute("aria-pressed","false");scope.listen(b, "click",()=>select(i));buttons.append(b);});
   function select(i){
     index=(i+NODES.length)%NODES.length;const n=NODES[index];playing=false;angle=Math.PI/2-n.theta;pause.textContent="Resume orbit";pause.setAttribute("aria-pressed","true");
     [...buttons.children].forEach((b,j)=>b.setAttribute("aria-pressed",String(j===index)));
     detail.hidden=false;detail.replaceChildren();
     detail.append(W.el("p","section-kicker","IN THE WORKSHOP"),W.el("h3","",n.label),W.el("p","",descriptions[n.label][0]));
     const action=W.el("a","workshop-button",n.label==="Python"?"Open the Python lab":n.label==="GitHub"?"See contribution activity":"Explore related work");
-    action.href=n.label==="Python"?"./python-learning-log.html":n.label==="GitHub"?"#contributions":"#projects";
-    if(n.label!=="Python"&&n.label!=="GitHub")action.addEventListener("click",()=>W.emit("technology",{label:n.label,search:descriptions[n.label][1]}));
+    action.href=n.label==="Python"?"/python-learning-log":n.label==="GitHub"?"#contributions":"#projects";
+    if(n.label!=="Python"&&n.label!=="GitHub")scope.listen(action, "click",()=>W.emit("technology",{label:n.label,search:descriptions[n.label][1]}));
     detail.append(action);draw();const point=points.find(p=>p.i===index);W.emit("globe",{label:n.label,index,x:point?.x||size/2,y:point?.y||size/2});W.tone(420+index*18);
   }
-  pause.addEventListener("click",()=>{playing=!playing;pause.textContent=playing?"Pause orbit":"Resume orbit";pause.setAttribute("aria-pressed",String(!playing));});
-  canvas.addEventListener("keydown",e=>{if(["ArrowLeft","ArrowRight","Home","End"].includes(e.key)){e.preventDefault();select(e.key==="Home"?0:e.key==="End"?NODES.length-1:index+(e.key==="ArrowLeft"?-1:1));}});
+  scope.listen(pause, "click",()=>{playing=!playing;pause.textContent=playing?"Pause orbit":"Resume orbit";pause.setAttribute("aria-pressed",String(!playing));});
+  scope.listen(canvas, "keydown",e=>{if(["ArrowLeft","ArrowRight","Home","End"].includes(e.key)){e.preventDefault();select(e.key==="Home"?0:e.key==="End"?NODES.length-1:index+(e.key==="ArrowLeft"?-1:1));}});
   function resize(){size=Math.min(560,wrap.clientWidth);const ratio=Math.min(devicePixelRatio||1,2);canvas.width=size*ratio;canvas.height=size*ratio;canvas.style.width=size+"px";canvas.style.height=size+"px";ctx.setTransform(ratio,0,0,ratio,0,0);draw();}
   function draw(){
     if(!size)return;ctx.clearRect(0,0,size,size);const center=size/2,r=size*.34;
@@ -72,14 +72,14 @@ const W=window.Workshop,canvas=document.getElementById('tech-globe');if(!W||!can
       ctx.restore();
     });
   }
-  canvas.addEventListener("pointerdown",e=>{dragging=true;last=e.clientX;travel=0;canvas.setPointerCapture(e.pointerId);});
-  canvas.addEventListener("pointermove",e=>{if(!dragging)return;const delta=e.clientX-last;travel+=Math.abs(delta);angle+=delta*.009;last=e.clientX;draw();});
-  canvas.addEventListener("pointerup",e=>{if(!dragging)return;dragging=false;if(travel<8){const r=canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;const hit=[...points].reverse().find(p=>Math.hypot(x-p.x,y-p.y)<Math.max(24,20*p.scale));if(hit)select(hit.i);}});
-  canvas.addEventListener("pointercancel",()=>dragging=false);
-  canvas.addEventListener("pointerenter",()=>canvas.dataset.hover="true");canvas.addEventListener("pointerleave",()=>canvas.dataset.hover="false");
-  canvas.addEventListener("focus",()=>canvas.dataset.focus="true");canvas.addEventListener("blur",()=>canvas.dataset.focus="false");
-  new ResizeObserver(resize).observe(wrap);resize();
+  scope.listen(canvas, "pointerdown",e=>{dragging=true;last=e.clientX;travel=0;canvas.setPointerCapture(e.pointerId);});
+  scope.listen(canvas, "pointermove",e=>{if(!dragging)return;const delta=e.clientX-last;travel+=Math.abs(delta);angle+=delta*.009;last=e.clientX;draw();});
+  scope.listen(canvas, "pointerup",e=>{if(!dragging)return;dragging=false;if(travel<8){const r=canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;const hit=[...points].reverse().find(p=>Math.hypot(x-p.x,y-p.y)<Math.max(24,20*p.scale));if(hit)select(hit.i);}});
+  scope.listen(canvas, "pointercancel",()=>dragging=false);
+  scope.listen(canvas, "pointerenter",()=>canvas.dataset.hover="true");scope.listen(canvas, "pointerleave",()=>canvas.dataset.hover="false");
+  scope.listen(canvas, "focus",()=>canvas.dataset.focus="true");scope.listen(canvas, "blur",()=>canvas.dataset.focus="false");
+  new scope.ResizeObserver(resize).observe(wrap);resize();
   W.loop(canvas,dt=>{if(playing&&!dragging&&canvas.dataset.hover!=="true"&&canvas.dataset.focus!=="true"){angle+=dt*.18;draw();}});
-  document.addEventListener("workshop:motion",()=>{pause.disabled=W.calm;pause.textContent=W.calm?"Calm mode · manual rotation":playing?"Pause orbit":"Resume orbit";draw();});
+  scope.listen(document, "workshop:motion",()=>{pause.disabled=W.calm;pause.textContent=W.calm?"Calm mode · manual rotation":playing?"Pause orbit":"Resume orbit";draw();});
   if(W.calm){pause.disabled=true;pause.textContent="Calm mode · manual rotation";}
-})();
+}

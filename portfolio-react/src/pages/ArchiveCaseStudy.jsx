@@ -1,3 +1,4 @@
+import { usePageFeatures } from '../runtime/usePageFeatures.js';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -19,20 +20,8 @@ export default function ArchiveCaseStudy() {
   const slug = searchParams.get('project') || '';
   const project = ARCHIVE_NOTES[slug];
 
-  useEffect(() => {
-    document.body.className = 'archive-case-body is-loading';
-    document.title = project ? `${project.title} | Ricardo Ngozo` : 'Project case study | Ricardo Ngozo';
-
-    const run = async () => {
-      await import('../scripts/workshop-core.js');
-    };
-    const timer = setTimeout(run, 0);
-
-    return () => {
-      clearTimeout(timer);
-      document.body.className = '';
-    };
-  }, [slug, project]);
+  usePageFeatures('case', slug);
+  useEffect(() => { document.title = project ? `${project.title} | Ricardo Ngozo` : 'Project case study | Ricardo Ngozo'; }, [slug]);
 
   if (!project) {
     return (

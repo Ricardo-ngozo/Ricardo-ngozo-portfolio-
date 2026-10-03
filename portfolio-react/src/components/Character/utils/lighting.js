@@ -1,42 +1,21 @@
-import * as THREE from "three";
-import { RGBELoader } from "three-stdlib";
-import { gsap } from "gsap";
+import * as THREE from 'three';
+import { HDRLoader } from 'three/addons/loaders/HDRLoader.js';
 
-const setLighting = (scene) => {
-  const directionalLight = new THREE.DirectionalLight(0xc7a9ff, 0);
-  directionalLight.position.set(-0.47, -0.32, -1);
-  directionalLight.castShadow = true;
-  directionalLight.shadow.mapSize.set(1024, 1024);
-  directionalLight.shadow.camera.near = 0.5;
-  directionalLight.shadow.camera.far = 50;
-  scene.add(directionalLight);
-
-  const pointLight = new THREE.PointLight(0xc2a4ff, 0, 100, 3);
-  pointLight.position.set(3, 12, 4);
-  scene.add(pointLight);
-
-  new RGBELoader().setPath("/models/").load("char_enviorment.hdr", (texture) => {
-    texture.mapping = THREE.EquirectangularReflectionMapping;
-    scene.environment = texture;
-    scene.environmentIntensity = 0;
+export default function setLighting(scene) {
+  let disposed = false, enabled = false, environment;
+  const key = new THREE.DirectionalLight(0xfff3e6, 1.5); key.position.set(-.47, .8, 2);
+  const fill = new THREE.HemisphereLight(0xfff3e6, 0x25223b, .8);
+  const point = new THREE.PointLight(0xc2a4ff, 0, 100, 3); point.position.set(3, 12, 4);
+  scene.add(key, fill, point);
+  new HDRLoader().load('/models/char_enviorment.hdr', texture => {
+    if (disposed) { texture.dispose(); return; }
+    environment = texture; texture.mapping = THREE.EquirectangularReflectionMapping;
+    scene.environment = texture; scene.environmentIntensity = enabled ? .35 : 0;
     scene.environmentRotation.set(5.76, 85.85, 1);
-  });
-
-  function setPointLight(screenLight) {
-    if (screenLight && screenLight.material.opacity > 0.9) {
-      pointLight.intensity = screenLight.material.emissiveIntensity * 20;
-    } else {
-      pointLight.intensity = 0;
-    }
-  }
-
-  function turnOnLights() {
-    gsap.to(scene, { environmentIntensity: 0.64, duration: 2, ease: "power2.inOut" });
-    gsap.to(directionalLight, { intensity: 1, duration: 2, ease: "power2.inOut" });
-    gsap.to(".character-rim", { y: "55%", opacity: 1, delay: 0.2, duration: 2 });
-  }
-
-  return { setPointLight, turnOnLights };
-};
-
-export default setLighting;
+  }, undefined, () => { /* Key and fill remain available if the HDR fails. */ });
+  return {
+    turnOnLights() { enabled = true; scene.environmentIntensity = .35; },
+    setPointLight(mesh) { point.intensity = mesh?.material?.opacity > .9 ? (mesh.material.emissiveIntensity || 0) * 20 : 0; },
+    dispose() { disposed = true; scene.environment = null; environment?.dispose(); key.dispose(); fill.dispose(); point.dispose(); },
+  };
+}
