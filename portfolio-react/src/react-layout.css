@@ -111,3 +111,18 @@ body[data-page="tech"] .hero-layout-simple > .hero-character-placeholder { grid-
 }
 /* Content remains visible when animations are disabled or interrupted. */
 body.personal-body .p-hero-overline, body.personal-body .p-hero-title, body.personal-body .p-hero-tagline { opacity: 1; }
+
+/* Shared 3D character, with room for the Personal page navigation. */
+body.personal-body .p-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); min-height: auto; gap: 32px; }
+body.personal-body .p-hero-content { min-width: 0; }
+body.personal-body .p-hero-character { width: 100%; min-width: 0; position: relative; }
+body.personal-body .p-hero-character .character-wrap,
+body.personal-body .p-hero-character .hero-character-placeholder { width: 100%; height: clamp(420px, 45vw, 600px); }
+body.personal-body .p-origin-grid { grid-template-columns: minmax(0, 1fr); }
+body.personal-body .p-origin-copy { max-width: 760px; }
+@media (max-width: 900px) {
+  body.personal-body .p-hero { grid-template-columns: minmax(0, 1fr); }
+  body.personal-body .p-hero-character { max-width: 480px; margin-inline: auto; }
+  body.personal-body .p-hero-character .character-wrap,
+  body.personal-body .p-hero-character .hero-character-placeholder { height: 420px; }
+}
