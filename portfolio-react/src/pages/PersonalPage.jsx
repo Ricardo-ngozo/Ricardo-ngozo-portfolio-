@@ -1,6 +1,9 @@
+import { lazy, Suspense } from 'react';
 import { usePageFeatures } from '../runtime/usePageFeatures.js';
 import PongLoader from '../components/PongLoader.jsx';
 import { Link } from 'react-router-dom';
+
+const CharacterScene = lazy(() => import('../components/Character/CharacterScene.jsx'));
 
 export default function PersonalPage() {
   usePageFeatures('personal');
@@ -55,6 +58,11 @@ export default function PersonalPage() {
               <span></span>
             </a>
           </div>
+          <div className="p-hero-character">
+            <Suspense fallback={<div className="hero-character-placeholder" aria-hidden="true" />}>
+              <CharacterScene />
+            </Suspense>
+          </div>
         </section>
 
         {/* ORIGIN */}
@@ -65,9 +73,6 @@ export default function PersonalPage() {
               <h2>Where it started.</h2>
               <p>Born curious. Raised in South Africa. Spent years wondering how things worked — games, films, tech — before I got the answer: you just build it yourself.</p>
               <p>Started with HTML in 2026. The first layout that actually worked felt like unlocking something. Haven't stopped since.</p>
-            </div>
-            <div className="p-origin-images">
-              <img src="/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" alt="Ricardo's illustrated avatar" className="p-origin-portrait" loading="lazy" />
             </div>
           </div>
         </section>
