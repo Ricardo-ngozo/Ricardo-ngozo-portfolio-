@@ -5,11 +5,14 @@ import App from './App.jsx';
 
 // All CSS — same load order as the original HTML
 import './styles.css';
+import './personal.css';
+import './pages/python-lab.css';
 import './portfolio-ux.css';
 import './atelier-theme.css';
 import './workshop.css';
 import './studio-theme.css';
 import './components/cursor.css';
+import './react-layout.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

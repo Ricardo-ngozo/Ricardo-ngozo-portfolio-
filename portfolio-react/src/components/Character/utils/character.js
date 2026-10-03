@@ -1,89 +1,46 @@
-import * as THREE from "three";
-import { DRACOLoader, GLTFLoader } from "three-stdlib";
-import { decryptFile } from "./decrypt.js";
-import { applyColors } from "./applyColors.js";
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { decryptFile } from './decrypt.js';
+import { applyColors } from './applyColors.js';
 
-const setCharacter = (renderer, scene, camera) => {
-  const loader = new GLTFLoader();
-  const dracoLoader = new DRACOLoader();
-  dracoLoader.setDecoderPath("/draco/");
-  loader.setDRACOLoader(dracoLoader);
+export function disposeCharacter(root) {
+  const resources = new Set();
+  root.traverse(object => {
+    if (object.geometry) resources.add(object.geometry);
+    if (object.skeleton) resources.add(object.skeleton);
+    const materials = Array.isArray(object.material) ? object.material : [object.material];
+    materials.filter(Boolean).forEach(material => { resources.add(material); Object.values(material).forEach(value => { if (value?.isTexture) resources.add(value); }); });
+  });
+  resources.forEach(resource => resource.dispose());
+}
 
-  const loadCharacter = (onProgress) => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const decrypted = await decryptFile("/models/character.enc", "Character3D#@");
-        const blobUrl = URL.createObjectURL(new Blob([decrypted]));
-
-        loader.load(
-          blobUrl,
-          async (gltf) => {
-            const character = gltf.scene;
-            await renderer.compileAsync(character, camera, scene);
-
-            character.traverse((child) => {
-              if (child.isMesh) {
-                const mesh = child;
-                mesh.castShadow = false;
-                mesh.receiveShadow = false;
-                mesh.frustumCulled = true;
-
-                if (mesh.material && !Array.isArray(mesh.material)) {
-                  mesh.material.precision = "mediump";
-                }
-              }
-            });
-
-            applyColors(gltf);
-
-            const footR = character.getObjectByName("footR");
-            const footL = character.getObjectByName("footL");
-            if (footR) footR.position.y = 3.36;
-            if (footL) footL.position.y = 3.36;
-
-            character.traverse((child) => {
-              if (child.isMesh && child.material) {
-                const mat = child.material;
-                if (mat.name === "Material.027" || child.name === "screenlight") {
-                  mat.transparent = true;
-                  mat.opacity = 0;
-                }
-              }
-            });
-
-            const plane004 = character.getObjectByName("Plane004");
-            if (plane004) {
-              plane004.traverse((child) => {
-                if (child.isMesh && child.material) {
-                  const mat = child.material;
-                  mat.transparent = true;
-                  mat.opacity = 0;
-                }
-              });
-            }
-
-            dracoLoader.dispose();
-            resolve(gltf);
-          },
-          (event) => {
-            if (onProgress && event.total) {
-              const percent = (event.loaded / event.total) * 100;
-              onProgress(Math.min(percent, 100));
-            }
-          },
-          (error) => {
-            console.error("Error loading GLTF model:", error);
-            reject(error);
-          }
-        );
-      } catch (err) {
-        console.error(err);
-        reject(err);
-      }
-    });
+export default function setCharacter() {
+  const draco = new DRACOLoader();
+  // Three's bundled decoder URLs are emitted as local assets by Vite.
+  const loader = new GLTFLoader(); loader.setDRACOLoader(draco);
+  return {
+    async loadCharacter(signal) {
+      const buffer = await decryptFile('/models/character.enc', 'Character3D#@', signal);
+      signal.throwIfAborted();
+      const gltf = await loader.parseAsync(buffer, '/models/');
+      if (signal.aborted) { disposeCharacter(gltf.scene); signal.throwIfAborted(); }
+      applyColors(gltf);
+      const character = gltf.scene;
+      ['footR', 'footL'].forEach(name => { const foot = character.getObjectByName(name); if (foot) foot.position.y = 3.36; });
+      character.traverse(object => {
+        if (!object.isMesh) return;
+        object.castShadow = object.receiveShadow = false;
+        const materials = Array.isArray(object.material) ? object.material : [object.material];
+        materials.filter(Boolean).forEach(material => {
+          if (material.name === 'Material.027' || object.name === 'screenlight') { material.transparent = true; material.opacity = 0; }
+        });
+      });
+      character.getObjectByName('Plane004')?.traverse(object => {
+        const materials = Array.isArray(object.material) ? object.material : [object.material];
+        materials.filter(Boolean).forEach(material => { material.transparent = true; material.opacity = 0; });
+      });
+      return gltf;
+    },
+    dispose() { draco.dispose(); },
   };
-
-  return { loadCharacter };
-};
-
-export default setCharacter;
+}

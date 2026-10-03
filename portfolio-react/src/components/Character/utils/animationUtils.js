@@ -4,13 +4,16 @@ import { eyebrowBoneNames, typingBoneNames } from "../../../data/boneData.js";
 const setAnimations = (gltf) => {
   const character = gltf.scene;
   const mixer = new THREE.AnimationMixer(character);
+  let blinkTimer;
 
   if (gltf.animations) {
     const introClip = gltf.animations.find((clip) => clip.name === "introAnimation");
+    if (introClip) {
     const introAction = mixer.clipAction(introClip);
     introAction.setLoop(THREE.LoopOnce, 1);
     introAction.clampWhenFinished = true;
     introAction.play();
+    }
 
     const clipNames = ["key1", "key2", "key5", "key6"];
     clipNames.forEach((name) => {
@@ -33,21 +36,20 @@ const setAnimations = (gltf) => {
     }
   }
 
-  function startIntro() {
-    const introClip = gltf.animations.find((clip) => clip.name === "introAnimation");
-    const introAction = mixer.clipAction(introClip);
-    introAction.clampWhenFinished = true;
-    introAction.reset().play();
-
-    setTimeout(() => {
-      const blink = gltf.animations.find((clip) => clip.name === "Blink");
-      if (blink) {
-        mixer.clipAction(blink).play().fadeIn(0.5);
-      }
+  function startIntro(calm = false) {
+    const intro = gltf.animations.find(clip => clip.name === 'introAnimation');
+    if (intro) {
+      const action = mixer.clipAction(intro); action.clampWhenFinished = true; action.reset().play();
+      if (calm) { action.time = intro.duration; mixer.update(0); }
+    }
+    if (calm) return;
+    blinkTimer = setTimeout(() => {
+      const blink = gltf.animations.find(clip => clip.name === 'Blink');
+      if (blink) mixer.clipAction(blink).play().fadeIn(.5);
     }, 2500);
   }
 
-  function hover(gltf, hoverDiv) {
+  function hover(gltf, hoverDiv, isCalm = () => false) {
     let eyeBrowUpAction = createBoneAction(gltf, mixer, "browup", eyebrowBoneNames);
     let isHovering = false;
 
@@ -58,7 +60,7 @@ const setAnimations = (gltf) => {
     }
 
     const onHoverFace = () => {
-      if (eyeBrowUpAction && !isHovering) {
+      if (!isCalm() && eyeBrowUpAction && !isHovering) {
         isHovering = true;
         eyeBrowUpAction.reset();
         eyeBrowUpAction.enabled = true;
@@ -84,7 +86,7 @@ const setAnimations = (gltf) => {
     };
   }
 
-  return { mixer, startIntro, hover };
+  return { mixer, startIntro, hover, dispose() { clearTimeout(blinkTimer); mixer.stopAllAction(); mixer.uncacheRoot(character); } };
 };
 
 const createBoneAction = (gltf, mixer, clipName, boneNames) => {

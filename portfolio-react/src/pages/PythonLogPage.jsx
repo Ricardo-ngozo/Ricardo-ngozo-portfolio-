@@ -1,47 +1,17 @@
-import { useEffect } from 'react';
+import LabDemo from '../components/LabDemo.jsx';
+import { usePageFeatures } from '../runtime/usePageFeatures.js';
+import PongLoader from '../components/PongLoader.jsx';
 import { Link } from 'react-router-dom';
 
 export default function PythonLogPage() {
-  useEffect(() => {
-    document.body.className = 'python-log-body is-loading';
-    document.title = 'Python Animations — Learning Log';
-
-    const run = async () => {
-      await import('../scripts/workshop-core.js');
-      await import('../scripts/portfolio-ux.js');
-      await import('../scripts/studio-motion.js');
-    };
-    const timer = setTimeout(run, 0);
-
-    return () => {
-      clearTimeout(timer);
-      document.body.className = '';
-      document.title = 'Samukelo Ricardo Ngozo | Game Developer & Fullstack Developer';
-    };
-  }, []);
+  usePageFeatures('lab');
 
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
 
       {/* Loader */}
-      <div className="site-loader" data-site-loader aria-live="polite">
-        <canvas className="loader-pong" data-loader-pong aria-hidden="true"></canvas>
-        <div className="score" aria-hidden="true">
-          <span data-loader-score-left>0</span>
-          <span data-loader-score-right>0</span>
-        </div>
-        <div className="loader-overlay">
-          <p className="brand">Ricardo Ngozo</p>
-          <h1>Loading the lab...</h1>
-          <p>Compiling experiments.</p>
-          <div className="prompt" aria-hidden="true">
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-          </div>
-        </div>
-      </div>
+      <PongLoader />
 
       <header className="morph-header" data-header>
         <nav className="nav-container" data-nav>
@@ -49,12 +19,12 @@ export default function PythonLogPage() {
             <div className="brand-monogram" aria-hidden="true">R<span>.</span></div>
             <span className="site-title">Ricardo Ngozo</span>
           </Link>
-          <div className="pill-nav">
+          <div className="pill-nav" id="lab-navigation">
             <Link className="nav-link" to="/">Portfolio</Link>
             <Link className="nav-link" to="/personal">Personal</Link>
-            <a className="nav-link active" href="#">Python Lab</a>
+            <Link className="nav-link active" to="/python-learning-log" aria-current="page">Python Lab</Link>
           </div>
-          <button className="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+          <button className="mobile-toggle" type="button" aria-label="Open menu" aria-controls="lab-navigation" aria-expanded="false" data-menu-toggle>
             <span></span><span></span>
           </button>
         </nav>
@@ -73,7 +43,7 @@ export default function PythonLogPage() {
               coordinate math, particle systems, flocking behaviour, and more.
             </p>
             <div className="stat-row">
-              <div className="stat"><span className="n">7+</span><span className="l">Experiments</span></div>
+              <div className="stat"><span className="n">3</span><span className="l">Experiments</span></div>
               <div className="stat"><span className="n">Python</span><span className="l">Language</span></div>
               <div className="stat"><span className="n">Pygame</span><span className="l">Library</span></div>
             </div>
@@ -81,9 +51,9 @@ export default function PythonLogPage() {
           <div className="hero-canvas-box">
             <div className="cap">
               <span>Live demo · Particles</span>
-              <span id="fps-counter">0 fps</span>
+              <span>Interactive preview</span>
             </div>
-            <canvas id="hero-canvas" height="200" aria-label="Animated particle system demo"></canvas>
+            <LabDemo kind="particles" label="Particle system" compact />
           </div>
         </div>
       </section>
@@ -141,7 +111,7 @@ export default function PythonLogPage() {
                     <span>Live preview</span>
                     <span>Canvas</span>
                   </div>
-                  <canvas height="180" aria-label={`${title} animation preview`}></canvas>
+                  <LabDemo kind={num === '01' ? 'orbit' : num === '03' ? 'flock' : 'particles'} label={title} />
                   <div className="hint">Runs in the browser via a JS port of the Python logic.</div>
                 </div>
               </div>

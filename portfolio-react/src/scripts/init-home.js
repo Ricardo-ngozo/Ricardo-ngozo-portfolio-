@@ -5,21 +5,20 @@
  * Uses a guard so hot-reloads don't double-register listeners.
  */
 
-let initialized = false;
 
-export function initHomePage() {
-  if (initialized) return;
-  initialized = true;
+
+export function initHomePage(scope) {
+  const W = scope.workshop();
 
   // ─── 1. Morphing Navbar & Scroll Spying ───────────────────────────────────
   const header = document.querySelector('[data-header]');
   const navLinks = document.querySelectorAll('.nav-link');
 
-  window.addEventListener('scroll', () => {
+  scope.listen(window, 'scroll', () => {
     if (header) header.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 
-  const sectionObserver = new IntersectionObserver((entries) => {
+  const sectionObserver = new scope.IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         navLinks.forEach(link => link.classList.remove('active'));
@@ -75,14 +74,14 @@ export function initHomePage() {
       }
     }
 
-    window.addEventListener('resize', resizeCanvas, { passive: true });
+    scope.listen(window, 'resize', resizeCanvas, { passive: true });
     resizeCanvas();
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
       particles.forEach(p => { p.update(); p.draw(); });
     };
     particles.forEach(p => p.draw());
-    window.Workshop.loop(canvas, animate);
+    W.loop(canvas, animate);
   }
 
   // ─── 3. Role Changer ─────────────────────────────────────────────────────
@@ -90,11 +89,11 @@ export function initHomePage() {
   if (target) {
     const roles = ['Game Developer', 'Full-stack Developer', 'Creative Technologist', 'Software Engineer'];
     let index = 0;
-    setInterval(() => {
+    scope.interval(() => {
       if (window.Workshop?.calm || document.hidden) return;
       index = (index + 1) % roles.length;
       target.classList.add('is-changing');
-      setTimeout(() => {
+      scope.timeout(() => {
         target.textContent = roles[index];
         target.classList.remove('is-changing');
       }, 210);
@@ -102,7 +101,7 @@ export function initHomePage() {
   }
 
   // ─── 4. Scroll reveal ─────────────────────────────────────────────────────
-  const revealObserver = new IntersectionObserver((entries) => {
+  const revealObserver = new scope.IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.15 });
 
@@ -111,6 +110,7 @@ export function initHomePage() {
       if (!el.dataset.revealObserved) {
         revealObserver.observe(el);
         el.dataset.revealObserved = 'true';
+        scope.defer(() => delete el.dataset.revealObserved);
       }
     });
   };
@@ -118,14 +118,14 @@ export function initHomePage() {
 
   // ─── 5. 3D Card Tilt ──────────────────────────────────────────────────────
   document.querySelectorAll('[data-tilt]').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
+    scope.listen(card, 'mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const rotateX = ((e.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * -8;
       const rotateY = ((e.clientX - rect.left - rect.width / 2) / (rect.width / 2)) * 8;
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
       card.style.transition = 'none';
     });
-    card.addEventListener('mouseleave', () => {
+    scope.listen(card, 'mouseleave', () => {
       card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
       card.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
     });
@@ -159,7 +159,7 @@ export function initHomePage() {
     };
 
     cells.forEach((cell, index) => {
-      cell.addEventListener('click', () => {
+      scope.listen(cell, 'click', () => {
         if (board[index] || finished) return;
         board[index] = player;
         player = player === 'X' ? 'O' : 'X';
@@ -167,7 +167,7 @@ export function initHomePage() {
       });
     });
 
-    reset?.addEventListener('click', () => {
+    scope.listen(reset, 'click', () => {
       board = Array(9).fill('');
       player = 'X';
       finished = false;
@@ -185,7 +185,7 @@ export function initHomePage() {
   const archiveEmpty = document.querySelector('[data-archive-empty]');
 
   if (archiveToggle && archivePanel) {
-    archiveToggle.addEventListener('click', () => {
+    scope.listen(archiveToggle, 'click', () => {
       const opening = archiveToggle.getAttribute('aria-expanded') !== 'true';
       archiveToggle.setAttribute('aria-expanded', String(opening));
       archiveToggle.innerHTML = opening
@@ -200,28 +200,12 @@ export function initHomePage() {
     });
   }
 
-  if (archiveInput && archiveItems.length) {
-    const updateArchive = () => {
-      const query = archiveInput.value.trim().toLocaleLowerCase();
-      let visible = 0;
-      archiveItems.forEach(item => {
-        const match = item.textContent.toLocaleLowerCase().includes(query);
-        item.hidden = !match;
-        if (match) visible++;
-      });
-      if (archiveCount) archiveCount.textContent = query ? `${visible} of ${archiveItems.length} projects` : `${archiveItems.length} projects`;
-      if (archiveEmpty) archiveEmpty.hidden = visible !== 0;
-    };
-    archiveInput.addEventListener('input', updateArchive);
-    updateArchive();
-  }
-
   // ─── 8. Game launcher (Mini Quest Runner) ─────────────────────────────────
   document.querySelectorAll('[data-load-game]').forEach(button => {
-    button.addEventListener('click', () => {
+    scope.listen(button, 'click', () => {
       const frameHost = button.closest('[data-game-frame]');
       if (!frameHost || frameHost.querySelector('iframe')) return;
-      const frame = document.createElement('iframe');
+      const frame = scope.element('iframe');
       frame.src = button.dataset.gameSrc;
       frame.title = 'Mini Quest Runner game';
       frame.loading = 'eager';
@@ -234,7 +218,7 @@ export function initHomePage() {
   const copyEmailBtn = document.querySelector('[data-copy-email]');
   const copyStatus = document.querySelector('[data-copy-status]');
   if (copyEmailBtn) {
-    copyEmailBtn.addEventListener('click', async () => {
+    scope.listen(copyEmailBtn, 'click', async () => {
       try {
         await navigator.clipboard.writeText('Ultrazen75@gmail.com');
         if (copyStatus) copyStatus.textContent = 'Email copied to clipboard.';
@@ -270,7 +254,7 @@ export function initHomePage() {
       graph.setAttribute('role', 'img');
       graph.setAttribute('aria-label', 'GitHub contribution activity for the last twelve months');
       for (const day of slots) {
-        const cell = document.createElement('span');
+        const cell = scope.element('span');
         cell.className = 'day';
         cell.style.setProperty('--day-delay', `${Math.min(graph.childElementCount * 1.5, 560)}ms`);
         cell.setAttribute('aria-hidden', 'true');
@@ -291,7 +275,7 @@ export function initHomePage() {
           const index = Math.max(0, week * 7 - leading);
           const date = new Date(entries[index].date + 'T00:00:00Z');
           const key = `${date.getUTCFullYear()}-${date.getUTCMonth()}`;
-          const label = document.createElement('span');
+          const label = scope.element('span');
           if (key !== previous) { label.textContent = monthFormat.format(date); previous = key; }
           monthsEl.append(label);
         }
@@ -312,13 +296,15 @@ export function initHomePage() {
       if (refreshBtn) { refreshBtn.disabled = true; refreshBtn.textContent = 'Updating…'; }
       graph.setAttribute('aria-busy', 'true');
       try {
-        const response = await fetch(`https://github-contributions-api.jogruber.de/v4/Ricardo-ngozo?y=last`, { headers: { Accept: 'application/json' }, cache: 'no-store', signal: AbortSignal.timeout(10000) });
+        const response = await scope.fetch(`https://github-contributions-api.jogruber.de/v4/Ricardo-ngozo?y=last`, { headers: { Accept: 'application/json' }, cache: 'no-store', signal: AbortSignal.timeout(10000) });
         if (!response.ok) throw new Error(`${response.status}`);
         const payload = await response.json();
+        if (!scope.active) return;
         paint(payload);
         try { localStorage.setItem(storageKey, JSON.stringify({ savedAt: Date.now(), payload })); } catch {}
         setStatus('Live public GitHub activity · upstream updates may be cached for up to one hour.');
       } catch {
+        if (!scope.active) return;
         let saved;
         try { saved = JSON.parse(localStorage.getItem(storageKey) || 'null'); } catch {}
         if (saved?.payload) {
@@ -339,14 +325,14 @@ export function initHomePage() {
       }
     };
 
-    refreshBtn?.addEventListener('click', load);
+    scope.listen(refreshBtn, 'click', load);
     load();
   }
 
   // ─── 11. Journey timeline animation ───────────────────────────────────────
   const journeyPath = document.querySelector('.journey-timeline');
   if (journeyPath) {
-    const journeyObserver = new IntersectionObserver((entries) => {
+    const journeyObserver = new scope.IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) entry.target.classList.add('is-active');
       });
@@ -357,7 +343,7 @@ export function initHomePage() {
   // ─── 12. Interactive Avatar ────────────────────────────────────────────────
   document.querySelectorAll('[data-avatar-interactive]').forEach(scene => {
     const hint = scene.querySelector('[data-avatar-hint]');
-    scene.addEventListener('pointermove', event => {
+    scope.listen(scene, 'pointermove', event => {
       if (window.Workshop?.calm || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const bounds = scene.getBoundingClientRect();
       const x = (event.clientX - bounds.left) / bounds.width;
@@ -366,12 +352,12 @@ export function initHomePage() {
       scene.style.setProperty('--pointer-y', ((y - 0.5) * 2).toFixed(3));
       scene.classList.add('is-pointed');
     });
-    scene.addEventListener('pointerleave', () => {
+    scope.listen(scene, 'pointerleave', () => {
       scene.style.setProperty('--pointer-x', '0');
       scene.style.setProperty('--pointer-y', '0');
       scene.classList.remove('is-pointed');
     });
-    scene.addEventListener('click', () => {
+    scope.listen(scene, 'click', () => {
       const awake = scene.getAttribute('aria-pressed') !== 'true';
       scene.setAttribute('aria-pressed', String(awake));
       scene.classList.toggle('is-awake', awake);
@@ -389,16 +375,16 @@ export function initHomePage() {
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Open menu');
     };
-    toggle.addEventListener('click', () => {
+    scope.listen(toggle, 'click', () => {
       const opening = toggle.getAttribute('aria-expanded') !== 'true';
       nav.dataset.open = String(opening);
       toggle.setAttribute('aria-expanded', String(opening));
       toggle.setAttribute('aria-label', opening ? 'Close menu' : 'Open menu');
     });
-    nav.addEventListener('click', event => { if (event.target.closest('a')) close(); });
-    document.addEventListener('keydown', event => { if (event.key === 'Escape') { close(); toggle.focus(); } });
-    document.addEventListener('click', event => { if (headerEl && !headerEl.contains(event.target)) close(); });
-    window.addEventListener('resize', () => { if (window.innerWidth > 780) close(); });
+    scope.listen(nav, 'click', event => { if (event.target.closest('a')) close(); });
+    scope.listen(document, 'keydown', event => { if (event.key === 'Escape') { close(); toggle.focus(); } });
+    scope.listen(document, 'click', event => { if (headerEl && !headerEl.contains(event.target)) close(); });
+    scope.listen(window, 'resize', () => { if (window.innerWidth > 780) close(); });
   }
 
   // ─── 14. Floating actions footer lift ─────────────────────────────────────
@@ -410,28 +396,9 @@ export function initHomePage() {
       const footerOverlap = Math.max(0, window.innerHeight - runway.getBoundingClientRect().top);
       actions.style.setProperty('--footer-lift', footerOverlap ? `${Math.ceil(footerOverlap + 18)}px` : '0px');
     };
-    window.addEventListener('scroll', updatePosition, { passive: true });
-    window.addEventListener('resize', updatePosition);
+    scope.listen(window, 'scroll', updatePosition, { passive: true });
+    scope.listen(window, 'resize', updatePosition);
     updatePosition();
   }
 
-  // ─── 15. Tech Globe ───────────────────────────────────────────────────────
-  // Dynamically import workshop-globe (depends on Workshop global being ready)
-  if (window.Workshop) {
-    import('./workshop-globe.js').catch(() => {});
-  }
-
-  // ─── 16. Studio motion decorations ────────────────────────────────────────
-  import('./studio-motion.js').catch(() => {});
-
-  // ─── 17. Workshop explorer (project previews) ─────────────────────────────
-  import('./workshop-explorer.js').catch(() => {});
-
-  // ─── 18. Workshop pets ────────────────────────────────────────────────────
-  import('./workshop-pets.js').catch(() => {});
-}
-
-// Allow reset for hot-reload in dev
-export function resetHomePage() {
-  initialized = false;
 }

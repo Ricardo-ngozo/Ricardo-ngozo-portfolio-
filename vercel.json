@@ -1,9 +1,7 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm --prefix portfolio-react run build",
   "outputDirectory": "portfolio-react/dist",
-  "installCommand": "cd portfolio-react && npm install",
+  "installCommand": "npm --prefix portfolio-react ci",
   "framework": "vite",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
