@@ -52,7 +52,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <Suspense fallback={<div className="hero-character-placeholder"><img src="/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" alt="Ricardo's character" /></div>}>
+            <Suspense fallback={<div className="hero-character-placeholder" aria-hidden="true" />}>
               <CharacterScene />
             </Suspense>
           </div>
