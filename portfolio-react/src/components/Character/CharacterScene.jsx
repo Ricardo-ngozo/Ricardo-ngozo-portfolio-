@@ -95,7 +95,7 @@ export default function CharacterScene() {
       <div className="character-rim" aria-hidden="true" />
       <div className="character-hover" ref={hoverRef} aria-hidden="true" />
     </div></div>
-    <img className="character-fallback" src="/images/ChatGPT Image May 14, 2026, 10_57_41 AM.png" alt="" />
+    {state === 'fallback' && <p className="character-status" role="status">3D character unavailable on this device.</p>}
     {state === 'loading' && <p className="character-status" role="status">Bringing the character to life…</p>}
   </div>;
 }
