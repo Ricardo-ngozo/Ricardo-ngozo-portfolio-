@@ -12,7 +12,7 @@ export default function PongLoader({ label = 'Welcome to the workshop.' }) {
     const canvas = canvasRef.current;
     const context = canvas?.getContext('2d');
     const finish = () => { try { sessionStorage.setItem('ricardo:entered', 'true'); } catch {} setVisible(false); };
-    const timer = setTimeout(finish, 1100);
+    const timer = setTimeout(finish, 350);
     const paint = time => {
       if (!context) return;
       const width = canvas.width, height = canvas.height;
