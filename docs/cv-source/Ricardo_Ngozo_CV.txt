@@ -1,0 +1,33 @@
+Ricardo Ngozo
+JUNIOR FULL-STACK DEVELOPER
+South Africa | +27 67 254 7731 | ricardongozo75@gmail.com
+ricardo-ngozo-portfolio.vercel.app | github.com/Ricardo-ngozo
+linkedin.com/in/ricardongozo75
+PROFILE
+I build web applications with JavaScript, React and Firebase, connecting interfaces to authentication, stored data and
+APIs. My project work covers an online clothing store, a browser game and a React portfolio with interactive 3D
+content. I am seeking a junior full-stack role where I can implement features across the interface and data layer.
+TECHNICAL SKILLS
+Frontend: JavaScript (ES6+), React, HTML5, CSS3, responsive layouts, CSS Grid, Flexbox
+Backend and data: Firebase Authentication, Cloud Firestore, REST API integration
+Tools: Git, GitHub, Chrome DevTools, VS Code, Figma, Vite, Vercel, Netlify
+PROJECT EXPERIENCE
+Urban Threads | E-commerce application
+HTML, CSS, JavaScript, Firebase Authentication, Cloud Firestore
+- Connected account sign-in with Firebase Authentication and used Firestore to store product and user data.
+- Built cart and checkout flows, bringing product selection and order steps into a responsive shopping interface.
+Personal Portfolio | React application
+React, JavaScript, Three.js, Vite, CSS
+- Organised Home, Personal and Python Lab into separate routes, with project case studies, source links and live
+previews.
+- Integrated a 3D character with cursor tracking and reduced-motion support; used lazy loading and rendering cleanup
+to control resource use.
+- Documented project context and implementation choices in case studies so readers can assess the work alongside the
+source code.
+Tic-Tac-Toe | Browser game
+HTML, CSS, JavaScript
+- Implemented turn handling, winner detection and replay, keeping game state and the visible board in sync.
+EDUCATION
+Full Stack Web Development Programme | iHub Africa
+Coursework: frontend development, JavaScript, Firebase, Git, responsive web design and software development
+practices.
