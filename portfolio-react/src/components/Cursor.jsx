@@ -1,280 +1,161 @@
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
-/**
- * Cursor — a fun, interactive custom cursor that works on every page.
- *
- * Features:
- *  - Smooth lagging outer ring with spring physics
- *  - Snappy inner dot that follows exactly
- *  - Particle trail that spawns behind movement
- *  - Morphs on hover: buttons (magnetic expand), text (I-beam), links (spotlight)
- *  - Context label pop (data-cursor-label or smart auto-detection)
- *  - Magnetic pull toward buttons on approach
- *  - Click burst animation
- *  - Respects prefers-reduced-motion and skips on touch devices
- */
+/** One cursor for all routes; native controls keep their platform pointer. */
 export default function Cursor() {
+  const layerRef = useRef(null);
   const ringRef = useRef(null);
   const dotRef = useRef(null);
   const labelRef = useRef(null);
-  const trailContainerRef = useRef(null);
-  const stateRef = useRef({
-    mouseX: -200, mouseY: -200,
-    ringX: -200,  ringY: -200,
-    hasMoved: false,
-    mode: 'default', // default | hover | text | media | label | hidden
-    label: '',
-    magnetTarget: null,
-    magnetX: 0, magnetY: 0,
-    trailPoints: [],
-    frameId: null,
-  });
+  const trailRef = useRef(null);
 
   useEffect(() => {
-    // Skip on touch devices and reduced-motion
-    if (window.matchMedia('(pointer: coarse)').matches) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const ring = ringRef.current;
-    const dot = dotRef.current;
-    const label = labelRef.current;
-    const trail = trailContainerRef.current;
-    const s = stateRef.current;
-
-    s.mouseX = window.innerWidth / 2;
-    s.mouseY = window.innerHeight / 2;
-    s.ringX = s.mouseX;
-    s.ringY = s.mouseY;
-    s.hasMoved = true;
-    document.body.classList.add('cursor-ready');
-
-    // ── Helpers ─────────────────────────────────────────────────────────────
-    const lerp = (a, b, t) => a + (b - a) * t;
-
-    const getLabel = (el) => {
-      const labelled = el.closest('[data-cursor-label]');
-      if (labelled) return labelled.dataset.cursorLabel;
-      if (el.closest('.tic-board button')) return 'Play';
-      if (el.closest('.fw-card, .archive-item')) return 'View';
-      if (el.closest('.wb-game-frame [data-load-game]')) return 'Launch';
-      if (el.closest('.hero-avatar-scene')) return 'Hello';
-      if (el.closest('a[href^="mailto"]')) return 'Email';
-      if (el.closest('a[target="_blank"]')) return 'Open ↗';
-      if (el.closest('button[type="submit"]')) return 'Send';
-      return '';
+    const layer = layerRef.current, ring = ringRef.current, dot = dotRef.current;
+    const label = labelRef.current, trail = trailRef.current;
+    const fine = matchMedia('(any-pointer: fine)');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+    const supportsPopover = typeof layer.showPopover === 'function';
+    const frames = new Set(), timers = new Set();
+    let frame = null, active = false;
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    let targetX = 0, targetY = 0, trailIndex = 0, lastTrailX = 0, lastTrailY = 0;
+    const pool = Array.from({ length: 12 }, () => {
+      const particle = document.createElement('span');
+      particle.className = 'cursor-trail-dot'; trail.append(particle);
+      return particle;
+    });
+    const allowed = () => fine.matches && !reduce.matches &&
+      document.documentElement.dataset.motion !== 'calm' && !document.hidden;
+    const nextFrame = callback => {
+      const id = requestAnimationFrame(() => { frames.delete(id); callback(); }); frames.add(id);
     };
-
-    const detectMode = (el) => {
-      if (!el) return 'default';
-      const isInteractive = el.closest('a, button, input, textarea, select, [role="button"]');
-      const isText = !isInteractive && el.closest('p, h1, h2, h3, h4, li, blockquote, .hero-tagline');
-      const isMedia = el.closest('.fw-card-img, .archive-item-img, .cert-tile-img, .hero-avatar-scene');
-      const lbl = getLabel(el);
-      if (lbl) return 'label';
-      if (isMedia) return 'media';
-      if (isInteractive) return 'hover';
-      if (isText) return 'text';
-      return 'default';
+    const later = (callback, delay) => {
+      const id = setTimeout(() => { timers.delete(id); callback(); }, delay); timers.add(id);
     };
-
-    // ── Particle trail ───────────────────────────────────────────────────────
-    const MAX_TRAIL = 12;
-    const trailPool = [];
-
-    for (let i = 0; i < MAX_TRAIL; i++) {
-      const p = document.createElement('span');
-      p.className = 'cursor-trail-dot';
-      p.setAttribute('aria-hidden', 'true');
-      trail.appendChild(p);
-      trailPool.push({ el: p, x: -200, y: -200, life: 0, maxLife: 0 });
-    }
-
-    let trailIndex = 0;
-    let lastTrailX = -200, lastTrailY = -200;
-
-    const spawnTrail = (x, y) => {
-      const dx = x - lastTrailX, dy = y - lastTrailY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 8) return;
-      lastTrailX = x; lastTrailY = y;
-
-      const p = trailPool[trailIndex % MAX_TRAIL];
-      trailIndex++;
-      const size = 3 + Math.random() * 4;
-      const life = 400 + Math.random() * 200;
-      p.x = x;
-      p.y = y;
-      p.life = life;
-      p.maxLife = life;
-      p.el.style.cssText = `
-        transform: translate(${x}px, ${y}px) scale(1);
-        width: ${size}px; height: ${size}px;
-        opacity: 0.7;
-        transition: none;
-      `;
-      // Fade out
-      requestAnimationFrame(() => {
-        p.el.style.cssText = `
-          transform: translate(${x + (Math.random() - 0.5) * 20}px, ${y - 10 - Math.random() * 14}px) scale(0);
-          width: ${size}px; height: ${size}px;
-          opacity: 0;
-          transition: transform ${life}ms cubic-bezier(.2,.9,.4,1), opacity ${life}ms ease;
-        `;
-      });
-    };
-
-    // ── Click burst ──────────────────────────────────────────────────────────
-    const spawnBurst = (x, y) => {
-      for (let i = 0; i < 6; i++) {
-        const p = document.createElement('span');
-        p.className = 'cursor-burst-dot';
-        p.setAttribute('aria-hidden', 'true');
-        trail.appendChild(p);
-        const angle = (i / 6) * Math.PI * 2;
-        const dist = 18 + Math.random() * 14;
-        const tx = Math.cos(angle) * dist;
-        const ty = Math.sin(angle) * dist;
-        p.style.cssText = `
-          transform: translate(${x}px, ${y}px) scale(1);
-          opacity: 1;
-          transition: none;
-        `;
-        requestAnimationFrame(() => {
-          p.style.cssText = `
-            transform: translate(${x + tx}px, ${y + ty}px) scale(0);
-            opacity: 0;
-            transition: transform 420ms cubic-bezier(.2,.9,.4,1), opacity 380ms ease 60ms;
-          `;
-        });
-        setTimeout(() => p.remove(), 500);
-      }
-    };
-
-    // ── Magnetic button pull ─────────────────────────────────────────────────
-    const MAGNET_RADIUS = 80;
-
-    const checkMagnet = (x, y) => {
-      const buttons = document.querySelectorAll('.fw-btn-live, .hero-cta-primary, .button-primary, .glass-btn.primary');
-      let closest = null, closestDist = MAGNET_RADIUS;
-      buttons.forEach(btn => {
-        const r = btn.getBoundingClientRect();
-        const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-        const d = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
-        if (d < closestDist) { closest = btn; closestDist = d; }
-      });
-      return closest;
-    };
-
-    // ── Main animation loop ──────────────────────────────────────────────────
-    const RING_SPEED = 0.14;
-
-    const tick = () => {
-      s.frameId = requestAnimationFrame(tick);
-      if (!s.hasMoved) return;
-
-      let targetX = s.mouseX, targetY = s.mouseY;
-
-      // Magnetic pull
-      const magnet = checkMagnet(s.mouseX, s.mouseY);
-      if (magnet) {
-        const r = magnet.getBoundingClientRect();
-        const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-        const dx = cx - s.mouseX, dy = cy - s.mouseY;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const pull = Math.max(0, 1 - dist / MAGNET_RADIUS) * 0.35;
-        targetX += dx * pull;
-        targetY += dy * pull;
-      }
-
-      // Lerp ring toward target
-      s.ringX = lerp(s.ringX, targetX, RING_SPEED);
-      s.ringY = lerp(s.ringY, targetY, RING_SPEED);
-
-      ring.style.transform = `translate(${s.ringX - 21}px, ${s.ringY - 21}px)`;
-      dot.style.transform = `translate(${s.mouseX - 3}px, ${s.mouseY - 3}px)`;
-
-      // Spawn trail on movement
-      spawnTrail(s.mouseX, s.mouseY);
-    };
-
-    s.frameId = requestAnimationFrame(tick);
-
-    // ── Event listeners ──────────────────────────────────────────────────────
-    const onMouseMove = (e) => {
-      s.mouseX = e.clientX;
-      s.mouseY = e.clientY;
-
-      if (!s.hasMoved) {
-        s.hasMoved = true;
-        s.ringX = e.clientX;
-        s.ringY = e.clientY;
-        document.body.classList.add('cursor-ready');
-      }
-
-      const mode = detectMode(e.target);
-      const lbl = getLabel(e.target);
-
-      if (mode !== s.mode || lbl !== s.label) {
-        s.mode = mode;
-        s.label = lbl;
-
-        // Update ring classes
-        ring.className = `cursor-ring cursor-ring--${mode}`;
-
-        // Label
-        label.textContent = lbl;
-        if (lbl) {
-          label.style.opacity = '1';
-          label.style.transform = 'scale(1) translateY(0)';
-        } else {
-          label.style.opacity = '0';
-          label.style.transform = 'scale(0.7) translateY(4px)';
-        }
-      }
-    };
-
-    const onMouseDown = (e) => {
-      document.body.classList.add('cursor-down');
-      ring.classList.add('cursor-ring--click');
-      spawnBurst(e.clientX, e.clientY);
-      setTimeout(() => ring.classList.remove('cursor-ring--click'), 200);
-    };
-
-    const onMouseUp = () => document.body.classList.remove('cursor-down');
-    const onMouseLeave = () => { ring.style.opacity = '0'; dot.style.opacity = '0'; };
-    const onMouseEnter = () => { ring.style.opacity = ''; dot.style.opacity = ''; };
-
-    window.addEventListener('mousemove', onMouseMove, { passive: true });
-    window.addEventListener('mousedown', onMouseDown);
-    window.addEventListener('mouseup', onMouseUp);
-    document.addEventListener('mouseleave', onMouseLeave);
-    document.addEventListener('mouseenter', onMouseEnter);
-
-    return () => {
-      cancelAnimationFrame(s.frameId);
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mousedown', onMouseDown);
-      window.removeEventListener('mouseup', onMouseUp);
-      document.removeEventListener('mouseleave', onMouseLeave);
-      document.removeEventListener('mouseenter', onMouseEnter);
+    const hide = () => {
+      active = false; layer.dataset.active = 'false';
       document.body.classList.remove('cursor-ready', 'cursor-down');
+      ring.classList.remove('cursor-ring--click');
+      cancelAnimationFrame(frame); frame = null;
+      pool.forEach(particle => { particle.style.opacity = '0'; });
+      if (supportsPopover && layer.matches(':popover-open')) layer.hidePopover();
+    };
+    const show = () => {
+      if (supportsPopover && !layer.matches(':popover-open')) {
+        try { layer.showPopover(); } catch { hide(); return false; }
+      }
+      layer.dataset.active = 'true'; document.body.classList.add('cursor-ready');
+      active = true; return true;
+    };
+    const updateTarget = target => {
+      const el = target instanceof Element ? target : target?.parentElement;
+      // Menus, editable fields and embedded documents own their pointer.
+      if (!el || el.closest('iframe, select, input, textarea, [contenteditable]:not([contenteditable="false"]), [data-native-cursor]') ||
+          (!supportsPopover && el.closest('dialog[open]'))) return false;
+      const labelled = el.closest('[data-cursor-label]');
+      let text = labelled?.dataset.cursorLabel || '';
+      if (!labelled) {
+        if (el.closest('.tic-board button')) text = 'Play';
+        else if (el.closest('.fw-card, .archive-item')) text = 'View';
+        else if (el.closest('[data-load-game]')) text = 'Launch';
+        else if (el.closest('.hero-avatar-scene, .character-scene')) text = 'Hello';
+        else if (el.closest('a[href^="mailto:"]')) text = 'Email';
+        else if (el.closest('a[target="_blank"]')) text = 'Open ↗';
+        else if (el.closest('button[type="submit"]')) text = 'Send';
+      }
+      const interactive = el.closest('a, button, summary, [role="button"], [data-cursor="button"]');
+      const media = el.closest('.fw-card-img, .archive-item-img, .cert-tile-img, canvas');
+      const textElement = el.closest('p, h1, h2, h3, h4, li, blockquote');
+      const mode = text ? 'label' : interactive ? 'hover' : media ? 'media' : textElement ? 'text' : 'default';
+      ring.className = `cursor-ring cursor-ring--${mode}${document.body.classList.contains('cursor-down') ? ' cursor-ring--click' : ''}`;
+      label.textContent = text; label.style.opacity = text ? '1' : '0';
+      label.style.transform = text ? 'scale(1) translateY(0)' : 'scale(0.7) translateY(4px)';
+      targetX = mouseX; targetY = mouseY;
+      const magnet = el.closest('.fw-btn-live, .hero-cta-primary, .button-primary, .glass-btn.primary');
+      if (magnet) {
+        const rect = magnet.getBoundingClientRect();
+        targetX += (rect.left + rect.width / 2 - mouseX) * .2;
+        targetY += (rect.top + rect.height / 2 - mouseY) * .2;
+      }
+      return true;
+    };
+    const tick = () => {
+      frame = null; if (!active) return;
+      ringX += (targetX - ringX) * .14; ringY += (targetY - ringY) * .14;
+      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+      if (Math.abs(targetX - ringX) + Math.abs(targetY - ringY) > .1) frame = requestAnimationFrame(tick);
+    };
+    const animate = () => { if (frame === null) frame = requestAnimationFrame(tick); };
+    const onMove = event => {
+      if (event.pointerType !== 'mouse' || !allowed()) { hide(); return; }
+      mouseX = event.clientX; mouseY = event.clientY;
+      if (!updateTarget(event.target)) { hide(); return; }
+      if (!active) {
+        ringX = mouseX; ringY = mouseY; lastTrailX = mouseX; lastTrailY = mouseY;
+        if (!show()) return;
+      }
+      dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`; animate();
+      if (Math.hypot(mouseX - lastTrailX, mouseY - lastTrailY) < 8) return;
+      lastTrailX = mouseX; lastTrailY = mouseY;
+      const particle = pool[trailIndex++ % pool.length];
+      particle.style.cssText = `transform:translate(${mouseX}px,${mouseY}px) scale(1);width:5px;height:5px;opacity:.7;transition:none;`;
+      const x = mouseX, y = mouseY;
+      nextFrame(() => {
+        particle.style.transform = `translate(${x}px,${y - 18}px) scale(0)`;
+        particle.style.opacity = '0'; particle.style.transition = 'transform 500ms ease, opacity 500ms ease';
+      });
+    };
+    const onDown = event => {
+      if (event.pointerType !== 'mouse' || !allowed() || !updateTarget(event.target)) { hide(); return; }
+      if (!active) return;
+      document.body.classList.add('cursor-down'); ring.classList.add('cursor-ring--click');
+      for (let i = 0; i < 6; i++) {
+        const particle = document.createElement('span'); particle.className = 'cursor-burst-dot'; trail.append(particle);
+        const x = event.clientX, y = event.clientY, angle = i / 6 * Math.PI * 2;
+        particle.style.transform = `translate(${x}px,${y}px)`;
+        nextFrame(() => {
+          particle.style.transform = `translate(${x + Math.cos(angle) * 28}px,${y + Math.sin(angle) * 28}px) scale(0)`;
+          particle.style.opacity = '0'; particle.style.transition = 'transform 420ms ease, opacity 420ms ease';
+        });
+        later(() => particle.remove(), 500);
+      }
+    };
+    const onUp = () => { document.body.classList.remove('cursor-down'); ring.classList.remove('cursor-ring--click'); };
+    const refresh = () => {
+      if (!active) return;
+      if (!allowed() || !updateTarget(document.elementFromPoint(mouseX, mouseY))) hide(); else animate();
+    };
+    // z-index cannot cover showModal(): keep this noninteractive popover last in the top layer.
+    const dialogs = new MutationObserver(() => {
+      refresh();
+      if (active && supportsPopover) { if (layer.matches(':popover-open')) layer.hidePopover(); show(); }
+    });
+    dialogs.observe(document.body, { subtree: true, attributes: true, attributeFilter: ['open'] });
+    document.addEventListener('pointermove', onMove, { passive: true });
+    document.addEventListener('pointerdown', onDown); document.addEventListener('pointerup', onUp);
+    document.addEventListener('pointercancel', hide);
+    document.documentElement.addEventListener('pointerleave', hide);
+    document.addEventListener('visibilitychange', hide); document.addEventListener('workshop:motion', hide);
+    window.addEventListener('blur', hide); window.addEventListener('scroll', refresh, { passive: true, capture: true });
+    fine.addEventListener('change', hide); reduce.addEventListener('change', hide);
+    return () => {
+      hide(); dialogs.disconnect();
+      document.removeEventListener('pointermove', onMove);
+      document.removeEventListener('pointerdown', onDown); document.removeEventListener('pointerup', onUp);
+      document.removeEventListener('pointercancel', hide);
+      document.documentElement.removeEventListener('pointerleave', hide);
+      document.removeEventListener('visibilitychange', hide); document.removeEventListener('workshop:motion', hide);
+      window.removeEventListener('blur', hide); window.removeEventListener('scroll', refresh, true);
+      fine.removeEventListener('change', hide); reduce.removeEventListener('change', hide);
+      frames.forEach(cancelAnimationFrame); timers.forEach(clearTimeout); trail.replaceChildren();
     };
   }, []);
 
-  return (
-    <>
-      {/* Trail container — sits below everything */}
-      <div
-        ref={trailContainerRef}
-        className="cursor-trail-container"
-        aria-hidden="true"
-      />
-      {/* Outer ring */}
-      <div ref={ringRef} className="cursor-ring cursor-ring--default" aria-hidden="true">
-        <span ref={labelRef} className="cursor-ring-label" aria-hidden="true"></span>
-      </div>
-      {/* Inner dot */}
-      <div ref={dotRef} className="cursor-dot" aria-hidden="true" />
-    </>
+  return createPortal(
+    <div ref={layerRef} className="cursor-layer" popover="manual" data-active="false" aria-hidden="true">
+      <div ref={trailRef} className="cursor-trail-container" />
+      <div ref={ringRef} className="cursor-ring cursor-ring--default"><span ref={labelRef} className="cursor-ring-label" /></div>
+      <div ref={dotRef} className="cursor-dot" />
+    </div>, document.body,
   );
 }
