@@ -1,4 +1,4 @@
-﻿/* =========================================
+/* =========================================
    GLOBAL SYSTEM: Ethereal Glass
    ========================================= */
 :root {
@@ -2006,18 +2006,6 @@ body.is-loading > main {
    CUSTOM CURSOR
    ========================================= */
 @media (pointer: fine) {
-  body:not(.is-loading) {
-    cursor: none;
-  }
-
-  body:not(.is-loading) a,
-  body:not(.is-loading) button,
-  body:not(.is-loading) input,
-  body:not(.is-loading) textarea,
-  body:not(.is-loading) select {
-    cursor: none;
-  }
-
   .custom-cursor,
   .custom-cursor-dot {
     position: fixed;

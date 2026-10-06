@@ -1,65 +1,42 @@
 # Ricardo portfolio — React app
 
-## Run locally
+This directory contains the current React/Vite portfolio. See the [root README](../README.md) for the full feature list, routes, external services, deployment and content/CV maintenance.
 
-From this directory:
+## Run and build
+
+Requires Node.js 18+ and npm. From this directory:
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Build with `npm run build`; serve that build with `npm run preview`.
-The root Vercel configuration builds `portfolio-react/dist`. Deployments whose
-root directory is already `portfolio-react` use its own SPA rewrite configuration.
+Open Vite's printed URL (normally `http://localhost:5173`). To check production output:
 
-## Page structure
+```sh
+npm run build
+npm run preview
+```
 
-- `src/App.jsx`: routes, body theme classes, document titles, hash navigation and the shared Workshop lifecycle.
-- `src/pages/`: Home, Personal, Python Lab and case-study content.
-- `src/components/`: shared UI, the self-contained Pong loader, reusable LabDemo, and the lazy-loaded character.
-- `src/runtime/pageScope.js`: page-owned listeners, timers, observers, generated elements and animation-loop cleanup.
-- `src/runtime/usePageFeatures.js`: explicitly initializes the converted page features after each React mount.
-- `src/scripts/`: retained globe, project explorer, contributions and decorative interactions. Active features export initializers instead of running once on import.
-- `src/main.jsx`: the single stylesheet entry point. Page base styles precede shared theme styles; `react-layout.css` contains the React layout corrections.
-- `src/pages/python-lab.css`: the original Lab base styles, restored and scoped to the Lab route.
-- `public/`: existing images, documents, the game and supplied character assets.
+Vite writes `dist/`; preview normally uses port 4173. No environment variables are required. There is currently no npm test or lint script. The root Vercel configuration builds `portfolio-react/dist`; deployments rooted in this directory use its own SPA rewrite configuration.
 
-To add an interaction, use a React component with an effect cleanup, or register
-its resources with the page scope. Do not set `document.body.className` in pages,
-import old scripts for their side effects, or attach listeners during render.
-Only `App` owns route classes; the cursor and motion preferences keep their own state.
+## Source map
 
-## Repairs
+- `src/App.jsx`: routes, body classes, titles, hash navigation and shared Workshop lifecycle.
+- `src/pages/`: Home, Personal, three visible Python Lab experiments, full case studies and archive stories.
+- `src/components/`: global cursor, navigation, footer, Pong loader, LabDemo and lazy Three.js character.
+- `src/runtime/pageScope.js`: page-owned listeners, timers, observers, generated elements and animation cleanup.
+- `src/runtime/usePageFeatures.js`: route initialization and deferred decorative imports.
+- `src/scripts/`: active exported initializers plus retained legacy scripts. Do not import legacy scripts for side effects.
+- `src/main.jsx`: React root and the single stylesheet entry point. Preserve its import order.
+- `public/`: images, icons, documents, Mini Quest Runner and character assets.
 
-The conversion lost the Lab's inline base CSS and animation wiring, and the
-Personal card markup no longer matched its stylesheet. Parent/child effects also
-competed for body classes. Cached module imports meant scripts did not initialize
-again after navigation, and old callbacks survived unmounts.
+Only `App` owns route body classes. Add interactions using React effects with cleanup or the page scope. The current Lab canvases are JavaScript ports of Python concepts, not a Python runtime. Character loading/WebGL failures keep a text fallback; its model/renderer resources are released on navigation.
 
-The repair restores those layouts, images, demo canvases, mobile navigation,
-footer structure and repeatable page lifecycles. The three visible Lab experiments
-have pause/reset/speed controls; the previews are JavaScript ports, not a Python
-runtime. Legacy `.html` page URLs redirect to the React routes.
+## Cursor
 
-The latest supplied character integration is preserved. Its container now fits
-the hero grid, loading/WebGL failures retain the existing illustration, and resources
-are released on navigation. The colour map uses actual node names (including the
-face and BODY.SHIRT), and the decoder is bundled with Three rather than requiring
-a missing public WASM-wrapper file. No character asset was replaced or downloaded
-from another portfolio.
+`Cursor.jsx` is mounted outside the routes and portals to the body. Its manual popover appears above native dialogs; unsupported browsers keep the native pointer in dialogs. It activates on mouse movement and follows live Calm/Full and system reduced-motion settings. Inputs, textareas, select menus, editable content and iframe documents keep their native pointer. Use `data-cursor-label` for labels or `data-native-cursor` for a native pointer region. Do not initialize the old `src/scripts/cursor.js` or add unconditional cursor-hiding CSS.
 
-## Review notes
+## Validation
 
-Production bundling completed through Vite's Node API using the same React plugin
-and base path. The ordinary CLI config-bundling step was blocked by this Windows
-sandbox's ancestor-directory access; the local workaround was not added to the
-project's build scripts. Vite reports a size warning for the lazy Three.js chunk.
-
-Browser layout/navigation inspection used Edge/Chromium at desktop and 390px
-mobile widths. Home, Personal and Lab retained their page classes across repeated
-navigation; the project toolbar and Experience control did not duplicate. Scrolled
-sections, local images, the 3D character, and the Lab canvases were inspected.
-External font and GitHub requests were blocked during the reproducible local
-review; their live services and real contact delivery were not verified. No live
-contact message was submitted. Physical mobile devices and Safari were not reviewed.
+Run `npm run build`, then check routes, desktop/mobile navigation, dialogs, controls, asset links and direct-route refreshes. For cursor changes, check mouse/touch, preference changes, fields, iframe boundaries and window leave/reentry. The lazy Three.js chunk currently produces a Vite size warning. External service availability and contact delivery require separate live checks; do not submit the contact form as part of routine UI verification.

@@ -1,44 +1,55 @@
 # Ricardo's Interactive Workshop
 
-## What is included
+The current workshop is the React/Vite app in `portfolio-react/`. See the [root README](README.md) for setup, routes, deployment and the complete repository map.
 
-- Shared, saved Calm/Full motion and opt-in sound controls on all public pages.
-- A brief skippable first entrance, remembered for the browser session, and an optional playable Pong challenge.
-- A five-return reward that changes the avatar's welcome. No contact information or work is gated.
-- A hero bird, pointer-responsive portrait, and a scroll-linked path toward the toolkit.
-- A selectable, draggable technology globe with keyboard support, pause, an equivalent HTML list, and project/lab evidence links.
-- Category and text filters across 14 selected/archive projects.
-- Shareable project previews with native dialogs, source/live/case-study links, existing screenshot galleries, and build notes.
-- Status labels derived from existing project descriptions. No invented business metrics or screenshots.
-- Case-study contents links, source links, image enlargement, and share controls.
-- A dated “On the workbench” note, maintained manually in workshop-explorer.js.
-- A three-part personal timeline derived from the existing origin story, expandable influence captions, and photo enlargement.
-- Nine controllable browser simulations, with play/pause, reset, speed and relevant count/gravity controls, keyboard/touch input, code copying, local progress, and shareable settings.
-- A recurring cast with dedicated ledges: bird greeting, project fox, toolkit butterfly, archive cat, experiment companions, and a dog following a draggable footer ball.
-- Pause/resume and visibility pausing for Mini Quest Runner.
+## Current experience
 
-## Files
+- Shared Calm/Full motion and opt-in sound settings; system reduced motion takes precedence.
+- A brief session-aware entrance and an optional Pong challenge, with a saved five-return reward. Contact information and work remain available without playing.
+- A lazy Three.js character on Home and Personal, with a text fallback when loading or WebGL fails.
+- A draggable technology globe with keyboard controls and an equivalent HTML list.
+- Category/search filters for four selected projects and ten archive entries, plus shareable preview dialogs with existing screenshots, source/live links and build notes.
+- Case-study reading tools, image enlargement, personal timeline and influence captions.
+- Three current Lab experiments: coordinate motion, particles and boids, with pause/reset/speed controls. The JavaScript previews illustrate Python concepts; Python excerpts are learning material.
+- Decorative animals and scroll effects, initialized after the first render.
+- Inline Tic-Tac-Toe and the standalone Mini Quest Runner, including its pause/visibility controls.
+- A shared custom mouse cursor across routes and dialogs. Calm, touch, system reduced motion, native fields and embedded documents retain a native pointer.
 
-workshop-core.js owns preferences, dialogs, clipboard fallback, visibility-aware animation scheduling, the entrance, and Pong.
-workshop-explorer.js enhances the existing HTML cards and personal stories; existing navigation links remain available.
-workshop-globe.js owns the canvas and its equivalent list.
-workshop-pets.js connects existing SVG artwork to the layout.
-python-lab.js owns all nine simulations. python-snippets.js contains educational Python excerpts.
-archive-notes.js contains the archive notes used in previews. Keep these synchronized with case-studies/archive-case-study.html.
-workshop.css styles interaction components. studio-theme.css loads last and replaces the former numbered panels with open scenes, angled paper edges, a charcoal/porcelain/vermilion/electric-blue palette and Syne typography. studio-motion.js adds decorative scroll-linked ribbons and one-time heading reveals. Both honor Calm and system reduced-motion preferences.
+## Active files
 
-## Content and behaviour rules
+All paths below are relative to `portfolio-react/`.
 
-A browser simulation is clearly labelled as a recreation of a Python concept. The excerpts are learning material, not a Python runtime or a claim that their settings mirror the browser controls.
-Only existing images are shown. Projects without screenshots explicitly say so.
-Project URL: index.html?project=urban-threads
-Experiment URL: python-learning-log.html?experiment=9&speed=1.5&count=24&gravity=120#experiment-9
-Settings are clamped to supported ranges. Saved progress/preferences stay on the device and are not sent to a server.
-Sound starts off. Reduced-motion preferences always take precedence over Full mode. Explicitly started games and lab experiments remain playable in Calm mode.
-Heavy project demos stay behind their existing Play controls. The animation scheduler pauses canvas loops outside the viewport and when the tab is hidden.
+| File | Ownership |
+| --- | --- |
+| `src/App.jsx` | Routes, titles, hash navigation, route classes and Workshop lifecycle |
+| `src/runtime/pageScope.js` | Page-owned resource cleanup |
+| `src/runtime/usePageFeatures.js` | Route feature initialization and deferred decorations |
+| `src/scripts/workshop-core.js` | Saved preferences, dialogs, clipboard fallback, animation scheduling and optional Pong |
+| `src/scripts/workshop-explorer.js` | Filters, previews, reading tools and personal enhancements |
+| `src/scripts/workshop-globe.js` | Technology canvas and accessible equivalent |
+| `src/scripts/workshop-pets.js` | Decorative animal interactions |
+| `src/scripts/studio-motion.js` | Decorative heading/scroll effects |
+| `src/scripts/archive-notes.js` | Notes used in project previews |
+| `src/components/Cursor.jsx` | Pointer lifecycle, top-layer overlay and native fallbacks |
+| `src/components/PongLoader.jsx` | React entrance |
+| `src/components/LabDemo.jsx` | Current live Lab simulations |
+| `src/pages/PythonLogPage.jsx` | Three current experiment stories and Python excerpts |
+| `src/main.jsx` | Stylesheet import order |
+
+`src/scripts/python-lab.js`, `python-snippets.js`, `cursor.js` and `script.js` contain retained earlier implementations. Their presence does not mean they are active React initializers. In particular, the old nine-experiment Lab is not the current three-experiment React page.
+
+## Content and lifecycle rules
+
+Keep archive preview notes synchronized with `src/pages/ArchiveCaseStudy.jsx`. Use existing screenshots and accurate project links. Status labels follow the supplied project descriptions; do not invent metrics or personal history.
+
+Use generated Share links, such as `/?project=urban-threads`. Archive stories use `/case-studies/archive?project=gamevault`. The current Lab controls are local component state; do not promise the earlier scripts' progress persistence or shareable experiment settings.
+
+Preferences and rewards stay in browser storage. Sound starts off. Explicitly started games and experiments remain usable in Calm mode. Heavy embedded demos stay behind Play controls; visibility-aware loops pause outside the viewport or when the tab is hidden.
+
+Add listeners, timers, observers and animations through a React effect with cleanup or the page scope. Only `App.jsx` owns route body classes. Preserve the stylesheet order in `src/main.jsx`. Do not add a second cursor or hide the native pointer before the custom cursor is active.
 
 ## Review
 
-Representative browser checks exercise filtering, preview deep links and fetched notes, Escape/focus restoration, technology evidence, saved preferences, Pong controls, lab settings/progress, and Personal timeline/captions.
-All 14 HTML pages are checked at 1440px and 390px widths.
-The repository's real image assets are available in the local review. Vercel's branch preview requires sign-in, so hosted presentation and physical-device performance remain separate review steps.
+Build with `npm run build` from `portfolio-react/`. Review Home, Personal, Lab, case studies and direct-link refreshes at desktop and mobile widths. Exercise filtering, preview deep links, Escape/focus restoration, technology controls, saved preferences, Pong, Lab controls and personal image/caption dialogs.
+
+Check cursor startup, route navigation, modal stacking, editable/native controls, iframe boundaries, mouse/touch input, window leave/reentry and live preference changes. Real contact delivery, external services and physical-device performance are separate checks from local UI review.
