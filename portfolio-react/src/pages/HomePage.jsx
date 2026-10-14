@@ -27,8 +27,8 @@ export default function HomePage() {
         <section id="home" className="hero-section cinematic-hero" aria-labelledby="hero-name">
           <div className="cinematic-stage">
             <h1 id="hero-name" className="cinematic-name" aria-label="Ricardo Ngozo.">
-              <span className="cinematic-name-given" aria-hidden="true">Ricardo</span>
-              <span className="cinematic-name-family" aria-hidden="true"><span className="cinematic-name-leading">Ngoz</span><span className="cinematic-name-dropped-o">o</span><span className="cinematic-name-period">.</span></span>
+              <span className="cinematic-name-given" aria-hidden="true"><span className="cinematic-name-ink">Ricardo</span></span>
+              <span className="cinematic-name-family" aria-hidden="true"><span className="cinematic-name-ink">Ngoz</span><span className="cinematic-name-falling-o"><span className="cinematic-name-ink">o</span></span><span className="cinematic-name-ink">.</span></span>
             </h1>
 
             <div className="cinematic-character">
