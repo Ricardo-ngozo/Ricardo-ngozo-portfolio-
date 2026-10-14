@@ -28,7 +28,7 @@ export default function HomePage() {
           <div className="cinematic-stage">
             <h1 id="hero-name" className="cinematic-name" aria-label="Ricardo Ngozo.">
               <span className="cinematic-name-given" aria-hidden="true">Ricardo</span>
-              <span className="cinematic-name-family" aria-hidden="true">Ngozo.</span>
+              <span className="cinematic-name-family" aria-hidden="true"><span className="cinematic-name-leading">Ngoz</span><span className="cinematic-name-dropped-o">o</span><span className="cinematic-name-period">.</span></span>
             </h1>
 
             <div className="cinematic-character">

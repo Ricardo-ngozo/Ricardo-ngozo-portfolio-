@@ -70,11 +70,30 @@ body[data-page="tech"] #home.cinematic-hero {
   font-weight: 400;
   line-height: .92;
   letter-spacing: -.04em;
-  background: linear-gradient(120deg, #c05c4c 8%, #bc4c3b 52%, #80352c 95%);
+  color: #b65040;
+}
+
+#home.cinematic-hero .cinematic-name-family > span {
+  display: inline-block;
+  background: var(--name-ink, linear-gradient(120deg, #c05c4c 8%, #bc4c3b 52%, #80352c 95%));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #b65040;
+}
+
+#home.cinematic-hero .cinematic-name-dropped-o {
+  --name-ink: linear-gradient(120deg, #ae4939, #80352c);
+  transform: translateY(.1em) rotate(2deg);
+  transform-origin: 50% 80%;
+  animation: hero-last-o-drop 3.2s cubic-bezier(.4, 0, .2, 1) 1.6s both;
+}
+
+#home.cinematic-hero .cinematic-name-period { --name-ink: linear-gradient(#80352c, #80352c); }
+
+@keyframes hero-last-o-drop {
+  from { transform: translateY(0) rotate(0); }
+  80% { transform: translateY(.108em) rotate(2.2deg); }
+  to { transform: translateY(.1em) rotate(2deg); }
 }
 
 #home.cinematic-hero .cinematic-character {
@@ -251,11 +270,13 @@ body[data-page="tech"] #home.cinematic-hero {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  #home.cinematic-hero .cinematic-name-dropped-o { animation: none; }
   #home.cinematic-hero .cinematic-thought { animation: none; }
   #home.cinematic-hero .cinematic-actions a { transition: none; }
   #home.cinematic-hero .cinematic-actions a:hover { transform: none; }
 }
 
 html[data-motion="calm"] #home.cinematic-hero .cinematic-thought { animation: none; }
+html[data-motion="calm"] #home.cinematic-hero .cinematic-name-dropped-o { animation: none; }
 html[data-motion="calm"] #home.cinematic-hero .cinematic-actions a { transition: none; }
 html[data-motion="calm"] #home.cinematic-hero .cinematic-actions a:hover { transform: none; }
