@@ -24,37 +24,46 @@ export default function HomePage() {
         <canvas className="ambient-canvas" aria-hidden="true"></canvas>
 
         {/* HERO */}
-        <section id="home" className="hero-section hero-section-simple">
-          <div className="hero-layout hero-layout-simple">
-            <div className="hero-identity">
-              <p className="hero-eyebrow">
-                <span className="availability-dot" aria-hidden="true"></span>
-                {' '}South Africa · Open to building
-              </p>
-              <h1 className="hero-title">
-                Ricardo<br />
-                <span>Ngozo.</span>
-              </h1>
-              <p className="hero-subtitle hero-role-line">
-                I want to be a{' '}
-                <span className="hero-role-word" data-role-changer aria-live="off">
-                  Game Developer
-                </span>
-              </p>
-              <p className="hero-tagline">
-                I create thoughtful interfaces, playful software, and the small details that make a digital experience feel alive.
-              </p>
-              <div className="hero-cta-row">
-                <a href="#projects" className="hero-cta-primary">
-                  Explore my work <span aria-hidden="true">↘</span>
-                </a>
-                <a href="#why-me" className="hero-cta-secondary">A little about me</a>
-              </div>
+        <section id="home" className="hero-section cinematic-hero" aria-labelledby="hero-name">
+          <div className="cinematic-stage">
+            <h1 id="hero-name" className="cinematic-name" aria-label="Ricardo Ngozo.">
+              <span className="cinematic-name-given" aria-hidden="true">Ricardo</span>
+              <span className="cinematic-name-family" aria-hidden="true">Ngozo.</span>
+            </h1>
+
+            <div className="cinematic-character">
+              <Suspense fallback={<div className="hero-character-placeholder" aria-hidden="true" />}>
+                <CharacterScene />
+              </Suspense>
             </div>
 
-            <Suspense fallback={<div className="hero-character-placeholder" aria-hidden="true" />}>
-              <CharacterScene />
-            </Suspense>
+            <aside className="cinematic-thought">
+              <svg className="cinematic-thought-outline" viewBox="0 0 520 320" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="hero-thought-gradient" x1="0" y1="0" x2="1" y2="0.8">
+                    <stop offset="0" stopColor="#ff725d" />
+                    <stop offset="0.6" stopColor="#ff624b" />
+                    <stop offset="1" stopColor="#6285ff" />
+                  </linearGradient>
+                </defs>
+                <path d="M110 74C134 24 196 10 242 36C288-12 385 10 402 62C468 39 510 80 502 122C501 167 477 187 444 189C407 227 336 231 300 211C273 233 244 233 223 222C171 246 128 228 116 196C47 201 32 143 55 106C66 87 88 77 110 74Z" />
+                <circle cx="88" cy="253" r="20" />
+                <circle cx="53" cy="294" r="11" />
+                <circle cx="23" cy="314" r="5" />
+              </svg>
+              <p>I want to be a<strong>Game Developer</strong></p>
+            </aside>
+          </div>
+
+          <div className="cinematic-introduction">
+            <p>
+              I'm a <strong className="cinematic-blue">full-stack developer</strong> in progress, learning by building real projects and chasing the long-term goal of becoming a{' '}
+              <strong className="cinematic-coral">game developer.</strong>
+            </p>
+            <div className="cinematic-actions">
+              <a href="#projects" className="hero-cta-primary">Explore my work <span aria-hidden="true">↗</span></a>
+              <a href="#why-me" className="hero-cta-secondary">About me <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
         </section>
 
