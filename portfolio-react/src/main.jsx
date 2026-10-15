@@ -14,6 +14,7 @@ import './studio-theme.css';
 import './components/cursor.css';
 import './react-layout.css';
 import './pages/hero.css';
+import './laptop-layout.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
