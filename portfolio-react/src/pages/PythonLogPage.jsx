@@ -1,6 +1,5 @@
 import LabDemo from '../components/LabDemo.jsx';
 import { usePageFeatures } from '../runtime/usePageFeatures.js';
-import PongLoader from '../components/PongLoader.jsx';
 import { Link } from 'react-router-dom';
 
 export default function PythonLogPage() {
@@ -9,9 +8,6 @@ export default function PythonLogPage() {
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
-
-      {/* Loader */}
-      <PongLoader />
 
       <header className="morph-header" data-header>
         <nav className="nav-container" data-nav>

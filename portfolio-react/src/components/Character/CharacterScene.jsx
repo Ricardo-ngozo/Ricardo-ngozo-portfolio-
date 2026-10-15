@@ -4,7 +4,7 @@ import setCharacter, { disposeCharacter } from './utils/character.js';
 import setLighting from './utils/lighting.js';
 import { handleHeadRotation } from './utils/mouseUtils.js';
 import setAnimations from './utils/animationUtils.js';
-import './character.css';
+import { CharacterPoster } from './Character.jsx';
 
 const CAM_CLOSE = { y: 13.1, z: 24.7, zoom: 1.1 };
 const CAM_FULL = { y: 7.5, z: 42, zoom: 1 };
@@ -35,7 +35,9 @@ export default function CharacterScene() {
     const loader = setCharacter(renderer, scene, camera);
     const draw = time => {
       frame = 0;
-      if (disposed || contextLost || !visible || document.hidden) return;
+      if (disposed || contextLost || !visible || document.hidden || !character) return;
+      if (!calm && last && time - last < 1000 / 30) { frame = requestAnimationFrame(draw); return; }
+      const previousZoom = camera.zoom;
       const dt = Math.min((time - last) / 1000 || .016, .1); last = time;
       if (!calm) {
         const easing = 1 - Math.exp(-7 * dt);
@@ -45,7 +47,8 @@ export default function CharacterScene() {
         if (head) handleHeadRotation(head, mouse.x, mouse.y, easing * .6, easing, THREE.MathUtils.lerp);
         animations?.mixer.update(dt);
       }
-      camera.updateProjectionMatrix(); lighting.setPointLight(screenLight); renderer.render(scene, camera);
+      if (Math.abs(camera.zoom - previousZoom) > .00001) camera.updateProjectionMatrix();
+      lighting.setPointLight(screenLight); renderer.render(scene, camera);
       if (!calm) frame = requestAnimationFrame(draw);
     };
     const sync = () => { cancelAnimationFrame(frame); last = 0; if (!disposed && visible && !document.hidden) frame = requestAnimationFrame(draw); };
@@ -79,7 +82,9 @@ export default function CharacterScene() {
       animations = setAnimations(gltf);
       hoverCleanup = animations.hover(gltf, hover, () => calm);
       head = character.getObjectByName('spine006'); screenLight = character.getObjectByName('screenlight');
-      lighting.turnOnLights(); animations.startIntro(calm); setState('ready'); sync();
+      lighting.turnOnLights(); animations.startIntro(calm);
+      // Keep the poster until the first actual model frame has reached the canvas.
+      renderer.render(scene, camera); setState('ready'); sync();
     }).catch(error => { if (!disposed) { console.warn('Character unavailable', error); setState('fallback'); } });
     return () => {
       disposed = true; controller.abort(); cancelAnimationFrame(frame);
@@ -91,11 +96,11 @@ export default function CharacterScene() {
     };
   }, []);
   return <div className="character-wrap" data-state={state} role="img" aria-label="Interactive 3D character beside Ricardo's introduction">
+    <CharacterPoster />
     <div className="character-sticky"><div className="character-canvas-div" ref={containerRef}>
       <div className="character-rim" aria-hidden="true" />
       <div className="character-hover" ref={hoverRef} aria-hidden="true" />
     </div></div>
-    {state === 'fallback' && <p className="character-status" role="status">3D character unavailable on this device.</p>}
-    {state === 'loading' && <p className="character-status" role="status">Bringing the character to life…</p>}
+    {state === 'fallback' && <span className="sr-only">Static character preview. Interactive 3D is unavailable on this device.</span>}
   </div>;
 }

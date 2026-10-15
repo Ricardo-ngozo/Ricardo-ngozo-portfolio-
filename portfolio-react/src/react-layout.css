@@ -1,9 +1,9 @@
 /* React layout integration: loaded after the shared theme, scoped by route. */
 #root { min-height: 100vh; isolation: isolate; }
-#root > main, #root > section, #root > footer { min-width: 0; }
+#root .route-content > main, #root .route-content > section, #root .route-content > footer { min-width: 0; }
 [hidden] { display: none !important; }
 :where(section[id], main[id]) { scroll-margin-top: 100px; }
-body[data-page="tech"] #root > main { position: relative; isolation: isolate; padding: 0; }
+body[data-page="tech"] #root .route-content > main { position: relative; isolation: isolate; padding: 0; }
 body[data-page="tech"] .ambient-canvas { position: fixed; inset: 0; z-index: -1; pointer-events: none; width: 100%; height: 100vh; }
 body[data-page="tech"] .hero-layout-simple > *, .fw-grid > *, .wb-grid > * { min-width: 0; }
 body .react-pong-loader { position: fixed; inset: 0; z-index: 9000; pointer-events: none; background: #0d0d0f; }

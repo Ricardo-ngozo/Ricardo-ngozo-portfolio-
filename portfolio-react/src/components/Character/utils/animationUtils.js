@@ -40,7 +40,8 @@ const setAnimations = (gltf) => {
     const intro = gltf.animations.find(clip => clip.name === 'introAnimation');
     if (intro) {
       const action = mixer.clipAction(intro); action.clampWhenFinished = true; action.reset().play();
-      if (calm) { action.time = intro.duration; mixer.update(0); }
+      // Start in the visible pose rather than making visitors wait for the rig's intro.
+      action.time = intro.duration; action.paused = true; mixer.update(0);
     }
     if (calm) return;
     blinkTimer = setTimeout(() => {

@@ -39,7 +39,8 @@ const W=scope.workshop(),canvas=document.getElementById('tech-globe');if(!W||!ca
   const controls=W.el("div","globe-controls"),pause=W.el("button","workshop-button","Pause orbit"),list=W.el("details","technology-list"),summary=W.el("summary","","Explore technologies as a list"),buttons=W.el("div","technology-buttons"),detail=W.el("aside","technology-detail");
   detail.hidden=true;detail.setAttribute("aria-live","polite");
   pause.type="button";pause.setAttribute("aria-pressed","false");
-  const wrap=canvas.parentElement;wrap.after(controls,list,detail);controls.append(pause);list.append(summary,buttons);
+  const wrap=canvas.parentElement,inspector=canvas.closest("#stack").querySelector(".toolkit-inspector");
+  inspector.append(detail,controls,list);controls.append(pause);list.append(summary,buttons);
   const hint=W.el("p","experience-note","Drag to spin · select a node · use arrow keys to explore");controls.append(hint);
   canvas.tabIndex=0;canvas.setAttribute("role","group");canvas.setAttribute("aria-label","Interactive technology globe. Use Left and Right arrows to select a technology. The list below provides the same choices.");
   let angle=0,playing=true,index=-1,size=400,points=[],dragging=false,last=0,travel=0;
@@ -48,7 +49,7 @@ const W=scope.workshop(),canvas=document.getElementById('tech-globe');if(!W||!ca
   function select(i){
     index=(i+NODES.length)%NODES.length;const n=NODES[index];playing=false;angle=Math.PI/2-n.theta;pause.textContent="Resume orbit";pause.setAttribute("aria-pressed","true");
     [...buttons.children].forEach((b,j)=>b.setAttribute("aria-pressed",String(j===index)));
-    detail.hidden=false;detail.replaceChildren();
+    detail.hidden=false;inspector.querySelector(".toolkit-hint").hidden=true;detail.replaceChildren();
     detail.append(W.el("p","section-kicker","IN THE WORKSHOP"),W.el("h3","",n.label),W.el("p","",descriptions[n.label][0]));
     const action=W.el("a","workshop-button",n.label==="Python"?"Open the Python lab":n.label==="GitHub"?"See contribution activity":"Explore related work");
     action.href=n.label==="Python"?"/python-learning-log":n.label==="GitHub"?"#contributions":"#projects";
@@ -57,12 +58,12 @@ const W=scope.workshop(),canvas=document.getElementById('tech-globe');if(!W||!ca
   }
   scope.listen(pause, "click",()=>{playing=!playing;pause.textContent=playing?"Pause orbit":"Resume orbit";pause.setAttribute("aria-pressed",String(!playing));});
   scope.listen(canvas, "keydown",e=>{if(["ArrowLeft","ArrowRight","Home","End"].includes(e.key)){e.preventDefault();select(e.key==="Home"?0:e.key==="End"?NODES.length-1:index+(e.key==="ArrowLeft"?-1:1));}});
-  function resize(){size=Math.min(560,wrap.clientWidth);const ratio=Math.min(devicePixelRatio||1,2);canvas.width=size*ratio;canvas.height=size*ratio;canvas.style.width=size+"px";canvas.style.height=size+"px";ctx.setTransform(ratio,0,0,ratio,0,0);draw();}
+  function resize(){size=wrap.clientWidth;const ratio=Math.min(devicePixelRatio||1,2);canvas.width=size*ratio;canvas.height=size*ratio;canvas.style.width=size+"px";canvas.style.height=size+"px";ctx.setTransform(ratio,0,0,ratio,0,0);draw();}
   function draw(){
-    if(!size)return;ctx.clearRect(0,0,size,size);const center=size/2,r=size*.34;
+    if(!size)return;ctx.clearRect(0,0,size,size);const center=size/2,r=size*.38;
     ctx.strokeStyle="rgba(139,158,255,.2)";ctx.lineWidth=1;
     for(let i=0;i<5;i++){ctx.beginPath();ctx.ellipse(center,center,r,r*Math.max(.08,Math.abs(Math.cos(angle*.25+i*.55))),i*.35,0,Math.PI*2);ctx.stroke();}
-    points=NODES.map((n,i)=>{const x=r*Math.sin(n.phi)*Math.cos(n.theta+angle),y=r*Math.cos(n.phi),z=r*Math.sin(n.phi)*Math.sin(n.theta+angle);const scale=.8+(z/r+1)*.16;return {n,i,x:center+x*scale,y:center+y*scale,z,scale};}).sort((a,b)=>a.z-b.z);
+    points=NODES.map((n,i)=>{const x=r*Math.sin(n.phi)*Math.cos(n.theta+angle),y=r*Math.cos(n.phi),z=r*Math.sin(n.phi)*Math.sin(n.theta+angle);const scale=.8+(z/r+1)*.16;return {n,i,x:center+x*scale,y:center+y*scale,z,scale:scale*Math.max(.85,Math.min(1.3,size/480))};}).sort((a,b)=>a.z-b.z);
     points.forEach(p=>{
       const front=(p.z/r+1)/2;ctx.save();ctx.globalAlpha=.28+front*.72;const radius=15*p.scale;
       ctx.beginPath();ctx.arc(p.x,p.y,radius,0,Math.PI*2);ctx.fillStyle="#0d0d0f";ctx.fill();ctx.strokeStyle=colors[p.n.cat];ctx.lineWidth=p.i===index?3:1;ctx.stroke();

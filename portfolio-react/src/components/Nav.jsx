@@ -23,6 +23,7 @@ export default function Nav() {
           <a className="nav-link" href={isHome ? '#contributions' : '/#contributions'} data-section="contributions">Activity</a>
           <a className="nav-link" href={isHome ? '#contact' : '/#contact'} data-section="contact">Contact</a>
           <Link className="nav-link nav-link-personal" to="/personal">Personal</Link>
+          <Link className="nav-link" to="/arena">Play Arena</Link>
           <a
             className="nav-resume"
             href="/docs/Ricardo_Ngozo_CV.pdf"

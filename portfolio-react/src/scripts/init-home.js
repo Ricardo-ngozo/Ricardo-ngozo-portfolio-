@@ -131,51 +131,6 @@ export function initHomePage(scope) {
     });
   });
 
-  // ─── 6. Tic-Tac-Toe embedded game ─────────────────────────────────────────
-  const ticGame = document.querySelector('[data-tic-game]');
-  if (ticGame) {
-    const cells = Array.from(ticGame.querySelectorAll('.tic-board button'));
-    const status = ticGame.querySelector('[data-tic-status]');
-    const reset = ticGame.querySelector('[data-tic-reset]');
-    const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-    let board = Array(9).fill('');
-    let player = 'X';
-    let finished = false;
-
-    const winner = () => wins.find(([a, b, c]) => board[a] && board[a] === board[b] && board[a] === board[c]);
-    const updateGame = () => {
-      const win = winner();
-      if (win) finished = true;
-      if (!win && board.every(Boolean)) finished = true;
-      cells.forEach((cell, index) => {
-        cell.textContent = board[index];
-        cell.disabled = finished || Boolean(board[index]);
-        cell.classList.toggle('is-filled', Boolean(board[index]));
-        cell.classList.toggle('is-winning', Boolean(win?.includes(index)));
-      });
-      if (win) status.textContent = `${board[win[0]]} wins`;
-      else if (board.every(Boolean)) status.textContent = 'Draw game';
-      else status.textContent = `${player}'s turn`;
-    };
-
-    cells.forEach((cell, index) => {
-      scope.listen(cell, 'click', () => {
-        if (board[index] || finished) return;
-        board[index] = player;
-        player = player === 'X' ? 'O' : 'X';
-        updateGame();
-      });
-    });
-
-    scope.listen(reset, 'click', () => {
-      board = Array(9).fill('');
-      player = 'X';
-      finished = false;
-      updateGame();
-    });
-    updateGame();
-  }
-
   // ─── 7. Archive toggle & search ───────────────────────────────────────────
   const archiveToggle = document.querySelector('[data-archive-toggle]');
   const archivePanel = document.getElementById('archive-panel');
@@ -199,20 +154,6 @@ export function initHomePage(scope) {
       }
     });
   }
-
-  // ─── 8. Game launcher (Mini Quest Runner) ─────────────────────────────────
-  document.querySelectorAll('[data-load-game]').forEach(button => {
-    scope.listen(button, 'click', () => {
-      const frameHost = button.closest('[data-game-frame]');
-      if (!frameHost || frameHost.querySelector('iframe')) return;
-      const frame = scope.element('iframe');
-      frame.src = button.dataset.gameSrc;
-      frame.title = 'Mini Quest Runner game';
-      frame.loading = 'eager';
-      frame.referrerPolicy = 'strict-origin-when-cross-origin';
-      frameHost.replaceChildren(frame);
-    });
-  });
 
   // ─── 9. Copy email ────────────────────────────────────────────────────────
   const copyEmailBtn = document.querySelector('[data-copy-email]');
@@ -329,15 +270,28 @@ export function initHomePage(scope) {
     load();
   }
 
-  // ─── 11. Journey timeline animation ───────────────────────────────────────
+  // The light follows the reader, including when scrolling back up.
   const journeyPath = document.querySelector('.journey-timeline');
   if (journeyPath) {
-    const journeyObserver = new scope.IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('is-active');
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const bounds = journeyPath.getBoundingClientRect();
+      const calm = window.Workshop?.calm || matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const readingLine = innerHeight * .65;
+      const progress = calm ? 1 : Math.max(0, Math.min(1, (readingLine - bounds.top) / bounds.height));
+      journeyPath.style.setProperty('--journey-progress', progress.toFixed(4));
+      journeyPath.querySelectorAll('.jt-item').forEach(item => {
+        item.dataset.reached = String(calm || item.querySelector('.jt-dot').getBoundingClientRect().top <= readingLine);
       });
-    }, { threshold: 0.25 });
-    journeyObserver.observe(journeyPath);
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    scope.listen(window, 'scroll', schedule, { passive: true });
+    scope.listen(window, 'resize', schedule);
+    scope.listen(document, 'workshop:motion', schedule);
+    new scope.ResizeObserver(schedule).observe(journeyPath);
+    scope.defer(() => cancelAnimationFrame(frame));
+    update();
   }
 
   // ─── 12. Interactive Avatar ────────────────────────────────────────────────

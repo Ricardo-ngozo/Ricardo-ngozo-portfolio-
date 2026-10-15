@@ -5,14 +5,14 @@ The current workshop is the React/Vite app in `portfolio-react/`. See the [root 
 ## Current experience
 
 - Shared Calm/Full motion and opt-in sound settings; system reduced motion takes precedence.
-- A brief session-aware entrance and an optional Pong challenge, with a saved five-return reward. Contact information and work remain available without playing.
-- A lazy Three.js character on Home and Personal, with a text fallback when loading or WebGL fails.
-- A draggable technology globe with keyboard controls and an equivalent HTML list.
+- A shared SVG Pong entrance fades into Home, Personal, Lab, Arena and case-study routes. Arena includes the Pong challenge with its saved five-return reward. Contact information and work remain available without playing.
+- A lazy Three.js character on Home and Personal, with an immediate 8 KB poster rendered from the same model while loading or if WebGL fails. GLB bytes are cached across character routes; visible rendering is capped at 30 fps.
+- A large draggable technology globe with a supporting inspector, keyboard controls and an equivalent HTML list. The journey timeline glows in proportion to scroll position.
 - Category/search filters for four selected projects and ten archive entries, plus shareable preview dialogs with existing screenshots, source/live links and build notes.
 - Case-study reading tools, image enlargement, personal timeline and influence captions.
 - Three current Lab experiments: coordinate motion, particles and boids, with pause/reset/speed controls. The JavaScript previews illustrate Python concepts; Python excerpts are learning material.
 - Decorative animals and scroll effects, initialized after the first render.
-- Inline Tic-Tac-Toe and the standalone Mini Quest Runner, including its pause/visibility controls.
+- A dedicated `/arena` page for Tic-Tac-Toe, Mini Quest Runner and Pong. The runner loads only after Play; closing it or leaving Arena releases its iframe.
 - A shared custom mouse cursor across routes and dialogs. Calm, touch, system reduced motion, native fields and embedded documents retain a native pointer.
 
 ## Active files
@@ -24,14 +24,15 @@ All paths below are relative to `portfolio-react/`.
 | `src/App.jsx` | Routes, titles, hash navigation, route classes and Workshop lifecycle |
 | `src/runtime/pageScope.js` | Page-owned resource cleanup |
 | `src/runtime/usePageFeatures.js` | Route feature initialization and deferred decorations |
-| `src/scripts/workshop-core.js` | Saved preferences, dialogs, clipboard fallback, animation scheduling and optional Pong |
+| `src/scripts/workshop-core.js` | Saved preferences, dialogs, clipboard fallback, animation scheduling and page-scoped Arena Pong |
 | `src/scripts/workshop-explorer.js` | Filters, previews, reading tools and personal enhancements |
 | `src/scripts/workshop-globe.js` | Technology canvas and accessible equivalent |
 | `src/scripts/workshop-pets.js` | Decorative animal interactions |
 | `src/scripts/studio-motion.js` | Decorative heading/scroll effects |
 | `src/scripts/archive-notes.js` | Notes used in project previews |
 | `src/components/Cursor.jsx` | Pointer lifecycle, top-layer overlay and native fallbacks |
-| `src/components/PongLoader.jsx` | React entrance |
+| `src/components/PongLoader.jsx` / `PageEntrance.jsx` | Bounded SVG Pong intro and route fade; skipped for Calm/reduced motion |
+| `src/pages/ArenaPage.jsx` | All playable demos and their page-owned lifecycles |
 | `src/components/LabDemo.jsx` | Current live Lab simulations |
 | `src/pages/PythonLogPage.jsx` | Three current experiment stories and Python excerpts |
 | `src/main.jsx` | Stylesheet import order |
@@ -50,6 +51,6 @@ Add listeners, timers, observers and animations through a React effect with clea
 
 ## Review
 
-Build with `npm run build` from `portfolio-react/`. Review Home, Personal, Lab, case studies and direct-link refreshes at desktop and mobile widths. Exercise filtering, preview deep links, Escape/focus restoration, technology controls, saved preferences, Pong, Lab controls and personal image/caption dialogs.
+Build with `npm run build` from `portfolio-react/`. Review Home, Personal, Lab, Arena, case studies and direct-link refreshes at desktop and mobile widths. Exercise filtering, preview deep links, Escape/focus restoration, technology controls, saved preferences, Pong, Lab controls and personal image/caption dialogs.
 
 Check cursor startup, route navigation, modal stacking, editable/native controls, iframe boundaries, mouse/touch input, window leave/reentry and live preference changes. Real contact delivery, external services and physical-device performance are separate checks from local UI review.

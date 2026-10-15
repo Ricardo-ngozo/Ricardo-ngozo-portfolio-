@@ -43,7 +43,7 @@ export function initPets(scope) {
       }
     });
     const runway=document.querySelector(".motion-runway"),dog=runway?.querySelector(".motion-runner");
-    if(runway&&dog){
+    if(runway&&dog&&document.body.dataset.page==="arena"){
       runway.classList.add("fetch-runway");
       const ball=W.el("button","fetch-ball");ball.type="button";ball.setAttribute("aria-label","Throw the ball for the dog. Drag it or use Left and Right arrows.");
       const hint=W.el("p","fetch-hint","A little fetch? Drag the ball, tap the path, or use the arrow keys.");

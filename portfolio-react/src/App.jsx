@@ -6,6 +6,8 @@ import PythonLogPage from './pages/PythonLogPage.jsx';
 import ArchiveCaseStudy from './pages/ArchiveCaseStudy.jsx';
 import CaseStudyPage from './pages/CaseStudyPage.jsx';
 import Cursor from './components/Cursor.jsx';
+import PageEntrance from './components/PageEntrance.jsx';
+import ArenaPage from './pages/ArenaPage.jsx';
 import { createPageScope } from './runtime/pageScope.js';
 import { mountWorkshop } from './scripts/workshop-core.js';
 
@@ -26,10 +28,11 @@ export default function App() {
     const personal = location.pathname === '/personal';
     const lab = location.pathname === '/python-learning-log';
     const archive = location.pathname === '/case-studies/archive';
+    const arena = location.pathname === '/arena';
     const pageClass = personal ? 'personal-body' : lab ? 'python-log-body' : archive ? 'archive-case-body' : '';
-    document.body.dataset.page = location.pathname === '/' ? 'tech' : personal ? 'personal' : lab ? 'lab' : 'case-study';
+    document.body.dataset.page = location.pathname === '/' ? 'tech' : personal ? 'personal' : lab ? 'lab' : arena ? 'arena' : 'case-study';
     if (pageClass) document.body.classList.add(pageClass);
-    document.title = personal ? 'The Personal Side | Ricardo Ngozo' : lab ? 'Python Learning Lab | Ricardo Ngozo' : 'Ricardo Ngozo | Developer & Creative Technologist';
+    document.title = personal ? 'The Personal Side | Ricardo Ngozo' : lab ? 'Python Learning Lab | Ricardo Ngozo' : arena ? 'Play Arena | Ricardo Ngozo' : 'Ricardo Ngozo | Developer & Creative Technologist';
     return () => {
       if (pageClass) document.body.classList.remove(pageClass);
       document.body.removeAttribute('data-page');
@@ -51,8 +54,10 @@ export default function App() {
 
   return <>
     <Cursor />
+    <PageEntrance key={location.pathname} label={location.pathname === '/' ? 'Welcome to the workshop' : location.pathname === '/personal' ? 'The person behind the code' : location.pathname === '/python-learning-log' ? 'Into the Python lab' : location.pathname === '/arena' ? 'Your next round starts here' : 'Inside the build'}>
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/arena" element={<ArenaPage />} />
       <Route path="/personal" element={<PersonalPage />} />
       <Route path="/python-learning-log" element={<PythonLogPage />} />
       <Route path="/case-studies/archive" element={<ArchiveCaseStudy />} />
@@ -62,5 +67,6 @@ export default function App() {
       <Route path="/index.html" element={<Navigate replace to="/" />} />
       <Route path="*" element={<main className="route-not-found"><h1>That page has moved.</h1><a href="/">Return to the portfolio</a></main>} />
     </Routes>
+    </PageEntrance>
   </>;
 }
