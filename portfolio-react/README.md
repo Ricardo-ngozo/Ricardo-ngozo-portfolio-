@@ -31,12 +31,14 @@ Vite writes `dist/`; preview normally uses port 4173. No environment variables a
 - `src/main.jsx`: React root and the single stylesheet entry point. Preserve its import order.
 - `public/`: images, icons, documents, Mini Quest Runner and character assets.
 
-Only `App` owns route body classes. Add interactions using React effects with cleanup or the page scope. The current Lab canvases are JavaScript ports of Python concepts, not a Python runtime. Character loading/WebGL failures keep an 8 KB poster rendered from the existing model. Downloaded GLB bytes are shared across character pages; parsed model/renderer resources are released on navigation. Visible rendering is capped at 30 fps. Arena owns all playable demos, and `PageEntrance` wraps every route with one bounded Pong/fade transition.
+Only `App` owns route body classes. Add interactions using React effects with cleanup or the page scope. The current Lab canvases are JavaScript ports of Python concepts, not a Python runtime. Character loading/WebGL failures keep an 8 KB poster rendered from the existing model. The deployed `character.enc` is decrypted once; decoded GLB bytes are shared across character pages; parsed model/renderer resources are released on navigation. Visible rendering is capped at 30 fps. Arena owns all playable demos, and `PageEntrance` wraps every route with one bounded Pong/fade transition.
 
 ## Cursor
 
 `Cursor.jsx` is mounted outside the routes and portals to the body. Its manual popover appears above native dialogs; unsupported browsers keep the native pointer in dialogs. It activates on mouse movement and follows live Calm/Full and system reduced-motion settings. Inputs, textareas, select menus, editable content and iframe documents keep their native pointer. Use `data-cursor-label` for labels or `data-native-cursor` for a native pointer region. Do not initialize the old `src/scripts/cursor.js` or add unconditional cursor-hiding CSS.
 
 ## Validation
+
+Run `node --test tests/character-asset.test.mjs` from this directory to check the deployed model asset, shared download/decryption and retry handling. The test reproduces the raw GLB URL returning a Git LFS pointer.
 
 Run `npm run build`, then check routes, desktop/mobile navigation, dialogs, controls, asset links and direct-route refreshes. For cursor changes, check mouse/touch, preference changes, fields, iframe boundaries and window leave/reentry. The lazy Three.js chunk currently produces a Vite size warning. External service availability and contact delivery require separate live checks; do not submit the contact form as part of routine UI verification.
