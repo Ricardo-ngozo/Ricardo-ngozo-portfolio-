@@ -1,0 +1,80 @@
+/* Keep backgrounds clean on every page. */
+.p-grain { display: none; }
+
+/* Fit common laptop browser viewports without shrinking body copy or clipping content. */
+@media (min-width: 900px) and (max-width: 1600px) {
+  body[data-page="tech"] #root main > section[data-chapter],
+  body.personal-body #root main > section[data-chapter] {
+    padding-block: clamp(32px, 5svh, 48px);
+    padding-inline: clamp(28px, 5vw, 72px);
+    min-height: 0;
+  }
+
+  body #root .section-header { margin-bottom: 24px; }
+  body #root .section-header h2,
+  body #root .stack-header h2 { font-size: clamp(2rem, 3.8vw, 3.4rem); }
+  body #root .section-header p { margin-top: 12px; }
+  body #root .companion-habitat { min-height: 32px; margin-bottom: 8px; }
+  body #root .companion-habitat .section-companion.workshop-pet { width: 36px; height: 32px; }
+  body #root .companion-habitat .section-companion svg { width: 30px; height: 30px; }
+  body #root .studio-ribbon { height: 76px; }
+  body #root .studio-ribbon-track { top: 20px; height: 38px; font-size: 1.5rem; gap: 30px; }
+  body #root .studio-ribbon-orbit { display: none; }
+
+  body[data-page="tech"] #root #home.cinematic-hero {
+    padding: clamp(20px, 4svh, 32px) clamp(28px, 5vw, 72px) clamp(36px, 6svh, 52px);
+    min-height: 100svh;
+    gap: 8px;
+  }
+  #root #home.cinematic-hero .cinematic-stage {
+    width: min(100%, 1120px);
+    height: clamp(260px, 100svh - 238px, 490px);
+  }
+  #root #home.cinematic-hero .cinematic-name { top: 2%; }
+  #root #home.cinematic-hero .cinematic-name-given { font-size: clamp(88px, min(13.4vw, 25svh), 196px); }
+  #root #home.cinematic-hero .cinematic-name-family { font-size: clamp(110px, min(18vw, 30svh), 258px); }
+  #root #home.cinematic-hero .character-wrap,
+  #root #home.cinematic-hero .hero-character-placeholder { width: clamp(360px, 44vw, 640px); }
+  #root #home.cinematic-hero .cinematic-thought { top: 0; width: clamp(240px, 23vw, 330px); }
+  #root #home.cinematic-hero .cinematic-thought p { font-size: clamp(16px, 1.35vw, 20px); }
+  #root #home.cinematic-hero .cinematic-introduction { max-width: 600px; }
+  #root #home.cinematic-hero .cinematic-introduction > p { font-size: clamp(15px, 1.2vw, 17px); line-height: 1.4; }
+  #root #home.cinematic-hero .cinematic-actions { margin-top: 16px; gap: 14px; }
+  #root #home.cinematic-hero .cinematic-actions a { min-height: 46px; padding: 10px 22px; font-size: 14px; }
+
+  body[data-page="tech"] #root #stack .section-header { margin-bottom: 12px; }
+  body[data-page="tech"] #root #stack .tech-globe-wrap { width: clamp(220px, 37svh, 300px); }
+  body[data-page="tech"] #root #stack .globe-controls { gap: 8px; margin-block: 6px 10px; }
+  body[data-page="tech"] #root #stack .technology-detail { margin-top: 14px; padding-block: 16px; }
+  body[data-page="tech"] #root #stack .technology-detail h3 { font-size: 1.5rem; }
+  body[data-page="tech"] #root #stack .technology-detail p { font-size: .9rem; line-height: 1.55; }
+
+  body[data-page="tech"] #root #projects .fw-grid { gap: 32px 24px; }
+  body[data-page="tech"] #root #projects .fw-card-img { aspect-ratio: 2.1; }
+  body[data-page="tech"] #root #projects .fw-card-content { padding-top: 14px; }
+  body[data-page="tech"] #root #contributions .section-header h2 { max-width: 26ch; font-size: clamp(2rem, 3.2vw, 2.75rem); }
+  body[data-page="tech"] #root #contact .section-header h2 { max-width: none; }
+  body[data-page="tech"] #root #contact { padding-right: max(148px, 12vw); }
+  body[data-page="tech"] #root #contact .contact-grid { gap: 32px; margin-top: 20px; }
+  body[data-page="tech"] #root #contact .contact-form { gap: 7px; }
+  body[data-page="tech"] #root #contact .contact-form label { margin-top: 2px; }
+  body[data-page="tech"] #root #contact .contact-form input { min-height: 42px; padding-block: 9px; }
+  body[data-page="tech"] #root #contact .contact-form textarea { min-height: 90px; height: 90px; }
+
+  body.personal-body #root .p-hero { padding-block: 104px 40px; gap: 24px; }
+  body.personal-body #root .p-hero-title { font-size: clamp(3.5rem, 6.5vw, 6rem); }
+  body.personal-body #root .p-hero-character .character-wrap,
+  body.personal-body #root .p-hero-character .hero-character-placeholder { height: clamp(320px, 55svh, 460px); }
+  body.personal-body #root .p-origin-copy h2,
+  body.personal-body #root .p-building-copy h2,
+  body.personal-body #root .p-beyond h2,
+  body.personal-body #root .p-sparks-title,
+  body.personal-body #root .p-footer-cta h2 { font-size: clamp(2rem, 3.8vw, 3.4rem); }
+  body.personal-body #root .p-footer-cta { padding-block: 48px; }
+  body.python-log-body #root .hero { padding-block: 80px 40px; }
+  body.python-log-body #root .hero h1 { font-size: clamp(2.6rem, 4.5vw, 4rem); }
+  body.python-log-body #root main.wrap { padding-top: 40px; }
+  body.python-log-body #root .phase { padding-block: 32px 40px; }
+  body[data-page="case-study"] #root .case-study-hero h1 { font-size: clamp(2.5rem, 4.5vw, 4.5rem); }
+  body[data-page="case-study"] #root .case-block { padding-block: 30px; gap: 20px 36px; }
+}

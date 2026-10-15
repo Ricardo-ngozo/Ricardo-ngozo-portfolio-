@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
 import FloatingActions from '../components/FloatingActions.jsx';
+import RotatingRole from '../components/RotatingRole.jsx';
 
 const CharacterScene = lazy(() => import('../components/Character/CharacterScene.jsx'));
 
@@ -20,8 +21,6 @@ export default function HomePage() {
       <main>
         {/* Site Loader */}
         <PongLoader />
-
-        <canvas className="ambient-canvas" aria-hidden="true"></canvas>
 
         {/* HERO */}
         <section id="home" className="hero-section cinematic-hero" aria-labelledby="hero-name">
@@ -51,7 +50,7 @@ export default function HomePage() {
                 <circle cx="53" cy="294" r="11" />
                 <circle cx="23" cy="314" r="5" />
               </svg>
-              <p>I want to be a<strong>Game Developer</strong></p>
+              <p>I want to be a<RotatingRole /></p>
             </aside>
           </div>
 

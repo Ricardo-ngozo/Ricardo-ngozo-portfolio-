@@ -168,6 +168,27 @@ body[data-page="tech"] #home.cinematic-hero {
 
 #home.cinematic-hero .cinematic-thought strong { display: block; color: var(--hero-blue); font-weight: 700; }
 
+#home.cinematic-hero .cinematic-thought .cinematic-roles {
+  display: grid;
+  isolation: isolate;
+}
+
+#home.cinematic-hero .cinematic-role-option {
+  grid-area: 1 / 1;
+  align-self: center;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+#home.cinematic-hero .cinematic-role-option[data-active="true"] { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  #home.cinematic-hero .cinematic-role-option { transition: none; transform: none; }
+}
+
+html[data-motion="calm"] #home.cinematic-hero .cinematic-role-option { transition: none; transform: none; }
+
 #home.cinematic-hero .cinematic-introduction {
   position: relative;
   z-index: 5;
