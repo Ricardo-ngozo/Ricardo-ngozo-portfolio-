@@ -23,7 +23,7 @@ Vite writes `dist/`; preview normally uses port 4173. No environment variables a
 ## Source map
 
 - `src/App.jsx`: routes, body classes, titles, hash navigation and shared Workshop lifecycle.
-- `src/pages/`: Home, Personal, three visible Python Lab experiments, full case studies and archive stories.
+- `src/pages/`: Home, Personal, Arena, three visible Python Lab experiments, full case studies and archive stories.
 - `src/components/`: global cursor, navigation, footer, Pong loader, LabDemo and lazy Three.js character.
 - `src/runtime/pageScope.js`: page-owned listeners, timers, observers, generated elements and animation cleanup.
 - `src/runtime/usePageFeatures.js`: route initialization and deferred decorative imports.
@@ -31,7 +31,7 @@ Vite writes `dist/`; preview normally uses port 4173. No environment variables a
 - `src/main.jsx`: React root and the single stylesheet entry point. Preserve its import order.
 - `public/`: images, icons, documents, Mini Quest Runner and character assets.
 
-Only `App` owns route body classes. Add interactions using React effects with cleanup or the page scope. The current Lab canvases are JavaScript ports of Python concepts, not a Python runtime. Character loading/WebGL failures keep a text fallback; its model/renderer resources are released on navigation.
+Only `App` owns route body classes. Add interactions using React effects with cleanup or the page scope. The current Lab canvases are JavaScript ports of Python concepts, not a Python runtime. Character loading/WebGL failures keep an 8 KB poster rendered from the existing model. Downloaded GLB bytes are shared across character pages; parsed model/renderer resources are released on navigation. Visible rendering is capped at 30 fps. Arena owns all playable demos, and `PageEntrance` wraps every route with one bounded Pong/fade transition.
 
 ## Cursor
 

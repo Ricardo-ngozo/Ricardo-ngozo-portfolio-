@@ -9,6 +9,9 @@ export default function FloatingActions() {
       <Link className="floating-action" to="/python-learning-log">
         Python log <span aria-hidden="true">↗</span>
       </Link>
+      <Link className="floating-action" to="/arena">
+        Play Arena <span aria-hidden="true">↗</span>
+      </Link>
       <a
         className="floating-action floating-action-primary"
         href="/docs/Ricardo_Ngozo_CV.pdf"

@@ -43,7 +43,6 @@
   #root #home.cinematic-hero .cinematic-actions a { min-height: 46px; padding: 10px 22px; font-size: 14px; }
 
   body[data-page="tech"] #root #stack .section-header { margin-bottom: 12px; }
-  body[data-page="tech"] #root #stack .tech-globe-wrap { width: clamp(220px, 37svh, 300px); }
   body[data-page="tech"] #root #stack .globe-controls { gap: 8px; margin-block: 6px 10px; }
   body[data-page="tech"] #root #stack .technology-detail { margin-top: 14px; padding-block: 16px; }
   body[data-page="tech"] #root #stack .technology-detail h3 { font-size: 1.5rem; }

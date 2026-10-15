@@ -1,9 +1,7 @@
-import { lazy, Suspense } from 'react';
 import { usePageFeatures } from '../runtime/usePageFeatures.js';
-import PongLoader from '../components/PongLoader.jsx';
+import Character from '../components/Character/Character.jsx';
 import { Link } from 'react-router-dom';
 
-const CharacterScene = lazy(() => import('../components/Character/CharacterScene.jsx'));
 
 export default function PersonalPage() {
   usePageFeatures('personal');
@@ -11,9 +9,6 @@ export default function PersonalPage() {
   return (
     <>
       <a className="skip-link" href="#main-content">Skip to content</a>
-
-      {/* Loader */}
-      <PongLoader />
 
       <div className="p-grain" aria-hidden="true"></div>
 
@@ -59,9 +54,7 @@ export default function PersonalPage() {
             </a>
           </div>
           <div className="p-hero-character">
-            <Suspense fallback={<div className="hero-character-placeholder" aria-hidden="true" />}>
-              <CharacterScene />
-            </Suspense>
+            <Character />
           </div>
         </section>
 

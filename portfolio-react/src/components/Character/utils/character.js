@@ -1,6 +1,6 @@
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { decryptFile } from './decrypt.js';
+import { loadCharacterBytes } from '../characterAsset.js';
 import { applyColors } from './applyColors.js';
 
 export function disposeCharacter(root) {
@@ -20,9 +20,9 @@ export default function setCharacter() {
   const loader = new GLTFLoader(); loader.setDRACOLoader(draco);
   return {
     async loadCharacter(signal) {
-      const buffer = await decryptFile('/models/character.enc', 'Character3D#@', signal);
+      const buffer = await loadCharacterBytes();
       signal.throwIfAborted();
-      const gltf = await loader.parseAsync(buffer, '/models/');
+      const gltf = await loader.parseAsync(buffer.slice(0), '/models/');
       if (signal.aborted) { disposeCharacter(gltf.scene); signal.throwIfAborted(); }
       applyColors(gltf);
       const character = gltf.scene;

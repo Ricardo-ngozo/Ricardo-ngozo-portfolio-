@@ -6,12 +6,12 @@ The portfolio of Samukelo Ricardo Ngozo, a fullstack developer and aspiring game
 
 ## What is included
 
-- Responsive Home, Personal, Python Learning Lab and project case-study pages.
+- Responsive Home, Personal, Play Arena, Python Learning Lab and project case-study pages.
 - Four selected projects (Urban Threads, Anime List, Game UI Setup and Tic-Tac-Toe), ten archive entries, category/search filters and shareable project preview dialogs.
-- A shared, lazy-loaded Three.js character on Home and Personal, pointer interaction, animation, and a text fallback when loading or WebGL is unavailable.
-- A draggable technology globe with keyboard controls and an equivalent HTML list; decorative animal interactions and scroll effects.
+- A shared, lazy-loaded Three.js character on Home and Personal, pointer interaction, animation, and an immediate 8 KB poster of the same character while 3D initializes or if WebGL fails.
+- A large draggable technology globe with a supporting inspector, keyboard controls and an equivalent HTML list; a journey timeline that lights up with scrolling; decorative animal interactions and scroll effects.
 - Three visible Python learning experiments: coordinate motion, particles and boids. The live canvases are JavaScript recreations with play/pause, reset and speed controls; the displayed Python/Pygame snippets are learning material.
-- Optional Pong, an inline Tic-Tac-Toe demo and the standalone Mini Quest Runner game.
+- Play Arena brings Mini Quest Runner, two-player Tic-Tac-Toe and the five-shot Pong challenge together on a dedicated page.
 - Personal memories, influence captions, a timeline and enlarged image dialogs.
 - GitHub contribution data, contact form, social links, a downloadable CV and blueprint PDFs.
 - Saved Calm/Full motion and opt-in sound preferences. System reduced motion takes precedence; sound starts off.
@@ -48,7 +48,8 @@ For a production check, run `npm run build` followed by `npm run preview`. The p
 
 | URL | Content |
 | --- | --- |
-| `/` | Hero, about, toolkit, selected projects, archive, games and contact |
+| `/` | Hero, about, toolkit, selected projects, archive, journey and contact |
+| `/arena` | Mini Quest Runner, two-player Tic-Tac-Toe and the five-shot Pong rally |
 | `/personal` | Personal story, character, memories and influences |
 | `/python-learning-log` | Three learning experiments and Python excerpts |
 | `/case-studies/urban-threads` | Fashion storefront / Lourve Reims |
@@ -83,7 +84,7 @@ portfolio-react/
   src/
     main.jsx                      React root, router and stylesheet order
     App.jsx                       Routes, page classes, titles and hash navigation
-    pages/                        Home, Personal, Python Lab and case-study content
+    pages/                        Home, Personal, Arena, Python Lab and case-study content
     components/                   Cursor, navigation, footer, games and character
     runtime/                      Page lifecycle and cleanup helpers
     scripts/                      Workshop, explorer, globe and decorative features
@@ -105,15 +106,15 @@ The overlay ignores pointer input. A manual popover keeps it above native modal 
 
 Use `data-cursor-label="Explore"` for a custom hover label and `data-native-cursor` to preserve an element's platform cursor. Do not add another cursor initializer or unconditional `cursor: none` rules. The retained `src/scripts/cursor.js` is a legacy script and is not imported by the React app.
 
-`src/runtime/usePageFeatures.js` initializes features on route mounts; `pageScope.js` owns cleanup of listeners, timers, observers and generated elements. Use a React effect with cleanup or the page scope for new interactions. `App.jsx` owns route body classes. Preserve the stylesheet import order in `src/main.jsx`; the final `react-layout.css` contains shared React layout corrections.
+`src/runtime/usePageFeatures.js` initializes features on route mounts; `pageScope.js` owns cleanup of listeners, timers, observers and generated elements. Use a React effect with cleanup or the page scope for new interactions. `App.jsx` owns route body classes. Preserve the stylesheet import order in `src/main.jsx`; `react-layout.css` contains shared layout corrections; `hero.css`, `laptop-layout.css` and `experience.css` apply the final responsive and interaction styles.
 
 ## External services and browser storage
 
 - Google Fonts loads Syne, Fraunces and Space Grotesk from the network; CSS includes fallback fonts.
 - Contributions come from `github-contributions-api.jogruber.de` for `Ricardo-ngozo`, with browser caching and error handling.
 - The contact form submits to the configured Formspree endpoint. Updating the recipient requires updating the Formspree account/settings, not adding a secret to this frontend.
-- Motion/sound preferences and Pong rewards use local storage; the brief entrance uses session storage. Storage access is guarded when browser storage is unavailable.
-- Character files and images are served locally from `public/`. The character needs WebGL; failure leaves a text fallback. The encrypted model is a client-side asset, not a place to store secrets.
+- Motion/sound preferences and Pong rewards use local storage; the shared Pong entrance fades into every route, with Calm/reduced-motion support. Storage access is guarded when browser storage is unavailable.
+- Character files and images are served locally from `public/`. The interactive character needs WebGL; failure keeps its lightweight poster visible. The current loader fetches and caches `character.glb` bytes across character pages and limits rendering to 30 fps while visible. The retained encrypted asset is not used by the current loader.
 
 Network failures can affect fonts, contributions, project links and contact delivery. The portfolio itself has no server, database or authentication service.
 

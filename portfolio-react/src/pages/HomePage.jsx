@@ -1,13 +1,10 @@
-import { lazy, Suspense } from 'react';
 import { usePageFeatures } from '../runtime/usePageFeatures.js';
-import PongLoader from '../components/PongLoader.jsx';
+import Character from '../components/Character/Character.jsx';
 import { Link } from 'react-router-dom';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
 import FloatingActions from '../components/FloatingActions.jsx';
 import RotatingRole from '../components/RotatingRole.jsx';
-
-const CharacterScene = lazy(() => import('../components/Character/CharacterScene.jsx'));
 
 export default function HomePage() {
   usePageFeatures('home');
@@ -19,9 +16,6 @@ export default function HomePage() {
       <Nav />
 
       <main>
-        {/* Site Loader */}
-        <PongLoader />
-
         {/* HERO */}
         <section id="home" className="hero-section cinematic-hero" aria-labelledby="hero-name">
           <div className="cinematic-stage">
@@ -31,9 +25,7 @@ export default function HomePage() {
             </h1>
 
             <div className="cinematic-character">
-              <Suspense fallback={<div className="hero-character-placeholder" aria-hidden="true" />}>
-                <CharacterScene />
-              </Suspense>
+              <Character />
             </div>
 
             <aside className="cinematic-thought">
@@ -69,17 +61,22 @@ export default function HomePage() {
         {/* STACK */}
         <section id="stack" className="stack-section" data-chapter="01" data-surface="ink">
           <div className="chapter-line"><span>01</span>The toolkit</div>
-          <div className="section-header reveal-element" data-reveal>
-            <p className="section-kicker">TOOLS I USE</p>
-            <h2>My toolkit</h2>
-            <p>Built to orbit. Grab and spin the stack.</p>
-          </div>
-          <div className="tech-globe-wrap reveal-element" data-reveal>
-            <canvas
-              id="tech-globe"
-              role="img"
-              aria-label="Spinning globe of the technologies I use"
-            ></canvas>
+          <div className="toolkit-layout">
+            <div className="toolkit-copy">
+              <div className="section-header reveal-element" data-reveal>
+                <p className="section-kicker">TOOLS IN ORBIT</p>
+                <h2>My toolkit</h2>
+                <p>A connected stack.<br />Built one project at a time.</p>
+              </div>
+              <div className="toolkit-inspector">
+                <p className="toolkit-hint">Spin the globe. Pick a technology to see where it fits in my work.</p>
+              </div>
+            </div>
+            <div className="toolkit-orbit">
+              <div className="tech-globe-wrap reveal-element" data-reveal>
+                <canvas id="tech-globe" role="img" aria-label="Spinning globe of the technologies I use" />
+              </div>
+            </div>
           </div>
         </section>
 
@@ -572,30 +569,6 @@ export default function HomePage() {
             <p>Curious, dependable, and happiest when a good idea becomes something people can use.</p>
           </div>
           <div className="why-bento">
-            <article className="wb-game reveal-element" data-reveal>
-              <div className="wb-game-frame game-launch-frame" data-game-frame>
-                <div className="game-launch-card">
-                  <span className="section-kicker">A SMALL GAME I BUILT</span>
-                  <strong>Mini Quest Runner</strong>
-                  <p>Jump, collect crystals, and see how far you get.</p>
-                  <button
-                    className="button button-secondary"
-                    type="button"
-                    data-load-game
-                    data-game-src="/mini-quest-runner/index.html"
-                  >
-                    Play Mini Quest Runner <span aria-hidden="true">→</span>
-                  </button>
-                </div>
-              </div>
-              <div className="wb-game-info">
-                <span className="fw-tag fw-tag-green">Playable · Built by me</span>
-                <h3>Mini Quest Runner</h3>
-                <p>A full browser game I built from scratch. JS, collision, game loop, UI — all vanilla.</p>
-                <a href="/mini-quest-runner/index.html" target="_blank" rel="noreferrer" className="fw-btn-live">Play Now ↗</a>
-              </div>
-            </article>
-
             <article className="wb-card reveal-element" data-reveal style={{'--wb-delay':'60ms'}}>
               <div className="wb-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -627,24 +600,11 @@ export default function HomePage() {
               <p>Shipping something new every week. Fast learner, problem-first mindset, no ego.</p>
             </article>
 
-            <article className="wb-ttt reveal-element" data-reveal style={{'--wb-delay':'240ms'}}>
-              <div className="wb-ttt-header">
-                <span className="fw-tag fw-tag-purple">Live Game · Embedded</span>
-                <h3>Tic-Tac-Toe</h3>
-                <p>State machine, win detection, zero dependencies. Two players — play a round right here.</p>
-                <a href="https://github.com/Ricardo-ngozo/Tic-tac-toe.git" target="_blank" rel="noreferrer" className="fw-btn-gh" aria-label="GitHub" style={{width:'fit-content',marginTop:'4px'}}>
-                  <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
-                </a>
-              </div>
-              <div className="wb-ttt-game" data-tic-game>
-                <div className="tic-status" data-tic-status>X starts — your move</div>
-                <div className="tic-board" role="grid" aria-label="Tic Tac Toe board">
-                  {Array.from({length:9},(_,i)=>(
-                    <button key={i} type="button" aria-label={`Cell ${i+1}`}></button>
-                  ))}
-                </div>
-                <button type="button" className="wb-reset-btn" data-tic-reset>↺ Reset</button>
-              </div>
+            <article className="wb-card arena-invite">
+              <span className="section-kicker">THE PLAYGROUND</span>
+              <h3>Built to be played.</h3>
+              <p>Three small games. Take a break and try what I've been building.</p>
+              <Link className="button button-secondary" to="/arena">Play Arena ↗</Link>
             </article>
           </div>
         </section>
