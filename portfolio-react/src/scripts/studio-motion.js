@@ -3,15 +3,6 @@ export function initStudioMotion(scope) {
 "use strict";
 const W=scope.workshop();if(!W)return;
 function init(){
-const mounts=document.body.matches('[data-page="tech"]')?[["#projects","IDEAS INTO INTERFACES",false],["#why-me","BUILT TO BE PLAYED",true]]:document.body.classList.contains("personal-body")?[["#p-sparks","OFF THE CLOCK",false],[".p-footer-cta","STAY CURIOUS",true]]:document.body.classList.contains("python-log-body")?[["main.wrap","SMALL EXPERIMENTS. BIG CURIOSITY.",true]]:[];
-mounts.forEach(([selector,label,blue])=>{
-const target=document.querySelector(selector);if(!target)return;
-const ribbon=W.el("div","studio-ribbon"+(blue?" studio-ribbon--blue":""));ribbon.setAttribute("aria-hidden","true");
-const orbit=W.el("div","studio-ribbon-orbit"),track=W.el("div","studio-ribbon-track");
-for(let i=0;i<6;i++)track.append(W.el("span","",label+" ↗"));
-ribbon.append(orbit,track);target.before(ribbon);
-W.loop(ribbon,()=>{const rect=ribbon.getBoundingClientRect();const progress=Math.max(-1,Math.min(1,(innerHeight/2-rect.top)/innerHeight));ribbon.style.setProperty("--ribbon-shift",String(progress*(innerWidth<760?45:100)));});
-});
 const scenes=document.querySelectorAll('section[data-chapter],.phase,.case-block,.case-content');
 const active=new Set();scope.defer(()=>active.forEach(animation=>animation.cancel()));
 const observer=new scope.IntersectionObserver(entries=>entries.forEach(entry=>{

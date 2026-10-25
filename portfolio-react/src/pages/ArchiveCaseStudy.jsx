@@ -12,13 +12,13 @@ const ARCHIVE_NOTES = {
   ihub: { title: "iHub Prototype", category: "Collaborative prototype · 2026", summary: "An education hub concept with onboarding flows, modular dashboards, and responsive content cards.", stack: ["HTML", "CSS", "JavaScript", "Team collaboration"], code: "https://github.com/Ricardo-ngozo/Ihub-clone", live: "https://giftmshengu250-pixel.github.io/Ihub-Prototype75/", brief: "Help learners find useful content and understand what to do next from a shared learning space.", approach: "Organized the experience around onboarding and modular dashboard sections, with a responsive layout for smaller screens.", learning: "Built in a group workflow and practiced turning a product idea into coordinated page sections." },
   quiz: { title: "Interactive Quiz Widget", category: "Collaborative build · 2026", summary: "A compact quiz interaction with immediate feedback, score changes, and mobile-friendly controls.", stack: ["JavaScript", "HTML", "CSS", "Interaction design"], code: "https://github.com/kmukendi10/quiz-widget-project", live: "https://kmukendi10.github.io/quiz-widget-project/", brief: "Make quiz feedback immediate and understandable while keeping the interaction simple on mobile.", approach: "Connected answer selection to feedback and scoring states, and shaped controls for touch-sized use.", learning: "Explored clear feedback states and small interaction patterns that make an activity feel responsive." },
   x: { title: "X Clone", category: "Social feed interface · 2026", summary: "A responsive timeline replica with feed cards, post states, and familiar social interactions.", stack: ["HTML", "CSS", "JavaScript", "Responsive UI"], code: "https://github.com/Ricardo-ngozo/x", live: "https://x-frpgiqze3-the-hub75.vercel.app/", brief: "Recreate a social feed where posts and interactive states remain easy to scan.", approach: "Built a responsive stream of post cards and supporting interaction states, emphasizing a clear reading flow.", learning: "Practiced card layout, responsive feed density, and interface states for social content." },
-  task: { title: "Task Manager", category: "In progress · 2026", summary: "An evolving task-management experiment focused on persistent state and simple list updates.", stack: ["JavaScript", "localStorage", "UI state"], code: "https://github.com/Ricardo-ngozo/mdn-todo-board", brief: "Keep everyday task updates visible and predictable with a small, straightforward interface.", approach: "The public build currently focuses on task creation, completion, deletion, filtering, and persistence.", learning: "Used a small app to practice state transitions and browser storage." },
 };
 
 export default function ArchiveCaseStudy() {
   const [searchParams] = useSearchParams();
   const slug = searchParams.get('project') || '';
-  const project = ARCHIVE_NOTES[slug];
+  // Keep old task links working while presenting a single to-do project.
+  const project = ARCHIVE_NOTES[slug === 'task' ? 'todo' : slug];
 
   usePageFeatures('case', slug);
   useEffect(() => { document.title = project ? `${project.title} | Ricardo Ngozo` : 'Project case study | Ricardo Ngozo'; }, [slug]);

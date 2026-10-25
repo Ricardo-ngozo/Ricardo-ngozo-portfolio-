@@ -100,9 +100,9 @@ export default function HomePage() {
                   <span className="fw-year">2026</span>
                 </div>
                 <h3>Urban Threads</h3>
-                <p>Fashion storefront with bold typography, product storytelling, and conversion-focused layout.</p>
+                <p>Fashion storefront built with HTML, CSS and JavaScript, with Firebase sign-in, Firestore products and a local cart.</p>
                 <div className="fw-card-tech">
-                  <span>React</span><span>UI Design</span><span>Conversion UX</span>
+                  <span>JavaScript</span><span>Firebase</span><span>HTML / CSS</span>
                 </div>
                 <div className="fw-card-links">
                   <a href="https://lourve-reims.vercel.app/" target="_blank" rel="noreferrer" className="fw-btn-live">Live ↗</a>
@@ -125,9 +125,9 @@ export default function HomePage() {
                   <span className="fw-year">2026</span>
                 </div>
                 <h3>Anime List</h3>
-                <p>Live API-driven catalog with real-time filtering and a content-first card browsing experience.</p>
+                <p>React anime search app with Jikan API requests, title suggestions, and loading, empty and error states.</p>
                 <div className="fw-card-tech">
-                  <span>JavaScript</span><span>Fetch API</span><span>Responsive</span>
+                  <span>React</span><span>Fetch API</span><span>Vite</span>
                 </div>
                 <div className="fw-card-links">
                   <a href="https://the-zone-anime-weather.vercel.app/" target="_blank" rel="noreferrer" className="fw-btn-live">Live ↗</a>
@@ -141,7 +141,7 @@ export default function HomePage() {
 
             <article className="fw-card reveal-element" data-reveal style={{'--fw-delay':'160ms'}}>
               <div className="fw-card-img">
-                <img src="/images/fm.png" alt="Game UI Setup" loading="lazy" />
+                <img src="/images/fm.png" alt="SIDELINE" loading="lazy" />
                 <div className="fw-card-shine"></div>
               </div>
               <div className="fw-card-content">
@@ -149,10 +149,10 @@ export default function HomePage() {
                   <span className="fw-tag fw-tag-purple">UI System</span>
                   <span className="fw-year">2026</span>
                 </div>
-                <h3>Game UI Setup</h3>
-                <p>React component system designed around game UI principles — layered panels, stat blocks, and animated states.</p>
+                <h3>SIDELINE</h3>
+                <p>Football management interface prototype with career setup, squad and tactics screens, and browser-saved progress.</p>
                 <div className="fw-card-tech">
-                  <span>React</span><span>Components</span><span>Design System</span>
+                  <span>React</span><span>Context</span><span>localStorage</span>
                 </div>
                 <div className="fw-card-links">
                   <a href="https://fm-react-eight.vercel.app/" target="_blank" rel="noreferrer" className="fw-btn-live">Live ↗</a>
@@ -175,9 +175,9 @@ export default function HomePage() {
                   <span className="fw-year">2026</span>
                 </div>
                 <h3>Tic-Tac-Toe</h3>
-                <p>Vanilla JS game with clean state architecture, win detection, and smooth interaction — no framework.</p>
+                <p>React Tic-Tac-Toe game with classic, timed and AI modes, winner detection, round scores and Tone.js audio.</p>
                 <div className="fw-card-tech">
-                  <span>JavaScript</span><span>Game Logic</span><span>State</span>
+                  <span>React</span><span>Game Logic</span><span>Tone.js</span>
                 </div>
                 <div className="fw-card-links">
                   <a href="https://tic-tac-toe-srt-75.vercel.app/" target="_blank" rel="noreferrer" className="fw-btn-live">Play ↗</a>
@@ -315,29 +315,6 @@ export default function HomePage() {
                     <a href="https://x-frpgiqze3-the-hub75.vercel.app/" target="_blank" rel="noopener noreferrer" className="archive-action">Preview · sign-in required</a>
                     <a href="https://github.com/Ricardo-ngozo/x" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
                     <Link to="/case-studies/archive?project=x" className="archive-action archive-action-case">Case study</Link>
-                  </div>
-                </div>
-              </article>
-
-              <article className="archive-item reveal-element" data-reveal style={{'transitionDelay':'240ms'}}
-                data-live="#"
-                data-code="https://github.com/Ricardo-ngozo/mdn-todo-board">
-                <div className="archive-item-img">
-                  <img src="/images/todo-list.png" alt="Task Manager" loading="lazy" />
-                  <div className="archive-item-overlay">
-                    <span className="archive-overlay-btn archive-coming-soon" aria-label="Task Manager project coming soon">In progress</span>
-                  </div>
-                </div>
-                <div className="archive-item-body">
-                  <div className="archive-meta">
-                    <span className="archive-item-tag">Interactive App</span>
-                    <span className="archive-year">2026</span>
-                  </div>
-                  <h3>Task Manager</h3>
-                  <p>Local persistence, smooth state changes, and dynamic list updates in a clean interface.</p>
-                  <div className="archive-actions">
-                    <a href="https://github.com/Ricardo-ngozo/mdn-todo-board" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
-                    <Link to="/case-studies/archive?project=todo" className="archive-action archive-action-case">Case study</Link>
                   </div>
                 </div>
               </article>
@@ -549,12 +526,6 @@ export default function HomePage() {
                 <div className="cert-tile-info">
                   <span className="cert-tile-issuer">Zaio</span>
                   <h3>{title}</h3>
-                  <span className="cert-tile-badge">
-                    Verified{' '}
-                    <svg className="verified-icon" viewBox="0 0 16 16" aria-hidden="true">
-                      <path d="m3.5 8.2 2.8 2.7 6.2-6.3" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
                 </div>
               </article>
             ))}

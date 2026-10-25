@@ -1,103 +1,241 @@
 import { usePageFeatures } from '../runtime/usePageFeatures.js';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 // All case study data from the original HTML files
 const CASE_STUDIES = {
   'urban-threads': {
-    meta: 'Case Study — E-commerce UI',
-    title: 'Urban Threads',
-    intro: 'A fashion-forward storefront concept that uses bold typography, full-bleed imagery, and a clean product grid to tell a brand story that converts.',
-    tags: ['React', 'UI Design', 'E-commerce', 'Conversion UX'],
-    live: 'https://lourve-reims.vercel.app/',
-    github: 'https://github.com/Ricardo-ngozo/Lourve-reims.git',
-    heroImage: '/images/lourve.png',
-    heroCaption: 'Fashion landing page with bold hero, product grid, and brand-forward visual hierarchy.',
-    blocks: [
-      {
-        heading: 'What was the brief?',
-        body: 'Urban Threads is a conceptual fashion brand project. The goal was to design and build a modern storefront landing page that felt like it belonged to a real premium streetwear label — strong brand identity, product showcase, and a path to purchase.\n\nThe design challenge was making the page feel editorial and aspirational while still being functional as a shopping experience.',
-      },
-      {
-        heading: 'What decisions did I make and why?',
-        list: [
-          { label: 'Full-bleed hero', text: "The landing hero uses a full-viewport image with overlaid typography — putting the product front and center and immediately establishing the brand's visual language." },
-          { label: 'Bold editorial typography', text: 'Large, confident headline text creates the fashion magazine feeling that streetwear brands rely on.' },
-          { label: 'Product grid with hover states', text: 'Each product card reveals a secondary view on hover — showing an alternate angle or detail shot.' },
-          { label: 'Minimal color palette', text: 'Black, white, and one accent color keeps product imagery as the visual focus.' },
-          { label: 'React component structure', text: 'Product cards, navigation, and layout sections are separate components — easy to swap in real product data.' },
-        ],
-      },
-      {
-        heading: 'Tools, technologies, and what I learned',
-        twoCol: {
-          left: { heading: 'Stack used', items: ['React (functional components)', 'CSS-in-JS for component styles', 'CSS Grid for product layout', 'Responsive images and art direction', 'Vercel for deployment'] },
-          right: { heading: 'Key learnings', items: ['How brand identity translates to UI decisions', 'E-commerce conversion patterns: above the fold, CTA placement, sequencing', 'Product card hover states that feel smooth and intentional', 'Image performance: lazy loading, next-gen formats, responsive srcset'] },
-        },
-      },
-      {
-        heading: 'What would I do differently? What am I proud of?',
-        body: "I would connect the product grid to a real headless CMS — Contentful or Sanity — so the catalog can be updated without touching the code.\n\nI'd also add a cart interaction with a slide-in drawer, size selection, and local cart state.\n\nI'm proud of the visual execution. The page has a real brand feel — it looks like a site a fashion label would actually ship.",
-      },
+    "meta": "Case Study — E-commerce Application",
+    "title": "Urban Threads",
+    "intro": "A fashion storefront built with HTML, CSS and JavaScript. Firebase handles sign-in and product data; the cart keeps selections in browser storage.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Firebase Auth",
+      "Firestore"
     ],
-    visuals: [
-      { type: 'text', heading: 'Brand-first design', body: 'The layout hierarchy was built around the principle that the brand speaks before the product. Typography and image placement establish trust and aesthetic fit.' },
-      { type: 'image', src: '/images/FASHION.jfif', alt: 'Urban Threads brand mood', caption: 'Fashion-forward visual language: bold crops, editorial spacing, and confident type.' },
+    "live": "https://lourve-reims.vercel.app/",
+    "github": "https://github.com/Ricardo-ngozo/Lourve-reims.git",
+    "heroImage": "/images/lourve.png",
+    "heroCaption": "The editorial landing page for Urban Threads, with sign-in leading into the shopping flow.",
+    "blocks": [
+      {
+        "heading": "What was the brief?",
+        "body": "Build a fashion storefront that connects an editorial landing page to sign-in, product browsing and a cart. Separate HTML pages and JavaScript modules connect the shopping flow."
+      },
+      {
+        "heading": "How the current build works",
+        "list": [
+          {
+            "label": "Page structure",
+            "text": "Separate landing, shop, category and cart pages share CSS and JavaScript modules."
+          },
+          {
+            "label": "Authentication and data",
+            "text": "Firebase Authentication handles email/password and Google sign-in. Product and order code reads and writes Cloud Firestore collections."
+          },
+          {
+            "label": "Cart state",
+            "text": "Items and quantities are stored in localStorage and rendered into the cart interface."
+          },
+          {
+            "label": "Checkout prototype",
+            "text": "The cart calculates totals in rand, province-based delivery, a first-order discount and a six-month payment estimate. Payment-method selection is a demo interface, not a payment gateway."
+          }
+        ]
+      },
+      {
+        "heading": "Tools and implementation",
+        "twoCol": {
+          "left": {
+            "heading": "Stack used",
+            "items": [
+              "HTML and external CSS stylesheets",
+              "JavaScript ES modules and DOM events",
+              "Firebase Authentication and Cloud Firestore",
+              "localStorage for cart state",
+              "Vercel deployment"
+            ]
+          },
+          "right": {
+            "heading": "Implementation details",
+            "items": [
+              "Fetch product documents from Firestore",
+              "Update quantities and recalculate totals",
+              "Record an order document in Firestore",
+              "Keep payment processing outside the scope of this demo"
+            ]
+          }
+        }
+      },
+      {
+        "heading": "What would I improve next?",
+        "body": "Make the shopping flow easier to try without creating an account, and make loading and error states more helpful. The checkout is a learning project: production payments and server-side validation would need separate work."
+      }
     ],
+    "visuals": [
+      {
+        "type": "image",
+        "src": "/images/FASHION.jfif",
+        "alt": "Urban Threads brand mood",
+        "caption": "The visual direction behind the fashion storefront."
+      }
+    ]
   },
   'anime-list': {
-    meta: 'Case Study — Content Catalog',
-    title: 'Anime List',
-    intro: 'A live API-driven anime catalog with real-time filtering, a content-first card browsing experience, and responsive layout built around discovery.',
-    tags: ['JavaScript', 'Fetch API', 'Responsive', 'API Design'],
-    live: 'https://the-zone-anime-weather.vercel.app/',
-    github: 'https://github.com/Ricardo-ngozo/Anime.list.git',
-    heroImage: '/images/the zone (1).png',
-    heroCaption: 'Anime catalog with live filtering and content-first browsing experience.',
-    blocks: [
-      { heading: 'What was the brief?', body: 'Build a live catalog app that fetches anime data from an external API and lets users browse, filter, and search through titles in a card-based layout.' },
-      { heading: 'What decisions did I make and why?', list: [{ label: 'Fetch API', text: 'Used native Fetch rather than a library to keep the bundle lean and practice raw API integration.' }, { label: 'Real-time filter', text: 'Search and genre filters update the visible results instantly without page reloads, giving the app a responsive feel.' }, { label: 'Card grid layout', text: 'Cards put artwork front and center — the most important element in an anime catalog.' }] },
-      { heading: 'What I learned', body: 'Practised API pagination, async/await error handling, and how to debounce user input. Also learned how much the loading state UX matters — empty states and spinners are as important as the data.' },
+    "meta": "Case Study — API Search App",
+    "title": "Anime List",
+    "intro": "A React app for searching anime titles through the Jikan API, with suggested searches and separate loading, empty and error states.",
+    "tags": [
+      "React",
+      "JavaScript",
+      "Fetch API",
+      "Vite"
     ],
-    visuals: [
-      { type: 'image', src: '/images/the zone (1).png', alt: 'Anime List catalog view', caption: 'Live catalog with real-time search and genre filtering.' },
+    "live": "https://the-zone-anime-weather.vercel.app/",
+    "github": "https://github.com/Ricardo-ngozo/Anime.list.git",
+    "heroImage": "/images/the zone (1).png",
+    "heroCaption": "The Zone combines anime search and a separate weather page in a React app.",
+    "blocks": [
+      {
+        "heading": "What was the brief?",
+        "body": "Build an interface around an external API: submit an anime title, fetch matching results and display the returned artwork and details."
+      },
+      {
+        "heading": "How the search works",
+        "list": [
+          {
+            "label": "React state",
+            "text": "The page stores the submitted search term and passes it to a custom useAnime hook."
+          },
+          {
+            "label": "API request",
+            "text": "The hook uses fetch to query Jikan when the submitted term changes, requesting up to 20 results."
+          },
+          {
+            "label": "Result states",
+            "text": "The UI switches between loading, error, no-results and card-list views. Suggested titles give visitors a quick starting point."
+          }
+        ]
+      },
+      {
+        "heading": "What I would improve next",
+        "body": "Improve recovery when the external API is unavailable, including retrying the same search. I would also add genre filters and pagination controls as the search interface grows."
+      }
     ],
+    "visuals": [
+      {
+        "type": "image",
+        "src": "/images/the zone (1).png",
+        "alt": "The Zone anime project",
+        "caption": "The project landing page and visual direction."
+      }
+    ]
   },
   'game-ui-setup': {
-    meta: 'Case Study — UI System',
-    title: 'Game UI Setup',
-    intro: 'A React component system designed around game UI principles — layered panels, stat blocks, HUD elements, and animated interaction states.',
-    tags: ['React', 'Components', 'Design System', 'Game UI'],
-    live: 'https://fm-react-eight.vercel.app/',
-    github: 'https://github.com/Ricardo-ngozo/react.git',
-    heroImage: '/images/fm.png',
-    heroCaption: 'Component-based game UI system with layered panels, stat blocks, and animated states.',
-    blocks: [
-      { heading: 'What was the brief?', body: 'Create a reusable React component library for game interfaces — a toolkit of UI primitives (panels, stats, bars, icons) that could be assembled into any game HUD.' },
-      { heading: 'Key decisions', list: [{ label: 'Component decomposition', text: 'Each UI element (StatBar, Panel, HUDIcon) is a standalone component with clear props — composable and predictable.' }, { label: 'CSS custom properties', text: 'Theme variables let the entire system switch colors without touching component code.' }, { label: 'Animated states', text: 'useEffect drives entry animations, damage flashes, and fill transitions.' }] },
-      { heading: 'What I learned', body: 'How to design a component API that is flexible but not overly abstract. When to use state vs. props. How animation timing makes game UI feel alive.' },
+    "meta": "Case Study — Football Management Prototype",
+    "title": "SIDELINE",
+    "intro": "A React football management interface prototype with career setup, club selection, headquarters screens and progress saved in the browser.",
+    "tags": [
+      "React",
+      "React Router",
+      "Context",
+      "localStorage"
     ],
-    visuals: [
-      { type: 'image', src: '/images/Fm react.png', alt: 'Game UI component system', caption: 'Layered panels, stat bars, and animated HUD elements.' },
+    "live": "https://fm-react-eight.vercel.app/",
+    "github": "https://github.com/Ricardo-ngozo/react.git",
+    "heroImage": "/images/fm.png",
+    "heroCaption": "An earlier screenshot of the football management interface. The live project is now titled SIDELINE.",
+    "blocks": [
+      {
+        "heading": "What was the brief?",
+        "body": "Explore a football management experience through connected screens: create a career, choose a club and move into a headquarters with squad, tactics, preparation and fixture views. The current build is an interface prototype."
+      },
+      {
+        "heading": "How it was built",
+        "list": [
+          {
+            "label": "Routes and components",
+            "text": "React Router connects the screens. Shared UI components provide buttons, cards, inputs and dialogs."
+          },
+          {
+            "label": "Shared game state",
+            "text": "A React context stores careers, the current career, setup drafts and preferences."
+          },
+          {
+            "label": "Browser persistence",
+            "text": "Career and settings state is serialized to localStorage so it can be restored between visits."
+          }
+        ]
+      },
+      {
+        "heading": "Current scope",
+        "body": "The project focuses on the interface, career flow and browser state. The football simulation remains a work in progress."
+      }
     ],
+    "visuals": [
+      {
+        "type": "image",
+        "src": "/images/Fm react.png",
+        "alt": "Earlier football management interface",
+        "caption": "Earlier interface work that developed into SIDELINE."
+      }
+    ]
   },
   'tic-tac-toe': {
-    meta: 'Case Study — Mini Game',
-    title: 'Tic-Tac-Toe',
-    intro: 'A clean Tic-Tac-Toe implementation in vanilla JavaScript with state-machine logic, win detection, and smooth interaction — no framework, no dependencies.',
-    tags: ['JavaScript', 'Game Logic', 'State', 'Vanilla JS'],
-    live: 'https://tic-tac-toe-srt-75.vercel.app/',
-    github: 'https://github.com/Ricardo-ngozo/Tic-tac-toe.git',
-    heroImage: '/images/tic tac toe.png',
-    heroCaption: 'Vanilla JS Tic-Tac-Toe with state machine logic and win detection.',
-    blocks: [
-      { heading: 'What was the brief?', body: 'Build a playable Tic-Tac-Toe game with clean state management, win detection across all eight winning lines, and draw detection — no library, no framework.' },
-      { heading: 'Key decisions', list: [{ label: 'Array-based board state', text: 'A 9-element array represents the board. Wins are checked by comparing fixed index triplets.' }, { label: 'Disabled state management', text: 'Cells are disabled immediately on click to prevent double-moves. All cells disable on win or draw.' }, { label: 'Reset flow', text: 'Reset rebuilds state from scratch rather than mutating — cleaner and easier to reason about.' }] },
-      { heading: 'What I learned', body: 'State machine thinking: every user action transitions the game through well-defined states. This is the same mental model used in complex game engines — just at a smaller scale.' },
+    "meta": "Case Study — Browser Game",
+    "title": "Tic-Tac-Toe",
+    "intro": "A React Tic-Tac-Toe game with classic, timed and AI modes, winner and draw detection, round scores and Tone.js audio.",
+    "tags": [
+      "React",
+      "JavaScript",
+      "Game Logic",
+      "Tone.js"
     ],
-    visuals: [
-      { type: 'image', src: '/images/tic tac toe.png', alt: 'Tic-Tac-Toe game', caption: 'Clean state architecture, win detection, no dependencies.' },
+    "live": "https://tic-tac-toe-srt-75.vercel.app/",
+    "github": "https://github.com/Ricardo-ngozo/Tic-tac-toe.git",
+    "heroImage": "/images/tic tac toe.png",
+    "heroCaption": "The Tic-Tac-Toe project, now implemented in React with multiple game modes.",
+    "blocks": [
+      {
+        "heading": "What was the brief?",
+        "body": "Build a playable browser game with predictable turns, winner and draw detection, and replay. The current version uses React and adds timed play, an AI opponent and sound."
+      },
+      {
+        "heading": "How the game works",
+        "list": [
+          {
+            "label": "Board state",
+            "text": "A nine-element array is held in React state. A move copies the board and updates the selected cell and next turn."
+          },
+          {
+            "label": "Move guards",
+            "text": "The click handler ignores occupied cells and moves after the round has ended."
+          },
+          {
+            "label": "Round and score state",
+            "text": "Winner and draw results update scores. Starting a new round resets the board, move history and timer; resetting all also clears scores."
+          },
+          {
+            "label": "Audio",
+            "text": "Tone.js supplies sounds for interactions and round outcomes."
+          }
+        ]
+      },
+      {
+        "heading": "Implementation focus",
+        "body": "The main challenge is keeping board state, turn order, timers, score updates and screen transitions consistent across the different modes."
+      }
     ],
+    "visuals": [
+      {
+        "type": "image",
+        "src": "/images/tic tac toe.png",
+        "alt": "Tic-Tac-Toe game",
+        "caption": "Browser game interface with turn handling and winner detection."
+      }
+    ]
   },
   'ihub': {
     meta: 'Case Study — Group Prototype',

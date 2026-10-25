@@ -24,7 +24,7 @@ const W=scope.workshop(),canvas=document.getElementById('tech-globe');if(!W||!ca
     HTML5:["Semantic structure, forms, and content that works across devices.","HTML"],
     CSS3:["Responsive layouts, visual systems, and the motion throughout this portfolio.","CSS"],
     JavaScript:["Interface state, API requests, and browser game loops.","JavaScript"],
-    React:["Component-based interfaces in Urban Threads and Game UI Setup.","React"],
+    React:["Component-based interfaces in Anime List, SIDELINE and Tic-Tac-Toe.","React"],
     Tailwind:["Utility-first styling in my toolkit. Browse the case studies for each project’s exact stack.","UI"],
     "Node.js":["Part of my fullstack direction. Project build notes explain the server-side scope.","Airbnb"],
     Python:["From coordinates and loops to flocking and particle physics. Explore the learning lab.","Python"],

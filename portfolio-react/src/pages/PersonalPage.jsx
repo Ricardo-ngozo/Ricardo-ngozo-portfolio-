@@ -116,9 +116,9 @@ export default function PersonalPage() {
             </div>
             <div className="p-building-projects">
               {[
-                { img: '/images/lourve.png', alt: 'Urban Threads', title: 'Urban Threads', desc: 'Fashion storefront. React, bold type, conversion-first.' },
-                { img: '/images/the zone (1).png', alt: 'Anime List', title: 'Anime List', desc: 'Live catalog. API filtering. Content-first UX.' },
-                { img: '/images/fm.png', alt: 'Game UI Setup', title: 'Game UI Setup', desc: 'React component system. Layered game panels.' },
+                { img: '/images/lourve.png', alt: 'Urban Threads', title: 'Urban Threads', desc: 'Fashion storefront. HTML, CSS, JavaScript and Firebase.' },
+                { img: '/images/the zone (1).png', alt: 'Anime List', title: 'Anime List', desc: 'React title search with the Jikan API.' },
+                { img: '/images/fm.png', alt: 'SIDELINE', title: 'SIDELINE', desc: 'React football management prototype. Browser-saved careers.' },
               ].map(({ img, alt, title, desc }) => (
                 <div key={title} className="p-dir-card">
                   <img src={img} alt={alt} loading="lazy" />

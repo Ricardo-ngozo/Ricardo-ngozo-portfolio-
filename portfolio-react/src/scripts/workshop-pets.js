@@ -14,34 +14,6 @@ export function initPets(scope) {
       scope.listen(bird, "click",()=>{welcome();bird.classList.toggle("bird-awake");});hero.querySelector(".hero-identity,.p-hero-content")?.prepend(bird);
       if(hero.id==="home"){const path=W.el("a","workshop-path");path.href="#stack";path.innerHTML='<span>Follow the curiosity</span><svg viewBox="0 0 120 68" aria-hidden="true"><path d="M9 4c96 0 96 35 51 35S24 64 60 64m-7-7 7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>';hero.append(path);W.loop(hero,()=>{const bounds=hero.getBoundingClientRect();hero.style.setProperty("--path-progress",String(Math.max(0,Math.min(1,-bounds.top/Math.max(1,bounds.height*.65)))));});}
     }
-    document.querySelectorAll(".section-companion").forEach((button,i)=>{
-      const section=button.parentElement;if(section.matches(".hero-section,.p-hero,header.hero")){button.hidden=true;return;}
-      const kind=[...button.classList].find(c=>c.startsWith("section-companion--"))?.replace("section-companion--","")||"friend";
-      const habitat=W.el("div","companion-habitat"),caption=W.el("p","pet-caption",kind[0].toUpperCase()+kind.slice(1)+" on duty");
-      const anchor=section.querySelector(":scope > .chapter-line");
-      if(anchor)anchor.after(habitat);else section.append(habitat);
-      habitat.append(button,caption);button.classList.remove("companion-left");button.classList.add("workshop-pet");
-      const svg=button.querySelector("svg");if(svg){const ns="http://www.w3.org/2000/svg",defs=document.createElementNS(ns,"defs"),g=document.createElementNS(ns,"linearGradient");g.id="pet-coat-"+i;g.setAttribute("x2",".8");g.setAttribute("y2","1");[["0","#fff1d5"],[".5",i%2?"#8b9eff":"#ff624b"],["1",i%2?"#75648e":"#9b6a40"]].forEach(([offset,color])=>{const stop=document.createElementNS(ns,"stop");stop.setAttribute("offset",offset);stop.setAttribute("stop-color",color);g.append(stop);});defs.append(g);svg.prepend(defs);svg.style.fill="url(#"+g.id+")";}
-      scope.listen(button, "click",()=>{caption.textContent="Hello from the "+kind+".";W.tone(370+i*24);});
-      if(section.id==="projects"){
-        section.querySelectorAll(".fw-card").forEach(card=>{
-          const follow=()=>{caption.textContent="Inspecting "+card.querySelector("h3").textContent;habitat.style.setProperty("--pet-lean",((card.offsetLeft/Math.max(1,section.clientWidth))-.3)*15+"deg");button.classList.add("is-awake");};
-          scope.listen(card, "pointerenter",follow);scope.listen(card, "focusin",follow);
-          scope.listen(card, "pointerleave",()=>button.classList.remove("is-awake"));
-        });
-      }
-      if(section.id==="stack"){
-        scope.listen(document, "workshop:globe",e=>{caption.textContent="Following "+e.detail.label;const globe=section.querySelector(".tech-globe-wrap");if(globe){globe.append(button);button.classList.add("globe-orbit-pet");button.style.setProperty("--pet-x",e.detail.x+"px");button.style.setProperty("--pet-y",e.detail.y+"px");}button.classList.add("is-awake");scope.timeout(()=>button.classList.remove("is-awake"),800);});
-      }
-      if(section.id==="archive"){
-        const toggle=section.querySelector("[data-archive-toggle]");
-        const update=()=>{const open=toggle?.getAttribute("aria-expanded")==="true";button.classList.toggle("is-awake",open);caption.textContent=open?"The archive is open. The cat is curious.":"A quiet cat, keeping the archive."};
-        if(toggle)new scope.MutationObserver(update).observe(toggle,{attributes:true,attributeFilter:["aria-expanded"]});update();
-      }
-      if(section.classList.contains("phase")){
-        scope.listen(document, "workshop:lab",e=>{if(section.id!=="experiment-"+e.detail.phase)return;caption.textContent="Experiment "+e.detail.phase+" in motion";button.classList.add("is-awake");scope.timeout(()=>button.classList.remove("is-awake"),700);});
-      }
-    });
     const runway=document.querySelector(".motion-runway"),dog=runway?.querySelector(".motion-runner");
     if(runway&&dog&&document.body.dataset.page==="arena"){
       runway.classList.add("fetch-runway");
