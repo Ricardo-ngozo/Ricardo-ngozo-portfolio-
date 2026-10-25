@@ -8,7 +8,7 @@ The current workshop is the React/Vite app in `portfolio-react/`. See the [root 
 - A shared SVG Pong entrance fades into Home, Personal, Lab, Arena and case-study routes. Arena includes the Pong challenge with its saved five-return reward. Contact information and work remain available without playing.
 - A lazy Three.js character on Home and Personal, with an immediate 8 KB poster rendered from the same model while loading or if WebGL fails. GLB bytes are cached across character routes; visible rendering is capped at 30 fps.
 - A large draggable technology globe with a supporting inspector, keyboard controls and an equivalent HTML list. The journey timeline glows in proportion to scroll position.
-- Category/search filters for four selected projects and nine archive entries, plus shareable preview dialogs with existing screenshots, source/live links and build notes.
+- Category/search filters for three selected projects and ten archive entries, plus shareable preview dialogs with existing screenshots, source/live links and build notes.
 - Case-study reading tools, image enlargement, personal timeline and influence captions.
 - Three current Lab experiments: coordinate motion, particles and boids, with pause/reset/speed controls. The JavaScript previews illustrate Python concepts; Python excerpts are learning material.
 - Restrained scroll effects initialized after the first render. Repeated section animal buttons and slogan ribbons have been removed; the Arena keeps its fetch interaction.

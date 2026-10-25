@@ -86,14 +86,14 @@ const CASE_STUDIES = {
   'anime-list': {
     "meta": "Case Study — API Search App",
     "title": "Anime List",
-    "intro": "A React app for searching anime titles through the Jikan API, with suggested searches and separate loading, empty and error states.",
+    "intro": "A React app for searching anime titles through Jikan, with a same-origin API endpoint, explicit retries and labelled offline sample titles during outages.",
     "tags": [
       "React",
       "JavaScript",
       "Fetch API",
       "Vite"
     ],
-    "live": "https://the-zone-anime-weather.vercel.app/",
+    "live": "https://the-zone-anime-weather.vercel.app/anime",
     "github": "https://github.com/Ricardo-ngozo/Anime.list.git",
     "heroImage": "/images/the zone (1).png",
     "heroCaption": "The Zone combines anime search and a separate weather page in a React app.",
@@ -111,7 +111,7 @@ const CASE_STUDIES = {
           },
           {
             "label": "API request",
-            "text": "The hook uses fetch to query Jikan when the submitted term changes, requesting up to 20 results."
+            "text": "The hook calls a same-origin endpoint that forwards a bounded search to Jikan. Requests have timeouts and are cancelled when the query changes or the page closes."
           },
           {
             "label": "Result states",
@@ -121,7 +121,7 @@ const CASE_STUDIES = {
       },
       {
         "heading": "What I would improve next",
-        "body": "Improve recovery when the external API is unavailable, including retrying the same search. I would also add genre filters and pagination controls as the search interface grows."
+        "body": "The Find button and Retry live search action can repeat the same query. When live search fails, the page shows clearly labelled title-only examples instead of fabricated API details. Genre filters and pagination controls are possible next steps."
       }
     ],
     "visuals": [
@@ -248,7 +248,7 @@ const CASE_STUDIES = {
     heroCaption: 'Education hub with onboarding, dashboards, and content cards.',
     blocks: [
       { heading: 'What was the brief?', body: 'Build a collaborative prototype for an education platform. Focus on clear onboarding, modular dashboard sections, and responsive content cards that help learners find what they need.' },
-      { heading: 'Team & collaboration', body: "This was a group project. I focused on the dashboard layout, card components, and responsive behavior. Working in a team taught me to write modular CSS that doesn't collide with others' styles, and to communicate design decisions clearly." },
+      { heading: 'Team & collaboration', body: "This was a group project. My linked repository contains the HTML/CSS directory page and resource cards. The live prototype is the wider team build, so it includes work beyond that directory page." },
       { heading: 'What I learned', body: 'How to work in a shared codebase. Git branching, merge conflicts, and daily syncs. Also learned that good onboarding UX is about reducing decisions, not adding features.' },
     ],
     visuals: [
@@ -292,16 +292,16 @@ const CASE_STUDIES = {
   'airbnb': {
     meta: 'Case Study — Full-Stack Capstone',
     title: 'Airbnb Capstone',
-    intro: 'A full-stack accommodation marketplace with guest browsing, host management, and admin workflows — React frontend, Node/Express API, MongoDB.',
+    intro: 'An accommodation booking training capstone connecting React, a Node/Express API and MongoDB, with listing discovery, authentication and booking workflows.',
     tags: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
     live: 'https://airbnb-capstone-fixed.onrender.com/',
     github: 'https://github.com/Ricardo-ngozo/airbnb-capstone-fixed',
     heroImage: '/images/Screenshot 2026-09-15 155420.png',
     heroCaption: 'Full-stack Airbnb clone with search, booking, and host workflows.',
     blocks: [
-      { heading: 'What was the brief?', body: 'Build a capstone project that demonstrates full-stack ability: public listing discovery, user authentication, booking flow, host dashboard, and admin tools. Deployed to production.' },
-      { heading: 'Architecture decisions', list: [{ label: 'React + Express separation', text: 'The frontend and API are deployed independently, with clear API contracts — same pattern used in production SaaS.' }, { label: 'JWT authentication', text: 'Stateless auth tokens on the API; role-based middleware guards host and admin routes.' }, { label: 'MongoDB with Mongoose', text: 'Document-based data model fits the flexible property listing schema.' }] },
-      { heading: 'What I learned', body: 'How to coordinate a frontend and API that evolve together without breaking. The cost of premature abstraction — I refactored the API shape twice. How to debug CORS in a deployed environment.' },
+      { heading: 'What was the brief?', body: 'Build a training capstone that connects public listing discovery, authentication and booking flows to an API and data models. The live demo is hosted on Render.' },
+      { heading: 'Architecture decisions', list: [{ label: 'React + Express separation', text: 'React handles the interface and calls the Express API for application data. The repository separates frontend and backend code.' }, { label: 'JWT authentication', text: 'Stateless auth tokens on the API; role-based middleware guards host and admin routes.' }, { label: 'MongoDB with Mongoose', text: 'Document-based data model fits the flexible property listing schema.' }] },
+      { heading: 'What I learned', body: 'Connecting listing screens, authentication and bookings requires the interface and API to agree on data and error handling. The backend also includes an in-memory development fallback when MongoDB is unavailable; that mode does not provide durable storage.' },
     ],
     visuals: [
       { type: 'image', src: '/images/airbnb-capstone.png', alt: 'Airbnb capstone listing view', caption: 'Listing discovery with search, filters, and booking flow.' },
