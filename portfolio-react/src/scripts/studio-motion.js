@@ -3,6 +3,7 @@ export function initStudioMotion(scope) {
 "use strict";
 const W=scope.workshop();if(!W)return;
 function init(){
+if(matchMedia('(max-width: 820px)').matches)return;
 const scenes=document.querySelectorAll('section[data-chapter],.phase,.case-block,.case-content');
 const active=new Set();scope.defer(()=>active.forEach(animation=>animation.cancel()));
 const observer=new scope.IntersectionObserver(entries=>entries.forEach(entry=>{

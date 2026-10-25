@@ -20,9 +20,9 @@ export default function CharacterScene() {
     const scene = new THREE.Scene();
     let renderer;
     try {
-      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: devicePixelRatio < 2, powerPreference: 'low-power' });
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' });
     } catch { setState('fallback'); return; }
-    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, innerWidth < 760 ? 1.25 : 1.5));
+    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, innerWidth <= 820 ? 2 : 1.5));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     container.append(renderer.domElement);
     const camera = new THREE.PerspectiveCamera(14.5, 1, .1, 1000);
