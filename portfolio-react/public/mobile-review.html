@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Temporary mobile layout review</title>
+<style>
+body{margin:0;padding:20px;background:#dedee3;color:#111;font:16px system-ui}header{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px}button{font:inherit;padding:10px}iframe{display:block;border:1px solid #888;width:390px;height:790px;max-width:100%;background:#0d0d0f}h1{font-size:18px;margin:0 16px 0 0}
+</style>
+<header><h1>Phone viewport review</h1><button data-width="320">320px</button><button data-width="375">375px</button><button data-width="390">390px</button><button data-width="430">430px</button></header>
+<iframe src="/" title="Phone preview"></iframe>
+<script>document.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>document.querySelector('iframe').style.width=button.dataset.width+'px'));</script>
+</html>

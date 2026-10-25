@@ -16,6 +16,7 @@ import './react-layout.css';
 import './pages/hero.css';
 import './laptop-layout.css';
 import './pages/experience.css';
+import './mobile-readability.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
