@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
 import FloatingActions from '../components/FloatingActions.jsx';
-import RotatingRole from '../components/RotatingRole.jsx';
 
 export default function HomePage() {
   usePageFeatures('home');
@@ -42,15 +41,15 @@ export default function HomePage() {
                 <circle cx="53" cy="294" r="11" />
                 <circle cx="23" cy="314" r="5" />
               </svg>
-              <p>I want to be a<RotatingRole /></p>
+              <p>Long-term goal<strong>Game development.</strong></p>
             </aside>
           </div>
 
           <div className="cinematic-introduction">
             <p>
-              I'm a <strong className="cinematic-blue">full-stack developer</strong> in progress, learning by building real projects and chasing the long-term goal of becoming a{' '}
-              <strong className="cinematic-coral">game developer.</strong>
+              I'm a <strong className="cinematic-blue">junior full-stack developer</strong>, having recently completed training through Zaio and iHub Africa. I build with JavaScript, React, Node.js and Firebase — and I like knowing what happens behind the button.
             </p>
+            <p className="cinematic-availability">Johannesburg, South Africa · Open to junior roles and internships.</p>
             <div className="cinematic-actions">
               <a href="#projects" className="hero-cta-primary">Explore my work <span aria-hidden="true">↗</span></a>
               <a href="#why-me" className="hero-cta-secondary">About me <span aria-hidden="true">↗</span></a>
@@ -85,22 +84,39 @@ export default function HomePage() {
           <div className="chapter-line"><span>02</span>Selected work</div>
           <div className="section-header reveal-element" data-reveal>
             <h2>Selected work</h2>
-            <p>A few projects that show how I think, design, and build.</p>
+            <p>Start with the builds that connect interfaces, application state and real data.</p>
           </div>
 
           <div className="fw-grid">
             <article className="fw-card fw-card-hero reveal-element" data-reveal>
+              <div className="fw-card-img"><img src="/images/Screenshot 2026-09-15 155420.png" alt="Airbnb Capstone" loading="lazy" /><div className="fw-card-shine"></div></div>
+              <div className="fw-card-content">
+                <div className="fw-card-top"><span className="fw-tag">Full-stack capstone</span><span className="fw-year">2026</span></div>
+                <h3>Airbnb Capstone</h3>
+                <p>Accommodation booking capstone connecting a React interface to a Node/Express API and MongoDB, with listing search, authentication and booking flows.</p>
+                <p className="project-contribution">Training capstone · Frontend, API and data integration</p>
+                <div className="fw-card-tech"><span>React</span><span>Node.js / Express</span><span>MongoDB</span></div>
+                <div className="fw-card-links">
+                  <a href="https://airbnb-capstone-fixed.onrender.com/" target="_blank" rel="noreferrer" className="fw-btn-live">Live ↗</a>
+                  <Link to="/case-studies/airbnb" className="fw-btn-case">Case Study</Link>
+                  <a href="https://github.com/Ricardo-ngozo/airbnb-capstone-fixed" target="_blank" rel="noreferrer" className="fw-btn-gh" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg></a>
+                </div>
+              </div>
+            </article>
+
+            <article className="fw-card reveal-element" data-reveal data-category="Fullstack">
               <div className="fw-card-img">
                 <img src="/images/lourve.png" alt="Urban Threads" loading="lazy" />
                 <div className="fw-card-shine"></div>
               </div>
               <div className="fw-card-content">
                 <div className="fw-card-top">
-                  <span className="fw-tag">E-commerce UI</span>
+                  <span className="fw-tag">E-commerce application</span>
                   <span className="fw-year">2026</span>
                 </div>
                 <h3>Urban Threads</h3>
                 <p>Fashion storefront built with HTML, CSS and JavaScript, with Firebase sign-in, Firestore products and a local cart.</p>
+                <p className="project-contribution">Training project · Storefront, authentication and cart flow</p>
                 <div className="fw-card-tech">
                   <span>JavaScript</span><span>Firebase</span><span>HTML / CSS</span>
                 </div>
@@ -114,31 +130,6 @@ export default function HomePage() {
               </div>
             </article>
 
-            <article className="fw-card reveal-element" data-reveal style={{'--fw-delay':'80ms'}}>
-              <div className="fw-card-img">
-                <img src="/images/the zone (1).png" alt="Anime List" loading="lazy" />
-                <div className="fw-card-shine"></div>
-              </div>
-              <div className="fw-card-content">
-                <div className="fw-card-top">
-                  <span className="fw-tag">Content Catalog</span>
-                  <span className="fw-year">2026</span>
-                </div>
-                <h3>Anime List</h3>
-                <p>React anime search app with Jikan API requests, title suggestions, and loading, empty and error states.</p>
-                <div className="fw-card-tech">
-                  <span>React</span><span>Fetch API</span><span>Vite</span>
-                </div>
-                <div className="fw-card-links">
-                  <a href="https://the-zone-anime-weather.vercel.app/" target="_blank" rel="noreferrer" className="fw-btn-live">Live ↗</a>
-                  <Link to="/case-studies/anime-list" className="fw-btn-case">Case Study</Link>
-                  <a href="https://github.com/Ricardo-ngozo/Anime.list.git" target="_blank" rel="noreferrer" className="fw-btn-gh" aria-label="GitHub">
-                    <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
-                  </a>
-                </div>
-              </div>
-            </article>
-
             <article className="fw-card reveal-element" data-reveal style={{'--fw-delay':'160ms'}}>
               <div className="fw-card-img">
                 <img src="/images/fm.png" alt="SIDELINE" loading="lazy" />
@@ -146,11 +137,12 @@ export default function HomePage() {
               </div>
               <div className="fw-card-content">
                 <div className="fw-card-top">
-                  <span className="fw-tag fw-tag-purple">UI System</span>
+                  <span className="fw-tag fw-tag-purple">Football management prototype</span>
                   <span className="fw-year">2026</span>
                 </div>
                 <h3>SIDELINE</h3>
                 <p>Football management interface prototype with career setup, squad and tactics screens, and browser-saved progress.</p>
+                <p className="project-contribution">Personal project · Career setup and browser-saved state</p>
                 <div className="fw-card-tech">
                   <span>React</span><span>Context</span><span>localStorage</span>
                 </div>
@@ -158,31 +150,6 @@ export default function HomePage() {
                   <a href="https://fm-react-eight.vercel.app/" target="_blank" rel="noreferrer" className="fw-btn-live">Live ↗</a>
                   <Link to="/case-studies/game-ui-setup" className="fw-btn-case">Case Study</Link>
                   <a href="https://github.com/Ricardo-ngozo/react.git" target="_blank" rel="noreferrer" className="fw-btn-gh" aria-label="GitHub">
-                    <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <article className="fw-card reveal-element" data-reveal style={{'--fw-delay':'240ms'}}>
-              <div className="fw-card-img">
-                <img src="/images/tic tac toe.png" alt="Tic-Tac-Toe" loading="lazy" />
-                <div className="fw-card-shine"></div>
-              </div>
-              <div className="fw-card-content">
-                <div className="fw-card-top">
-                  <span className="fw-tag fw-tag-green">Mini Game</span>
-                  <span className="fw-year">2026</span>
-                </div>
-                <h3>Tic-Tac-Toe</h3>
-                <p>React Tic-Tac-Toe game with classic, timed and AI modes, winner detection, round scores and Tone.js audio.</p>
-                <div className="fw-card-tech">
-                  <span>React</span><span>Game Logic</span><span>Tone.js</span>
-                </div>
-                <div className="fw-card-links">
-                  <a href="https://tic-tac-toe-srt-75.vercel.app/" target="_blank" rel="noreferrer" className="fw-btn-live">Play ↗</a>
-                  <Link to="/case-studies/tic-tac-toe" className="fw-btn-case">Case Study</Link>
-                  <a href="https://github.com/Ricardo-ngozo/Tic-tac-toe.git" target="_blank" rel="noreferrer" className="fw-btn-gh" aria-label="GitHub">
                     <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1 .6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1.1A9.7 9.7 0 0 1 12 7c.8 0 1.7.1 2.5.3 2-1.3 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
                   </a>
                 </div>
@@ -223,26 +190,32 @@ export default function HomePage() {
             </div>
 
             <div className="archive-cards-grid">
-              <article className="archive-item reveal-element" data-reveal
-                data-live="https://airbnb-capstone-fixed.onrender.com/"
-                data-code="https://github.com/Ricardo-ngozo/airbnb-capstone-fixed">
-                <div className="archive-item-img">
-                  <img src="/images/Screenshot 2026-09-15 155420.png" alt="Airbnb Capstone" loading="lazy" />
-                  <div className="archive-item-overlay">
-                    <a href="https://airbnb-capstone-fixed.onrender.com/" target="_blank" rel="noreferrer" className="archive-overlay-btn">Live ↗</a>
+              <article className="archive-item reveal-element" data-reveal data-live="https://the-zone-anime-weather.vercel.app/anime" data-code="https://github.com/Ricardo-ngozo/Anime.list.git">
+                <div className="archive-item-img"><img src="/images/the zone (1).png" alt="Anime List" loading="lazy" /></div>
+                <div className="archive-item-body">
+                  <div className="archive-meta"><span className="archive-item-tag">API search app</span><span className="archive-year">2026</span></div>
+                  <h3>Anime List</h3>
+                  <p>React anime title search with a same-origin API, repeat-search retries and clearly labelled sample titles during outages.</p>
+                  <div className="fw-card-tech"><span>React</span><span>Fetch API</span><span>Vite</span></div>
+                  <div className="archive-actions">
+                    <a href="https://the-zone-anime-weather.vercel.app/anime" target="_blank" rel="noopener noreferrer" className="archive-action">Live ↗</a>
+                    <a href="https://github.com/Ricardo-ngozo/Anime.list.git" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
+                    <Link to="/case-studies/anime-list" className="archive-action archive-action-case">Case study</Link>
                   </div>
                 </div>
+              </article>
+
+              <article className="archive-item reveal-element" data-reveal data-live="https://tic-tac-toe-srt-75.vercel.app/" data-code="https://github.com/Ricardo-ngozo/Tic-tac-toe.git">
+                <div className="archive-item-img"><img src="/images/tic tac toe.png" alt="Tic-Tac-Toe" loading="lazy" /></div>
                 <div className="archive-item-body">
-                  <div className="archive-meta">
-                    <span className="archive-item-tag">Full-Stack Clone</span>
-                    <span className="archive-year">2026</span>
-                  </div>
-                  <h3>Airbnb Capstone</h3>
-                  <p>Full Airbnb clone — search, booking flow, SA listings. React + Node, deployed on Render.</p>
+                  <div className="archive-meta"><span className="archive-item-tag">Browser game</span><span className="archive-year">2026</span></div>
+                  <h3>Tic-Tac-Toe</h3>
+                  <p>React browser game with classic, timed and AI modes, winner detection and Tone.js audio.</p>
+                  <div className="fw-card-tech"><span>React</span><span>Game logic</span><span>Tone.js</span></div>
                   <div className="archive-actions">
-                    <a href="https://airbnb-capstone-fixed.onrender.com/" target="_blank" rel="noopener noreferrer" className="archive-action">Live ↗</a>
-                    <a href="https://github.com/Ricardo-ngozo/airbnb-capstone-fixed" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
-                    <Link to="/case-studies/archive?project=airbnb" className="archive-action archive-action-case">Case study</Link>
+                    <a href="https://tic-tac-toe-srt-75.vercel.app/" target="_blank" rel="noopener noreferrer" className="archive-action">Live ↗</a>
+                    <a href="https://github.com/Ricardo-ngozo/Tic-tac-toe.git" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>
+                    <Link to="/case-studies/tic-tac-toe" className="archive-action archive-action-case">Case study</Link>
                   </div>
                 </div>
               </article>
@@ -262,7 +235,7 @@ export default function HomePage() {
                     <span className="archive-year">2026</span>
                   </div>
                   <h3>iHub Prototype</h3>
-                  <p>A collaborative education hub with onboarding flows, modular dashboards, and polished responsive UI.</p>
+                  <p>Collaborative education hub prototype with onboarding and learning resources. My linked source covers the HTML/CSS directory page and resource cards.</p>
                   <div className="archive-actions">
                     <a href="https://giftmshengu250-pixel.github.io/Ihub-Prototype75/" target="_blank" rel="noopener noreferrer" className="archive-action">Live ↗</a>
                     <a href="https://github.com/Ricardo-ngozo/Ihub-clone" target="_blank" rel="noopener noreferrer" className="archive-action">GitHub ↗</a>

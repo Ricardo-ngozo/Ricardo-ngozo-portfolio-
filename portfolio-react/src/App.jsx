@@ -32,7 +32,7 @@ export default function App() {
     const pageClass = personal ? 'personal-body' : lab ? 'python-log-body' : archive ? 'archive-case-body' : '';
     document.body.dataset.page = location.pathname === '/' ? 'tech' : personal ? 'personal' : lab ? 'lab' : arena ? 'arena' : 'case-study';
     if (pageClass) document.body.classList.add(pageClass);
-    document.title = personal ? 'The Personal Side | Ricardo Ngozo' : lab ? 'Python Learning Lab | Ricardo Ngozo' : arena ? 'Play Arena | Ricardo Ngozo' : 'Ricardo Ngozo | Developer & Creative Technologist';
+    document.title = personal ? 'The Personal Side | Ricardo Ngozo' : lab ? 'Python Learning Lab | Ricardo Ngozo' : arena ? 'Play Arena | Ricardo Ngozo' : 'Ricardo Ngozo | Junior Full-Stack Developer';
     return () => {
       if (pageClass) document.body.classList.remove(pageClass);
       document.body.removeAttribute('data-page');

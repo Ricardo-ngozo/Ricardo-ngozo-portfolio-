@@ -8,9 +8,9 @@ export function initExplorer(scope) {
     const title=card.querySelector("h3").textContent.trim(),links=[...card.querySelectorAll("a[href]")];
     const url=links.find(a=>a.href.includes("case-studies"))?.href;
     const text=card.textContent;
-    const category=/sideline|game|tic-tac/i.test(title)?"Games":/airbnb/i.test(title)?"Fullstack":/quiz|task|todo|to-do/i.test(title)?"Experiments":"Interfaces";
+    const category=card.dataset.category||(/sideline|game|tic-tac/i.test(title)?"Games":/airbnb/i.test(title)?"Fullstack":/quiz|task|todo|to-do/i.test(title)?"Experiments":"Interfaces");
     const status=title==="SIDELINE"?"Prototype":/in progress/i.test(text)?"In progress":/group|prototype|quiz/i.test(text)?"Collaboration":category==="Experiments"?"Experiment":"Portfolio build";
-    return {card,title,id:slug(title),url,links,category,status,summary:card.querySelector("p")?.textContent||"",image:card.querySelector("img"),tags:[...card.querySelectorAll(".fw-card-tech span")].map(e=>e.textContent)};
+    return {card,title,id:slug(title),url,links,category,status,summary:card.querySelector("p")?.textContent||"",image:card.querySelector("img"),contribution:card.querySelector(".project-contribution")?.textContent,tags:[...card.querySelectorAll(".fw-card-tech span")].map(e=>e.textContent)};
   });
   W.projects=entries;
   function safeLink(href,label,cls="workshop-button"){const a=el("a",cls,label);a.href=href;if(new URL(href,location.href).origin!==location.origin){a.target="_blank";a.rel="noopener noreferrer";}return a;}
@@ -20,6 +20,7 @@ export function initExplorer(scope) {
     if(historyMode==="push")scope.navigate(url.pathname+url.search+url.hash);
     const d=W.dialog(item.title);d.dialog.classList.add("project-dialog");
     d.content.append(el("p","project-status",item.category+" / "+item.status),el("p","project-summary",item.summary));
+    if(item.contribution)d.content.append(el("p","project-contribution",item.contribution));
     const actions=el("div","workshop-actions");
     [...new Map(item.links.filter(a=>!a.classList.contains("project-preview")).map(a=>[a.href,a])).values()].forEach(a=>actions.append(safeLink(a.href,a.textContent.trim()||"GitHub")));
     const share=el("button","workshop-button","Copy project link");share.type="button";scope.listen(share, "click",()=>W.copy(url.href,share));actions.append(share);d.content.append(actions);

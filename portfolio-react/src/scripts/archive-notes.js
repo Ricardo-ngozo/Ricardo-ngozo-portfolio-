@@ -93,7 +93,7 @@ window.ARCHIVE_NOTES = {
   "ihub": {
     "title": "iHub Prototype",
     "category": "Collaborative prototype · 2026",
-    "summary": "An education hub concept with onboarding flows, modular dashboards, and responsive content cards.",
+    "summary": "A collaborative education hub prototype. My linked source covers the HTML/CSS directory page and resource cards; the live prototype is the wider team build.",
     "stack": [
       "HTML",
       "CSS",
@@ -103,7 +103,7 @@ window.ARCHIVE_NOTES = {
     "code": "https://github.com/Ricardo-ngozo/Ihub-clone",
     "live": "https://giftmshengu250-pixel.github.io/Ihub-Prototype75/",
     "brief": "Help learners find useful content and understand what to do next from a shared learning space.",
-    "approach": "Organized the experience around onboarding and modular dashboard sections, with a responsive layout for smaller screens.",
+    "approach": "The linked directory source uses HTML sections and CSS to organize resource cards and navigation. The wider prototype brings the team contributions together.",
     "learning": "Built in a group workflow and practiced turning a product idea into coordinated page sections."
   },
   "quiz": {

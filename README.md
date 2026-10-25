@@ -7,7 +7,7 @@ The portfolio of Samukelo Ricardo Ngozo, a fullstack developer and aspiring game
 ## What is included
 
 - Responsive Home, Personal, Play Arena, Python Learning Lab and project case-study pages.
-- Four selected projects (Urban Threads, Anime List, SIDELINE and Tic-Tac-Toe), nine archive entries, category/search filters and shareable project preview dialogs.
+- Three selected projects (Airbnb Capstone, Urban Threads and SIDELINE), ten archive entries, category/search filters and shareable project preview dialogs.
 - A shared, lazy-loaded Three.js character on Home and Personal, pointer interaction, animation, and an immediate 8 KB poster of the same character while 3D initializes or if WebGL fails.
 - A large draggable technology globe with a supporting inspector, keyboard controls and an equivalent HTML list; a journey timeline that lights up with scrolling; restrained scroll effects, with the fetch interaction kept in the Arena.
 - Three visible Python learning experiments: coordinate motion, particles and boids. The live canvases are JavaScript recreations with play/pause, reset and speed controls; the displayed Python/Pygame snippets are learning material.
