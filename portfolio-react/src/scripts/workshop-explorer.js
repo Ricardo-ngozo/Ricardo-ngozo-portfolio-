@@ -8,8 +8,8 @@ export function initExplorer(scope) {
     const title=card.querySelector("h3").textContent.trim(),links=[...card.querySelectorAll("a[href]")];
     const url=links.find(a=>a.href.includes("case-studies"))?.href;
     const text=card.textContent;
-    const category=/game|tic-tac/i.test(title)?"Games":/airbnb/i.test(title)?"Fullstack":/quiz|task|todo|to-do/i.test(title)?"Experiments":"Interfaces";
-    const status=/in progress/i.test(text)?"In progress":/group|prototype|quiz/i.test(text)?"Collaboration":category==="Experiments"?"Experiment":"Portfolio build";
+    const category=/sideline|game|tic-tac/i.test(title)?"Games":/airbnb/i.test(title)?"Fullstack":/quiz|task|todo|to-do/i.test(title)?"Experiments":"Interfaces";
+    const status=title==="SIDELINE"?"Prototype":/in progress/i.test(text)?"In progress":/group|prototype|quiz/i.test(text)?"Collaboration":category==="Experiments"?"Experiment":"Portfolio build";
     return {card,title,id:slug(title),url,links,category,status,summary:card.querySelector("p")?.textContent||"",image:card.querySelector("img"),tags:[...card.querySelectorAll(".fw-card-tech span")].map(e=>e.textContent)};
   });
   W.projects=entries;
@@ -71,7 +71,7 @@ export function initExplorer(scope) {
     const archiveSearch=document.querySelector("[data-archive-search]");
     scope.listen(archiveSearch, "input",()=>{search.value=archiveSearch.value;filter();});
     scope.listen(document, "workshop:technology",e=>{search.value=e.detail.search||e.detail.label;category="All";filters.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.textContent==="All")));filter();});
-    const deepLink=()=>{const id=new URL(location.href).searchParams.get("project");const item=entries.find(e=>e.id===id);if(item)openProject(item,"replace");else document.querySelector(".project-dialog")?.close();};
+    const deepLink=()=>{const id=new URL(location.href).searchParams.get("project");const item=entries.find(e=>e.id===(id==="task-manager"?"mdn-to-do-board":id==="game-ui-setup"?"sideline":id));if(item)openProject(item,"replace");else document.querySelector(".project-dialog")?.close();};
     scope.listen(window, "popstate",deepLink);deepLink();
     const current=el("aside","currently-building");current.append(el("p","section-kicker","ON THE WORKBENCH"),el("h3","","An interactive portfolio, built in public."),el("p","","Exploring how useful interfaces, playable experiments, and a little personality fit together."));
     const date=el("time","experience-note","Updated 1 October 2026");date.dateTime="2026-10-01";

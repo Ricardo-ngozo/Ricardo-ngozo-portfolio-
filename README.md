@@ -7,9 +7,9 @@ The portfolio of Samukelo Ricardo Ngozo, a fullstack developer and aspiring game
 ## What is included
 
 - Responsive Home, Personal, Play Arena, Python Learning Lab and project case-study pages.
-- Four selected projects (Urban Threads, Anime List, Game UI Setup and Tic-Tac-Toe), ten archive entries, category/search filters and shareable project preview dialogs.
+- Four selected projects (Urban Threads, Anime List, SIDELINE and Tic-Tac-Toe), nine archive entries, category/search filters and shareable project preview dialogs.
 - A shared, lazy-loaded Three.js character on Home and Personal, pointer interaction, animation, and an immediate 8 KB poster of the same character while 3D initializes or if WebGL fails.
-- A large draggable technology globe with a supporting inspector, keyboard controls and an equivalent HTML list; a journey timeline that lights up with scrolling; decorative animal interactions and scroll effects.
+- A large draggable technology globe with a supporting inspector, keyboard controls and an equivalent HTML list; a journey timeline that lights up with scrolling; restrained scroll effects, with the fetch interaction kept in the Arena.
 - Three visible Python learning experiments: coordinate motion, particles and boids. The live canvases are JavaScript recreations with play/pause, reset and speed controls; the displayed Python/Pygame snippets are learning material.
 - Play Arena brings Mini Quest Runner, two-player Tic-Tac-Toe and the five-shot Pong challenge together on a dedicated page.
 - Personal memories, influence captions, a timeline and enlarged image dialogs.
@@ -64,7 +64,7 @@ For a production check, run `npm run build` followed by `npm run preview`. The p
 | `/mini-quest-runner/index.html` | Standalone browser game, served from `public/` |
 | `/docs/Ricardo_Ngozo_CV.pdf` | Downloadable CV |
 
-Archive keys are `tesla`, `youtube`, `netflix`, `gamevault`, `todo`, `airbnb`, `ihub`, `quiz`, `x` and `task`. The project explorer's Share control generates preview links, for example `/?project=urban-threads`.
+Archive keys are `tesla`, `youtube`, `netflix`, `gamevault`, `todo`, `airbnb`, `ihub`, `quiz`, and `x` (`task` remains an alias for `todo`). The project explorer's Share control generates preview links, for example `/?project=urban-threads`.
 
 `/index.html`, `/personal.html` and `/python-learning-log.html` redirect to their React routes. Case-study URLs with a `.html` suffix redirect to the same path without that suffix. Removed static files such as `Loader.html` are not current entry points.
 

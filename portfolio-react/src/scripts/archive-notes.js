@@ -137,19 +137,5 @@ window.ARCHIVE_NOTES = {
     "brief": "Recreate a social feed where posts and interactive states remain easy to scan.",
     "approach": "Built a responsive stream of post cards and supporting interaction states, emphasizing a clear reading flow.",
     "learning": "Practiced card layout, responsive feed density, and interface states for social content."
-  },
-  "task": {
-    "title": "Task Manager",
-    "category": "In progress · 2026",
-    "summary": "An evolving task-management experiment focused on persistent state and simple list updates.",
-    "stack": [
-      "JavaScript",
-      "localStorage",
-      "UI state"
-    ],
-    "code": "https://github.com/Ricardo-ngozo/mdn-todo-board",
-    "brief": "Keep everyday task updates visible and predictable with a small, straightforward interface.",
-    "approach": "The public build currently focuses on task creation, completion, deletion, filtering, and persistence.",
-    "learning": "Used a small app to practice state transitions and browser storage."
   }
 };

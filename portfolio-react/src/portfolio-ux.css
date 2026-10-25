@@ -270,7 +270,6 @@ body:not(.personal-body) { color:#fff; background-color:#0d0d0f; }
 body:not(.personal-body) .section-kicker,body:not(.personal-body) .hero-eyebrow,
 body:not(.personal-body) .hero-subtitle,body:not(.personal-body) .hero-tagline,
 body:not(.personal-body) .section-header>p:not(.section-kicker) { color:#ddd5c8; }
-body:not(.personal-body) .verified-icon { width:14px; height:14px; vertical-align:-2px; margin-left:3px; color:#ddd5c8; }
 body:not(.personal-body) .wb-icon svg { width:28px; height:28px; display:block; }
 body:not(.personal-body) .floating-action { color:#fff; border-color:rgba(185,191,206,.32); }
 body:not(.personal-body) .floating-action-primary { color:#fff; background:#ff624b; border-color:#ff624b; }
