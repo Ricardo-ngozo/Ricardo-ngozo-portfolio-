@@ -42,7 +42,7 @@ From the repository root, the equivalent commands are `npm --prefix portfolio-re
 | `npm run build` | Generate the production site in `dist/` |
 | `npm run preview` | Serve that build locally, normally on port 4173 |
 
-For a production check, run `npm run build` followed by `npm run preview`. The project currently has no npm test or lint script.
+For a production check, run `npm run build` followed by `npm run preview`. The project currently has no npm test or lint script. From `portfolio-react/`, run `node --test tests/character-asset.test.mjs` for the character deployment/cache regression checks.
 
 ## Routes and content
 
@@ -114,7 +114,7 @@ Use `data-cursor-label="Explore"` for a custom hover label and `data-native-curs
 - Contributions come from `github-contributions-api.jogruber.de` for `Ricardo-ngozo`, with browser caching and error handling.
 - The contact form submits to the configured Formspree endpoint. Updating the recipient requires updating the Formspree account/settings, not adding a secret to this frontend.
 - Motion/sound preferences and Pong rewards use local storage; the shared Pong entrance fades into every route, with Calm/reduced-motion support. Storage access is guarded when browser storage is unavailable.
-- Character files and images are served locally from `public/`. The interactive character needs WebGL; failure keeps its lightweight poster visible. The current loader fetches and caches `character.glb` bytes across character pages and limits rendering to 30 fps while visible. The retained encrypted asset is not used by the current loader.
+- Character files and images are served locally from `public/`. The interactive character needs WebGL; failure keeps its lightweight poster visible. The loader fetches the normally committed `character.enc`, decrypts it once and caches the decoded GLB bytes across character pages. Visible rendering is capped at 30 fps. Do not switch to the raw `character.glb` URL: it is tracked in Git LFS and may deploy as a text pointer.
 
 Network failures can affect fonts, contributions, project links and contact delivery. The portfolio itself has no server, database or authentication service.
 
