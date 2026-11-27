@@ -84,13 +84,15 @@ export default function CharacterScene() {
       scrollT = Math.max(0, Math.min(1, -hero.getBoundingClientRect().top / Math.max(1, hero.clientHeight)));
     };
     const onPointer = event => {
-      if (calm || event.pointerType === 'touch') return;
+      if (calm) return;
+      if (event.pointerType === 'touch' && !container.parentElement.contains(event.target)) return;
       mouse.x = THREE.MathUtils.clamp(event.clientX / innerWidth * 2 - 1, -1, 1); mouse.y = THREE.MathUtils.clamp(1 - event.clientY / innerHeight * 2, -1, 1);
     };
     const onMotion = () => { calm = window.Workshop?.calm || matchMedia('(prefers-reduced-motion: reduce)').matches; if (calm) { mouse.x = mouse.y = gaze.x = gaze.y = 0; if (head && hasHeadPose) head.quaternion.copy(headPose); } sync(); };
     const observer = new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }); observer.observe(container);
     const resizeObserver = new ResizeObserver(resize); resizeObserver.observe(container);
     document.addEventListener('pointermove', onPointer, { passive: true });
+    container.addEventListener('pointerdown', onPointer, { passive: true });
     document.addEventListener('visibilitychange', sync); document.addEventListener('workshop:motion', onMotion);
     window.addEventListener('scroll', onScroll, { passive: true });
     const lost = event => { event.preventDefault(); contextLost = true; cancelAnimationFrame(frame); setState('fallback'); };
@@ -114,6 +116,7 @@ export default function CharacterScene() {
     return () => {
       disposed = true; controller.abort(); cancelAnimationFrame(frame);
       observer.disconnect(); resizeObserver.disconnect(); hoverCleanup?.(); animations?.dispose(); loader.dispose(); lighting.dispose();
+      container.removeEventListener('pointerdown', onPointer);
       document.removeEventListener('pointermove', onPointer); document.removeEventListener('visibilitychange', sync); document.removeEventListener('workshop:motion', onMotion); window.removeEventListener('scroll', onScroll);
       renderer.domElement.removeEventListener('webglcontextlost', lost); renderer.domElement.removeEventListener('webglcontextrestored', restored);
       if (character) disposeCharacter(character);
