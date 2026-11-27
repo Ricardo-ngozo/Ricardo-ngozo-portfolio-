@@ -43,7 +43,7 @@ export default function CharacterScene() {
       frame = 0;
       if (disposed || contextLost || !visible || document.hidden || !character) return;
       const targetFrameInterval = compactDevice ? 1000 / 30 : 1000 / 60;
-      if (!calm && last && time - last < targetFrameInterval) { frame = requestAnimationFrame(draw); return; }
+      if (!calm && last && time - last < targetFrameInterval - 1) { frame = requestAnimationFrame(draw); return; }
       const previousZoom = camera.zoom;
       const dt = Math.min((time - last) / 1000 || .016, .1); last = time;
       if (!calm) {
@@ -51,8 +51,8 @@ export default function CharacterScene() {
         camera.position.y = THREE.MathUtils.lerp(camera.position.y, THREE.MathUtils.lerp(CAM_CLOSE.y, CAM_FULL.y, scrollT), easing);
         camera.position.z = THREE.MathUtils.lerp(camera.position.z, THREE.MathUtils.lerp(CAM_CLOSE.z, CAM_FULL.z, scrollT), easing);
         camera.zoom = THREE.MathUtils.lerp(camera.zoom, THREE.MathUtils.lerp(CAM_CLOSE.zoom, CAM_FULL.zoom, scrollT), easing);
-        if (head) handleHeadRotation(head, mouse.x, mouse.y, easing * .6, easing, THREE.MathUtils.lerp);
         animations?.mixer.update(dt);
+        if (head) handleHeadRotation(head, mouse.x, mouse.y, easing * .6, easing, THREE.MathUtils.lerp);
       }
       if (Math.abs(camera.zoom - previousZoom) > .00001) camera.updateProjectionMatrix();
       lighting.setPointLight(screenLight); renderer.render(scene, camera);
@@ -66,7 +66,7 @@ export default function CharacterScene() {
       camera.fov = camera.aspect < .85 ? 19 : 14.5; camera.updateProjectionMatrix(); sync();
     };
     const onScroll = () => {
-      const hero = container.closest('.hero-section'); if (!hero) return;
+      const hero = container.closest('.hero-section, .p-hero'); if (!hero) return;
       scrollT = Math.max(0, Math.min(1, -hero.getBoundingClientRect().top / Math.max(1, hero.clientHeight)));
     };
     const onPointer = event => {
@@ -83,7 +83,7 @@ export default function CharacterScene() {
     const restored = () => { contextLost = false; setState(character ? 'ready' : 'loading'); sync(); };
     renderer.domElement.addEventListener('webglcontextlost', lost); renderer.domElement.addEventListener('webglcontextrestored', restored);
     resize(); onScroll();
-    loader.loadCharacter(controller.signal).then(gltf => {
+    loader.loadCharacter(controller.signal).then(async gltf => {
       if (disposed) { disposeCharacter(gltf.scene); return; }
       character = gltf.scene; scene.add(character);
       animations = setAnimations(gltf);
@@ -91,6 +91,10 @@ export default function CharacterScene() {
       head = character.getObjectByName('spine006'); screenLight = character.getObjectByName('screenlight');
       lighting.turnOnLights(); animations.startIntro(calm);
       // Keep the poster until the first actual model frame has reached the canvas.
+      scene.updateMatrixWorld(true);
+      // Warm shaders without blocking the first visible character frame.
+      if (renderer.compileAsync) await renderer.compileAsync(scene, camera);
+      if (disposed || contextLost) return;
       renderer.render(scene, camera); setState('ready'); sync();
     }).catch(error => { if (!disposed) { console.warn('Character unavailable', error); setState('fallback'); } });
     return () => {
