@@ -18,7 +18,7 @@ export default function HomePage() {
 
       <main>
         {/* HERO */}
-        <section id="home" className="hero-section cinematic-hero" aria-labelledby="hero-name">
+        <section id="home" className="hero-section cinematic-hero reference-hero" aria-labelledby="hero-name">
           <div className="cinematic-stage">
             <h1 id="hero-name" className="cinematic-name" aria-label="Ricardo Ngozo.">
               <span className="cinematic-name-given" aria-hidden="true"><span className="cinematic-name-ink">Ricardo</span></span>
@@ -54,7 +54,13 @@ export default function HomePage() {
             <p className="cinematic-availability">Johannesburg, South Africa · Open to junior roles and internships.</p>
             <div className="cinematic-actions">
               <a href="#projects" className="hero-cta-primary">Explore my work <span aria-hidden="true">↗</span></a>
-              <a href="#why-me" className="hero-cta-secondary">About me <span aria-hidden="true">↗</span></a>
+              <a href="/docs/Ricardo_Ngozo_CV.pdf" target="_blank" rel="noopener noreferrer" className="hero-cta-secondary">View CV <span aria-hidden="true">↗</span></a>
+            </div>
+            <div className="hero-quick-links">
+              <a href="#why-me">Experience</a>
+              <Link to="/personal">Personal ↗</Link>
+              <Link to="/python-learning-log">Python Log ↗</Link>
+              <Link to="/arena">Play Arena ↗</Link>
             </div>
           </div>
         </section>
