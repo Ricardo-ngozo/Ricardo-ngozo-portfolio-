@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import setCharacter, { disposeCharacter } from './utils/character.js';
 import setLighting from './utils/lighting.js';
-import { handleHeadRotation } from './utils/mouseUtils.js';
+
 import setAnimations from './utils/animationUtils.js';
 import { CharacterPoster } from './Character.jsx';
 
@@ -37,6 +37,11 @@ export default function CharacterScene() {
     let calm = matchMedia('(prefers-reduced-motion: reduce)').matches || window.Workshop?.calm;
     let disposed = false, contextLost = false;
     const mouse = { x: 0, y: 0 };
+    const gaze = { x: 0, y: 0 };
+    const gazeRotation = new THREE.Quaternion();
+    const gazeEuler = new THREE.Euler();
+    const headPose = new THREE.Quaternion();
+    let hasHeadPose = false;
     const lighting = setLighting(scene);
     const loader = setCharacter(renderer, scene, camera);
     const draw = time => {
@@ -51,8 +56,17 @@ export default function CharacterScene() {
         camera.position.y = THREE.MathUtils.lerp(camera.position.y, THREE.MathUtils.lerp(CAM_CLOSE.y, CAM_FULL.y, scrollT), easing);
         camera.position.z = THREE.MathUtils.lerp(camera.position.z, THREE.MathUtils.lerp(CAM_CLOSE.z, CAM_FULL.z, scrollT), easing);
         camera.zoom = THREE.MathUtils.lerp(camera.zoom, THREE.MathUtils.lerp(CAM_CLOSE.zoom, CAM_FULL.zoom, scrollT), easing);
+        // Restore the previous animation pose before applying this frame's gaze.
+        if (head && hasHeadPose) head.quaternion.copy(headPose);
         animations?.mixer.update(dt);
-        if (head) handleHeadRotation(head, mouse.x, mouse.y, easing * .6, easing, THREE.MathUtils.lerp);
+        if (head) {
+          headPose.copy(head.quaternion); hasHeadPose = true;
+          gaze.x = THREE.MathUtils.lerp(gaze.x, mouse.x * .35, easing);
+          gaze.y = THREE.MathUtils.lerp(gaze.y, -mouse.y * .22, easing);
+          gazeEuler.set(gaze.y, gaze.x, 0);
+          gazeRotation.setFromEuler(gazeEuler);
+          head.quaternion.multiply(gazeRotation);
+        }
       }
       if (Math.abs(camera.zoom - previousZoom) > .00001) camera.updateProjectionMatrix();
       lighting.setPointLight(screenLight); renderer.render(scene, camera);
@@ -71,9 +85,9 @@ export default function CharacterScene() {
     };
     const onPointer = event => {
       if (calm || event.pointerType === 'touch') return;
-      mouse.x = event.clientX / innerWidth * 2 - 1; mouse.y = 1 - event.clientY / innerHeight * 2;
+      mouse.x = THREE.MathUtils.clamp(event.clientX / innerWidth * 2 - 1, -1, 1); mouse.y = THREE.MathUtils.clamp(1 - event.clientY / innerHeight * 2, -1, 1);
     };
-    const onMotion = () => { calm = window.Workshop?.calm || matchMedia('(prefers-reduced-motion: reduce)').matches; if (calm) { mouse.x = mouse.y = 0; } sync(); };
+    const onMotion = () => { calm = window.Workshop?.calm || matchMedia('(prefers-reduced-motion: reduce)').matches; if (calm) { mouse.x = mouse.y = gaze.x = gaze.y = 0; if (head && hasHeadPose) head.quaternion.copy(headPose); } sync(); };
     const observer = new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }); observer.observe(container);
     const resizeObserver = new ResizeObserver(resize); resizeObserver.observe(container);
     document.addEventListener('pointermove', onPointer, { passive: true });
