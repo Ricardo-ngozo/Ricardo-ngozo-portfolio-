@@ -16,6 +16,8 @@ export function disposeCharacter(root) {
 
 export default function setCharacter() {
   const draco = new DRACOLoader();
+  draco.setDecoderPath('/draco/');
+  draco.setDecoderConfig({ type: 'js' });
   // Three's bundled decoder URLs are emitted as local assets by Vite.
   const loader = new GLTFLoader(); loader.setDRACOLoader(draco);
   return {
