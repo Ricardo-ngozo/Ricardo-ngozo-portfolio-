@@ -25,3 +25,5 @@ createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </StrictMode>
 );
+
+import './pages/hero-reference.css';
