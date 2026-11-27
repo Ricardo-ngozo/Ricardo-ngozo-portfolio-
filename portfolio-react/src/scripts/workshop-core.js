@@ -63,6 +63,7 @@ export function mountWorkshop(scope) {
     }
     apply(); scope.listen(reduce, "change", apply);
 
+    // PONG GAME: rendered in the Arena when the Pong section is mounted.
     function pong(host, gameScope) {
       const canvas = W.el("canvas", "rally-canvas"); canvas.width = 720; canvas.height = 300; canvas.tabIndex = 0;
       canvas.setAttribute("aria-label", "Pong challenge. Move with Up and Down arrows, or drag on the court. Return five shots.");

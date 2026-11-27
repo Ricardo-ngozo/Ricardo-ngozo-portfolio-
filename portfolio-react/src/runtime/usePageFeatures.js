@@ -4,7 +4,7 @@ import { createPageScope } from './pageScope.js';
 import { initHomePage } from '../scripts/init-home.js';
 import { initPortfolioUX } from '../scripts/portfolio-ux.js';
 import { initExplorer } from '../scripts/workshop-explorer.js';
-import { initGlobe } from '../scripts/workshop-globe.js';
+import { initTechnologyGlobe } from '../scripts/workshop-globe.js';
 
 
 
@@ -14,7 +14,7 @@ export function usePageFeatures(page, identity = '') {
     const scope = createPageScope();
     scope.navigate = navigate;
     const features = [
-      ...(page === 'home' ? [initHomePage, initGlobe] : []),
+      ...(page === 'home' ? [initHomePage, initTechnologyGlobe] : []),
       initPortfolioUX, initExplorer,
     ];
     features.forEach(init => {

@@ -19,7 +19,7 @@ export default function Cursor() {
     let frame = null, active = false;
     let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
     let targetX = 0, targetY = 0, trailIndex = 0, lastTrailX = 0, lastTrailY = 0;
-    const pool = Array.from({ length: 12 }, () => {
+    const pool = Array.from({ length: 8 }, () => {
       const particle = document.createElement('span');
       particle.className = 'cursor-trail-dot'; trail.append(particle);
       return particle;

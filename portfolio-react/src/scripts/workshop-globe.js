@@ -1,6 +1,12 @@
-export function initGlobe(scope) {
+// This file draws the spinning globe in the “My toolkit” section.
+// The page code is in src/pages/HomePage.jsx; the canvas is tech-globe.
+
+export function initTechnologyGlobe(scope) {
 'use strict';
-const W=scope.workshop(),canvas=document.getElementById('tech-globe');if(!W||!canvas)return;
+const W = scope.workshop(), canvas = document.getElementById('tech-globe');
+if (!W || !canvas) return;
+
+  // All the technology names, icons and categories shown on the globe.
   const NODES = [
     // Frontend — cyan
     { label:'HTML5',      cat:'fe', icon:'M4 2h16l-1.5 16.5L12 21l-6.5-2.5L4 2zm2.3 2 .9 10.5 4.8 1.4 4.8-1.4.6-6.5H8.3l-.2-2h8.7l.2-2H6.3zm.5 6h4.4l.1 1.5-3.1.9-.2-2.4zm5.3-2-.1-2h1.9l-.2 2h-1.6z' },

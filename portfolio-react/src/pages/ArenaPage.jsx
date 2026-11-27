@@ -1,3 +1,6 @@
+// Arena page: this file contains the three visible games.
+// Game 1 = Mini Quest Runner, Game 2 = Tic-Tac-Toe, Game 3 = Pong.
+
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import FloatingActions from '../components/FloatingActions.jsx';
@@ -7,7 +10,7 @@ import { usePageFeatures } from '../runtime/usePageFeatures.js';
 
 const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
 
-function TicTacToe() {
+function TicTacToeGame() {
   const [board, setBoard] = useState(Array(9).fill(''));
   const player = board.filter(Boolean).length % 2 ? 'O' : 'X';
   const win = wins.find(([a,b,c]) => board[a] && board[a] === board[b] && board[a] === board[c]);
@@ -23,7 +26,7 @@ function TicTacToe() {
   </div>;
 }
 
-function Pong() {
+function PongGame() {
   const host = useRef(null);
   useEffect(() => {
     const scope = createPageScope();
@@ -33,7 +36,7 @@ function Pong() {
   return <div className="arena-rally" ref={host} />;
 }
 
-function Runner() {
+function MiniQuestRunnerGame() {
   const [playing, setPlaying] = useState(false);
   return <>
     {playing ? <iframe className="arena-runner" src="/mini-quest-runner/index.html" title="Mini Quest Runner" /> :
@@ -58,14 +61,14 @@ export default function ArenaPage() {
       </section>
       <div className="arena-games" id="arena-games">
         <section className="arena-game arena-game-featured" id="runner">
-          <div className="arena-game-heading"><span>01 / ADVENTURE</span><h2>Mini Quest Runner</h2><p>Jump, collect crystals, and find your rhythm.</p></div><Runner />
+          <div className="arena-game-heading"><span>01 / ADVENTURE</span><h2>Mini Quest Runner</h2><p>Jump, collect crystals, and find your rhythm.</p></div><MiniQuestRunnerGame />
         </section>
         <section className="arena-game" id="tic-tac-toe">
-          <div className="arena-game-heading"><span>02 / TWO PLAYERS</span><h2>Tic-Tac-Toe</h2><p>Share the board. Three in a row takes it.</p></div><TicTacToe />
+          <div className="arena-game-heading"><span>02 / TWO PLAYERS</span><h2>Tic-Tac-Toe</h2><p>Share the board. Three in a row takes it.</p></div><TicTacToeGame />
           <Link className="arena-story" to="/case-studies/tic-tac-toe">Read the build story ↗</Link>
         </section>
         <section className="arena-game" id="pong">
-          <div className="arena-game-heading"><span>03 / REFLEXES</span><h2>The five-shot rally</h2><p>You control the coral paddle. Return five shots.</p></div><Pong />
+          <div className="arena-game-heading"><span>03 / REFLEXES</span><h2>The five-shot rally</h2><p>You control the coral paddle. Return five shots.</p></div><PongGame />
         </section>
       </div>
     </main>

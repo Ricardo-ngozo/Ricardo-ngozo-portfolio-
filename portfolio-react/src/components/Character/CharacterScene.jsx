@@ -19,10 +19,16 @@ export default function CharacterScene() {
     const controller = new AbortController();
     const scene = new THREE.Scene();
     let renderer;
+    const compactDevice = innerWidth <= 820 || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+    const initialPixelRatio = compactDevice ? 1 : 1.25;
     try {
-      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' });
+      renderer = new THREE.WebGLRenderer({
+        alpha: true,
+        antialias: !compactDevice,
+        powerPreference: compactDevice ? 'low-power' : 'high-performance',
+      });
     } catch { setState('fallback'); return; }
-    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, innerWidth <= 820 ? 2 : 1.5));
+    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, initialPixelRatio));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     container.append(renderer.domElement);
     const camera = new THREE.PerspectiveCamera(14.5, 1, .1, 1000);
@@ -36,7 +42,8 @@ export default function CharacterScene() {
     const draw = time => {
       frame = 0;
       if (disposed || contextLost || !visible || document.hidden || !character) return;
-      if (!calm && last && time - last < 1000 / 30) { frame = requestAnimationFrame(draw); return; }
+      const targetFrameInterval = compactDevice ? 1000 / 30 : 1000 / 60;
+      if (!calm && last && time - last < targetFrameInterval) { frame = requestAnimationFrame(draw); return; }
       const previousZoom = camera.zoom;
       const dt = Math.min((time - last) / 1000 || .016, .1); last = time;
       if (!calm) {
